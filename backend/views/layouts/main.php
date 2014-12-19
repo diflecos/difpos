@@ -36,6 +36,7 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Categorias', 'url' => ['/site/index']],
                 ['label' => 'Descuentos', 'url' => ['/site/index']],
+                ['label' => 'Personas', 'url' => ['/fullperson/index']],
 				['label' => 'Usuarios', 'items' => [
 					['label' => 'Usuarios', 'url' => '@frontend/web/index.php?r=tax/index'],
 					['label' => 'Roles', 'url' => 'gender/index'],
