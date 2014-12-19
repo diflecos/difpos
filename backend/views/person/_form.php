@@ -1,8 +1,12 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
+
+use common\models\Gender;
+use common\models\CivilStatus;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Person */
@@ -39,9 +43,9 @@ use yii\jui\DatePicker;
 		]
 	]) ?> 
 	
-    <?= $form->field($model, 'gender_id')->textInput(['maxlength' => 10]) ?>
+    <?= $form->field($model, 'gender_id')->dropDownList(ArrayHelper::map(Gender::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'civilstatus_id')->textInput(['maxlength' => 10]) ?>
+    <?= $form->field($model, 'civilstatus_id')->dropDownList(ArrayHelper::map(CivilStatus::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'id_card')->textInput(['maxlength' => 45]) ?>
 
