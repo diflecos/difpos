@@ -1,5 +1,7 @@
-Yii 2 Advanced Application Template
+Diflecos Yii2-based retail POS
 ===================================
+
+Sistema de TPV para ventas en comercio al por menor basado en Yii2
 
 Yii 2 Advanced Application Template is a skeleton Yii 2 application best for
 developing complex Web applications with multiple tiers.
