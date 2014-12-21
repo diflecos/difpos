@@ -17,6 +17,8 @@ use common\models\SocialMediaType;
 		$form = ActiveForm::begin(["layout" => "horizontal", "action" => ["social-media/update?id=".$model->id]]);
 	?>
 	
+	<?= Html::hiddenInput("person_id", $person_id); ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'social_media_type_id')->dropDownList(ArrayHelper::map(SocialMediaType::find()->all(), 'id', 'name')) ?>

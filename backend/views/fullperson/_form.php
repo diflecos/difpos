@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'gender_id')->textInput(['maxlength' => 10]) ?>
 
-    <?= $form->field($model, 'civil_status_id')->textInput(['maxlength' => 10]) ?>
+    <?= $form->field($model, 'civilstatus_id')->textInput(['maxlength' => 10]) ?>
 
     <?= $form->field($model, 'id_card')->textInput(['maxlength' => 45]) ?>
 

@@ -14,6 +14,8 @@ use yii\bootstrap\ActiveForm;
 		$form = ActiveForm::begin(["layout" => "horizontal", "action" => ["address/update?id=".$model->id]]);
 	?>
 
+	<?= Html::hiddenInput("person_id", $person_id); ?>
+	
     <?= $form->field($model, 'name')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'street')->textInput(['maxlength' => 45]) ?>

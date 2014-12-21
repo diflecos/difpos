@@ -10,10 +10,10 @@ use diflecos\innovation\Utils;
 /* @var $model common\models\Person */
 ?>
 <div class="person-view tab-pane active">
-	<a href="#" class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-person-update">Update</a>
+	<a href="#" class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-person-update-<?= $model->id ?>">Update</a>
 	<?php
 	Modal::begin([
-		'id' => 'modal-person-update',
+		'id' => 'modal-person-update-'.$model->id,
 		'header' => '<h4>Update Person</h4>'
 	]);
 	

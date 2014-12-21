@@ -11,16 +11,16 @@ use yii\bootstrap\Modal;
 <div class="email-view row">
 	<span class="col-md-4 text-right"><?= $model->name ?>: </span>
 	<span ><strong><?= $model->email ?></strong></span>
-	<a href="#" data-toggle="modal" data-target="#modal-email-update"><span class="glyphicon glyphicon-pencil"></span></a>
+	<a href="#" data-toggle="modal" data-target="#modal-email-update-<?= $model->id ?>"><span class="glyphicon glyphicon-pencil"></span></a>
 	<a href="<?= Url::to(['email/delete', 'id' => $model->id]) ?>"><span class="glyphicon glyphicon-remove"></span></a>
 	
 	<?php
 	Modal::begin([
-		'id' => 'modal-email-update',
+		'id' => 'modal-email-update-'.$model->id,
 		'header' => '<h4>Update Email</h4>'
 	]);
 	
-	echo $this->render('//email/update', ['model' => $model]);
+	echo $this->render('//email/update', ['model' => $model, 'person_id' => $person_id]);
 
 	Modal::end();  
     ?>	

@@ -82,7 +82,7 @@ class SocialMediaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['//fullperson/view', 'id' => $model->id]);
+            return $this->redirect(['//fullperson/view', 'id' => Yii::$app->request->post('person_id')]);
         } else {
             return $this->render('update', [
                 'model' => $model,

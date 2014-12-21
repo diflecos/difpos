@@ -63,7 +63,7 @@ class PhoneController extends Controller
         $model = new Phone();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['//fullperson/view', 'id' => $model->id]);
+            return $this->redirect(['//fullperson/view', 'id' => Yii::$app->request->post('person_id')]);
         } else {
             return $this->render('create', [
                 'model' => $model,

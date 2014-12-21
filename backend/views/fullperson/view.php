@@ -42,21 +42,21 @@ $person=$model;
 							<h3>Phone</h3>
 							<?php
 								foreach($person->phones as $phone) {
-									echo yii\base\View::render("/phone/view",["model" => $phone]);
+									echo yii\base\View::render("/phone/view",["model" => $phone, "person_id" => $person->id]);
 								}
 							?>
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Email</h3>
 							<?php
 								foreach($person->emails as $email) {
-									echo yii\base\View::render("/email/view",["model" => $email]);
+									echo yii\base\View::render("/email/view",["model" => $email, "person_id" => $person->id]);
 								}
 							?>
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Address</h3>
 							<?php
 								foreach($person->addresses as $address) {
-									echo yii\base\View::render("/address/view",["model" => $address]);
+									echo yii\base\View::render("/address/view",["model" => $address, "person_id" => $person->id]);
 								}
 							?>
 						</div>
@@ -65,7 +65,7 @@ $person=$model;
 							<h3>Social</h3>								
 							<?php
 								foreach($person->socialMedia as $socialmedia) {
-									echo yii\base\View::render("/social-media/view",["model" => $socialmedia]);
+									echo yii\base\View::render("/social-media/view",["model" => $socialmedia, "person_id" => $person->id]);
 								}
 							?>
 						</div>
