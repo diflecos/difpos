@@ -1,0 +1,32 @@
+﻿Identificacion --> si, ponemos una tabla de usuarios
+
+Gestion de sesion --> si, con controles de caja y con commentarios de sesion
+
+Seleccion de productos
+	--> NO introducir código y precio a mano  
+	--> introducir una categoría y precio a mano
+	--> NO escanear código y precio (en este caso no se permitiría la modificación del precio aunque si la introducción de un descuento manual o predefinido)
+	--> introducir descuento sobre un artículo por % o cantidad
+	--> introducir descuento global por % o cantidad 
+	--> NO introducir agrupación de items y descuento por agrupación  --> ponemos una categoría PACK
+
+Cancelacion de operaciones... ---> a ver...  (esto no lo tenemos ahora)
+Devoluciones con coupon --> a ver... (esto no lo tenemos ahora)
+Alta de clientes con toda la información para facturas (esto no lo tenemos ahora)
+Pagos --> efectivo y tarjetas
+
+
+Admin
+	--> Parametros basicos
+	--> Gestion del currency y del tax
+	--> Visualización de sesiones
+	--> Visualizacion de operaciones
+	--> Gestion de usuarios y perfiles (admin, salesforce, audit)
+	--> Configurar descuentos predefinidos
+	--> Escaneo mediante webcam o mediante escaner
+	--> Informes
+	--> Export de datos
+	--> Cancelacion de operaciones
+
+
+    

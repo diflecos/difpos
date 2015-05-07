@@ -1,0 +1,29 @@
+<template name="navbar">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Balzaq</a>
+			</div>
+			<p class="navbar-text">Powered by <a href="#" class="navbar-link">tututu</a></p>		
+
+			<p class="navbar-text"><a id="page_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Page info" data-content="Page load time: 65ms (version 1.5.2)"><span class="glyphicon glyphicon-info-sign"></span></a></p>		
+			<script>$('#page_info').popover({});</script>
+			
+			<a href="/fullpersons">Fullpersons</a>
+			
+			<ul class="nav navbar-nav navbar-right">
+				{{> loginButtons}} <!-- here -->
+			</ul>
+	
+			<p class="navbar-text navbar-right"><a id="ip_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="IP" data-content={{clientIP}}><span class="glyphicon glyphicon-flash"></span></a></p>		
+			<script>$('#ip_info').popover({});</script>
+
+			<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 ({{currentUser}})"><span class="glyphicon glyphicon-time"></span></a></p>		
+			<script>$('#session_start').popover({});</script>
+
+			<p class="navbar-text navbar-right" id="clock">{{currentTime}}</p>	
+
+			<p class="navbar-text navbar-right">ALCALA402 (1st floor Main)</p>	
+		</div>
+	</nav>
+</template>

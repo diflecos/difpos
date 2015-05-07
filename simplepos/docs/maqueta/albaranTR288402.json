@@ -1,0 +1,40 @@
+no está ni completo ni pensado ni mucho menos...
+
+{   
+	"delivery_note": {
+		"delivery_note_number": "TR288402",
+		"intervenant": {
+			"supplier": {
+			
+			},
+			"customer": {
+			
+			}
+		},
+		"payment": {
+			"transaction": {
+				"type": "cash"
+				"amount": 542,40
+				"currency": EUR
+			}
+		},
+		"order_item": {
+			"product": 5,
+			"product_variant": 2,
+			"quantity": 4
+		}		
+		"order_item": {
+			"product": {
+				"name": "Big leggins",
+				"desc": "Description of big leggings",
+				"category": "leggings",
+				"category": "trousers"
+			}, 
+			"product_variant": {
+				"name": "black"
+			}, 
+			"product_variant": 2,
+			"quantity": 4
+		}		
+	}
+}

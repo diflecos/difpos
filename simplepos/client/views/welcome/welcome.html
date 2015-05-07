@@ -1,0 +1,57 @@
+<template name="welcome">
+		<div class="container">
+			<!--div class="alert alert-success" role="alert">No messages</div-->
+			<div class="row">
+				<div class="container col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">	
+							<h2>Home</h2>
+						</div>
+						<div class="panel-body">
+							<div class="btn-group-vertical center-block">
+								<a href="pos_bootstrap_newsale.html" class="btn btn-success btn-lg">New sale</a>
+								<a href="" class="btn btn-primary btn-lg">Reservation</a>
+								<a href="pos_bootstrap_product.html" class="btn btn-primary btn-lg">Check product</a>
+								<div class="btn-group">
+									<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
+									Annulations <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Item return</a></li>
+										<li><a href="#">Cancel operation</a></li>
+										<li><a href="#">Cancel transaction</a></li>
+									</ul>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+									Cash <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#" data-toggle="modal" data-target="#modalCashInOut">In</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#modalCashInOut">Out</a></li>
+										<li><a href="pos_bootstrap_cash_check.html">Check</a></li>
+									</ul>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+									Messages <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Check latest</a></li>
+										<li><a href="#">Send</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>				
+					</div>
+				</div>	
+				<div class="container col-md-9">
+					<div class="jumbotron">
+						<h1>Welcome!</h1>
+						<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+						<p><a class="btn btn-primary btn-lg" role="button">Continuar</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+</template>

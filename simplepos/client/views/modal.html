@@ -1,0 +1,22 @@
+<template name="modal">
+	<div class="modal fade" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="modalCashInOut" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h2 class="modal-title" id="myModalLabel">Cash in/out</h2>
+				</div>
+				<div class="modal-body">
+					<h3>Please complete the following data</h3>
+					{{> yield }}
+				</div>
+				<div class="modal-footer text-right">
+					<div class="btn-group">
+						<a class="btn btn-success btn-lg" href="pos_bootstrap_base.html">Save</a>
+						<a class="btn btn-danger btn-lg" href="pos_bootstrap_base.html">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>			
+</template>

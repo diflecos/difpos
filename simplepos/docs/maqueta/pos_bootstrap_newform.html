@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8">
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		
+		<!-- Librerías para el tree view -->
+		<link rel="stylesheet" href="http://www.jqueryscript.net/demo/Nice-Tree-View-Plugin-with-jQuery-Bootstrap-3-Easy-Tree/css/easyTree.css">
+		<script src="http://www.jqueryscript.net/demo/Nice-Tree-View-Plugin-with-jQuery-Bootstrap-3-Easy-Tree/src/easyTree.js"></script>
+		
+		<script>
+		$( document ).ready(function() {
+			$('#item-locator-tablist a').click(function (e) {
+			  e.preventDefault()
+			  $(this).tab('show')
+			});
+		});
+
+		// Esto es para inicializar el tree view
+		(function ($) {
+		function init() {
+		$('.easy-tree').EasyTree({
+		selectable: true,
+		deletable: true,
+		editable: true,
+		addable: true
+		});
+		}
+		 
+		window.onload = init();
+		})(jQuery)
+		// Esto es para inicializar el tree view
+
+		</script>		
+	</head>
+	<body style="padding-top:70px; padding-bottom:70px; background:lightgray">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="pos_bootstrap_base.html">Brand</a>
+				</div>
+				<p class="navbar-text">Powered by <a href="#" class="navbar-link">tututu</a></p>		
+
+				<p class="navbar-text"><a id="page_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Page info" data-content="Page load time: 65ms (version 1.5.2)"><span class="glyphicon glyphicon-info-sign"></span></a></p>		
+				<script>$('#page_info').popover({});</script>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Antonio Alonso Alegre <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="pos_bootstrap_fullperson.html">Edit personal data</a></li>
+							<li><a href="#">Change password</a></li>
+							<li><a href="#">Preferences</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Change user</a></li>
+						</ul>
+					</li>	
+					<li><a href="#">Logout</a></li>					
+				</ul>
+		
+				<p class="navbar-text navbar-right"><a id="ip_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="IP" data-content="52.69.102.2"><span class="glyphicon glyphicon-flash"></span></a></p>		
+				<script>$('#ip_info').popover({});</script>
+
+				<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 (antuan98)"><span class="glyphicon glyphicon-time"></span></a></p>		
+				<script>$('#session_start').popover({});</script>
+
+				<p class="navbar-text navbar-right">14/10/2014 10:42</p>	
+
+				<p class="navbar-text navbar-right">ALCALA402 (1st floor Main)</p>	
+			</div>
+		</nav>
+		
+		<div class="container">
+			<!--div class="alert alert-success" role="alert">No messages</div-->
+
+			<div class="row">
+				<div class="container col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2>Form View</h2>
+						</div>
+						<div class="panel-body">
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" role="tablist">
+							  <li role="presentation" class="active"><a href="#structure" role="tab" data-toggle="tab">Structure</a></li>
+							  <li role="presentation"><a href="#preview" role="tab" data-toggle="tab">Preview</a></li>
+							</ul>
+
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="structure">
+									<div class="easy-tree">
+										<ul>
+											<li>Formulario de registro
+												<ul>
+													<li>Datos personales
+														<ul>
+															<li>Nombre</li>
+															<li>Apellidos</li>
+															<li>Fecha de nacimiento</li>
+															<li>DNI</li>
+														</ul>
+													</li>
+													<li>Datos de contacto
+														<ul>
+															<li>Dirección</li>
+															<li>Ciudad</li>
+															<li>Código postal</li>
+															<li>Teléfono</li>
+															<li>Email</li>
+														</ul>
+													</li>
+													<li>Encuesta
+														<ul>
+															<li>¿Tienes facebook?</li>
+															<li>Qué te gusta más</li>
+															<li>Qué te gusta menos</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>						
+								</div>
+								<div role="tabpanel" class="tab-pane" id="preview">
+									<form role="form">
+										<div class="form-group form-inline row">
+											<label for="exampleInputEmail1" class="col-md-4 text-right">Nombre:</label>
+											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ex: Antonio">
+										</div>
+										<div class="form-group form-inline row">
+											<label for="exampleInputEmail1" class="col-md-4 text-right">Apellidos:</label>
+											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ex: Alonso Alegre">
+										</div>	
+										<div class="form-group form-inline row">
+											<label for="exampleInputEmail1" class="col-md-4 text-right">Fecha de nacimiento:</label>
+											<input type="date" class="form-control" id="exampleInputEmail1" placeholder="Ex: 17/04/1975">
+										</div>
+										<div class="form-group form-inline row">
+											<label for="exampleInputEmail1" class="col-md-4 text-right">Email address:</label>
+											<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+										</div>
+										<div class="form-group row">
+											<label for="exampleInputFile" class="col-md-4 text-right">File input:</label>
+											<input type="file" id="exampleInputFile">
+										</div>
+										<div class="form-group panel">
+											<p class="help-block bg-info">Example block-level help text here.</p>
+										</div>
+										<div class="checkbox">
+											<label for="cb" class="col-md-4 text-right">Check me out:</label>
+											<input id="cb" type="checkbox"> 
+										</div>
+										<div class="form-group row">
+											<label for="exampleInputFile" class="col-md-4 text-right"></label>	
+											<button type="submit" class="btn btn-primary">Enviar</button>
+										</div>
+									</form>								
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer text-right">
+							<div class="btn-group">
+								<a class="btn btn-success btn-lg" href="pos_bootstrap_payment.html">Save</a>
+								<a class="btn btn-danger btn-lg" href="pos_bootstrap_base.html">Cancel</a>
+							</div>						
+						</div>
+					</div>
+				</div>
+				<div class="container col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2>Form field definition</h2>
+						</div>
+						<div class="panel-body">
+							<form role="form">
+								<div class="form-group form-inline row">
+									<label for="label" class="col-md-4 text-right">Label:</label>
+									<input type="text" class="form-control" id="label" placeholder="Ex: Fecha">
+								</div>
+								<div class="form-group form-inline row">
+									<label for="label" class="col-md-4 text-right">Placeholder:</label>
+									<input type="text" class="form-control" id="label" placeholder="Ex: 17/04/1975">
+								</div>								
+								<div class="form-group form-inline row">
+									<label for="id" class="col-md-4 text-right">Id:</label>
+									<input type="text" class="form-control" id="id" placeholder="Ex: fecha">
+								</div>	
+								<div class="form-group form-inline row">
+									<label for="type" class="col-md-4 text-right">Type:</label>
+									<select class="form-control" id="type">
+										<option>text</option>
+										<option>textarea</option>
+										<option>select</option>
+										<option>radiobutton</option>
+										<option>checkbox</option>
+										<option>label</option>
+										<option>statictext</option>
+										<option>captcha</option>
+										<option>fileinput</option>
+										<option>submit</option>
+										<option>hr</option>
+									</select>								
+								</div>
+							</form>								
+						</div>					
+						<div class="panel-footer text-right">
+							<div class="btn-group">
+								<a class="btn btn-success btn-lg" href="pos_bootstrap_payment.html">Add field</a>
+								<a class="btn btn-danger btn-lg" href="pos_bootstrap_base.html">Cancel</a>
+							</div>						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+</html>

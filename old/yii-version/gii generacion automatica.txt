@@ -1,0 +1,29 @@
+Generacion de models
+
+-          generar los Yii::t() con la categoría y texto adecuados en el método attributeLabels():   'birthdate' => Yii::t('employee', 'model.birthdate'),
+
+-          seria interesante eliminar los métodos que acceden a las tablas A_has_B de las relaciones many-many? à darle una pensada
+
+-          añadir behaviours concretos supergenéricos (por ejemplo para rellenar el audit trail o el histórico de workflows…) à pensarlo
+
+-          definir scenarios concretos frontend, backend, console??? à pensar
+
+ 
+
+ 
+
+Generacion CRUD
+
+-          generar los Yii::t() con la categoría y texto adecuados en cada view:  Html::a(Yii::t('employee', 'view.ui.bt_update')
+
+-          en cada view en lugar de tener una variable genérica $model mejor tener una que sea $employee  à darle una pensada
+
+-          poner una interfaz un poco más curiosa para las views, que sea más intuitiva
+
+o   el filtro superior hacer que sea findasyoutype por ejemplo
+
+o   añadir un selector de cantidad de elementos por página
+
+ 
+
+A tener en cuenta que si modificamos todo esto en los generadores es muy probable que tengamos que andar haciendo estas mismas modificaciones a cada nueva versión de yii

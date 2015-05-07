@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8">
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</head>
+	<body style="padding-top:70px; padding-bottom:70px; background:lightgray">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="pos_bootstrap_base.html">Brand</a>
+				</div>
+				<p class="navbar-text">Powered by <a href="#" class="navbar-link">tututu</a></p>		
+
+				<p class="navbar-text"><a id="page_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Page info" data-content="Page load time: 65ms (version 1.5.2)"><span class="glyphicon glyphicon-info-sign"></span></a></p>		
+				<script>$('#page_info').popover({});</script>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Antonio Alonso Alegre <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="pos_bootstrap_fullperson.html">Edit personal data</a></li>
+							<li><a href="#">Change password</a></li>
+							<li><a href="#">Preferences</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Change user</a></li>
+						</ul>
+					</li>	
+					<li><a href="#">Logout</a></li>					
+				</ul>
+		
+				<p class="navbar-text navbar-right"><a id="ip_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="IP" data-content="52.69.102.2"><span class="glyphicon glyphicon-flash"></span></a></p>		
+				<script>$('#ip_info').popover({});</script>
+
+				<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 (antuan98)"><span class="glyphicon glyphicon-time"></span></a></p>		
+				<script>$('#session_start').popover({});</script>
+
+				<p class="navbar-text navbar-right">14/10/2014 10:42</p>	
+
+				<p class="navbar-text navbar-right">ALCALA402 (1st floor Main)</p>	
+			</div>
+		</nav>
+		
+		<div class="container">
+			<!--div class="alert alert-success" role="alert">No messages</div-->
+			<div class="row">
+				<div class="container col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">	
+							<h2>Home</h2>
+						</div>
+						<div class="panel-body">
+							<div class="btn-group-vertical center-block">
+								<a href="pos_bootstrap_newsale.html" class="btn btn-success btn-lg">New sale</a>
+								<a href="" class="btn btn-primary btn-lg">Reservation</a>
+								<a href="pos_bootstrap_product.html" class="btn btn-primary btn-lg">Check product</a>
+								<div class="btn-group">
+									<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
+									Annulations <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Item return</a></li>
+										<li><a href="#">Cancel operation</a></li>
+										<li><a href="#">Cancel transaction</a></li>
+									</ul>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+									Cash <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#" data-toggle="modal" data-target="#modalCashInOut">In</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#modalCashInOut">Out</a></li>
+										<li><a href="pos_bootstrap_cash_check.html">Check</a></li>
+									</ul>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+									Messages <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Check latest</a></li>
+										<li><a href="#">Send</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>				
+					</div>
+				</div>	
+				<div class="container col-md-9">
+					<div class="jumbotron">
+						<h1>Welcome!</h1>
+						<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+						<p><a class="btn btn-primary btn-lg" role="button">Continuar</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="modalCashInOut" tabindex="-1" role="dialog" aria-labelledby="modalCashInOut" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h2 class="modal-title" id="myModalLabel">Cash in/out</h2>
+					</div>
+					<div class="modal-body">
+						<h3>Please complete the following data</h3>
+						<form class="form-default" role="search">
+							<div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-primary active">
+								<input type="radio" name="options" id="cashin" checked>Cash In
+							  </label>
+							  <label class="btn btn-primary">
+								<input type="radio" name="options" id="cashout">Cash Out
+							  </label>
+							</div>
+							<br/>
+							<label>Amount:</label>
+							<input type="text" class="form-control" placeholder="0">
+							<label>Concept:</label>
+							<input type="text" class="form-control" placeholder="Concept of this cash flow">
+							<label>Comment:</label>
+							<textarea class="form-control" rows="3" placeholder="Enter your comments here"></textarea>
+						</form>										
+					</div>
+					<div class="modal-footer text-right">
+						<div class="btn-group">
+							<a class="btn btn-success btn-lg" href="pos_bootstrap_base.html">Save</a>
+							<a class="btn btn-danger btn-lg" href="pos_bootstrap_base.html">Cancel</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</body>
+</html>

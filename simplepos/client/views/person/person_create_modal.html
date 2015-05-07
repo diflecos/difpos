@@ -1,0 +1,20 @@
+<template name="person_create_modal">
+	<div class="modal fade" id="person_create_modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="myModalLabel">Create person</h2>
+				</div>
+				<div class="modal-body">
+					{{> person_form }}
+				</div>
+				<div class="modal-footer text-right">
+					<div class="btn-group">
+						<a class="btn btn-success btn-lg submit" type="submit">Save</a>
+						<a class="btn btn-danger btn-lg cancel">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+</template>

@@ -1,0 +1,41 @@
+<template name="person_form">
+	<h3>Please complete the following data</h3>
+	<form id="person_form">
+		<div class="form-group form-inline row">
+			<label for="name" class="col-md-4 text-right">Name:</label>
+			<input type="text" class="form-control" name="name" placeholder="tututu" />
+		</div>
+		<div class="form-group form-inline row">
+			<label for="family_name" class="col-md-4 text-right">Family name:</label>
+			<input type="text" class="form-control" name="family_name" placeholder="{{family_name}}" />
+		</div>
+		<div class="form-group form-inline row">
+			<label for="nick" class="col-md-4 text-right">Nick: </label>
+			<input type="text" class="form-control" name="nick" placeholder="" />
+		</div>
+		<div class="form-group form-inline row">
+			<label for="id_nbr" class="col-md-4 text-right">ID number:</label>
+			<input type="text" class="form-control" name="id_nbr" placeholder="" />
+		</div>
+		<div class="form-group form-inline row">
+			<label for="birthdate" class="col-md-4 text-right">Birthdate:</label>
+			<input type="date" class="form-control" name="birthdate" placeholder="" />
+		</div>
+		<div class="form-group form-inline row">
+			<label for="gender" class="col-md-4 text-right">Gender:</label>
+			<select class="form-control" name="gender">
+				<option>Male</option>
+				<option>Female</option>
+			</select>	
+		</div>
+		<div class="form-group form-inline row">
+			<label for="civil_status" class="col-md-4 text-right">Civil status:</label>
+			<select class="form-control" name="civil_status">
+				<option>Single</option>
+				<option>Married</option>
+				<option>Divorced</option>
+				<option>Widow</option>
+			</select>	
+		</div>
+	</form>
+</template>

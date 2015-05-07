@@ -1,0 +1,120 @@
+<template name="fullperson_view">	
+	<!--div class="alert alert-success" role="alert">No messages</div-->
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>{{person.name}} {{person.family_name}} ({{person.nick}})</h2>
+				</div>
+				<div class="panel-body">
+					<img class="pull-left" src="http://dummyimage.com/400x400/eeeeee/aaaaaa.jpg"/>
+							
+					<div class="pull-right">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#personal-info" role="tab" data-toggle="tab">Personal Info</a></li>
+						<li><a href="#users" role="tab" data-toggle="tab">Users</a></li>
+						<li><a href="#employee" role="tab" data-toggle="tab">Employee</a></li>
+						<li><a href="#customer" role="tab" data-toggle="tab">Customer</a></li>
+						<li><a href="#contact" role="tab" data-toggle="tab">Contact</a></li>
+						<li><a href="#social" role="tab" data-toggle="tab">Social</a></li>
+						<li><a href="#comments" role="tab" data-toggle="tab">Comments</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="personal-info">
+							{{>person person}}		
+						</div>
+						<div class="tab-pane" id="users">
+							<button class="btn btn-success pull-right">Add new</button>
+							<h3>Usernames</h3>
+							<table class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Username</th>
+										<th>Profile</th>
+										<th>Last login</th>
+										<th>Active</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><a class="col-md-1" href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
+										<td>Administrator</td>
+										<td>admin</td>
+										<td>18/10/2014 20:54</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td><a class="col-md-1" href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
+										<td>antuan98</td>
+										<td>audit</td>
+										<td>20/10/2014 12:57</td>
+										<td>Yes</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tab-pane" id="employee">
+						</div>
+						<div class="tab-pane" id="customer">
+						</div>
+						<div class="tab-pane" id="contact">
+							<button class="btn btn-success pull-right">Add new</button>
+							<h3>Phone</h3>
+							{{#each phones}}
+								{{> phone}}
+							{{/each}}
+							<hr/>
+							
+							<button class="btn btn-success pull-right">Add new</button>
+							<h3>Email</h3>
+							{{#each emails}}
+								{{> email}}
+							{{/each}}								
+							<hr/>
+							
+							<button class="btn btn-success pull-right">Add new</button>
+							<h3>Address</h3>
+							{{#each address}}
+								{{> address}}
+							{{/each}}												
+						</div>
+						<div class="tab-pane" id="social">
+							<button class="btn btn-success pull-right">Add new</button>
+							<h3>Social</h3>
+							{{#each social}}
+								{{> social}}
+							{{/each}}	
+						</div>
+						<div class="tab-pane" id="comments">
+							<button class="btn btn-success pull-right">Add new</button>
+							<h3>Comments</h3>
+							<blockquote>
+							  <p>Cliente enfadado</p>
+							  <footer>antuan98, 18/10/2014 18:24</footer>
+							</blockquote>											
+							<blockquote class="blockquote-reverse">
+							  <p>Vuelve a llamar para quejarse</p>
+							  <footer>antuan98, 18/10/2014 18:24</footer>
+							</blockquote>											
+							<blockquote>
+							  <p>Se le restituye el dinero</p>
+							  <footer>antuan98, 18/10/2014 18:24</footer>
+							</blockquote>											
+						</div>
+						</div>
+					</div>						
+				</div>
+				<div class="panel-footer text-right">
+					<div class="btn-group">
+						<a class="btn btn-success btn-lg" href="pos_bootstrap_fullperson.html">Continue</a>
+						<a class="btn btn-danger btn-lg" href="pos_bootstrap_base.html">Cancel</a>
+					</div>						
+				</div>
+			</div>					
+		</div>
+		<div class="col-md-6">
+		</div>
+	</div>		
+</template>
