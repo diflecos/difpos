@@ -1,10 +1,7 @@
 Template.fullpersons_index.events({
 	"click #btn_create": function() {
-		if($("#person_create_modal").length>0) {
-			Template.person_create_modal.rendered();
-		} else {
-			Blaze.render(Template.person_create_modal,document.body);
-		}
+		Session.set('onCancel','/fullpersons');
+		Router.go('person.create');
 	}
 });
 
@@ -17,8 +14,16 @@ Template.fullpersons.events({
 });
 
 Template.fullpersons_item_template.events({
-	"click tr": function() {
+	"click .btn-view": function() {
+		Session.set('onCancel','/fullpersons');
 		Router.go("/fullperson/"+this._id);
+	}, 	
+	"click .btn-update": function() {
+		Session.set('onCancel','/fullpersons');
+		Router.go("/person/update/"+this._id);
+	}, 
+	"click .btn-delete": function() {
+		Router.go("/person/delete/"+this._id);
 	}
 });
 

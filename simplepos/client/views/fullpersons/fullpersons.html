@@ -35,12 +35,18 @@
 					<th>Family name</th>
 					<th>Gender</th>
 					<th>Birthdate</th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 				<tr>
 					<th><input type="text" class="filter" id="name"></th>
 					<th><input type="text" class="filter" id="family_name"></th>
 					<th><input type="text" class="filter" id="gender"></th>
 					<th><input type="text" class="filter" id="birthdate"></th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,7 +58,13 @@
 
 <template name="fullpersons_item_template">
 	<tr>
-		<td>{{person.name}}</td><td>{{person.family_name}}</td><td>{{person.gender}}</td><td>{{person.birthdate}}</td>
+		<td>{{person.name}}</td>
+		<td>{{person.family_name}}</td>
+		<td>{{person.gender}}</td>
+		<td>{{person.birthdate}}</td>
+		<td><span class="btn btn-view glyphicon glyphicon-eye-open"></span></td>
+		<td><span class="btn btn-update glyphicon glyphicon-edit"></span></td>
+		<td><span class="btn btn-delete glyphicon glyphicon-remove"></span></td>
 	</tr>
 </template>
 

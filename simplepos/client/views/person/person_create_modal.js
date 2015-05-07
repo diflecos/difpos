@@ -20,8 +20,9 @@ Template.person_create_modal.events({
 	"click .submit": function(event) {
 		$("form#person_form").submit();
 	},
-	"click .cancel": function() {
+	"click .cancel": function(event) {
 		$("#person_create_modal").modal("hide");
+		Router.go(Session.get('onCancel'));
 	}
 });
 

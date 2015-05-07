@@ -8,18 +8,41 @@ Router.route('/',function () {
     this.render('login');
 });
 
+Router.route('/fullpersons', {
+	template: 'fullpersons_index'
+},{
+	name: 'fullpersons.index'
+});
+
 Router.route('/fullperson/:_id', function() {
-	console.log(this.params._id);
 	var fullperson = FullPersons.findOne({_id: this.params._id});
-	console.log(fullperson);
 	this.render('fullperson_view', {data: fullperson});
 },{
 	name: 'fullperson.view'
 });
 
+Router.route('/person/create', function() {
+	Blaze.render(Template.person_create_modal,document.body);
+},{
+	name: 'person.create'
+});
 
-Router.route('/fullpersons', {
-	template: 'fullpersons_index'
+Router.route('/person/update/:_id', function() {
+	var fullperson = null;
+	fullperson=FullPersons.findOne({_id: this.params._id});
+	if(fullperson==undefined) {
+		console.log("no person was found with id "+this.params._id);
+	} else {
+		Blaze.renderWithData(Template.person_create_modal,fullperson.person,document.body);
+	}
+},{
+	name: 'person.update'
+});
+
+Router.route('/person/delete/:_id', function() {
+	FullPersons.remove(this.params._id);
+},{
+	name: 'person.delete'
 });
 
 
