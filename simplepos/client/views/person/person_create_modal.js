@@ -21,7 +21,9 @@ Template.person_create_modal.events({
 		$("form#person_form").submit();
 	},
 	"click .cancel": function(event) {
-		$("#person_create_modal").modal("hide");
+		$('#person_create_modal').on('hidden.bs.modal', function (e) {
+			Blaze.remove(modal);
+		}).modal("hide");		
 		Router.go(Session.get('onCancel'));
 	}
 });
