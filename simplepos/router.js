@@ -1,3 +1,6 @@
+modal={};   // variable global que se usa para guardar la view generada por Blaze.render de cada modal que mostramos para poder luego hacer el Blaze.remove(modal) correspondiente
+messagebox={}; // idem para la caja de mensaje
+
 Router.configure({
 	layoutTemplate: 'layout',
     loadingTemplate: 'loading',
@@ -22,7 +25,7 @@ Router.route('/fullperson/:_id', function() {
 });
 
 Router.route('/person/create', function() {
-	Blaze.render(Template.person_create_modal,document.body);
+	modal=Blaze.render(Template.person_create_modal,document.body);
 },{
 	name: 'person.create'
 });
@@ -32,8 +35,10 @@ Router.route('/person/update/:_id', function() {
 	fullperson=FullPersons.findOne({_id: this.params._id});
 	if(fullperson==undefined) {
 		console.log("no person was found with id "+this.params._id);
+		message="no person was found with id "+this.params._id;
+		messagebox=Blaze.renderWithData(Template.messagebox,{'alertclass': 'warning','message': message},document.body);
 	} else {
-		Blaze.renderWithData(Template.person_create_modal,fullperson.person,document.body);
+		modal=Blaze.renderWithData(Template.person_create_modal,fullperson.person,document.body);
 	}
 },{
 	name: 'person.update'

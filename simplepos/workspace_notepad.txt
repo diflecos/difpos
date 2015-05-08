@@ -1,0 +1,538 @@
+<NotepadPlus>
+    <Project name="simplepos">
+        <Folder name=".meteor">
+            <Folder name="local">
+                <Folder name="build">
+                    <Folder name="programs">
+                        <Folder name="server">
+                            <Folder name="app">
+                                <Folder name="lib">
+                                    <File name=".meteor\local\build\programs\server\app\lib\collections.js" />
+                                    <File name=".meteor\local\build\programs\server\app\lib\global_helpers.js" />
+                                </Folder>
+                                <Folder name="server">
+                                    <File name=".meteor\local\build\programs\server\app\server\config.js" />
+                                </Folder>
+                                <File name=".meteor\local\build\programs\server\app\router.js" />
+                            </Folder>
+                            <Folder name="assets">
+                                <Folder name="packages">
+                                    <Folder name="boilerplate-generator">
+                                        <File name=".meteor\local\build\programs\server\assets\packages\boilerplate-generator\boilerplate_web.browser.html" />
+                                        <File name=".meteor\local\build\programs\server\assets\packages\boilerplate-generator\boilerplate_web.cordova.html" />
+                                    </Folder>
+                                    <Folder name="iron_dynamic-template">
+                                        <File name=".meteor\local\build\programs\server\assets\packages\iron_dynamic-template\dynamic_template.html" />
+                                    </Folder>
+                                    <Folder name="iron_layout">
+                                        <File name=".meteor\local\build\programs\server\assets\packages\iron_layout\default_layout.html" />
+                                    </Folder>
+                                    <Folder name="iron_router">
+                                        <Folder name="lib">
+                                            <File name=".meteor\local\build\programs\server\assets\packages\iron_router\lib\templates.html" />
+                                        </Folder>
+                                    </Folder>
+                                </Folder>
+                            </Folder>
+                            <Folder name="npm">
+                                <Folder name="ddp" />
+                                <Folder name="email" />
+                                <Folder name="iron_router" />
+                                <Folder name="logging" />
+                                <Folder name="meteor" />
+                                <Folder name="mongo" />
+                                <Folder name="npm-bcrypt" />
+                                <Folder name="webapp" />
+                            </Folder>
+                            <Folder name="packages">
+                                <File name=".meteor\local\build\programs\server\packages\accounts-base.js" />
+                                <File name=".meteor\local\build\programs\server\packages\accounts-base.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\accounts-password.js" />
+                                <File name=".meteor\local\build\programs\server\packages\accounts-password.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\alethes_pages.js" />
+                                <File name=".meteor\local\build\programs\server\packages\alethes_pages.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\autopublish.js" />
+                                <File name=".meteor\local\build\programs\server\packages\autopublish.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\autoupdate.js" />
+                                <File name=".meteor\local\build\programs\server\packages\autoupdate.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\babrahams_editable-json.js" />
+                                <File name=".meteor\local\build\programs\server\packages\babrahams_editable-json.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\base64.js" />
+                                <File name=".meteor\local\build\programs\server\packages\base64.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\binary-heap.js" />
+                                <File name=".meteor\local\build\programs\server\packages\binary-heap.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\blaze-tools.js" />
+                                <File name=".meteor\local\build\programs\server\packages\blaze-tools.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\blaze.js" />
+                                <File name=".meteor\local\build\programs\server\packages\blaze.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\boilerplate-generator.js" />
+                                <File name=".meteor\local\build\programs\server\packages\boilerplate-generator.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\callback-hook.js" />
+                                <File name=".meteor\local\build\programs\server\packages\callback-hook.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\check.js" />
+                                <File name=".meteor\local\build\programs\server\packages\check.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\coffeescript.js" />
+                                <File name=".meteor\local\build\programs\server\packages\coffeescript.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\dburles_mongo-collection-instances.js" />
+                                <File name=".meteor\local\build\programs\server\packages\dburles_mongo-collection-instances.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\ddp.js" />
+                                <File name=".meteor\local\build\programs\server\packages\ddp.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\deps.js" />
+                                <File name=".meteor\local\build\programs\server\packages\deps.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\ejson.js" />
+                                <File name=".meteor\local\build\programs\server\packages\ejson.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\email.js" />
+                                <File name=".meteor\local\build\programs\server\packages\email.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\geojson-utils.js" />
+                                <File name=".meteor\local\build\programs\server\packages\geojson-utils.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\global-imports.js" />
+                                <File name=".meteor\local\build\programs\server\packages\html-tools.js" />
+                                <File name=".meteor\local\build\programs\server\packages\html-tools.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\htmljs.js" />
+                                <File name=".meteor\local\build\programs\server\packages\htmljs.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\ian_accounts-ui-bootstrap-3.js" />
+                                <File name=".meteor\local\build\programs\server\packages\ian_accounts-ui-bootstrap-3.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\id-map.js" />
+                                <File name=".meteor\local\build\programs\server\packages\id-map.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\insecure.js" />
+                                <File name=".meteor\local\build\programs\server\packages\insecure.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_controller.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_controller.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_core.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_core.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_dynamic-template.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_dynamic-template.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_layout.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_layout.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_location.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_location.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_middleware-stack.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_middleware-stack.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_router.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_router.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_url.js" />
+                                <File name=".meteor\local\build\programs\server\packages\iron_url.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\jquery.js" />
+                                <File name=".meteor\local\build\programs\server\packages\jquery.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\json.js" />
+                                <File name=".meteor\local\build\programs\server\packages\json.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\lai_collection-extensions.js" />
+                                <File name=".meteor\local\build\programs\server\packages\lai_collection-extensions.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\livedata.js" />
+                                <File name=".meteor\local\build\programs\server\packages\livedata.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\logging.js" />
+                                <File name=".meteor\local\build\programs\server\packages\logging.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\meteor-platform.js" />
+                                <File name=".meteor\local\build\programs\server\packages\meteor-platform.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\meteor.js" />
+                                <File name=".meteor\local\build\programs\server\packages\meteor.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\meteortoys_toykit.js" />
+                                <File name=".meteor\local\build\programs\server\packages\meteortoys_toykit.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\minimongo.js" />
+                                <File name=".meteor\local\build\programs\server\packages\minimongo.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\mongo.js" />
+                                <File name=".meteor\local\build\programs\server\packages\mongo.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\mrt_moment.js" />
+                                <File name=".meteor\local\build\programs\server\packages\mrt_moment.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\msavin_jetsetter.js" />
+                                <File name=".meteor\local\build\programs\server\packages\msavin_jetsetter.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\msavin_mongol.js" />
+                                <File name=".meteor\local\build\programs\server\packages\msavin_mongol.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\npm-bcrypt.js" />
+                                <File name=".meteor\local\build\programs\server\packages\npm-bcrypt.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\observe-sequence.js" />
+                                <File name=".meteor\local\build\programs\server\packages\observe-sequence.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\ordered-dict.js" />
+                                <File name=".meteor\local\build\programs\server\packages\ordered-dict.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\random.js" />
+                                <File name=".meteor\local\build\programs\server\packages\random.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\reactive-dict.js" />
+                                <File name=".meteor\local\build\programs\server\packages\reactive-dict.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\reactive-var.js" />
+                                <File name=".meteor\local\build\programs\server\packages\reactive-var.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\reload.js" />
+                                <File name=".meteor\local\build\programs\server\packages\reload.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\retry.js" />
+                                <File name=".meteor\local\build\programs\server\packages\retry.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\routepolicy.js" />
+                                <File name=".meteor\local\build\programs\server\packages\routepolicy.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\service-configuration.js" />
+                                <File name=".meteor\local\build\programs\server\packages\service-configuration.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\session.js" />
+                                <File name=".meteor\local\build\programs\server\packages\session.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\sha.js" />
+                                <File name=".meteor\local\build\programs\server\packages\sha.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\spacebars-compiler.js" />
+                                <File name=".meteor\local\build\programs\server\packages\spacebars-compiler.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\spacebars.js" />
+                                <File name=".meteor\local\build\programs\server\packages\spacebars.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\srp.js" />
+                                <File name=".meteor\local\build\programs\server\packages\srp.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\templating.js" />
+                                <File name=".meteor\local\build\programs\server\packages\templating.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\tracker.js" />
+                                <File name=".meteor\local\build\programs\server\packages\tracker.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\twbs_bootstrap.js" />
+                                <File name=".meteor\local\build\programs\server\packages\twbs_bootstrap.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\ui.js" />
+                                <File name=".meteor\local\build\programs\server\packages\ui.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\underscore.js" />
+                                <File name=".meteor\local\build\programs\server\packages\underscore.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\webapp-hashing.js" />
+                                <File name=".meteor\local\build\programs\server\packages\webapp-hashing.js.map" />
+                                <File name=".meteor\local\build\programs\server\packages\webapp.js" />
+                                <File name=".meteor\local\build\programs\server\packages\webapp.js.map" />
+                            </Folder>
+                            <File name=".meteor\local\build\programs\server\boot-utils.js" />
+                            <File name=".meteor\local\build\programs\server\boot.js" />
+                            <File name=".meteor\local\build\programs\server\config.json" />
+                            <File name=".meteor\local\build\programs\server\mini-files.js" />
+                            <File name=".meteor\local\build\programs\server\npm-shrinkwrap.json" />
+                            <File name=".meteor\local\build\programs\server\package.json" />
+                            <File name=".meteor\local\build\programs\server\program.json" />
+                            <File name=".meteor\local\build\programs\server\shell-server.js" />
+                        </Folder>
+                        <Folder name="web.browser">
+                            <Folder name="app">
+                                <Folder name="client">
+                                    <Folder name="views">
+                                        <Folder name="address">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\address\address.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\address\template.address.js" />
+                                        </Folder>
+                                        <Folder name="cashinout">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\cashinout\cashinout.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\cashinout\template.cashinout.js" />
+                                        </Folder>
+                                        <Folder name="clonar">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\clonar\clonar.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\clonar\template.clonar.js" />
+                                        </Folder>
+                                        <Folder name="email">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\email\email.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\email\template.email.js" />
+                                        </Folder>
+                                        <Folder name="footer">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\footer\footer.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\footer\template.footer.js" />
+                                        </Folder>
+                                        <Folder name="fullperson">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\fullperson\fullperson.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\fullperson\fullperson_insert.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\fullperson\template.fullperson.js" />
+                                        </Folder>
+                                        <Folder name="fullpersons">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\fullpersons\fullpersons.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\fullpersons\template.fullpersons.js" />
+                                        </Folder>
+                                        <Folder name="layout">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\layout\layout.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\layout\template.layout.js" />
+                                        </Folder>
+                                        <Folder name="login">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\login\login.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\login\template.login.js" />
+                                        </Folder>
+                                        <Folder name="navbar">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\navbar\navbar.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\navbar\template.navbar.js" />
+                                        </Folder>
+                                        <Folder name="person">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\person\person.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\person\person_create_modal.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\person\template.person.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\person\template.person_create_modal.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\person\template.person_form.js" />
+                                        </Folder>
+                                        <Folder name="phone">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\phone\phone.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\phone\template.phone.js" />
+                                        </Folder>
+                                        <Folder name="social">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\social\social.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\social\template.social.js" />
+                                        </Folder>
+                                        <Folder name="welcome">
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\welcome\template.welcome.js" />
+                                            <File name=".meteor\local\build\programs\web.browser\app\client\views\welcome\welcome.js" />
+                                        </Folder>
+                                        <File name=".meteor\local\build\programs\web.browser\app\client\views\template.modal.js" />
+                                        <File name=".meteor\local\build\programs\web.browser\app\client\views\template.panel.js" />
+                                    </Folder>
+                                </Folder>
+                                <Folder name="lib">
+                                    <File name=".meteor\local\build\programs\web.browser\app\lib\collections.js" />
+                                    <File name=".meteor\local\build\programs\web.browser\app\lib\global_helpers.js" />
+                                </Folder>
+                                <File name=".meteor\local\build\programs\web.browser\app\router.js" />
+                            </Folder>
+                            <Folder name="packages">
+                                <Folder name="alethes_pages">
+                                    <Folder name="public">
+                                        <File name=".meteor\local\build\programs\web.browser\packages\alethes_pages\public\loader.gif" />
+                                    </Folder>
+                                </Folder>
+                                <Folder name="meteortoys_toykit">
+                                    <Folder name="public">
+                                        <File name=".meteor\local\build\programs\web.browser\packages\meteortoys_toykit\public\Liberation.ttf" />
+                                    </Folder>
+                                </Folder>
+                                <Folder name="twbs_bootstrap">
+                                    <Folder name="dist">
+                                        <Folder name="fonts">
+                                            <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+                                            <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+                                            <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+                                            <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+                                            <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+                                        </Folder>
+                                    </Folder>
+                                </Folder>
+                                <File name=".meteor\local\build\programs\web.browser\packages\accounts-base.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\accounts-base.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\accounts-password.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\accounts-password.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\aldeed_template-extension.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\aldeed_template-extension.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\alethes_pages.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\alethes_pages.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\anti_i18n.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\anti_i18n.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\autopublish.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\autopublish.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\autoupdate.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\autoupdate.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\babrahams_editable-json.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\babrahams_editable-json.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\base64.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\base64.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\blaze.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\blaze.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\callback-hook.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\callback-hook.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\check.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\check.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\coffeescript.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\coffeescript.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\dburles_mongo-collection-instances.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\dburles_mongo-collection-instances.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ddp.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ddp.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\deps.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\deps.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ejson.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ejson.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\geojson-utils.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\geojson-utils.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\global-imports.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\gwendall_session-json.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\gwendall_session-json.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\htmljs.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\htmljs.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ian_accounts-ui-bootstrap-3.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ian_accounts-ui-bootstrap-3.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\id-map.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\id-map.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\insecure.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\insecure.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_controller.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_controller.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_core.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_core.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_dynamic-template.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_dynamic-template.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_layout.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_layout.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_location.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_location.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_middleware-stack.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_middleware-stack.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_router.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_router.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_url.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\iron_url.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\jquery.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\jquery.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\json.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\json.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\lai_collection-extensions.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\lai_collection-extensions.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\launch-screen.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\launch-screen.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\livedata.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\livedata.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\localstorage.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\localstorage.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\logging.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\logging.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\meteor-platform.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\meteor-platform.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\meteor.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\meteor.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\meteortoys_toykit.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\meteortoys_toykit.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\minimongo.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\minimongo.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\mongo.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\mongo.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\mrt_moment.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\mrt_moment.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\msavin_jetsetter.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\msavin_jetsetter.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\msavin_mongol.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\msavin_mongol.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\npm-bcrypt.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\npm-bcrypt.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\observe-sequence.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\observe-sequence.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ordered-dict.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ordered-dict.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\random.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\random.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\reactive-dict.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\reactive-dict.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\reactive-var.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\reactive-var.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\reload.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\reload.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\retry.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\retry.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\service-configuration.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\service-configuration.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\session.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\session.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\sha.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\sha.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\spacebars.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\spacebars.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\srp.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\srp.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\stylus.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\stylus.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\templating.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\templating.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\tracker.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\tracker.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\twbs_bootstrap.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ui.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\ui.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\underscore.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\underscore.js.map" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\webapp.js" />
+                                <File name=".meteor\local\build\programs\web.browser\packages\webapp.js.map" />
+                            </Folder>
+                            <File name=".meteor\local\build\programs\web.browser\a3fb6053afcb901223aa79f822ad937197862e81.css" />
+                            <File name=".meteor\local\build\programs\web.browser\a3fb6053afcb901223aa79f822ad937197862e81.css.map" />
+                            <File name=".meteor\local\build\programs\web.browser\program.json" />
+                        </Folder>
+                    </Folder>
+                    <Folder name="server">
+                        <File name=".meteor\local\build\server\.bundle_version.txt" />
+                    </Folder>
+                    <File name=".meteor\local\build\main.js" />
+                    <File name=".meteor\local\build\README" />
+                    <File name=".meteor\local\build\star.json" />
+                </Folder>
+                <Folder name="db">
+                    <File name=".meteor\local\db\local.0" />
+                    <File name=".meteor\local\db\local.1" />
+                    <File name=".meteor\local\db\local.ns" />
+                    <File name=".meteor\local\db\METEOR-PORT" />
+                    <File name=".meteor\local\db\meteor.0" />
+                    <File name=".meteor\local\db\meteor.ns" />
+                    <File name=".meteor\local\db\mongod.lock" />
+                </Folder>
+                <Folder name="isopacks" />
+                <Folder name="shell">
+                    <File name=".meteor\local\shell\info.json" />
+                </Folder>
+            </Folder>
+            <File name=".meteor\.finished-upgraders" />
+            <File name=".meteor\.gitignore" />
+            <File name=".meteor\.id" />
+            <File name=".meteor\packages" />
+            <File name=".meteor\platforms" />
+            <File name=".meteor\release" />
+            <File name=".meteor\versions" />
+        </Folder>
+        <Folder name="client">
+            <Folder name="views">
+                <Folder name="address">
+                    <File name="client\views\address\address.html" />
+                    <File name="client\views\address\address.js" />
+                </Folder>
+                <Folder name="cashinout">
+                    <File name="client\views\cashinout\cashinout.html" />
+                    <File name="client\views\cashinout\cashinout.js" />
+                </Folder>
+                <Folder name="clonar">
+                    <File name="client\views\clonar\clonar.html" />
+                    <File name="client\views\clonar\clonar.js" />
+                </Folder>
+                <Folder name="email">
+                    <File name="client\views\email\email.html" />
+                    <File name="client\views\email\email.js" />
+                </Folder>
+                <Folder name="footer">
+                    <File name="client\views\footer\footer.html" />
+                    <File name="client\views\footer\footer.js" />
+                </Folder>
+                <Folder name="fullperson">
+                    <File name="client\views\fullperson\fullperson.html" />
+                    <File name="client\views\fullperson\fullperson.js" />
+                    <File name="client\views\fullperson\fullperson_insert.js" />
+                </Folder>
+                <Folder name="fullpersons">
+                    <File name="client\views\fullpersons\fullpersons.html" />
+                    <File name="client\views\fullpersons\fullpersons.js" />
+                </Folder>
+                <Folder name="layout">
+                    <File name="client\views\layout\layout.css" />
+                    <File name="client\views\layout\layout.html" />
+                    <File name="client\views\layout\layout.js" />
+                </Folder>
+                <Folder name="login">
+                    <File name="client\views\login\login.html" />
+                    <File name="client\views\login\login.js" />
+                </Folder>
+                <Folder name="navbar">
+                    <File name="client\views\navbar\navbar.html" />
+                    <File name="client\views\navbar\navbar.js" />
+                </Folder>
+                <Folder name="person">
+                    <File name="client\views\person\person.html" />
+                    <File name="client\views\person\person.js" />
+                    <File name="client\views\person\person_create_modal.html" />
+                    <File name="client\views\person\person_create_modal.js" />
+                    <File name="client\views\person\person_form.html" />
+                </Folder>
+                <Folder name="phone">
+                    <File name="client\views\phone\phone.html" />
+                    <File name="client\views\phone\phone.js" />
+                </Folder>
+                <Folder name="social">
+                    <File name="client\views\social\social.html" />
+                    <File name="client\views\social\social.js" />
+                </Folder>
+                <Folder name="welcome">
+                    <File name="client\views\welcome\welcome.html" />
+                    <File name="client\views\welcome\welcome.js" />
+                </Folder>
+                <File name="client\views\modal.html" />
+                <File name="client\views\panel.html" />
+                <Folder name="message" />
+            </Folder>
+        </Folder>
+        <Folder name="common" />
+        <Folder name="lib">
+            <File name="lib\collections.js" />
+            <File name="lib\global_helpers.js" />
+        </Folder>
+        <Folder name="public" />
+        <Folder name="server">
+            <File name="server\config.js" />
+        </Folder>
+        <File name="router.js" />
+    </Project>
+</NotepadPlus>
