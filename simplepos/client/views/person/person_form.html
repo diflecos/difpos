@@ -1,6 +1,7 @@
 <template name="person_form">
 	<h3>Please complete the following data</h3>
 	<form id="person_form">
+		<input type="hidden" class="form-control" name="id" value="{{id}}" />
 		<div class="form-group form-inline row">
 			<label for="name" class="col-md-4 text-right">Name:</label>
 			<input type="text" class="form-control" name="name" value="{{name}}" />

@@ -25,7 +25,7 @@ Router.route('/fullperson/:_id', function() {
 });
 
 Router.route('/person/create', function() {
-	modal=Blaze.render(Template.person_create_modal,document.body);
+	modal=Blaze.renderWithData(Template.person_create_modal,{'mode': 'create'},document.body);
 },{
 	name: 'person.create'
 });
@@ -38,7 +38,7 @@ Router.route('/person/update/:_id', function() {
 		message="no person was found with id "+this.params._id;
 		messagebox=Blaze.renderWithData(Template.messagebox,{'alertclass': 'warning','message': message},document.body);
 	} else {
-		modal=Blaze.renderWithData(Template.person_create_modal,fullperson.person,document.body);
+		modal=Blaze.renderWithData(Template.person_create_modal,{'mode': 'update', 'person': fullperson.person},document.body);
 	}
 },{
 	name: 'person.update'

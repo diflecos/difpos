@@ -3,7 +3,7 @@ Template.person.events({
 		if($("#person_create_modal").length>0) {
 			Template.person_create_modal.rendered();
 		} else {
-			Blaze.render(Template.person_create_modal,document.body);
+			Blaze.renderWithData(Template.person_create_modal,{mode: "update"},document.body);
 		}
 	}
 });
