@@ -1,9 +1,15 @@
 Template.messagebox.helpers({
 	message: function() {
-		return Session.get("messagebox").message;
+		if(Session.get("messagebox")!=undefined)
+			return Session.get("messagebox").message;
+		else 
+			return '';
 	},
 	message_type: function() {
-		return Session.get("messagebox").message_type;
+		if(Session.get("messagebox")!=undefined)
+			return Session.get("messagebox").message_type;
+		else 
+			return '';
 	}
 });
 
