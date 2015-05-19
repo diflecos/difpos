@@ -1,9 +1,6 @@
-Template.fullpersons_index.events({
-	"click #btn_create": function() {
-		Session.set('onCancel','/fullpersons');
-		Router.go('person.create');
-	}
-});
+Template.fullpersons.rendered=function() {
+	Session.set('onCancel','/fullpersons');
+}
 
 Template.fullpersons.events({
 	"change .filter": function(event) {
@@ -13,13 +10,17 @@ Template.fullpersons.events({
 	}
 });
 
+Template.fullpersons_index.events({
+	"click #btn_create": function() {
+		Router.go('person.create');
+	}
+});
+
 Template.fullpersons_item_template.events({
 	"click .btn-view": function() {
-		Session.set('onCancel','/fullpersons');
 		Router.go("/fullperson/"+this._id);
 	}, 	
 	"click .btn-update": function() {
-		Session.set('onCancel','/fullpersons');
 		Router.go("/person/update/"+this._id);
 	}, 
 	"click .btn-delete": function() {
