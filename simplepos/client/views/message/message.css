@@ -1,7 +1,10 @@
-#messagebox {
+#messagebox_container {
      position: fixed;
 	 bottom: 0px;
-     margin-bottom:10px;
+	 width: 100%;
+}
+
+#messagebox {
 	 margin-left: auto;
 	 margin-right: auto;
 	 width: 1170px;

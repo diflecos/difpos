@@ -15,9 +15,24 @@
 				{{> loginButtons}} <!-- here -->
 			</ul>
 	
-			<p class="navbar-text navbar-right"><a id="ip_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="IP" data-content={{clientIP}}><span class="glyphicon glyphicon-flash"></span></a></p>		
-			<script>$('#ip_info').popover({});</script>
+			<p class="navbar-text navbar-right">
+				{{#if connected}}
+				<span class="glyphicon glyphicon-flash text-warning"></span> {{clientIP}}
+				{{else}}
+				<span class="glyphicon glyphicon-ban-circle text-danger"></span> Disconnected
+				{{/if}}
+			</p>		
 
+			<p class="navbar-text navbar-right">
+				<a id="toggle_connexion" href="#" class="navbar-link">
+					{{#if connected}}
+					<span class="glyphicon glyphicon-resize-small"></span>
+					{{else}}
+					<span class="glyphicon glyphicon-resize-full"></span>
+					{{/if}}
+				</a>			
+			</p>
+			
 			<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 ({{currentUser}})"><span class="glyphicon glyphicon-time"></span></a></p>		
 			<script>$('#session_start').popover({});</script>
 
