@@ -18,34 +18,55 @@ Router.route('/fullpersons', {
 });
 
 Router.route('/fullperson/:_id', function() {
-	var fullperson = FullPersons.findOne({_id: this.params._id});
-	this.render('fullperson_view', {data: fullperson});
+	var fullperson=FullPersons.findOne({_id: this.params._id});
+	if(fullperson==undefined) {
+		messagebox={
+			'message': 'no person was found with id '+this.params._id,
+			'message_type': 'warning'
+		};
+		Session.set('messagebox',messagebox);	
+		Router.go(Session.get('onCancel'));
+	} else {
+		this.render('fullperson_view', {data: fullperson});
+	}
 },{
 	name: 'fullperson.view'
 });
 
 Router.route('/person/create', function() {
-	modal=Blaze.renderWithData(Template.person_create_modal,{'mode': 'create'},document.body);
+	modal=Blaze.renderWithData(Template.person_form,{'mode': 'create'},document.body);
 },{
 	name: 'person.create'
 });
 
 Router.route('/person/update/:_id', function() {
-	var fullperson = null;
-	fullperson=FullPersons.findOne({_id: this.params._id});
+	var fullperson=FullPersons.findOne({_id: this.params._id});
 	if(fullperson==undefined) {
-		console.log("no person was found with id "+this.params._id);
-		message="no person was found with id "+this.params._id;
-		messagebox=Blaze.renderWithData(Template.messagebox,{'alertclass': 'warning','message': message},document.body);
+		messagebox={
+			'message': 'no person was found with id '+this.params._id,
+			'message_type': 'warning'
+		};
+		Session.set('messagebox',messagebox);	
+		Router.go(Session.get('onCancel'));
 	} else {
-		modal=Blaze.renderWithData(Template.person_create_modal,{'mode': 'update', 'person': fullperson.person},document.body);
+		modal=Blaze.renderWithData(Template.person_form,{'mode': 'update', 'person': fullperson.person},document.body);
 	}
 },{
 	name: 'person.update'
 });
 
 Router.route('/person/delete/:_id', function() {
-	FullPersons.remove(this.params._id);
+	var fullperson=FullPersons.findOne({_id: this.params._id});
+	if(fullperson==undefined) {
+		messagebox={
+			'message': 'no person was found with id '+this.params._id,
+			'message_type': 'warning'
+		};
+		Session.set('messagebox',messagebox);	
+		Router.go(Session.get('onCancel'));
+	} else {
+		FullPersons.remove(this.params._id);
+	}
 },{
 	name: 'person.delete'
 });
