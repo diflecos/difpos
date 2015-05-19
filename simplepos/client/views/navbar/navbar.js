@@ -27,14 +27,22 @@ Template.navbar.helpers({
 
 Template.navbar.events({
 	"click #toggle_connexion": function() {
+		if(messagebox.keys != undefined)
+			Blaze.remove(messagebox); // si hay mensajes anteriores los borramos	
 		if(Meteor.status().connected) {
 			Meteor.disconnect();
-			message="No server connection!";
-			messagebox=Blaze.renderWithData(Template.messagebox,{'alertclass': 'danger','message': message},document.body);
+			messagebox={
+				'message': 'No server connection',
+				'message_type': 'danger'
+			};
+			Session.set('messagebox',messagebox);
 		} else {
 			Meteor.reconnect();
-			message="Reconnecting with the server: "+Meteor.status().status+" "+Meteor.status().reason;
-			messagebox=Blaze.renderWithData(Template.messagebox,{'alertclass': 'success','message': message},document.body);				
+			messagebox={
+				'message': 'Reconnecting with the server: '+Meteor.status().status+" "+Meteor.status().reason,
+				'message_type': 'success'
+			};
+			Session.set('messagebox',messagebox);						
 		}
 	}
 });
