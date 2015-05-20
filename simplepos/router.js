@@ -49,7 +49,7 @@ Router.route('/person/update/:_id', function() {
 		Session.set('messagebox',messagebox);	
 		Router.go(Session.get('onCancel'));
 	} else {
-		modal=Blaze.renderWithData(Template.person_form,{'mode': 'update', 'person': fullperson.person},document.body);
+		modal=Blaze.renderWithData(Template.person_form,{'mode': 'update', 'id': fullperson._id, 'person': fullperson.person},document.body);
 	}
 },{
 	name: 'person.update'

@@ -24,10 +24,8 @@ Template.person_form.events({
 			});
 		} else {
 			fullperson_id=event.target.id.value;
-			console.log(fullperson_id);
 			fullperson=FullPersons.findOne({_id: fullperson_id});
-			console.log(fullperson);
-			fullperson.update(fullperson_id,{$set: {
+			FullPersons.update(fullperson_id,{$set: {
 				person: {
 					name: 			event.target.name.value,
 					family_name: 	event.target.family_name.value,
@@ -40,9 +38,10 @@ Template.person_form.events({
 			}});
 		}
 		
-		$("#person_create_modal").modal("hide");
+		$("#person_create_modal").on('hidden.bs.modal', function (e) {
+			Blaze.remove(modal);
+		}).modal("hide");
 		Router.go('fullperson.view',{"_id": fullperson_id});
-		return false;	
 	},
 	"click .submit": function(event) {
 		$("form#person_form").submit();

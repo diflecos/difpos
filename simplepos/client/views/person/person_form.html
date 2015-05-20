@@ -8,41 +8,41 @@
 				<div class="modal-body">
 					<h3>Please complete the following data</h3>
 					<form id="person_form">
-						<input type="hidden" class="form-control" name="id" value="{{_id}}" />
+						<input type="hidden" class="form-control" name="id" value="{{id}}" />
 						<div class="form-group form-inline row">
 							<label for="name" class="col-md-4 text-right">Name:</label>
-							<input type="text" class="form-control" name="name" value="{{name}}" />
+							<input type="text" class="form-control" name="name" value="{{person.name}}" />
 						</div>
 						<div class="form-group form-inline row">
 							<label for="family_name" class="col-md-4 text-right">Family name:</label>
-							<input type="text" class="form-control" name="family_name" value="{{family_name}}" />
+							<input type="text" class="form-control" name="family_name" value="{{person.family_name}}" />
 						</div>
 						<div class="form-group form-inline row">
 							<label for="nick" class="col-md-4 text-right">Nick: </label>
-							<input type="text" class="form-control" name="nick" value="{{nick}}" />
+							<input type="text" class="form-control" name="nick" value="{{person.nick}}" />
 						</div>
 						<div class="form-group form-inline row">
 							<label for="id_nbr" class="col-md-4 text-right">ID number:</label>
-							<input type="text" class="form-control" name="id_nbr" value="{{id_nbr}}" />
+							<input type="text" class="form-control" name="id_nbr" value="{{person.id_nbr}}" />
 						</div>
 						<div class="form-group form-inline row">
 							<label for="birthdate" class="col-md-4 text-right">Birthdate:</label>
-							<input type="date" class="form-control" name="birthdate" value="1975-04-17" />
+							<input type="date" class="form-control" name="birthdate" value="{{person.birthdate}}" />
 						</div>
 						<div class="form-group form-inline row">
 							<label for="gender" class="col-md-4 text-right">Gender:</label>
 							<select class="form-control" name="gender">
-								<option {{selected gender "Male"}}>Male</option>
-								<option {{selected gender "Female"}}>Female</option>
+								<option {{selected person.gender "Male"}}>Male</option>
+								<option {{selected person.gender "Female"}}>Female</option>
 							</select>	
 						</div>
 						<div class="form-group form-inline row">
 							<label for="civil_status" class="col-md-4 text-right">Civil status:</label>
 							<select class="form-control" name="civil_status" selected="divorced">
-								<option {{selected civil_status "Single"}}>Single</option>
-								<option {{selected civil_status "Married"}}>Married</option>
-								<option {{selected civil_status "Divorced"}}>Divorced</option>
-								<option {{selected civil_status "Widow"}}>Widow</option>
+								<option {{selected person.civil_status "Single"}}>Single</option>
+								<option {{selected person.civil_status "Married"}}>Married</option>
+								<option {{selected person.civil_status "Divorced"}}>Divorced</option>
+								<option {{selected person.civil_status "Widow"}}>Widow</option>
 							</select>	
 						</div>
 					</form>
