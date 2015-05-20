@@ -11,17 +11,30 @@ Template.person_form.events({
 	"submit form#person_form": function(event) {
 		event.preventDefault();
 		if(this.mode=="create") {
-			fullperson_id=FullPersons.insert({
-				person: {
-					name: 			event.target.name.value,
-					family_name: 	event.target.family_name.value,
-					nick: 			event.target.nick.value,
-					id_nbr: 		event.target.id_nbr.value,
-					birthdate: 		event.target.birthdate.value,
-					gender: 		event.target.gender.value,
-					civil_status: 	event.target.civil_status.value,
-				}
-			});
+			person={
+				name: 			event.target.name.value,
+				family_name: 	event.target.family_name.value,
+				nick: 			event.target.nick.value,
+				id_nbr: 		event.target.id_nbr.value,
+				birthdate: 		event.target.birthdate.value,
+				gender: 		event.target.gender.value,
+				civil_status: 	event.target.civil_status.value,
+			};
+			if(Schemas.Person.namedContext("myContext").validate(person)!=true) {
+				console.log(Schemas.Person.namedContext("myContext").invalidKeys());
+			} else {
+				fullperson_id=FullPersons.insert({
+					person: {
+						name: 			event.target.name.value,
+						family_name: 	event.target.family_name.value,
+						nick: 			event.target.nick.value,
+						id_nbr: 		event.target.id_nbr.value,
+						birthdate: 		event.target.birthdate.value,
+						gender: 		event.target.gender.value,
+						civil_status: 	event.target.civil_status.value,
+					}
+				});
+			}
 		} else {
 			fullperson_id=event.target.id.value;
 			fullperson=FullPersons.findOne({_id: fullperson_id});

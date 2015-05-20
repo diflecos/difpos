@@ -8,4 +8,3 @@ FullPersonsPages = new Meteor.Pagination(FullPersons, {
 	divWrapper: false, 
 	availableSettings: {filters: true, sort: true}
 });
-
