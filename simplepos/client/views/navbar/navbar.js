@@ -40,7 +40,8 @@ Template.navbar.events({
 			Meteor.reconnect();
 			messagebox={
 				'message': 'Reconnecting with the server: '+Meteor.status().status+" "+Meteor.status().reason,
-				'message_type': 'success'
+				'message_type': 'success',
+				'message_close': 'auto'
 			};
 			Session.set('messagebox',messagebox);						
 		}

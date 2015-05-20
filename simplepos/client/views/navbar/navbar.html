@@ -16,14 +16,6 @@
 			</ul>
 	
 			<p class="navbar-text navbar-right">
-				{{#if connected}}
-				<span class="glyphicon glyphicon-flash text-warning"></span> {{clientIP}}
-				{{else}}
-				<span class="glyphicon glyphicon-ban-circle text-danger"></span> Disconnected
-				{{/if}}
-			</p>		
-
-			<p class="navbar-text navbar-right">
 				<a id="toggle_connexion" href="#" class="navbar-link">
 					{{#if connected}}
 					<span class="glyphicon glyphicon-resize-small"></span>
@@ -32,6 +24,14 @@
 					{{/if}}
 				</a>			
 			</p>
+
+			<p class="navbar-text navbar-right">
+				{{#if connected}}
+				<span class="glyphicon glyphicon-flash text-warning"></span> {{clientIP}}
+				{{else}}
+				<span class="glyphicon glyphicon-ban-circle text-danger"></span> Disconnected
+				{{/if}}
+			</p>		
 			
 			<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 ({{currentUser}})"><span class="glyphicon glyphicon-time"></span></a></p>		
 			<script>$('#session_start').popover({});</script>

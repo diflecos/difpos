@@ -13,24 +13,25 @@ Template.messagebox.helpers({
 	}
 });
 
-Template.messagebox.events({
-	"change": function(event) {
-		console.log('cambió');
-	},
-	"click .close": function(event) {
-		messagebox={
-			'message': '',
-			'message_type': ''
-		};
-		Session.set('messagebox',messagebox);
-	}
-});
-
 Template.messagebox.rendered=function() {
 	messagebox={
 		'message': '',
-		'message_type': ''
+		'message_type': '',
+		'message_close': ''
 	};
 	Session.set('messagebox',messagebox);
-	$("#messagebox").fadeTo(4000, 500).slideUp(500, function(){	});
 };
+
+Tracker.autorun(function () {
+	if(Session.get('messagebox')!=undefined && Session.get('messagebox').message_close==='auto') {
+		$("#messagebox").fadeTo(4000, 500).slideUp(500, function(){	
+			messagebox={
+				'message': '',
+				'message_type': '',
+				'message_close': ''
+			};
+			Session.set('messagebox',messagebox);		
+			$("#messagebox").show();
+		});
+	}
+});
