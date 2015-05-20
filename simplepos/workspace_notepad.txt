@@ -501,11 +501,10 @@
                     <File name="client\views\navbar\navbar.js" />
                 </Folder>
                 <Folder name="person">
-                    <File name="client\views\person\person.html" />
-                    <File name="client\views\person\person.js" />
-                    <File name="client\views\person\person_create_modal.html" />
-                    <File name="client\views\person\person_create_modal.js" />
                     <File name="client\views\person\person_form.html" />
+                    <File name="client\views\person\person_form.js" />
+                    <File name="client\views\person\person_view.html" />
+                    <File name="client\views\person\person_view.js" />
                 </Folder>
                 <Folder name="phone">
                     <File name="client\views\phone\phone.html" />
