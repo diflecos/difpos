@@ -520,7 +520,11 @@
                 </Folder>
                 <File name="client\views\modal.html" />
                 <File name="client\views\panel.html" />
-                <Folder name="message" />
+                <Folder name="message">
+                    <File name="client\views\message\message.css" />
+                    <File name="client\views\message\message.html" />
+                    <File name="client\views\message\message.js" />
+                </Folder>
             </Folder>
         </Folder>
         <Folder name="common" />
