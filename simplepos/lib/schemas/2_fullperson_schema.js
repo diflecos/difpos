@@ -1,39 +1,55 @@
 Schemas.FullPerson = new SimpleSchema({
-  person: {
-    type: Schemas.Person
-  },
-  emails: {
-	type: [Schemas.Email],
-	maxCount: 5,
-	optional: true
-  },
-  phones: {
-	type: [Schemas.Phone],
-	maxCount: 5,
-	optional: true
-  },
-  addresses: {
-    type: [Schemas.Address],
-	maxCount: 5,
-	optional: true
-  },
-  social: {
-	type: [Schemas.Social],
-	maxCount: 10,
-	optional: true
-  },
-  createdAt: {
-	type: Date
-  },
-  updatedAt: {
-	type: Date
-  },
-  createdBy: {
-	type: String
-  },
-  updatedBy: {
-	type: String
-  },
+	person: {
+		type: Schemas.Person
+	},
+	emails: {
+		type: [Schemas.Email],
+		maxCount: 5,
+		optional: true
+	},
+	phones: {
+		type: [Schemas.Phone],
+		maxCount: 5,
+		optional: true
+	},
+	addresses: {
+		type: [Schemas.Address],
+		maxCount: 5,
+		optional: true
+	},
+	social: {
+		type: [Schemas.Social],
+		maxCount: 10,
+		optional: true
+	},
+	createdAt: {
+		type: Date,
+		autoValue: function() {
+			if (this.isInsert) {
+				return new Date;
+			} 
+		}
+	},
+	updatedAt: {
+		type: Date,
+		autoValue: function() {
+			return new Date();
+		}
+	},
+	createdBy: {
+		type: String,
+		autoValue: function() {
+			if (this.isInsert) {
+				return Meteor.user().username;
+			} 
+		}
+	},
+	updatedBy: {
+		type: String,
+		autoValue: function() {
+			return Meteor.user().username;
+		}
+	}
 });
 
 

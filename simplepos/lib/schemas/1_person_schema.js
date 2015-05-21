@@ -24,12 +24,12 @@ Schemas.Person = new SimpleSchema({
 	},
 	gender: {
 		type: String,
-		allowedValues: PARAMS.GENDER,
+		allowedValues: VALUES.GENDER,
 		optional: true
 	},
 	civil_status: {
 		type: String,
-		allowedValues: PARAMS.CIVIL_STATUS,
+		allowedValues: VALUES.CIVIL_STATUS,
 		optional: true
 	}
 });

@@ -1,7 +1,7 @@
 Schemas.Email = new SimpleSchema({
 	name: {
 		type: String,
-		max: 100
+		allowedValues: VALUES.EMAIL_TYPE,
 	},  
 	address: {
 		type: String,

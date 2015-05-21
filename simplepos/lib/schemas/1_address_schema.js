@@ -1,7 +1,7 @@
 Schemas.Address = new SimpleSchema({
 	name: {
 		type: String,
-		max: 100
+		allowedValues: VALUES.ADDRESS_TYPE
 	},  
 	street: {
 		type: String,
@@ -16,6 +16,6 @@ Schemas.Address = new SimpleSchema({
 	},
 	country: {
 		type: String,
-		allowedValues: PARAMS.COUNTRY
+		allowedValues: VALUES.COUNTRY
 	}
 });

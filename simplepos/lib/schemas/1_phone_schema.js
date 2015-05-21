@@ -1,7 +1,7 @@
 Schemas.Phone = new SimpleSchema({
 	name: {
 		type: String,
-		max: 100
+		allowedValues: VALUES.PHONE_TYPE
 	},  
 	prefix: {
 		type: String,

@@ -1,12 +1,13 @@
-<template name="fullperson_view">	
+<template name="fullperson_form">	
 	<!--div class="alert alert-success" role="alert">No messages</div-->
-
+{{#autoForm collection="FullPersons" id="FullPersonsForm" type=type doc=doc}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h2>{{person.name}} {{person.family_name}} ({{person.nick}})</h2>
+					<h2>{{doc.person.name}} {{doc.person.family_name}} ({{doc.person.nick}})</h2>
 				</div>
+
 				<div class="panel-body">
 					<img class="pull-left" src="http://dummyimage.com/400x400/eeeeee/aaaaaa.jpg"/>
 							
@@ -22,7 +23,13 @@
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="personal-info">
-							{{>person_view person}}		
+							{{> afQuickField name='person.name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}	
+							{{> afQuickField name='person.family_name' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}	
+							{{> afQuickField name='person.nick' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}	
+							{{> afQuickField name='person.id_nbr' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}	
+							{{> afQuickField name='person.birthdate' template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}	
+							{{> afQuickField name='person.gender' options=gender_options template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+							{{> afQuickField name='person.civil_status' options=civil_status_options template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}	
 						</div>
 						<div class="tab-pane" id="users">
 							<button class="btn btn-success pull-right">Add new</button>
@@ -62,30 +69,21 @@
 						<div class="tab-pane" id="contact">
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Phone</h3>
-							{{#each phones}}
-								{{> phone}}
-							{{/each}}
+								{{> afQuickField name='phones'}}	
 							<hr/>
 							
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Email</h3>
-							{{#each emails}}
-								{{> email}}
-							{{/each}}								
+								{{> afQuickField name='emails'}}									
 							<hr/>
 							
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Address</h3>
-							{{#each address}}
-								{{> address}}
-							{{/each}}												
+								{{> afQuickField name='addresses'}}												
 						</div>
 						<div class="tab-pane" id="social">
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Social</h3>
-							{{#each social}}
-								{{> social}}
-							{{/each}}	
 						</div>
 						<div class="tab-pane" id="comments">
 							<button class="btn btn-success pull-right">Add new</button>
@@ -108,13 +106,14 @@
 				</div>
 				<div class="panel-footer text-right">
 					<div class="btn-group">
-						<button id="btn_update_fullperson" class="btn btn-success btn-lg">Update</button>
-						<button class="btn btn-danger btn-lg">Cancel</button>
+					    <button type="submit" class="btn btn-success btn-lg">Save</button>
+						<button class="btn btn-danger btn-lg cancel">Cancel</button>
 					</div>						
 				</div>
 			</div>					
 		</div>
 		<div class="col-md-6">
 		</div>
-	</div>		
+	</div>	
+{{/autoForm}}	
 </template>

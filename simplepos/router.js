@@ -17,7 +17,50 @@ Router.route('/fullpersons', {
 	name: 'fullpersons.index'
 });
 
+
+
+
+Router.route('/fullperson/create', function() {
+	this.render('fullperson_form',{ data: {mode: 'insert', doc: null}});
+},{
+	name: 'fullperson_create'
+});
+
+Router.route('/fullperson/update/:_id', function() {
+	var fullperson=FullPersons.findOne({_id: this.params._id});
+	if(fullperson==undefined) {
+		messagebox={
+			'message': 'no person was found with id '+this.params._id,
+			'message_type': 'warning'
+		};
+		Session.set('messagebox',messagebox);	
+		Router.go(Session.get('onCancel'));
+	} else {
+		this.render('fullperson_form',{ data: {mode: 'update', doc: fullperson}});
+	}
+},{
+	name: 'fullperson.update'
+});
+
+Router.route('/fullperson/delete/:_id', function() {
+	var fullperson=FullPersons.findOne({_id: this.params._id});
+	if(fullperson==undefined) {
+		messagebox={
+			'message': 'no person was found with id '+this.params._id,
+			'message_type': 'warning'
+		};
+		Session.set('messagebox',messagebox);	
+		Router.go(Session.get('onCancel'));
+	} else {
+		FullPersons.remove(this.params._id);
+	}
+},{
+	name: 'fullperson.delete'
+});
+
+
 Router.route('/fullperson/:_id', function() {
+console.log("vamos mal");
 	var fullperson=FullPersons.findOne({_id: this.params._id});
 	if(fullperson==undefined) {
 		messagebox={
@@ -32,46 +75,6 @@ Router.route('/fullperson/:_id', function() {
 },{
 	name: 'fullperson.view'
 });
-
-Router.route('/person/create', function() {
-	modal=Blaze.renderWithData(Template.person_form,{'mode': 'create'},document.body);
-},{
-	name: 'person.create'
-});
-
-Router.route('/person/update/:_id', function() {
-	var fullperson=FullPersons.findOne({_id: this.params._id});
-	if(fullperson==undefined) {
-		messagebox={
-			'message': 'no person was found with id '+this.params._id,
-			'message_type': 'warning'
-		};
-		Session.set('messagebox',messagebox);	
-		Router.go(Session.get('onCancel'));
-	} else {
-		modal=Blaze.renderWithData(Template.person_form,{'mode': 'update', 'id': fullperson._id, 'person': fullperson.person},document.body);
-	}
-},{
-	name: 'person.update'
-});
-
-Router.route('/person/delete/:_id', function() {
-	var fullperson=FullPersons.findOne({_id: this.params._id});
-	if(fullperson==undefined) {
-		messagebox={
-			'message': 'no person was found with id '+this.params._id,
-			'message_type': 'warning'
-		};
-		Session.set('messagebox',messagebox);	
-		Router.go(Session.get('onCancel'));
-	} else {
-		FullPersons.remove(this.params._id);
-	}
-},{
-	name: 'person.delete'
-});
-
-
 
 
 	

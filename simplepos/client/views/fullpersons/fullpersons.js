@@ -12,7 +12,7 @@ Template.fullpersons.events({
 
 Template.fullpersons_index.events({
 	"click #btn_create": function() {
-		Router.go('person.create');
+		Router.go('fullperson_create');
 	}
 });
 
@@ -21,7 +21,7 @@ Template.fullpersons_item_template.events({
 		Router.go("/fullperson/"+this._id);
 	}, 	
 	"click .btn-update": function() {
-		Router.go("/person/update/"+this._id);
+		Router.go("/fullperson/update/"+this._id);
 	}, 
 	"click .btn-delete": function() {
 		Router.go("/person/delete/"+this._id);

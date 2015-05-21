@@ -1,4 +1,5 @@
 FullPersons = new Mongo.Collection("fullpersons");
+FullPersons.attachSchema(Schemas.FullPerson);
 
 
 

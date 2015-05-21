@@ -501,6 +501,8 @@
                     <File name="client\views\navbar\navbar.js" />
                 </Folder>
                 <Folder name="person">
+                    <File name="client\views\person\person.js" />
+                    <File name="client\views\person\person_form.html" />
                     <File name="client\views\person\person_form.html" />
                     <File name="client\views\person\person_form.js" />
                     <File name="client\views\person\person_view.html" />
@@ -520,11 +522,7 @@
                 </Folder>
                 <File name="client\views\modal.html" />
                 <File name="client\views\panel.html" />
-                <Folder name="message">
-                    <File name="client\views\message\message.css" />
-                    <File name="client\views\message\message.html" />
-                    <File name="client\views\message\message.js" />
-                </Folder>
+                <Folder name="message" />
             </Folder>
         </Folder>
         <Folder name="common" />

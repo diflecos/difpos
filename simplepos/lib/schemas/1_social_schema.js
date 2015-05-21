@@ -1,7 +1,7 @@
 Schemas.Social = new SimpleSchema({
 	name: {
 		type: String,
-		allowedValues: PARAMS.SOCIAL
+		allowedValues: VALUES.SOCIAL
 	},  
 	value: {
 		type: String,
