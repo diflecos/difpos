@@ -1,3 +1,9 @@
+AutoForm.addHooks('FullPersonsForm',{
+	onSuccess: function() {
+		Router.go('/fullperson/'+this.docId);
+	}
+});
+
 Template.fullperson_form.helpers({
 	type: function() {
 		return this.mode;

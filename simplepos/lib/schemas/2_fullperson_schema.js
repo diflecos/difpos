@@ -40,14 +40,14 @@ Schemas.FullPerson = new SimpleSchema({
 		type: String,
 		autoValue: function() {
 			if (this.isInsert) {
-				return Meteor.user().username;
+				return Meteor.user()?Meteor.user().username:"unknown";
 			} 
 		}
 	},
 	updatedBy: {
 		type: String,
 		autoValue: function() {
-			return Meteor.user().username;
+				return Meteor.user()?Meteor.user().username:"unknown";
 		}
 	}
 });
