@@ -7,3 +7,9 @@ Template.fullperson_view.events({
 Template.fullperson_view.rendered=function() {
 	Session.set('onCancel','/fullperson/'+this._id);
 }
+
+Template.fullperson_view.helpers({
+	images: function () {
+		return PersonImages.find(); // Where Images is an FS.Collection instance
+	}
+});

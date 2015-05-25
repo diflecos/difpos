@@ -8,7 +8,10 @@
 					<h2>{{person.name}} {{person.family_name}} ({{person.nick}})</h2>
 				</div>
 				<div class="panel-body">
-					<img class="pull-left" src="http://dummyimage.com/400x400/eeeeee/aaaaaa.jpg"/>
+					<!--img class="pull-left" src="http://dummyimage.com/400x400/eeeeee/aaaaaa.jpg"/-->
+					{{#each images}}
+						<img src={{this.url}}/>
+					{{/each}}
 							
 					<div class="pull-right">
 					<ul class="nav nav-tabs" role="tablist">
