@@ -29,4 +29,13 @@ Admin
 	--> Cancelacion de operaciones
 
 
-    
+FALTA: 
+- poder cargar imagenes
+- que se mantenga la tab seleccionada en modo edición o view
+- detectar si el cumpleaños es dentro de poco (lo suyo es poder indicar si es esta semana, la próxima, la anterior o si es dentro de 3 días)
+- hacer formularios más a medida --> posibilidad de usar los antiguos formularios para añadir un único elemento (por ejemplo, añadir un único tfno o un único email) o ver la funcionalidad de autoforms para generar el formulario de una parte del schema
+- mejorar la navegación (sería interesante tener algún tipo de rastro de por donde ha pasado cada usuario y que en caso de problema nos lo pudieran enviar o algo??) 
+- prever también cómo vamos a hacer la integración de las pestañas customer, employee, etc
+- roles, permisos
+- implementar publish/subscribe
+- quitar el insecure e implementar los server methods

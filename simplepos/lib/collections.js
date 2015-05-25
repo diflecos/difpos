@@ -9,3 +9,7 @@ FullPersonsPages = new Meteor.Pagination(FullPersons, {
 	divWrapper: false, 
 	availableSettings: {filters: true, sort: true}
 });
+
+PersonImages = new FS.Collection("person_images", {
+  stores: [new FS.Store.FileSystem("person_images", {path: "~/uploads/images/person"})]
+});

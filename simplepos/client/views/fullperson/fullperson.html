@@ -76,32 +76,23 @@
 							
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Address</h3>
-							{{#each address}}
+							{{#each addresses}}
 								{{> address}}
 							{{/each}}												
 						</div>
 						<div class="tab-pane" id="social">
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Social</h3>
-							{{#each social}}
+							{{#each socials}}
 								{{> social}}
 							{{/each}}	
 						</div>
 						<div class="tab-pane" id="comments">
 							<button class="btn btn-success pull-right">Add new</button>
 							<h3>Comments</h3>
-							<blockquote>
-							  <p>Cliente enfadado</p>
-							  <footer>antuan98, 18/10/2014 18:24</footer>
-							</blockquote>											
-							<blockquote class="blockquote-reverse">
-							  <p>Vuelve a llamar para quejarse</p>
-							  <footer>antuan98, 18/10/2014 18:24</footer>
-							</blockquote>											
-							<blockquote>
-							  <p>Se le restituye el dinero</p>
-							  <footer>antuan98, 18/10/2014 18:24</footer>
-							</blockquote>											
+							{{#each comments}}
+								{{> comment}}	
+							{{/each}}										
 						</div>
 						</div>
 					</div>						

@@ -2,6 +2,17 @@ Schemas.FullPerson = new SimpleSchema({
 	person: {
 		type: Schemas.Person
 	},
+	images: {
+		type: [String]
+	},
+	'images.$': {
+		autoform: {
+			afFieldInput: {
+				type: 'fileUpload',
+				collection: 'PersonImages'			
+			}
+		}		
+   },	
 	emails: {
 		type: [Schemas.Email],
 		maxCount: 5,
@@ -17,9 +28,14 @@ Schemas.FullPerson = new SimpleSchema({
 		maxCount: 5,
 		optional: true
 	},
-	social: {
+	socials: {
 		type: [Schemas.Social],
 		maxCount: 10,
+		optional: true
+	},
+	comments: {
+		type: [Schemas.Comment],
+		maxCount: 1000,
 		optional: true
 	},
 	createdAt: {
