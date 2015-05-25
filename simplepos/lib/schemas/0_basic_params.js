@@ -1,6 +1,9 @@
 // Basic parameters
 OPTIONS={};
 VALUES={};
+PARAMS={};
+
+PARAMS.DATE_FORMAT='DD/MM/YYYY';
 
 OPTIONS.GENDER=[
 	{label: 'Male', value: 'Male'},

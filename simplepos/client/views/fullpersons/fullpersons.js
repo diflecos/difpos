@@ -16,6 +16,12 @@ Template.fullpersons_index.events({
 	}
 });
 
+Template.fullpersons_item_template.helpers({
+	birthdate_formatted: function() {
+		return moment(this.person.birthdate).format(PARAMS.DATE_FORMAT);
+	}
+});
+
 Template.fullpersons_item_template.events({
 	"click .btn-view": function() {
 		Router.go("/fullperson/"+this._id);
