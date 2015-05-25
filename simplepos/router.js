@@ -1,5 +1,4 @@
 modal={};   // variable global que se usa para guardar la view generada por Blaze.render de cada modal que mostramos para poder luego hacer el Blaze.remove(modal) correspondiente
-messagebox={}; // idem para la caja de mensaje
 
 Router.configure({
 	layoutTemplate: 'layout',
@@ -29,11 +28,7 @@ Router.route('/fullperson/create', function() {
 Router.route('/fullperson/update/:_id', function() {
 	var fullperson=FullPersons.findOne({_id: this.params._id});
 	if(fullperson==undefined) {
-		messagebox={
-			'message': 'no person was found with id '+this.params._id,
-			'message_type': 'warning'
-		};
-		Session.set('messagebox',messagebox);	
+		FlashMessages.sendError('no person was found with id '+this.params._id);
 		Router.go(Session.get('onCancel'));
 	} else {
 		this.render('fullperson_form',{ data: {mode: 'update', doc: fullperson}});
@@ -45,11 +40,7 @@ Router.route('/fullperson/update/:_id', function() {
 Router.route('/fullperson/delete/:_id', function() {
 	var fullperson=FullPersons.findOne({_id: this.params._id});
 	if(fullperson==undefined) {
-		messagebox={
-			'message': 'no person was found with id '+this.params._id,
-			'message_type': 'warning'
-		};
-		Session.set('messagebox',messagebox);	
+		FlashMessages.sendError('no person was found with id '+this.params._id);
 		Router.go(Session.get('onCancel'));
 	} else {
 		FullPersons.remove(this.params._id);
@@ -60,14 +51,9 @@ Router.route('/fullperson/delete/:_id', function() {
 
 
 Router.route('/fullperson/:_id', function() {
-console.log("vamos mal");
 	var fullperson=FullPersons.findOne({_id: this.params._id});
 	if(fullperson==undefined) {
-		messagebox={
-			'message': 'no person was found with id '+this.params._id,
-			'message_type': 'warning'
-		};
-		Session.set('messagebox',messagebox);	
+		FlashMessages.sendError('no person was found with id '+this.params._id);
 		Router.go(Session.get('onCancel'));
 	} else {
 		this.render('fullperson_view', {data: fullperson});
