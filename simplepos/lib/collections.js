@@ -11,5 +11,5 @@ FullPersonsPages = new Meteor.Pagination(FullPersons, {
 });
 
 PersonImages = new FS.Collection("person_images", {
-  stores: [new FS.Store.FileSystem("person_images", {path: "~/uploads/images/person"})]
+  stores: [new FS.Store.FileSystem("person_images", {path: "C:\\Users\\Antuan\\Desktop\\difpos\\simplepos\\uploads\\"})]
 });

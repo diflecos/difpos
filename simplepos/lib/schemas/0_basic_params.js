@@ -62,6 +62,20 @@ OPTIONS.EMAIL_TYPE=[
 ];
 VALUES.EMAIL_TYPE=OPTIONS.EMAIL_TYPE.map(function(item,i) { return item.value; });
 
+OPTIONS.SPECIAL_OFFER_TYPE=[  
+	{label: 'Discount', value: 'Discount'},
+	{label: 'Volume Reduction', value: 'Volume Reduction'},
+	{label: 'Group', value: 'Group'},
+	{label: 'Gift', value: 'Gift'},
+];
+VALUES.SPECIAL_OFFER_TYPE=OPTIONS.SPECIAL_OFFER_TYPE.map(function(item,i) { return item.value; });
+
+OPTIONS.REDUCTION_TYPE=[  
+	{label: 'Amount', value: 'Amount'},
+	{label: 'Percentaqe', value: 'Percentaqe'},
+];
+VALUES.REDUCTION_TYPE=OPTIONS.REDUCTION_TYPE.map(function(item,i) { return item.value; });
+
+
+
 Schemas={};
-
-
