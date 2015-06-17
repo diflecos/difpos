@@ -62,11 +62,11 @@ Router.route('/fullperson/:_id', function() {
 	name: 'fullperson.view'
 });
 
-/*******************  SALES **************************/
-Router.route('/sale/create', function() {
-	this.render('newsale_layout');
+/*******************  ORDERS **************************/
+Router.route('/order/create', function() {
+	this.render('order_layout');
 },{
-	name: 'sale_create'
+	name: 'order_create'
 });
 	
 	

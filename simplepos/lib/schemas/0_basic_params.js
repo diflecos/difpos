@@ -5,6 +5,9 @@ PARAMS={};
 
 PARAMS.DATE_FORMAT='DD/MM/YYYY';
 
+/* qué tab queremos que se muestre por defecto en el itemlocator para seleccionar items. Valores posibles: 'category'|'qrcode'|'search'|'browse'|'manual'  Por defecto qrcode */
+PARAMS.ITEMLOCATOR_DEFAULTMETHOD='category';
+
 OPTIONS.GENDER=[
 	{label: 'Male', value: 'Male'},
 	{label: 'Female', value: 'Female'},

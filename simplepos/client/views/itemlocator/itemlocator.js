@@ -1,7 +1,8 @@
 Template.itemlocator.rendered=function() {
+	$('#item-locator-tablist a[href="#'+PARAMS.ITEMLOCATOR_DEFAULTMETHOD+'-tab"]').tab('show');
 	$('#item-locator-tablist a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
+		e.preventDefault();
+		$(this).tab('show');
 	});
 	
 	Session.set("categorySelection",new Array());
@@ -56,6 +57,8 @@ Template.itemlocator.helpers({
 Template.itemlocator.events({
 	"click a.categorySelected": function(event) {
 		level=event.target.dataset.level;  
+		catname=event.target.dataset.catname;		
+		Session.set("selectedCategory",catname)
 		aux=Session.get("categorySelection");	
 		categorySelection=new Array();
 		for(var i=0;i<aux.length;i++) {
@@ -71,6 +74,7 @@ Template.categorySelector.events({
 	"click a.categorySelector": function(event) {
 		id=event.target.dataset.mongoid;  
 		catname=event.target.dataset.catname;
+		Session.set("selectedCategory",catname)
 		
 		categorySelection=Session.get("categorySelection");
 		if(categorySelection.length==0) 
@@ -80,5 +84,23 @@ Template.categorySelector.events({
 			
 		categorySelection.push({ "level": level, "name": catname,"category_id": id});
 		Session.set("categorySelection",categorySelection);
+	}
+});
+
+Template.category_form.helpers({
+	categorySelected: function() {
+		return Session.get("selectedCategory");
+	}
+});
+
+Template.category_form.events({
+	"click #add_order_item": function(event) {
+		event.preventDefault();
+		name=$("#order_item_name").val();
+		unit_price=$("#order_item_unit_price").val();
+		quantity=$("#order_item_quantity").val();
+		currentOrder=Session.get("currentOrder");
+		currentOrder.order_items.push({"name": name, "unit_price": unit_price, "quantity": quantity, "price": quantity*unit_price});
+		Session.set("currentOrder",currentOrder);
 	}
 });
