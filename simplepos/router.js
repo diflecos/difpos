@@ -62,7 +62,25 @@ Router.route('/fullperson/:_id', function() {
 	name: 'fullperson.view'
 });
 
+/*******************  SALES **************************/
+Router.route('/sale/create', function() {
+	this.render('newsale_layout');
+},{
+	name: 'sale_create'
+});
+	
+	
 
+/*******************  INSTALL **************************/
+Router.route('/install', function() {
+	this.render('install');
+},{
+	name: 'install'
+});
+	
+		
+	
+	
 	
 /* 	this.route('cashinout', {
 		path: 'cashinout',

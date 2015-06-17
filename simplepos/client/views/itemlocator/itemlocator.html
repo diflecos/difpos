@@ -1,0 +1,141 @@
+<template name="itemlocator">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Item locator</h2>
+		</div>
+		<div class="panel-body">
+			<ul id="item-locator-tablist" class="nav nav-tabs">
+				<li class="active"><a href="#scan-tab"><span class="glyphicon glyphicon-qrcode"></span> Scan</a></li>
+				<li><a href="#manual-tab"><span class="glyphicon glyphicon-hand-right"></span> Manual</a></li>
+				<!--li><a href="#search-tab"><span class="glyphicon glyphicon-search"></span> Search</a></li-->
+				<li><a href="#browse-tab"><span class="glyphicon glyphicon-folder-open"></span> Browse</a></li>
+				<li><a href="#category-tab"><span class="glyphicon glyphicon-folder-open"></span> Category</a></li>
+			</ul>
+			<div id="item-locator-content" class="tab-content">
+				<div class="tab-pane fade active in" id="scan-tab">
+					<h3>Scanned QRcode: <span class="label label-success">BA009X229923</span></h3>
+				</div>	
+				<div class="tab-pane fade" id="manual-tab">
+					{{>qr_scan_form}}	
+				</div>
+				<!--div class="tab-pane fade" id="search-tab">
+					{{>search_item_form}}
+					{{>search-results}}
+				</div-->
+				<div class="tab-pane fade" id="browse-tab">
+					<h3>Choose a category</h3>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Electronics</a></li>
+						<li><a href="#">Music</a></li>
+						<li class="active">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default">Explore</button>
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Pop</a></li>
+									<li><a href="#">Rock</a></li>
+									<li><a href="#">Punk</a></li>
+									<li><a href="#">Jazz</a></li>
+									<li><a href="#">Classic</a></li>
+								</ul>
+							</div>
+						</li>
+					</ol>										
+				</div>		
+				<div class="tab-pane fade" id="category-tab">
+					<h3>Choose a category</h3>
+					<ol class="breadcrumb">
+						{{#each selectedCategories}}
+							<li><a href="#">{{name}}</a></li>
+						{{/each}}					
+						<li class="active">
+							<div class="btn-group">						
+								<button type="button" class="btn btn-default">Explore</button>
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									{{#each childCategories}}
+										{{>categorySelector}}
+									{{/each}}
+								</ul>
+							</div>
+						</li>
+					</ol>		
+					{{>category_form}}
+				</div>						
+			</div>
+		</div>					
+	</div>
+</template>	
+
+<template name="search-results">
+	<div id="search-results">
+		<h2>Search results</h2>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<img class="pull-right" width="64" height="64" src="" alt="...">
+				<p><strong>Headphones GORILLA</strong></p>
+				<p>Description of Headphones GORILLA, long description of the headphones</p>
+				<button class="btn btn-success pull-right">Select</Button>
+				<p><strong>23.40€</strong></p>
+			</li>								
+			<li class="list-group-item">
+				<img class="pull-right" width="64" height="64" src="" alt="...">
+				<p><strong>Headphones GORILLA</strong></p>
+				<p>Description of Headphones GORILLA, long description of the headphones, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue</p>
+				<button class="btn btn-success pull-right">Select</Button>
+				<p><strong>23.40€</strong></p>
+			</li>
+			<li class="list-group-item">
+				<img class="pull-right" width="64" height="64" src="" alt="...">
+				<p><strong>Headphones GORILLA</strong></p>
+				<p>Description of Headphones GORILLA, long description of the headphones, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue, bla, bla, blu, blue</p>
+				<button class="btn btn-success pull-right">Select</Button>
+				<p><strong>23.40€</strong></p>
+			</li>
+			<li class="list-group-item">
+				<img class="pull-right" width="64" height="64" src="" alt="...">
+				<p><strong>Headphones GORILLA</strong></p>
+				<p>Description of Headphones GORILLA, long description of the headphones</p>
+				<button class="btn btn-success pull-right">Select</Button>
+				<p><strong>23.40€</strong></p>
+			</li>
+		</ul>							
+	</div>
+</template>
+
+<template name="qr_scan_form">
+	<h3>Scan or enter item QRcode: </h3>
+	<form class="form-inline" role="search">		
+		<input type="text" class="form-control" placeholder="Search">
+		<button type="submit" class="btn btn-primary">Search</Button>
+	</form>	
+</template>
+
+<template name="search_item_form">
+	<h3>Search item text and description</h3>
+	<form class="form-inline" role="search">
+		<input type="text" class="form-control" placeholder="Search">
+		<button type="submit" class="btn btn-primary">Search</Button>
+	</form>		
+</template>
+
+<template name="category_form">
+	<h3>Enter item name, price and discount</h3>
+	<form class="form-inline" role="search">
+		<input type="text" class="form-control" placeholder="Name">
+		<input type="text" class="form-control" placeholder="Price">
+		<input type="text" class="form-control" placeholder="Discount">
+		<button type="submit" class="btn btn-primary">Add</Button>
+	</form>	
+</template>
+
+<template name="categorySelector">
+	<li><a href="#" data-mongoid={{_id}} data-catname={{name}}>{{name}}</a></li>
+</template>
