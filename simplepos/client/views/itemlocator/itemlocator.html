@@ -50,8 +50,9 @@
 					<h3>Choose a category</h3>
 					<ol class="breadcrumb">
 						{{#each selectedCategories}}
-							<li><a href="#">{{name}}</a></li>
-						{{/each}}					
+							<li><a class="categorySelected" href="#" data-level="{{level}}">{{name}}</a></li>
+						{{/each}}			
+						{{#if isThereChildCategories}}
 						<li class="active">
 							<div class="btn-group">						
 								<button type="button" class="btn btn-default">Explore</button>
@@ -66,6 +67,7 @@
 								</ul>
 							</div>
 						</li>
+						{{/if}}
 					</ol>		
 					{{>category_form}}
 				</div>						
@@ -137,5 +139,5 @@
 </template>
 
 <template name="categorySelector">
-	<li><a href="#" data-mongoid={{_id}} data-catname={{name}}>{{name}}</a></li>
+	<li><a href="#" class="categorySelector" data-mongoid={{_id}} data-catname={{name}}>{{name}}</a></li>
 </template>
