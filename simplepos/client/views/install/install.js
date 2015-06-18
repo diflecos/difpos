@@ -1,4 +1,5 @@
 Template.install.rendered=function() {
+	//Categories.remove({});
 	root_id=Categories.insert({ name: "Inicio", shortdesc: "Inicio", desc: "Inicio", parent: null});
 	
 	up_id=Categories.insert({ name: "Partes de arriba", shortdesc: "Partes de arriba", desc: "Partes de arriba Partes de arriba Partes de arriba", parent: root_id});
@@ -30,18 +31,21 @@ Template.install.rendered=function() {
 				price: "24,50"
 			},{
 				name: "Camiseta azul",
-				quantity: "2",
 				unit_price: "22,00",
 				unit_discount: {
 					name: "Oferta San Valentín",
 					type: "amount",
 					value: "10"
 				},
-				price: "44,00",
+				final_unit_price: "12,00",
+				quantity: "2",
+				price: "24,00",
 				discount: {
+					name: "Oferta de 10€ menos en 2x1",
 					type: "amount",
 					value: "10"
-				}
+				},
+				final_price: "14,00"
 			},{
 				name: "Vestido fiesta rosa palo",
 				quantity: "1",

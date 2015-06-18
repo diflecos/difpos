@@ -64,6 +64,12 @@ Router.route('/fullperson/:_id', function() {
 
 /*******************  ORDERS **************************/
 Router.route('/order/create', function() {
+	currentOrder={
+		currency: PARAMS.CURRENCY,
+		order_items: [],
+		final_price: "0.00"
+	}
+	Session.set('currentOrder',currentOrder);
 	this.render('order_layout');
 },{
 	name: 'order_create'

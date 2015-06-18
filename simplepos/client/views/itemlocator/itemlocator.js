@@ -90,6 +90,13 @@ Template.categorySelector.events({
 Template.category_form.helpers({
 	categorySelected: function() {
 		return Session.get("selectedCategory");
+	},
+	reductionTypesOptions: function() {
+		var options="<option value=\"\" selected=\"selected\">No Reduction</option>";
+		for(var i=0;i<OPTIONS.REDUCTION_TYPE.length;i++) {
+			options+="<option value=\""+OPTIONS.REDUCTION_TYPE[i].value+"\">"+OPTIONS.REDUCTION_TYPE[i].label+"</option>"; 
+		}
+		return options;
 	}
 });
 
@@ -101,6 +108,7 @@ Template.category_form.events({
 		quantity=$("#order_item_quantity").val();
 		currentOrder=Session.get("currentOrder");
 		currentOrder.order_items.push({"name": name, "unit_price": unit_price, "quantity": quantity, "price": quantity*unit_price});
+		currentOrder.final_price=Math.round(parseFloat(currentOrder.final_price)+quantity*unit_price*100)/100;
 		Session.set("currentOrder",currentOrder);
 	}
 });
