@@ -91,24 +91,100 @@ Template.category_form.helpers({
 	categorySelected: function() {
 		return Session.get("selectedCategory");
 	},
-	reductionTypesOptions: function() {
-		var options="<option value=\"\" selected=\"selected\">No Reduction</option>";
-		for(var i=0;i<OPTIONS.REDUCTION_TYPE.length;i++) {
-			options+="<option value=\""+OPTIONS.REDUCTION_TYPE[i].value+"\">"+OPTIONS.REDUCTION_TYPE[i].label+"</option>"; 
-		}
-		return options;
+	reductionTypes: function() {
+		return OPTIONS.REDUCTION_TYPE;
+	},
+	specialOffersForItems: function() {
+		return SpecialOffers.find({applies_to: "item"});
+	},
+	specialOffersForOrderItems: function() {
+		return SpecialOffers.find({applies_to: "order_item"});
 	}
 });
 
 Template.category_form.events({
 	"click #add_order_item": function(event) {
 		event.preventDefault();
+		
 		name=$("#order_item_name").val();
 		unit_price=$("#order_item_unit_price").val();
+		unit_discount_name=$("#unit_discount_name").val();
+		unit_discount_value=$("#unit_discount_value").val();
+		unit_discount_reduction_type=$("#unit_discount_reduction_type").val();
 		quantity=$("#order_item_quantity").val();
+		order_item_discount_name=$("#order_item_discount_name").val();
+		order_item_discount_value=$("#order_item_discount_value").val();
+		order_item_discount_reduction_type=$("#order_item_discount_reduction_type").val();
+		
+		if(unit_discount_value>0) {
+			if(unit_discount_reduction_type=="Amount")
+				final_unit_price=unit_price-unit_discount_value;
+			else if(unit_discount_reduction_type=="Percentage")
+				final_unit_price=unit_price*(100-unit_discount_value)/100;
+		} else {
+			final_unit_price=unit_price;
+		}
+		
+		price=quantity*final_unit_price;
+		
+		if(order_item_discount_value>0) {
+			if(order_item_discount_reduction_type=="Amount")
+				final_price=price-order_item_discount_value;
+			else if(order_item_discount_reduction_type=="Percentage")
+				final_price=price*(100-order_item_discount_value)/100;
+		} else {
+			final_price=price;
+		}
+
+		index=currentOrder.order_items.length==0?0:currentOrder.order_items[currentOrder.order_items.length-1].index+1;
+		
 		currentOrder=Session.get("currentOrder");
-		currentOrder.order_items.push({"name": name, "unit_price": unit_price, "quantity": quantity, "price": quantity*unit_price});
-		currentOrder.final_price=Math.round(parseFloat(currentOrder.final_price)+quantity*unit_price*100)/100;
+		currentOrder.order_items.push({
+			"index": index,
+			"name": name, 
+			"unit_price": unit_price, 
+			"unit_discount": {
+				"name": unit_discount_name,
+				"type": unit_discount_reduction_type,
+				"value": unit_discount_value 
+			},
+			"final_unit_price": final_unit_price,
+			"quantity": quantity, 
+			"price": price,
+			"discount": {
+				"name": order_item_discount_name,
+				"type": order_item_discount_reduction_type,
+				"value": order_item_discount_value 
+			},
+			"final_price": final_price			
+		});
+		currentOrder.final_price=Math.round(parseFloat(currentOrder.final_price)+final_price*100)/100;
 		Session.set("currentOrder",currentOrder);
+	}, 
+	"change #unit_special_offer_selector": function(event) {
+		special_offer_id=event.target.value;
+		special_offer=SpecialOffers.findOne({_id: special_offer_id});
+		if(special_offer!=undefined) {
+			$("#unit_discount_name").val(special_offer.name);
+			$("#unit_discount_value").val(special_offer.value);
+			$("#unit_discount_reduction_type").val(special_offer.reduction_type);
+		} else {
+			$("#unit_discount_name").val("");
+			$("#unit_discount_value").val("");
+			$("#unit_discount_reduction_type").val("");		
+		}
+	}, 
+	"change #order_item_special_offer_selector": function(event) {
+		special_offer_id=event.target.value;
+		special_offer=SpecialOffers.findOne({_id: special_offer_id});
+		if(special_offer!=undefined) {
+			$("#order_item_discount_name").val(special_offer.name);
+			$("#order_item_discount_value").val(special_offer.value);
+			$("#order_item_discount_reduction_type").val(special_offer.reduction_type);
+		} else {
+			$("#order_item_discount_name").val("");
+			$("#order_item_discount_value").val("");
+			$("#order_item_discount_reduction_type").val("");		
+		}
 	}
 });

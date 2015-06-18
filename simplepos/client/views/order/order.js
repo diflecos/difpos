@@ -1,6 +1,5 @@
 Template.order.helpers({
 	currency_symbol: function() {
-		currentOrder=Session.get("currentOrder");
 		return currentOrder.currency.symbol;
 	},
 	order_items: function() {
@@ -33,5 +32,32 @@ Template.order_item.helpers({
 			currentOrder=Session.get("currentOrder");
 			return "-"+this.discount.value+currentOrder.currency.symbol;
 		}	
+	},
+	position: function() {
+		return ;
+	}
+});
+
+Template.order_item.events({
+	"click a.add1": function(event) {
+		var index=event.currentTarget.dataset.index;	
+
+	},
+	"click a.del1": function(event) {
+		var index=event.currentTarget.dataset.index;	
+	
+	},
+	"click a.del": function(event) {
+		var index=event.currentTarget.dataset.index;    
+		currentOrder=Session.get("currentOrder");
+		for(var i=0;i<currentOrder.order_items.length;i++) {
+			if(currentOrder.order_items[i].index==index)
+				currentOrder.order_items.splice(i,1);
+		}
+		Session.set("currentOrder",currentOrder);
+	},
+	"click a.edit": function(event) {
+		var index=event.currentTarget.dataset.index;	
+	
 	}
 });

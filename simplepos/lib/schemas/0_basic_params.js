@@ -80,7 +80,7 @@ VALUES.SPECIAL_OFFER_TYPE=OPTIONS.SPECIAL_OFFER_TYPE.map(function(item,i) { retu
 
 OPTIONS.REDUCTION_TYPE=[  
 	{label: 'Amount', value: 'Amount'},
-	{label: 'Percentaqe', value: 'Percentaqe'},
+	{label: 'Percentage', value: 'Percentage'},
 ];
 VALUES.REDUCTION_TYPE=OPTIONS.REDUCTION_TYPE.map(function(item,i) { return item.value; });
 
