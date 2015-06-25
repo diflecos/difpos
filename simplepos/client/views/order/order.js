@@ -1,3 +1,5 @@
+
+
 Template.order.helpers({
 	currency_symbol: function() {
 		return currentOrder.currency.symbol;
@@ -41,11 +43,19 @@ Template.order_item.helpers({
 Template.order_item.events({
 	"click a.add1": function(event) {
 		var index=event.currentTarget.dataset.index;	
+		currentOrder=Session.get("currentOrder");
 
 	},
 	"click a.del1": function(event) {
 		var index=event.currentTarget.dataset.index;	
-	
+		currentOrder=Session.get("currentOrder");	
+		order_item=currentOrder.order_items[index];		
+		if(order_item.quantity>1) {
+			order_item.quantity++;
+			order_item.price=order_item.final_unit_price*order_item.quantity;
+			
+		}
+		Session.set("currentOrder",currentOrder);
 	},
 	"click a.del": function(event) {
 		var index=event.currentTarget.dataset.index;    

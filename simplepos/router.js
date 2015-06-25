@@ -1,6 +1,5 @@
 modal={};   // variable global que se usa para guardar la view generada por Blaze.render de cada modal que mostramos para poder luego hacer el Blaze.remove(modal) correspondiente
 
-
 Router.configure({
 	layoutTemplate: 'layout',
     loadingTemplate: 'loading',
