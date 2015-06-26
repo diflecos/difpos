@@ -8,7 +8,6 @@ function Discount(name,type,value) {
 	this.name=name;
 	this.type=type;
 	this.value=value;
-	this.next_index=0;
 }
 
 Discount.prototype.getDiscountedPrice=function(price) {
@@ -43,56 +42,124 @@ Discount.prototype.getDiscountedPrice=function(price) {
 	},
 	final_price: "14,00"
 */
-function OrderItem(index,name,unit_price,unit_discount,quantity,discount) {
-	this.index=index;
+
+function OrderItem(name,unit_price,unit_discount,quantity,discount) {
 	this.name=name;
 	this.unit_price=unit_price;
 	this.unit_discount=unit_discount;
-	this.final_unit_price=unit_discount.getDiscountedPrice(unit_price);
 	this.quantity=quantity;
-	this.price=this.final_unit_price*this.quantity;
 	this.discount=discount;
-	this.final_price=discount.getDiscountedPrice(this.price);
+	
+	this.updatePrices();
+}
+
+OrderItem.prototype.updatePrices=function() {
+	this.final_unit_price=(this.unit_discount!=undefined)?this.unit_discount.getDiscountedPrice(this.unit_price):this.unit_price;
+	this.price=this.final_unit_price*this.quantity;
+	this.final_price=(this.discount!=undefined)?this.discount.getDiscountedPrice(this.price):this.price;
+}
+
+OrderItem.prototype.add1=function() {
+	this.quantity++;
+	this.updatePrices();	
+}
+
+OrderItem.prototype.del1=function() {
+	if(this.quantity>1) {
+		this.quantity--;
+		this.updatePrices();			
+	}
 }
 
 function Order(currency) {
 	this.currency=currency;
-	this.order_items=new Array();
+	this.order_items=[];
 	this.final_price=0;
+	this.next_index=0;
 }
 
 Order.prototype.sessionSave=function(key) {
 	Session.set(key,this);
 }
 
-Order.prototype.add_order_item=function(order_item) {
-
+Order.prototype.updateFinalPrice=function() {
+	this.final_price=0;
+	for(var i=0;i<this.order_items.length;i++) {
+		this.final_price+=this.order_items[i].final_price;
+	}
+	
+	if(this.discount!=undefined) {
+		this.final_price=this.discount.getDiscountedPrice(this.final_price);
+	}
 }
 
-Order.prototype.del_order_item=function(index) {
+Order.prototype.addOrderItem=function(order_item) {
+	order_item.index=this.next_index++;
+	this.order_items.push(order_item);
+	this.updateFinalPrice();
+}
 
+Order.prototype.delOrderItem=function(index) {
+	var arrayIndex;
+	for(var i=0;i<this.order_items.length;i++) {
+		if(this.order_items[i].index==index) {
+			arrayIndex=i;
+			break;
+		}
+	}
+	if(arrayIndex!=undefined) {
+		this.order_items.splice(arrayIndex,1);
+		this.updateFinalPrice();
+	}
+}
+
+Order.prototype.add1=function(index) {
+	var arrayIndex;
+	for(var i=0;i<this.order_items.length;i++) {
+		if(this.order_items[i].index==index) {
+			this.order_items[i].add1();
+			this.updateFinalPrice();
+			break;
+		}
+	}
+}
+
+Order.prototype.del1=function(index) {
+	var arrayIndex;
+	for(var i=0;i<this.order_items.length;i++) {
+		if(this.order_items[i].index==index) {
+			this.order_items[i].del1();
+			this.updateFinalPrice();
+			break;
+		}
+	}
+}
+
+Order.prototype.addDiscount=function(discount) {
+	this.discount=discount;
+	this.updateFinalPrice();
 }
 
 
 /*************************   EJEMPLO   *************************
-// Define a class like this
-function Person(name, gender){
+currency=new Currency("Euro","EUR","€");
+order=new Order(currency);
+unit_discount=new Discount("Rebajas 30% en pantalones","percentage",30);
+orderItem0=new OrderItem("Pantalón azul",10,unit_discount,1,undefined);
+orderItem1=new OrderItem("Pantalón verde",12,unit_discount,2,undefined);
+orderItem2=new OrderItem("Pantalón azul",15,undefined,1,undefined);
+order.addOrderItem(orderItem0);
+order.addOrderItem(orderItem1);
+order.addOrderItem(orderItem2);
+console.log(order.final_price);  // 7 + 2*8.4 + 15 = 38.8
+order.delOrderItem(1);
+console.log(order.final_price);  // 7 + 15 = 22
+order_discount=new Discount("Descuento por cliente fiel","percentage",10);
+order.addDiscount(order_discount);
+console.log(order.final_price);  // 22 - 10% = 19.8
+order.add1(2);  
+console.log(order.final_price);  // (7 + 15*2) - 10% = 33.3
 
-   // Add object properties like this
-   this.name = name;
-   this.gender = gender;
-}
-
-// Add methods like this.  All Person objects will be able to invoke this
-Person.prototype.speak = function(){
-    alert("Howdy, my name is" + this.name);
-};
-
-// Instantiate new objects with 'new'
-var person = new Person("Bob", "M");
-
-// Invoke methods like this
-person.speak(); // alerts "Howdy, my name is Bob"
 *************************   EJEMPLO   *************************/
 
 /*
