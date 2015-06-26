@@ -43,6 +43,9 @@ Discount.prototype.getDiscountedPrice=function(price) {
 	final_price: "14,00"
 */
 
+/* 
+Cada OrderItem dentro de un Order irá identificada por un index. Este index se inicializa en el momento de añadir el OrderItem al Order (a partir de la variable next_index del Order) y ya no cambia nunca más. Es decir, si borramos un OrderItem no vamos a re-indexar los que quedan ni nada. 
+*/
 function OrderItem(name,unit_price,unit_discount,quantity,discount) {
 	this.name=name;
 	this.unit_price=unit_price;
@@ -64,6 +67,7 @@ OrderItem.prototype.add1=function() {
 	this.updatePrices();	
 }
 
+/* Este método no hace nada cuando la cantidad es 1, para que se produzca el decremento la cantidad inicial tiene que ser de 2 o más */
 OrderItem.prototype.del1=function() {
 	if(this.quantity>1) {
 		this.quantity--;
@@ -71,6 +75,11 @@ OrderItem.prototype.del1=function() {
 	}
 }
 
+/* 
+FALTA: hay que encontrar una solución para mostrar y almacenar los precios siempre en el formato XXX.XX 
+La solución empleando toFixed(2) no funciona porque convierte los números a strings y genera errores al realizar cálculos posteriores --> se podría solventar con un parseFloat antes de utilizar cualquier precio para un cálculo
+Otra posibilidad es almacenar todas las cantidades multiplicadas por 100 y guardar este 100 como un atributo en el Currency --> el problema es que parece complicar un poco los cálculos, habría que mirarlo bien --> lo bueno de esta opción es que parece más precisa que la anterior)
+*/
 function Order(currency) {
 	this.currency=currency;
 	this.order_items=[];
