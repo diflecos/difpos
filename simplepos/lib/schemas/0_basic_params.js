@@ -79,8 +79,8 @@ OPTIONS.SPECIAL_OFFER_TYPE=[
 VALUES.SPECIAL_OFFER_TYPE=OPTIONS.SPECIAL_OFFER_TYPE.map(function(item,i) { return item.value; });
 
 OPTIONS.REDUCTION_TYPE=[  
-	{label: 'Amount', value: 'Amount'},
-	{label: 'Percentage', value: 'Percentage'},
+	{label: '€', value: 'Amount'},
+	{label: '%', value: 'Percentage'},
 ];
 VALUES.REDUCTION_TYPE=OPTIONS.REDUCTION_TYPE.map(function(item,i) { return item.value; });
 
