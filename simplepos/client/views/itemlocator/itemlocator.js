@@ -116,50 +116,22 @@ Template.category_form.events({
 		order_item_discount_value=$("#order_item_discount_value").val();
 		order_item_discount_reduction_type=$("#order_item_discount_reduction_type").val();
 		
-		if(unit_discount_value>0) {
-			if(unit_discount_reduction_type=="Amount")
-				final_unit_price=unit_price-unit_discount_value;
-			else if(unit_discount_reduction_type=="Percentage")
-				final_unit_price=unit_price*(100-unit_discount_value)/100;
+		if(unit_discount_value>0 && unit_discount_reduction_type!="") {
+			unit_discount=new Discount(unit_discount_name,unit_discount_reduction_type,unit_discount_value);
 		} else {
-			final_unit_price=unit_price;
+			unit_discount=undefined;
 		}
 		
-		price=quantity*final_unit_price;
-		
-		if(order_item_discount_value>0) {
-			if(order_item_discount_reduction_type=="Amount")
-				final_price=price-order_item_discount_value;
-			else if(order_item_discount_reduction_type=="Percentage")
-				final_price=price*(100-order_item_discount_value)/100;
+		if(order_item_discount_value>0 && order_item_discount_reduction_type!="") {
+			order_item_discount=new Discount(order_item_discount_name,order_item_discount_reduction_type,order_item_discount_value);
 		} else {
-			final_price=price;
+			order_item_discount=undefined;
 		}
-
-		index=currentOrder.order_items.length==0?0:currentOrder.order_items[currentOrder.order_items.length-1].index+1;
 		
-		currentOrder=Session.get("currentOrder");
-		currentOrder.order_items.push({
-			"index": index,
-			"name": name, 
-			"unit_price": unit_price, 
-			"unit_discount": {
-				"name": unit_discount_name,
-				"type": unit_discount_reduction_type,
-				"value": unit_discount_value 
-			},
-			"final_unit_price": final_unit_price,
-			"quantity": quantity, 
-			"price": price,
-			"discount": {
-				"name": order_item_discount_name,
-				"type": order_item_discount_reduction_type,
-				"value": order_item_discount_value 
-			},
-			"final_price": final_price			
-		});
-		currentOrder.final_price=Math.round(parseFloat(currentOrder.final_price)+final_price*100)/100;
+		order_item=new OrderItem(name,unit_price,unit_discount,quantity,order_item_discount);
+		currentOrder.addOrderItem(order_item);
 		Session.set("currentOrder",currentOrder);
+		$("#beep")[0].play();
 	}, 
 	"change #unit_special_offer_selector": function(event) {
 		special_offer_id=event.target.value;

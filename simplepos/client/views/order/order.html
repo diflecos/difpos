@@ -1,4 +1,7 @@
 <template name="order">
+	<audio id="beep" src="../audio/beep.wav" preload="auto" autostart="false"></audio>
+	<audio id="remove" src="../audio/remove.wav" preload="auto" autostart="false"></audio>
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h2>Order details<span class="label label-success pull-right">{{final_price}}{{currency_symbol}}</span></h2>
@@ -15,7 +18,6 @@
 							<th>Discount</th>
 							<th class="text-right">Price</th>
 							<th></th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,7 +29,6 @@
 						<tr>
 							<th colspan="5">Total</th>
 							<th class="text-right">{{final_price}}{{currency_symbol}}</th>
-							<th></th>
 							<th></th>
 						</tr>
 					</tfoot>
@@ -57,7 +58,6 @@
 		<td class="text-right">{{price}}{{currency_symbol}}</td>
 		<td class="text-right">{{discount}}</td>
 		<td class="text-right">{{price}}{{currency_symbol}}</td>
-		<td><a class="edit" href="#" data-index="{{index}}"><span class="glyphicon glyphicon-edit"></span></a></td>
 		<td><a class="del" href="#" data-index="{{index}}"><span class="glyphicon glyphicon-remove"></span></a></td>
 	</tr>	
 </template>

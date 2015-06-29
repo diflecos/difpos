@@ -1,10 +1,10 @@
-function Currency(name,shortname,symbol) {
+Currency=function Currency(name,shortname,symbol) {
 	this.name=name;
 	this.shortname=shortname;
 	this.symbol=symbol;
 }
 
-function Discount(name,type,value) {
+Discount=function Discount(name,type,value) {
 	this.name=name;
 	this.type=type;
 	this.value=value;
@@ -13,10 +13,10 @@ function Discount(name,type,value) {
 Discount.prototype.getDiscountedPrice=function(price) {
 	var discounted_price;
 	switch(this.type) {
-		case "amount": 
+		case "Amount": 
 			discounted_price=price-this.value;
 			break;
-		case "percentage":
+		case "Percentage":
 			discounted_price=price*(1-this.value/100);
 			break;
 	}
@@ -46,7 +46,7 @@ Discount.prototype.getDiscountedPrice=function(price) {
 /* 
 Cada OrderItem dentro de un Order irá identificada por un index. Este index se inicializa en el momento de añadir el OrderItem al Order (a partir de la variable next_index del Order) y ya no cambia nunca más. Es decir, si borramos un OrderItem no vamos a re-indexar los que quedan ni nada. 
 */
-function OrderItem(name,unit_price,unit_discount,quantity,discount) {
+OrderItem=function OrderItem(name,unit_price,unit_discount,quantity,discount) {
 	this.name=name;
 	this.unit_price=unit_price;
 	this.unit_discount=unit_discount;
@@ -80,15 +80,31 @@ FALTA: hay que encontrar una solución para mostrar y almacenar los precios siemp
 La solución empleando toFixed(2) no funciona porque convierte los números a strings y genera errores al realizar cálculos posteriores --> se podría solventar con un parseFloat antes de utilizar cualquier precio para un cálculo
 Otra posibilidad es almacenar todas las cantidades multiplicadas por 100 y guardar este 100 como un atributo en el Currency --> el problema es que parece complicar un poco los cálculos, habría que mirarlo bien --> lo bueno de esta opción es que parece más precisa que la anterior)
 */
-function Order(currency) {
+Order=function Order(currency) {
 	this.currency=currency;
 	this.order_items=[];
 	this.final_price=0;
 	this.next_index=0;
 }
 
-Order.prototype.sessionSave=function(key) {
-	Session.set(key,this);
+/* Estas funciones de toEJSON y fromEJSON son necesarias para que al salvar una Order en la Session y volverla a recuperar que se reconoza como un objeto Order con sus métodos --> sino lo hacemos así se pierden los métodos y no los podemos utilizar porque la Session solo guarda datos 
+Ver http://stackoverflow.com/questions/24504392/meteor-storing-and-retrieving-custom-objects-in-session  para más detalles  */
+Order.fromEJSON=function(ejson) {   
+    var obj = new Order(undefined);
+    obj.currency=ejson.currency;
+    obj.order_items=ejson.order_items;
+	obj.final_price=ejson.final_price;
+	obj.next_index=ejson.next_index;
+    return obj;
+}
+
+Order.prototype.toEJSON=function() {   
+    return {
+		currency: this.currency,
+		order_items: this.order_items,
+		final_price: this.final_price,
+		next_index: this.next_index,
+    };
 }
 
 Order.prototype.updateFinalPrice=function() {
@@ -231,3 +247,6 @@ var order = {
 	};
 	
 */
+
+currentOrder={};   // En esta variable global guardamos el currentOrder y es con lo que operamos en cada momento. Cuando queremos refrescar la pantalla con los nuevos datos, simplemente salvamos este objeto en la Session y los templates que dependan de esa variable de Session se actualizarán
+
