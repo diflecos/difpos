@@ -71,6 +71,13 @@ Router.route('/order/create', function() {
 },{
 	name: 'order_create'
 });
+
+Router.route('/order/payment', function() {
+	this.render('order_payment');
+},{
+	name: 'order_payment'
+});
+	
 	
 	
 

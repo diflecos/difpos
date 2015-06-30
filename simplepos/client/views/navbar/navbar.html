@@ -11,6 +11,7 @@
 			
 			<a href="/fullpersons">Fullpersons</a>
 			<a href="/order/create">New Order</a>
+			<a href="/order/create">Open Cash Drawer</a>
 			
 			<ul class="nav navbar-nav navbar-right">
 				{{> loginButtons}} <!-- here -->
@@ -38,6 +39,10 @@
 			<script>$('#session_start').popover({});</script>
 
 			<p class="navbar-text navbar-right" id="clock">{{currentTime}}</p>	
+			
+			<p class="navbar-text navbar-right">Test Mode
+				<input type="checkbox" id="test_mode">
+			</p>			
 
 			<p class="navbar-text navbar-right">ALCALA402 (1st floor Main)</p>	
 		</div>

@@ -1,0 +1,73 @@
+<template name="payment">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Payment</h2>
+		</div>
+		<div class="panel-body">
+			<ul id="payment-tablist" class="nav nav-tabs">
+				<li><a href="#cash-tab"><span class="glyphicon glyphicon-copyright-mark"></span> Cash</a></li>
+				<li><a href="#credit-card-tab"><span class="glyphicon glyphicon-credit-card"></span> Credit Card</a></li>
+				<li><a href="#coupon-tab"><span class="glyphicon glyphicon-qrcode"></span> Coupon</a></li>
+				<li><a href="#cheque-tab"><span class="glyphicon glyphicon-credit-card"></span> Cheque</a></li>
+			</ul>
+			<div id="payment-content" class="tab-content">
+				<div class="tab-pane fade active in" id="cash-tab">
+					<h3>Cash Transaction</h3>
+					<form id="cash_form" class="form-horizontal">
+						<div  class="form-group">
+							<label for="amount_to_pay" class="col-sm-4 control-label">Amount to pay: </label>
+							<div class="col-sm-8">
+								<input id="amount_to_pay" type="number" min="0" step="0.01" class="form-control" value="{{restToSettle}}">
+							</div>
+						</div>			
+						<div  class="form-group">
+							<label for="customer_gives" class="col-sm-4 control-label">Customer gives: </label>
+							<div class="col-sm-8">
+								<input id="customer_gives" type="number" min="0" step="0.01" class="form-control">
+							</div>
+						</div>	
+						<div  class="form-group">
+							<label for="customer_gives" class="col-sm-4 control-label">To be returned: </label>
+							<div class="col-sm-8">
+								<h3>{{toBeReturned}}</h3>
+							</div>
+						</div>	
+						
+						<div class="col-sm-4"></div>
+						<button id="add_cash_trx" class="btn btn-lg btn-success">Add transaction</button>
+					</form>										
+				</div>	
+				<div class="tab-pane fade" id="credit-card-tab">
+					<h3>Credit Card Transaction</h3>
+					<form id="credit_card_form" class="form-horizontal">
+						<div  class="form-group">
+							<label for="amount_to_pay" class="col-sm-4 control-label">Amount to pay: </label>
+							<div class="col-sm-8">
+								<input id="amount_to_pay" type="number" min="0" step="0.01" class="form-control" value="{{restToSettle}}">
+							</div>
+						</div>						
+						
+						<div class="col-sm-4"></div>
+						<button id="add_credit_card_trx" class="btn btn-lg btn-success">Add transaction</button>
+					</form>		
+				</div>
+				<div class="tab-pane fade" id="coupon-tab">
+					<h3>Enter coupon</h3>
+					<form class="form-inline" role="search">
+						<input type="text" class="form-control" placeholder="Enter coupon code">
+						<span class="label label-success">BA009X229923</span>
+						<button type="submit" class="btn btn-primary">Add</Button>
+					</form>		
+				</div>
+				<div class="tab-pane fade" id="cheque-tab">
+					<h3>Enter cheque data</h3>
+					<form class="form-inline" role="search">
+						<input type="text" class="form-control" placeholder="Enter coupon code">
+						<span class="label label-success">BA009X229923</span>
+						<button type="submit" class="btn btn-primary">Add</Button>
+					</form>		
+				</div>								
+			</div>
+		</div>					
+	</div>
+</template>

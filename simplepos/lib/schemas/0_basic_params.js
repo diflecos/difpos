@@ -7,6 +7,7 @@ PARAMS.DATE_FORMAT='DD/MM/YYYY';
 
 /* qué tab queremos que se muestre por defecto en el itemlocator para seleccionar items. Valores posibles: 'category'|'qrcode'|'search'|'browse'|'manual'  Por defecto qrcode */
 PARAMS.ITEMLOCATOR_DEFAULTMETHOD='category';
+PARAMS.PAYMENT_DEFAULTMETHOD='cash';  // 'cash' o 'credit-card'
 PARAMS.CURRENCY={
 	name: "Euro",
 	shortname: "EUR",

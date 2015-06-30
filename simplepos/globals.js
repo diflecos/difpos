@@ -75,6 +75,18 @@ OrderItem.prototype.del1=function() {
 	}
 }
 
+CashPaymentDetails=function CashPaymentDetails(given,cashed) {
+	this.given=given;
+	this.cashed=cashed;
+	this.returned=given-cashed;
+}
+
+PaymentTrx=function PaymentTrx(type,paid,details) {
+	this.type=type;
+	this.paid=paid;
+	this.details=details;
+}
+
 /* 
 FALTA: hay que encontrar una solución para mostrar y almacenar los precios siempre en el formato XXX.XX 
 La solución empleando toFixed(2) no funciona porque convierte los números a strings y genera errores al realizar cálculos posteriores --> se podría solventar con un parseFloat antes de utilizar cualquier precio para un cálculo
@@ -83,8 +95,12 @@ Otra posibilidad es almacenar todas las cantidades multiplicadas por 100 y guard
 Order=function Order(currency) {
 	this.currency=currency;
 	this.order_items=[];
+	this.subtotal=0;
 	this.final_price=0;
 	this.next_index=0;
+	this.payment_trxs=[];
+	this.paid=0;
+	this.settled="No";
 }
 
 /* Estas funciones de toEJSON y fromEJSON son necesarias para que al salvar una Order en la Session y volverla a recuperar que se reconoza como un objeto Order con sus métodos --> sino lo hacemos así se pierden los métodos y no los podemos utilizar porque la Session solo guarda datos 
@@ -108,13 +124,15 @@ Order.prototype.toEJSON=function() {
 }
 
 Order.prototype.updateFinalPrice=function() {
-	this.final_price=0;
+	this.subtotal=0;
 	for(var i=0;i<this.order_items.length;i++) {
-		this.final_price+=this.order_items[i].final_price;
+		this.subtotal+=this.order_items[i].final_price;
 	}
 	
 	if(this.discount!=undefined) {
-		this.final_price=this.discount.getDiscountedPrice(this.final_price);
+		this.final_price=this.discount.getDiscountedPrice(this.subtotal);
+	} else {
+		this.final_price=this.subtotal;
 	}
 }
 
@@ -165,7 +183,28 @@ Order.prototype.addDiscount=function(discount) {
 	this.updateFinalPrice();
 }
 
+Order.prototype.removeDiscount=function() {
+	this.discount=undefined;
+	this.updateFinalPrice();
+}
 
+Order.prototype.updatePaid=function() {
+	this.paid=0;
+	for(var i=0;i<this.payment_trxs.length;i++) {
+		this.paid+=this.payment_trxs[i].paid;
+	}
+	
+	if(this.final_price==this.paid) {
+		this.settled="Yes";
+	} else {
+		this.settled="No";
+	}
+}
+
+Order.prototype.addPaymentTrx=function(payment_trx) {
+	this.payment_trxs.push(payment_trx);
+	this.updatePaid();
+}
 /*************************   EJEMPLO   *************************
 currency=new Currency("Euro","EUR","€");
 order=new Order(currency);
@@ -244,6 +283,18 @@ var order = {
 			value: "10"
 		},
 		final_price: "168,00"
+		payment_trxs: [
+			{
+				type: "Cash",
+				amount: "168,00",
+				details: {
+					given: "200,00",
+					returned: "32,00",
+					cashed: "168,00"
+				}
+			}
+		],
+		paid: "168,00"
 	};
 	
 */
