@@ -208,6 +208,14 @@ Order.prototype.addPaymentTrx=function(payment_trx) {
 	this.payment_trxs.push(payment_trx);
 	this.updatePaid();
 }
+
+Order.prototype.delPaymentTrx=function(i) {
+	if(i!=undefined) {
+		this.payment_trxs.splice(i,1);
+		this.updatePaid();
+	}	
+}
+
 /*************************   EJEMPLO   *************************
 currency=new Currency("Euro","EUR","€");
 order=new Order(currency);

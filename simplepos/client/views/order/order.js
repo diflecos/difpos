@@ -107,21 +107,44 @@ Template.order_item.helpers({
 
 Template.order_item.events({
 	"click a.add1": function(event) {
+		event.preventDefault();
+		
 		var index=event.currentTarget.dataset.index;	
 		currentOrder.add1(index);
 		Session.set("currentOrder",currentOrder);
 		$("#beep")[0].play();
 	},
 	"click a.del1": function(event) {
+		event.preventDefault();
+
 		var index=event.currentTarget.dataset.index;	
 		currentOrder.del1(index);
 		Session.set("currentOrder",currentOrder);	
 		$("#remove")[0].play();		
 	},
 	"click a.del": function(event) {
+		event.preventDefault();
+
 		var index=event.currentTarget.dataset.index;    
 		currentOrder.delOrderItem(index);
 		Session.set("currentOrder",currentOrder);
 		$("#remove")[0].play();		
+	}
+});
+
+Template.payment_trx.helpers({
+	index: function() {
+		return 0; // REVISAR --> bien añadimos un payment_trx_index al Order o bien cuando meteor soporte {{@index}} en los templates lo ponemos
+	}
+});
+
+Template.payment_trx.events({
+	"click #del_payment_trx": function(event) {
+		event.preventDefault();
+		
+		var index=event.currentTarget.dataset.index;	
+		currentOrder.delPaymentTrx(index);
+		Session.set("currentOrder",currentOrder);
+		$("#remove")[0].play();			
 	}
 });

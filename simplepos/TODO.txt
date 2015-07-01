@@ -1,2 +1,5 @@
 - Repasar un poco cómo funcionan los objetos en javascript 
 - Ver cómo podemos definir una Order como un objeto con métodos de tal forma que cuando haya un evento sobre un Order no tengamos que poner todo el código ahí sino simplemente llamar a uno de los métodos --> igual podemos utilizar los Server methods de Meteor???  --> en ppio está en globals.js para poder manejar el currentOrder mientras lo está introduciendo la vendedora sin necesidad de acudir al servidor pero igual no es buena idea por si luego no valida o algo
+
+
+- Los botones de borrar en las filas de una tabla tienen que identificar de alguna manera el index del elemento que hablamos. Lo ideal es que Blaze cuando se encuentre un {{#each}} pase a lo de dentro el index pero esto no funciona {{@index}} de momento en meteor.  Mientras arreglan este tema en meteor hay que añadir un index a cada elemento de un array de objetos (por ejemplo los OrderItems de un Order o los PaymentTrxs). El rollo es que esta gestión de los index es un poco coñazo. 
