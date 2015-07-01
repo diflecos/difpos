@@ -61,11 +61,11 @@ Template.itemlocator.events({
 		Session.set("selectedCategory",catname)
 		aux=Session.get("categorySelection");	
 		categorySelection=new Array();
-		for(var i=0;i<aux.length;i++) {
+		$.each(aux,function(i,value) {
 			if(aux[i].level<=level) {
 				categorySelection.push(aux[i]);
-			}
-		}
+			}		
+		});
 		Session.set("categorySelection",categorySelection);
 	}
 });

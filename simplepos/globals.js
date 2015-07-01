@@ -124,10 +124,11 @@ Order.prototype.toEJSON=function() {
 }
 
 Order.prototype.updateFinalPrice=function() {
-	this.subtotal=0;
-	for(var i=0;i<this.order_items.length;i++) {
-		this.subtotal+=this.order_items[i].final_price;
-	}
+	var subtotal=0;
+	$.each(this.order_items,function(i,order_item) {
+		subtotal+=order_item.final_price;
+	});
+	this.subtotal=subtotal;
 	
 	if(this.discount!=undefined) {
 		this.final_price=this.discount.getDiscountedPrice(this.subtotal);
@@ -144,12 +145,13 @@ Order.prototype.addOrderItem=function(order_item) {
 
 Order.prototype.delOrderItem=function(index) {
 	var arrayIndex;
-	for(var i=0;i<this.order_items.length;i++) {
-		if(this.order_items[i].index==index) {
+	$.each(this.order_items,function(i,order_item) {
+		if(order_item.index==index) {
 			arrayIndex=i;
-			break;
+			return false;
 		}
-	}
+	});
+	
 	if(arrayIndex!=undefined) {
 		this.order_items.splice(arrayIndex,1);
 		this.updateFinalPrice();
@@ -158,24 +160,24 @@ Order.prototype.delOrderItem=function(index) {
 
 Order.prototype.add1=function(index) {
 	var arrayIndex;
-	for(var i=0;i<this.order_items.length;i++) {
-		if(this.order_items[i].index==index) {
-			this.order_items[i].add1();
-			this.updateFinalPrice();
-			break;
-		}
-	}
+	$.each(this.order_items,function(i,order_item) {   
+		if(order_item.index==index) {
+			order_item.add1();
+			return false;
+		}	
+	});
+	this.updateFinalPrice();	
 }
 
 Order.prototype.del1=function(index) {
 	var arrayIndex;
-	for(var i=0;i<this.order_items.length;i++) {
-		if(this.order_items[i].index==index) {
-			this.order_items[i].del1();
-			this.updateFinalPrice();
-			break;
+	$.each(this.order_items,function(i,order_item) {
+		if(order_item.index==index) {
+			order_item.del1();
+			return false;
 		}
-	}
+	});
+	this.updateFinalPrice();
 }
 
 Order.prototype.addDiscount=function(discount) {
@@ -189,10 +191,11 @@ Order.prototype.removeDiscount=function() {
 }
 
 Order.prototype.updatePaid=function() {
-	this.paid=0;
-	for(var i=0;i<this.payment_trxs.length;i++) {
-		this.paid+=this.payment_trxs[i].paid;
-	}
+	var paid=0;
+	$.each(this.payment_trxs,function(i,payment_trx) {
+		paid+=payment_trx.paid;	
+	});
+	this.paid=paid; 
 	
 	if(this.final_price==this.paid) {
 		this.settled="Yes";
