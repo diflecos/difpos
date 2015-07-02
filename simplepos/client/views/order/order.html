@@ -70,7 +70,13 @@
 			{{/if}}
 		</div>
 		<div class="panel-heading">
-			<h2>Payment details<span class="label label-success pull-right">{{UI_final_price}}</span></h2>
+			<h2>To be paid
+			{{#if isSettled}} 
+				<span class="label label-success pull-right">PAID!</span>
+			{{else}} 
+				<span class="label label-danger pull-right">{{restToSettle}}</span>
+			{{/if}}
+			</h2>
 		</div>		
 		<div class="panel-body">
 			{{#if isTherePayments}}
@@ -106,6 +112,7 @@
 					<a href="pos_bootstrap_selectperson.html" class="btn btn-success btn-lg">Customer Data</a>	
 				{{else}}
 					<a class="btn btn-success btn-lg" id="btn_payment" href="/order/payment">Payment</a>
+					<a class="btn btn-success btn-lg" id="btn_comments" href="/order/comments">Add Comments</a>
 					<a class="btn btn-success btn-lg" id="btn_add_product" >Add Product</a>
 				{{/if}}			
 					<a class="btn btn-danger btn-lg" href="/">Cancel</a>

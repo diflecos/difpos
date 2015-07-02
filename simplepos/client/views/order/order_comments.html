@@ -1,0 +1,21 @@
+<template name="order_comments">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Order comments</h2>
+		</div>
+		<div class="panel-body">
+			<form id="comments_form">
+				<h3>Public comments</h3>
+				<textarea id="public_comment" class="form-control" rows="5" placeholder="Careful! The text input here will be printed on the customer's receipt!"></textarea>
+
+				<h3>Private comments</h3>
+				<textarea id="private_comment" class="form-control" rows="5" placeholder="Private notes regarding this order"></textarea>
+				
+				<p></p>
+				<div class="text-center">
+					<button id="add_comments" class="btn btn-lg btn-success text-center">Add comments</button>
+				</div>
+			</form>
+		</div>					
+	</div>
+</template>	

@@ -6,7 +6,9 @@ Order=function Order(currency) {
 	this.next_index=0;
 	this.payment_trxs=[];
 	this.paid=0;
-	this.settled="No";
+	this.is_settled=false;
+	this.public_comment="";
+	this.private_comment="";
 }
 
 /* Estas funciones de toEJSON y fromEJSON son necesarias para que al salvar una Order en la Session y volverla a recuperar que se reconoza como un objeto Order con sus métodos --> sino lo hacemos así se pierden los métodos y no los podemos utilizar porque la Session solo guarda datos 
@@ -105,9 +107,9 @@ Order.prototype.updatePaid=function() {
 	this.paid=paid; 
 	
 	if(this.final_price==this.paid) {
-		this.settled="Yes";
+		this.is_settled=true;
 	} else {
-		this.settled="No";
+		this.is_settled=false;
 	}
 }
 

@@ -78,7 +78,12 @@ Router.route('/order/payment', function() {
 	name: 'order_payment'
 });
 	
-	
+Router.route('/order/comments', function() {
+	this.render('order_comments_layout');
+},{
+	name: 'order_comments'
+});
+		
 	
 
 /*******************  INSTALL **************************/

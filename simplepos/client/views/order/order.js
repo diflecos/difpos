@@ -56,6 +56,14 @@ Template.order.helpers({
 	},
 	reductionTypes: function() {
 		return OPTIONS.REDUCTION_TYPE;
+	},
+	isSettled: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.is_settled;
+	},
+	restToSettle: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return store.currency.convertUI(currentOrderInSession.final_price-currentOrderInSession.paid);
 	}
 });
 

@@ -3,3 +3,6 @@
 
 
 - Los botones de borrar en las filas de una tabla tienen que identificar de alguna manera el index del elemento que hablamos. Lo ideal es que Blaze cuando se encuentre un {{#each}} pase a lo de dentro el index pero esto no funciona {{@index}} de momento en meteor.  Mientras arreglan este tema en meteor hay que añadir un index a cada elemento de un array de objetos (por ejemplo los OrderItems de un Order o los PaymentTrxs). El rollo es que esta gestión de los index es un poco coñazo. 
+
+- Desdoblar los métodos de pago para que no se muestren las pestañas (de momento no hay necesidad ya que no aceptamos ni cheques ni cupones y seguramente en esos casos puede ser que quepa todo de todas formas. Se evita un click la dependienta.
+
