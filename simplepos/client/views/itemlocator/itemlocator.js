@@ -108,25 +108,46 @@ Template.category_form.events({
 		
 		name=$("#order_item_name").val();
 		unit_price=$("#order_item_unit_price").val();
+		unit_price=currentOrder.currency.convertDB(unit_price);
 		unit_discount_name=$("#unit_discount_name").val();
-		unit_discount_value=$("#unit_discount_value").val();
 		unit_discount_reduction_type=$("#unit_discount_reduction_type").val();
+		unit_discount_value=$("#unit_discount_value").val();
 		quantity=$("#order_item_quantity").val();
 		order_item_discount_name=$("#order_item_discount_name").val();
 		order_item_discount_value=$("#order_item_discount_value").val();
 		order_item_discount_reduction_type=$("#order_item_discount_reduction_type").val();
 		
-		if(unit_discount_value>0 && unit_discount_reduction_type!="") {
-			unit_discount=new Discount(unit_discount_name,unit_discount_reduction_type,unit_discount_value);
+		if(unit_discount_value>0) {
+			switch(unit_discount_reduction_type) {
+				case "Amount":
+					unit_discount=new AmountDiscount(unit_discount_name,currentOrder.currency.convertDB(unit_discount_value));				
+					break;
+				case "Percentage":
+					unit_discount=new PercentageDiscount(unit_discount_name,unit_discount_value);				
+					break;
+				default:
+					unit_discount=undefined;				
+					break;
+			}
 		} else {
 			unit_discount=undefined;
 		}
 		
-		if(order_item_discount_value>0 && order_item_discount_reduction_type!="") {
-			order_item_discount=new Discount(order_item_discount_name,order_item_discount_reduction_type,order_item_discount_value);
+		if(order_item_discount_value>0) {
+			switch(order_item_discount_reduction_type) {
+				case "Amount":
+					order_item_discount=new AmountDiscount(order_item_discount_name,currentOrder.currency.convertDB(order_item_discount_value));				
+					break;
+				case "Percentage":
+					order_item_discount=new PercentageDiscount(order_item_discount_name,order_item_discount_value);				
+					break;
+				default:
+					order_item_discount=undefined;				
+					break;
+			}
 		} else {
 			order_item_discount=undefined;
-		}
+		}		
 		
 		order_item=new OrderItem(name,unit_price,unit_discount,quantity,order_item_discount);
 		currentOrder.addOrderItem(order_item);

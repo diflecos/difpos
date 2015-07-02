@@ -11,7 +11,8 @@ PARAMS.PAYMENT_DEFAULTMETHOD='cash';  // 'cash' o 'credit-card'
 PARAMS.CURRENCY={
 	name: "Euro",
 	shortname: "EUR",
-	symbol: "€"
+	symbol: "€",
+	precision: 2
 };
 
 OPTIONS.GENDER=[

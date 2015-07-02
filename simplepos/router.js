@@ -64,7 +64,7 @@ Router.route('/fullperson/:_id', function() {
 
 /*******************  ORDERS **************************/
 Router.route('/order/create', function() {
-	currency=new Currency("Euro","EUR","€");
+	currency=store.currency;
 	currentOrder=new Order(currency);
 	Session.set('currentOrder',currentOrder);
 	this.render('order_layout');

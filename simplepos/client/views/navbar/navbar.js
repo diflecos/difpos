@@ -5,6 +5,9 @@ Template.navbar.rendered = function() {
 };
 
 Template.navbar.helpers({
+	store_name: function() {
+		return store.name;
+	},
 	clientIP: function() {
 		Meteor.call('getIP', function(error, result){
 			if(error){

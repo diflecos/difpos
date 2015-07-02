@@ -1,5 +1,3 @@
-
-
 Template.order.helpers({
 	currency_symbol: function() {
 		currentOrderInSession=Session.get("currentOrder");
@@ -45,13 +43,16 @@ Template.order.helpers({
 			return "-"+currentOrderInSession.discount.value+currentOrderInSession.currency.symbol;
 		}	
 	},
-	subtotal: function() {
+	UI_subtotal: function() {
 		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.subtotal;
+		return currentOrder.currency.convertUI(currentOrderInSession.subtotal);
 	},
-	final_price: function() {
+	UI_discount: function() {
+		return currentOrderInSession.discount.display;
+	},
+	UI_final_price: function() {
 		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.final_price;
+		return currentOrder.currency.convertUI(currentOrderInSession.final_price);
 	},
 	reductionTypes: function() {
 		return OPTIONS.REDUCTION_TYPE;
@@ -65,9 +66,19 @@ Template.order.events({
 		var discount_name=$("#discount_name").val();
 		var discount_value=$("#discount_value").val();
 		var discount_reduction_type=$("#discount_reduction_type").val();		
-
-		if(discount_value>0 && discount_reduction_type!="") {
-			discount=new Discount(discount_name,discount_reduction_type,discount_value);
+		
+		if(discount_value>0) {
+			switch(discount_reduction_type) {
+				case "Amount":
+					discount=new AmountDiscount(discount_name,currentOrder.currency.convertDB(discount_value));				
+					break;
+				case "Percentage":
+					discount=new PercentageDiscount(discount_name,discount_value);				
+					break;
+				default:
+					discount=undefined;				
+					break;
+			}
 		} else {
 			discount=undefined;
 		}
@@ -80,28 +91,31 @@ Template.order.events({
 		currentOrder.removeDiscount();
 		Session.set("currentOrder",currentOrder);
 		$("#remove")[0].play();	
+	},
+	"click #add_product": function(event) {
+		event.preventDefault();
+		
 	}
 });
 
 Template.order_item.helpers({
-	currency_symbol: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.currency.symbol;
+	UI_unit_price: function() {
+		return currentOrder.currency.convertUI(this.unit_price);
 	},
-	order_item_discount: function() {  // --> REVISAR: deberíamos referenciar a los datos en el currentOrderInSession, no?
-		currentOrderInSession=Session.get("currentOrder");	
-		if(this.discount==undefined) 
-			return "";
-		
-		if(this.discount.type=="Percentage")
-			return "-"+this.discount.value+"%";
-			
-		if(this.discount.type=="Amount") {
-			return "-"+this.discount.value+currentOrderInSession.currency.symbol;
-		}	
+	UI_unit_discount: function() {
+		return (this.unit_discount!=undefined)?this.unit_discount.display:"";
 	},
-	position: function() {
-		return ;
+	UI_final_unit_price: function() {
+		return currentOrder.currency.convertUI(this.final_unit_price);
+	},
+	UI_price: function() {
+		return currentOrder.currency.convertUI(this.price);
+	},
+	UI_order_item_discount: function() {
+		return (this.discount!=undefined)?this.discount.display:"";
+	},
+	UI_final_price: function() {
+		return currentOrder.currency.convertUI(this.final_price);
 	}
 });
 
@@ -133,6 +147,9 @@ Template.order_item.events({
 });
 
 Template.payment_trx.helpers({
+	UI_paid: function() {
+		return currentOrder.currency.convertUI(this.paid);
+	},
 	index: function() {
 		return 0; // REVISAR --> bien añadimos un payment_trx_index al Order o bien cuando meteor soporte {{@index}} en los templates lo ponemos
 	}
