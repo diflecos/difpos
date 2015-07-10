@@ -89,6 +89,12 @@ Router.route('/order/print', function() {
 },{
 	name: 'order_print'
 });
+
+Router.route('/order/gift_print', function() {
+	this.render('gift_invoice');
+},{
+	name: 'order_gift_print'
+});
 		
 	
 
