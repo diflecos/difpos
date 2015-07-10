@@ -4,46 +4,46 @@
 
 	<div class="panel panel-default col-sm-4">
 		<div class="panel-body">
-			<br/>
-			<br/>
-			<br/>
+			<br>
+			<br>
+			<br>
 			<div class="text-center">
 				<img src="http://www.balzaqtallasgrandes.com/img/balzaq-logo-14278057861.jpg"/>
 				<p>www.balzaq.com</p>
-				<p>Tfno de atención al cliente: 910144408</p>
-				<p>contacto@balzaq.com</p>
+				<address>
+					<small>				
+						Tfno de atención al cliente: 910144408<br>
+						contacto@balzaq.com
+					</small>
+				</address>				
 			</div>
-			<div class="text-center">
-				<p>Diflecos Commerce S.L.</p>
-				<p>B86407590</p>
-				<p>C/Francisco Madariaga, 2 - 2ºC</p>
-				<p>MADRID - 28017</p>
-			</div>
-			<br/>
-			<div class="text-center">
-				<p>Balzaq Alcalá</p>
-				<p>C/Alcalá, 402</p>
-				<p>MADRID - 28027</p>
-			</div>
-			<br/>
+
 			<div class="text-center">
 				<img src="http://www.wired.com/images_blogs/magazine/2013/04/qrcode_f.jpg" width="120px"/>
 				<p><strong>abs80s032i2ll2qww8e</strong></p>
 			</div>
-			<br/>
+
 			<div class="text-center">
-				<p>Fecha de compra: 17/08/2015 11:48</p>
-				<p>Le atendió: Lorena</p>
+				<p><small>Fecha de compra: 17/08/2015 11:48</small></p>
+				<p><small>Le atendió: Lorena</small></p>
+				<address>
+					<small>			
+						Tienda Balzaq Alcalá<br>
+						C/Alcalá, 402<br>
+						MADRID - 28027<br>
+						Tfno: 910144408
+					</small>
+				</address>				
 			</div>
-			<br/>
+
 			{{#if isThereOrderItems}}
 				<table class="table table-condensed">
 					<thead>
 						<tr>
-							<th>Item</th>
-							<th class="text-center" colspan="3">UPrice</th>
-							<th class="text-center">#</th>
-							<th class="text-center" colspan="3">Price</th>
+							<th><small><strong>Item</strong></small></th>
+							<th class="text-center" colspan="3"><small><strong>UPrice</strong></small></th>
+							<th class="text-center"><small><strong>#</strong></small></th>
+							<th class="text-center" colspan="3"><small><strong>Price</strong></small></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,8 +53,8 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<th colspan="7">Subtotal</th>
-							<th class="text-right">{{UI_subtotal}}</th>
+							<th colspan="7"><small><strong>Subtotal</strong></small></th>
+							<th class="text-right"><small><strong>{{UI_subtotal}}</strong></small></th>
 						</tr>
 						<tr>
 							{{#if isThereDiscount}}
@@ -99,6 +99,16 @@
 			{{/if}}			
 
 			<div class="text-center">
+				<address>
+					<small>
+						Diflecos Commerce S.L. (B86407590)<br>
+						C/Francisco Madariaga, 2 - 2ºC<br>
+						MADRID - 28017
+					</small>
+				</address>
+			</div>
+
+			<div class="text-center">
 				<hr>
 				<p><strong>¡¡¡PROMOCIÓN 2X1!!!</strong></p>
 				<p>Del 1 al 15 de marzo todos nuestros artículos se beneficiarán de un descuento: llévese dos y pague 1</p>
@@ -124,14 +134,14 @@
 
 <template name="invoice_order_item">
 	<tr>
-		<td>{{name}}</td>
-		<td class="text-right">{{UI_unit_price}}</td>
-		<td class="text-right">{{UI_unit_discount}}</td>
-		<td class="text-right">{{UI_final_unit_price}}</td>
-		<td class="text-center">{{quantity}}</td>
-		<td class="text-right">{{UI_price}}</td>
-		<td class="text-right">{{UI_order_item_discount}}</td>
-		<td class="text-right">{{UI_final_price}}</td>
+		<td><small>{{name}}</small></td>
+		<td class="text-right"><small>{{UI_unit_price}}</small></td>
+		<td class="text-right"><small>{{UI_unit_discount}}</small></td>
+		<td class="text-right"><small>{{UI_final_unit_price}}</small></td>
+		<td class="text-center"><small>{{quantity}}</small></td>
+		<td class="text-right"><small>{{UI_price}}</small></td>
+		<td class="text-right"><small>{{UI_order_item_discount}}</small></td>
+		<td class="text-right"><small>{{UI_final_price}}</small></td>
 	</tr>	
 </template>
 
