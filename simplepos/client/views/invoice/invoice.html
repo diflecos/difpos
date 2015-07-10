@@ -1,0 +1,144 @@
+<template name="invoice">
+	<audio id="beep" src="../audio/beep.wav" preload="auto" autostart="false"></audio>
+	<audio id="remove" src="../audio/remove.wav" preload="auto" autostart="false"></audio>
+
+	<div class="panel panel-default col-sm-4">
+		<div class="panel-body">
+			<br/>
+			<br/>
+			<br/>
+			<div class="text-center">
+				<img src="http://www.balzaqtallasgrandes.com/img/balzaq-logo-14278057861.jpg"/>
+				<p>www.balzaq.com</p>
+				<p>Tfno de atención al cliente: 910144408</p>
+				<p>contacto@balzaq.com</p>
+			</div>
+			<div class="text-center">
+				<p>Diflecos Commerce S.L.</p>
+				<p>B86407590</p>
+				<p>C/Francisco Madariaga, 2 - 2ºC</p>
+				<p>MADRID - 28017</p>
+			</div>
+			<br/>
+			<div class="text-center">
+				<p>Balzaq Alcalá</p>
+				<p>C/Alcalá, 402</p>
+				<p>MADRID - 28027</p>
+			</div>
+			<br/>
+			<div class="text-center">
+				<img src="http://www.wired.com/images_blogs/magazine/2013/04/qrcode_f.jpg" width="120px"/>
+				<p><strong>abs80s032i2ll2qww8e</strong></p>
+			</div>
+			<br/>
+			<div class="text-center">
+				<p>Fecha de compra: 17/08/2015 11:48</p>
+				<p>Le atendió: Lorena</p>
+			</div>
+			<br/>
+			{{#if isThereOrderItems}}
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th class="text-center" colspan="3">UPrice</th>
+							<th class="text-center">#</th>
+							<th class="text-center" colspan="3">Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each order_items}}
+							{{>invoice_order_item}}
+						{{/each}}					
+					</tbody>
+					<tfoot>
+						<tr>
+							<th colspan="7">Subtotal</th>
+							<th class="text-right">{{UI_subtotal}}</th>
+						</tr>
+						<tr>
+							{{#if isThereDiscount}}
+							<th colspan="7">{{discountName}}</th>
+							<th class="text-right">{{UI_discount}}</th>
+							{{/if}}
+						</tr>
+						<tr>
+							<th colspan="7">Total</th>
+							<th class="text-right">{{UI_final_price}}</th>
+						</tr>
+					</tfoot>
+				</table>	
+			{{else}}
+				<h1>No items yet in this order</h1>
+			{{/if}}
+
+			{{#if isTherePayments}}
+			<h3>Pagado</h3>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Transaction Type</th>
+						<th>Details</th>
+						<th class="text-right">Amount</th>
+					</tr>
+				</thead>
+				<tbody>			
+					{{#each payment_trxs}}
+						{{>invoice_payment_trx}}
+					{{/each}}			
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="2">Total</th>
+						<th class="text-right">{{UI_paid}}</th>
+					</tr>					
+				</tfoot>
+			</table>
+			{{else}}
+				<h1>No items yet in this order</h1>
+			{{/if}}			
+
+			<div class="text-center">
+				<hr>
+				<p><strong>¡¡¡PROMOCIÓN 2X1!!!</strong></p>
+				<p>Del 1 al 15 de marzo todos nuestros artículos se beneficiarán de un descuento: llévese dos y pague 1</p>
+				<p>No acumulable a otros descuentos</p>
+				<hr>
+			</div>			
+			
+			<div class="text-center">
+				<hr>
+				<p><strong>GRACIAS POR SU COMPRA</strong></p>
+				<p>Conserve este ticket para posibles devoluciones</p>
+				<p>Plazo de devolución: 10 días</p>
+				<hr>
+			</div>			
+		</div>
+		<div class="panel-footer text-right">
+			<div class="btn-group">		
+				<a class="btn btn-danger btn-lg" href="/">Back</a>
+			</div>						
+		</div>
+	</div>
+</template>	
+
+<template name="invoice_order_item">
+	<tr>
+		<td>{{name}}</td>
+		<td class="text-right">{{UI_unit_price}}</td>
+		<td class="text-right">{{UI_unit_discount}}</td>
+		<td class="text-right">{{UI_final_unit_price}}</td>
+		<td class="text-center">{{quantity}}</td>
+		<td class="text-right">{{UI_price}}</td>
+		<td class="text-right">{{UI_order_item_discount}}</td>
+		<td class="text-right">{{UI_final_price}}</td>
+	</tr>	
+</template>
+
+<template name="invoice_payment_trx">
+	<tr>
+		<td>{{type}}</td>
+		<td>{{details}}</td>
+		<td class="text-right">{{UI_paid}}</td>
+	</tr>
+</template>

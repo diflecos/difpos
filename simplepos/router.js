@@ -84,6 +84,12 @@ Router.route('/order/comments', function() {
 	name: 'order_comments'
 });
 		
+Router.route('/order/print', function() {
+	this.render('invoice');
+},{
+	name: 'order_print'
+});
+		
 	
 
 /*******************  INSTALL **************************/
