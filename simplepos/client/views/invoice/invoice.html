@@ -8,7 +8,7 @@
 			<br>
 			<br>
 			<div class="text-center">
-				<img src="http://www.balzaqtallasgrandes.com/img/balzaq-logo-14278057861.jpg"/>
+				<img src="http://www.balzaqtallasgrandes.com/img/balzaq-logo-14278057861.jpg" width="60%"/>
 				<p>www.balzaq.com</p>
 				<address>
 					<small>				
@@ -19,13 +19,6 @@
 			</div>
 
 			<div class="text-center">
-				<img src="http://www.wired.com/images_blogs/magazine/2013/04/qrcode_f.jpg" width="120px"/>
-				<p><strong>abs80s032i2ll2qww8e</strong></p>
-			</div>
-
-			<div class="text-center">
-				<p><small>Fecha de compra: 17/08/2015 11:48</small></p>
-				<p><small>Le atendió: Lorena</small></p>
 				<address>
 					<small>			
 						Tienda Balzaq Alcalá<br>
@@ -36,44 +29,49 @@
 				</address>				
 			</div>
 
-			{{#if isThereOrderItems}}
-				<table class="table table-condensed">
-					<thead>
-						<tr>
-							<th><small><strong>Item</strong></small></th>
-							<th class="text-center" colspan="3"><small><strong>UPrice</strong></small></th>
-							<th class="text-center"><small><strong>#</strong></small></th>
-							<th class="text-center" colspan="3"><small><strong>Price</strong></small></th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#each order_items}}
-							{{>invoice_order_item}}
-						{{/each}}					
-					</tbody>
-					<tfoot>
-						<tr>
-							<th colspan="7"><small><strong>Subtotal</strong></small></th>
-							<th class="text-right"><small><strong>{{UI_subtotal}}</strong></small></th>
-						</tr>
-						<tr>
-							{{#if isThereDiscount}}
-							<th colspan="7">{{discountName}}</th>
-							<th class="text-right">{{UI_discount}}</th>
-							{{/if}}
-						</tr>
-						<tr>
-							<th colspan="7">Total</th>
-							<th class="text-right">{{UI_final_price}}</th>
-						</tr>
-					</tfoot>
-				</table>	
-			{{else}}
-				<h1>No items yet in this order</h1>
-			{{/if}}
+			<div class="text-center">
+				<img src="http://www.wired.com/images_blogs/magazine/2013/04/qrcode_f.jpg" width="30%"/>
+				<p><strong>abs80s032i2ll2qww8e</strong></p>
+			</div>
+			
+			<div>
+					<p><small>Fecha de compra: 17/08/2015 11:48</small></p>
+					<p><small>Le atendió: Lorena</small></p>
+			</div>
 
-			{{#if isTherePayments}}
-			<h3>Pagado</h3>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th><small><strong>Item</strong></small></th>
+						<th class="text-center" colspan="3"><small><strong>UPrice</strong></small></th>
+						<th class="text-center"><small><strong>#</strong></small></th>
+						<th class="text-center" colspan="3"><small><strong>Price</strong></small></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each order_items}}
+						{{>invoice_order_item}}
+					{{/each}}					
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="7"><small><strong>Subtotal</strong></small></th>
+						<th class="text-right"><small><strong>{{UI_subtotal}}</strong></small></th>
+					</tr>
+					<tr>
+						{{#if isThereDiscount}}
+						<th colspan="7">{{discountName}}</th>
+						<th class="text-right">{{UI_discount}}</th>
+						{{/if}}
+					</tr>
+					<tr>
+						<th colspan="7">Total</th>
+						<th class="text-right">{{UI_final_price}}</th>
+					</tr>
+				</tfoot>
+			</table>	
+
+			<p><strong>PAGADO</strong></p>
 			<table class="table table-condensed">
 				<thead>
 					<tr>
@@ -94,34 +92,34 @@
 					</tr>					
 				</tfoot>
 			</table>
-			{{else}}
-				<h1>No items yet in this order</h1>
-			{{/if}}			
+
+			<hr>
+
+			<div class="text-center">
+				<p><strong>¡¡¡PROMOCIÓN 2X1!!!</strong></p>
+				<p>Del 1 al 15 de marzo todos nuestros artículos se beneficiarán de un descuento: llévese dos y pague 1</p>
+				<p>No acumulable a otros descuentos</p>
+			</div>			
+
+			<hr>
+			
+			<div class="text-center">
+				<p><strong>GRACIAS POR SU COMPRA</strong></p>
+				<p><small>
+					Conserve este ticket para posibles devoluciones<br>
+					Plazo de devolución: 10 días
+				</small></p>
+			</div>	
+
+			<hr>
 
 			<div class="text-center">
 				<address>
 					<small>
 						Diflecos Commerce S.L. (B86407590)<br>
-						C/Francisco Madariaga, 2 - 2ºC<br>
-						MADRID - 28017
+						C/Francisco Madariaga, 2 - 2ºC		MADRID - 28017
 					</small>
 				</address>
-			</div>
-
-			<div class="text-center">
-				<hr>
-				<p><strong>¡¡¡PROMOCIÓN 2X1!!!</strong></p>
-				<p>Del 1 al 15 de marzo todos nuestros artículos se beneficiarán de un descuento: llévese dos y pague 1</p>
-				<p>No acumulable a otros descuentos</p>
-				<hr>
-			</div>			
-			
-			<div class="text-center">
-				<hr>
-				<p><strong>GRACIAS POR SU COMPRA</strong></p>
-				<p>Conserve este ticket para posibles devoluciones</p>
-				<p>Plazo de devolución: 10 días</p>
-				<hr>
 			</div>			
 		</div>
 		<div class="panel-footer text-right">
