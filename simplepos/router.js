@@ -84,6 +84,12 @@ Router.route('/order/comments', function() {
 	name: 'order_comments'
 });
 		
+Router.route('/order/order_view', function() {
+	this.render('order_view');
+},{
+	name: 'order_view'
+});
+		
 Router.route('/order/print', function() {
 	this.render('invoice');
 },{

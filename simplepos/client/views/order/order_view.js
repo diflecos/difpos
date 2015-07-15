@@ -1,4 +1,4 @@
-Template.order.helpers({
+Template.order_view.helpers({
 	currency_symbol: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.currency.symbol;
@@ -99,12 +99,7 @@ Template.order.events({
 	"click #add_product": function(event) {
 		event.preventDefault();
 		
-	},
-	"click #btn_save_order": function(event) {
-		event.preventDefault();
-		Router.go("/order/view");
 	}
-	
 });
 
 Template.order_item.helpers({

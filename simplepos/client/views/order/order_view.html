@@ -1,4 +1,4 @@
-<template name="order">
+<template name="order_view">
 	<audio id="beep" src="../audio/beep.wav" preload="auto" autostart="false"></audio>
 	<audio id="remove" src="../audio/remove.wav" preload="auto" autostart="false"></audio>
 
@@ -15,7 +15,6 @@
 							<th class="text-center" colspan="3">Unit Price</th>
 							<th class="text-center">Quantity</th>
 							<th class="text-center" colspan="3">Price</th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -107,15 +106,8 @@
 		</div>
 		<div class="panel-footer text-right">
 			<div class="btn-group">
-				{{#if isOrderSettled}}
-				<a class="btn btn-success btn-lg" id="btn_save_order">Save</a>
-				{{else}}
-					{{#if isThereOrderItems}}
-					<a class="btn btn-success btn-lg" id="btn_payment" href="/order/payment">Payment</a>
-					{{/if}}	
-				{{/if}}	
-				<a class="btn btn-success btn-lg" id="btn_comments" href="/order/comments">Add Comments</a>
-				<a class="btn btn-success btn-lg" href="/person/search">Customer Data</a>			
+				<a href="/order/print" class="btn btn-success btn-lg">Print Ticket</a>						
+				<a href="/order/gift_print" class="btn btn-success btn-lg">Ticket Regalo</a>						
 				<a class="btn btn-danger btn-lg" href="/">Cancel</a>
 			</div>						
 		</div>
@@ -128,15 +120,10 @@
 		<td class="text-right">{{UI_unit_price}}</td>
 		<td class="text-right">{{UI_unit_discount}}</td>
 		<td class="text-right">{{UI_final_unit_price}}</td>
-		<td class="text-center">
-			<a class="add1" href="#" data-index="{{index}}"><span class="glyphicon glyphicon-plus-sign"></span></a>
-			{{quantity}}
-			<a class="del1" href="#" data-index="{{index}}"><span class="glyphicon glyphicon-minus-sign"></span></a>
-		</td>
+		<td class="text-center">{{quantity}}</td>
 		<td class="text-right">{{UI_price}}</td>
 		<td class="text-right">{{UI_order_item_discount}}</td>
 		<td class="text-right">{{UI_final_price}}</td>
-		<td><a class="del" href="#" data-index="{{index}}"><span class="glyphicon glyphicon-remove text-danger"></span></a></td>
 	</tr>	
 </template>
 
