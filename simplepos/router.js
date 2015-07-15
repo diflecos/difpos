@@ -10,6 +10,10 @@ Router.route('/',function () {
     this.render('login');
 });
 
+Router.route('/welcome',function () {
+    this.render('welcome');
+});
+
 Router.route('/fullpersons', {
 	template: 'fullpersons_index'
 },{
@@ -102,7 +106,24 @@ Router.route('/order/gift_print', function() {
 	name: 'order_gift_print'
 });
 		
+Router.route('/order/search', function() {
+	this.render('order_search');
+},{
+	name: 'order_search'
+});		
 	
+Router.route('/cash/check', function() {
+	this.render('cash_check');
+},{
+	name: 'cash_check'
+});		
+
+Router.route('/cash/inout', function() {
+	this.render('cash_inout');
+},{
+	name: 'cash_inout'
+});		
+
 
 /*******************  INSTALL **************************/
 Router.route('/install', function() {

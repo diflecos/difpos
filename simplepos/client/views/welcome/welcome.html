@@ -9,9 +9,10 @@
 						</div>
 						<div class="panel-body">
 							<div class="btn-group-vertical center-block">
-								<a href="pos_bootstrap_newsale.html" class="btn btn-success btn-lg">New sale</a>
+								<a href="/order/create" class="btn btn-success btn-lg">New order</a>
+								<a href="/order/search" class="btn btn-success btn-lg">Search order</a>
 								<a href="" class="btn btn-primary btn-lg">Reservation</a>
-								<a href="pos_bootstrap_product.html" class="btn btn-primary btn-lg">Check product</a>
+								<a href="/product/search" class="btn btn-primary btn-lg">Check product</a>
 								<div class="btn-group">
 									<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
 									Annulations <span class="caret"></span>
@@ -26,10 +27,10 @@
 									<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
 									Cash <span class="caret"></span>
 									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#" data-toggle="modal" data-target="#modalCashInOut">In</a></li>
-										<li><a href="#" data-toggle="modal" data-target="#modalCashInOut">Out</a></li>
-										<li><a href="pos_bootstrap_cash_check.html">Check</a></li>
+									<ul class="dropdown-menu">
+										<li><a href="/cash/inout">In</a></li>
+										<li><a href="/cash/inout">Out</a></li>
+										<li><a href="/cash/check">Check</a></li>
 									</ul>
 								</div>
 								<div class="btn-group">
@@ -41,6 +42,9 @@
 										<li><a href="#">Send</a></li>
 									</ul>
 								</div>
+								<a href="/fullpersons" class="btn btn-success btn-lg">Search person</a>
+								<a href="/fullperson/create" class="btn btn-success btn-lg">Create person</a>
+								<a href="#" class="btn btn-success btn-lg">Open cash drawer</a>
 							</div>
 						</div>				
 					</div>
