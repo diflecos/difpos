@@ -153,7 +153,12 @@ Template.category_form.events({
 		currentOrder.addOrderItem(order_item);
 		Session.set("currentOrder",currentOrder);
 		$("#beep")[0].play();
+		$("#category_form")[0].reset();
 	}, 
+	"click #reset_category_form": function(event) {
+		event.preventDefault();
+		$("#category_form")[0].reset();
+	},
 	"change #unit_special_offer_selector": function(event) {
 		special_offer_id=event.target.value;
 		special_offer=SpecialOffers.findOne({_id: special_offer_id});

@@ -71,7 +71,7 @@
 		</div>
 		<div class="panel-heading">
 			<h2>To be paid
-			{{#if isSettled}} 
+			{{#if isOrderSettled}} 
 				<span class="label label-success pull-right">PAID!</span>
 			{{else}} 
 				<span class="label label-danger pull-right">{{restToSettle}}</span>
@@ -112,9 +112,10 @@
 					<a href="/order/gift_print" class="btn btn-success btn-lg">Ticket Regalo</a>						
 					<a href="pos_bootstrap_selectperson.html" class="btn btn-success btn-lg">Customer Data</a>	
 				{{else}}
+					{{#if isThereOrderItems}}
 					<a class="btn btn-success btn-lg" id="btn_payment" href="/order/payment">Payment</a>
+					{{/if}}	
 					<a class="btn btn-success btn-lg" id="btn_comments" href="/order/comments">Add Comments</a>
-					<a class="btn btn-success btn-lg" id="btn_add_product" >Add Product</a>
 				{{/if}}			
 					<a class="btn btn-danger btn-lg" href="/">Cancel</a>
 			</div>						
