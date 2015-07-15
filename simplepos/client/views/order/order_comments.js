@@ -6,6 +6,7 @@ Template.order_comments.events({
 		currentOrder.private_comment=$("#private_comment").val();
 		
 		Session.set("currentOrder",currentOrder);
-		Blaze.render('order_layout');
+//		Blaze.render('order_layout');
+		$("#beep")[0].play();	
 	}
 });

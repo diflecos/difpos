@@ -6,3 +6,5 @@
 
 - Desdoblar los métodos de pago para que no se muestren las pestañas (de momento no hay necesidad ya que no aceptamos ni cheques ni cupones y seguramente en esos casos puede ser que quepa todo de todas formas. Se evita un click la dependienta.
 
+- En la grabación del order definir mejor un único layout base y usar Template.dynamic para cambiar el itemlocator por el PaymentLocator o el CommentLocator
+http://docs.meteor.com/#/full/template_dynamic

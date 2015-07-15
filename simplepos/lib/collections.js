@@ -1,7 +1,10 @@
+
+Orders=new Mongo.Collection("orders");
 SpecialOffers = new Mongo.Collection("special_offers");
 Categories = new Mongo.Collection("categories");
 FullPersons = new Mongo.Collection("fullpersons");
 FullPersons.attachSchema(Schemas.FullPerson);
+
 
 
 

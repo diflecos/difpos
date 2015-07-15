@@ -15,6 +15,22 @@ Template.order_view.helpers({
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.order_items.length>0;
 	},
+	isTherePublicComment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.public_comment!="";
+	}, 
+	isTherePrivateComment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.private_comment!="";
+	},
+	public_comment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.public_comment;
+	},
+	private_comment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.private_comment;
+	}, 
 	isTherePayments: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.payment_trxs.length>0;
@@ -63,46 +79,11 @@ Template.order_view.helpers({
 	}
 });
 
-Template.order.events({
-	"click #add_discount": function(event) {
-		event.preventDefault();
-	
-		var discount_name=$("#discount_name").val();
-		var discount_value=$("#discount_value").val();
-		var discount_reduction_type=$("#discount_reduction_type").val();		
-		
-		if(discount_value>0) {
-			switch(discount_reduction_type) {
-				case "Amount":
-					discount=new AmountDiscount(discount_name,currentOrder.currency.convertDB(discount_value));				
-					break;
-				case "Percentage":
-					discount=new PercentageDiscount(discount_name,discount_value);				
-					break;
-				default:
-					discount=undefined;				
-					break;
-			}
-		} else {
-			discount=undefined;
-		}
-		
-		currentOrder.addDiscount(discount);
-		Session.set("currentOrder",currentOrder);
-	},
-	"click #del_discount": function(event) {  
-		event.preventDefault();
-		currentOrder.removeDiscount();
-		Session.set("currentOrder",currentOrder);
-		$("#remove")[0].play();	
-	},
-	"click #add_product": function(event) {
-		event.preventDefault();
-		
-	}
+Template.order_view.events({
+
 });
 
-Template.order_item.helpers({
+Template.view_order_item.helpers({
 	UI_unit_price: function() {
 		return currentOrder.currency.convertUI(this.unit_price);
 	},
@@ -123,34 +104,8 @@ Template.order_item.helpers({
 	}
 });
 
-Template.order_item.events({
-	"click a.add1": function(event) {
-		event.preventDefault();
-		
-		var index=event.currentTarget.dataset.index;	
-		currentOrder.add1(index);
-		Session.set("currentOrder",currentOrder);
-		$("#beep")[0].play();
-	},
-	"click a.del1": function(event) {
-		event.preventDefault();
 
-		var index=event.currentTarget.dataset.index;	
-		currentOrder.del1(index);
-		Session.set("currentOrder",currentOrder);	
-		$("#remove")[0].play();		
-	},
-	"click a.del": function(event) {
-		event.preventDefault();
-
-		var index=event.currentTarget.dataset.index;    
-		currentOrder.delOrderItem(index);
-		Session.set("currentOrder",currentOrder);
-		$("#remove")[0].play();		
-	}
-});
-
-Template.payment_trx.helpers({
+Template.view_order_payment_trx.helpers({
 	UI_paid: function() {
 		return currentOrder.currency.convertUI(this.paid);
 	},
@@ -160,12 +115,5 @@ Template.payment_trx.helpers({
 });
 
 Template.payment_trx.events({
-	"click #del_payment_trx": function(event) {
-		event.preventDefault();
-		
-		var index=event.currentTarget.dataset.index;	
-		currentOrder.delPaymentTrx(index);
-		Session.set("currentOrder",currentOrder);
-		$("#remove")[0].play();			
-	}
+
 });

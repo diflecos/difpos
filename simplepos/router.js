@@ -88,8 +88,20 @@ Router.route('/order/comments', function() {
 	name: 'order_comments'
 });
 		
-Router.route('/order/order_view', function() {
-	this.render('order_view');
+Router.route('/order/view/:_id', function() {
+	var orderId=this.params._id;
+	var order;
+	Meteor.call('viewOrder', orderId, function(error, result){
+		// TODO: ver qué hacemos en caso de error!
+		order = result;
+		if(order==undefined) {
+			FlashMessages.sendError('no order was found with id '+orderId);
+			Router.go(Session.get('onCancel'));	
+		} else {
+			Session.set("currentOrder",order);
+		}				
+	});			
+	this.render("order_view");
 },{
 	name: 'order_view'
 });

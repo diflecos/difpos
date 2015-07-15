@@ -19,6 +19,22 @@ Template.order.helpers({
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.payment_trxs.length>0;
 	},
+	isTherePublicComment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.public_comment!="";
+	}, 
+	isTherePrivateComment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.private_comment!="";
+	},
+	public_comment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.public_comment;
+	},
+	private_comment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.private_comment;
+	}, 
 	isOrderSettled: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.is_settled;
@@ -102,9 +118,12 @@ Template.order.events({
 	},
 	"click #btn_save_order": function(event) {
 		event.preventDefault();
-		Router.go("/order/view");
+		Meteor.call('addOrder', currentOrder, function(error, result){
+			// TODO: ver qué hacemos en caso de error!
+			var orderId = result;
+			Router.go("/order/view/"+orderId);
+		});				
 	}
-	
 });
 
 Template.order_item.helpers({

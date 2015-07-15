@@ -1,4 +1,8 @@
 Template.invoice.helpers({
+	id: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession._id;		
+	},
 	currency_symbol: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.currency.symbol;

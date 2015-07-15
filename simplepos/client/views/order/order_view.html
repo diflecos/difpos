@@ -19,7 +19,7 @@
 					</thead>
 					<tbody>
 						{{#each order_items}}
-							{{>order_item}}
+							{{>view_order_item}}
 						{{/each}}					
 					</tbody>
 					<tfoot>
@@ -33,28 +33,6 @@
 							<th colspan="7">{{discountName}}</th>
 							<th class="text-right">{{UI_discount}}</th>
 							<th><a id="del_discount" href="#"><span class="glyphicon glyphicon-remove text-danger"></span></a></th>
-							{{else}}
-							<th>Discount</th>
-							<th colspan="9">
-								<form id="discount_form" class="form-horizontal">
-									<div class="form-group">
-										<div class="input-group">
-											<input id="discount_name" type="text" class="form-control" placeholder="Name of discount"  style="width: 170px">	
-											<span class="input-group-addon">-</span>
-											<input id="discount_value" type="number" class="form-control" min="0" max="100" step="1" style="width: 70px">
-											<select class="form-control" id="discount_reduction_type" style="width: 66px">
-												<option value=""></option>
-												{{#each reductionTypes}}
-												<option value="{{value}}">{{label}}</option>
-												{{/each}}
-											</select>	
-											<span class="input-group-btn">
-												<button class="btn btn-success" id="add_discount">Add it!</button>									
-											</span>	
-										</div>	
-									</div>				
-								</form>
-							</th>
 							{{/if}}
 						</tr>
 						<tr>
@@ -89,19 +67,29 @@
 				</thead>
 				<tbody>			
 					{{#each payment_trxs}}
-						{{>payment_trx}}
+						{{>view_order_payment_trx}}
 					{{/each}}			
 				</tbody>
 				<tfoot>
 					<tr>
 						<th colspan="2">Total</th>
 						<th class="text-right">{{UI_paid}}</th>
-						<th></th>
 					</tr>					
 				</tfoot>
 			</table>
 			{{else}}
 				<h1>No items yet in this order</h1>
+			{{/if}}			
+
+			{{#if isTherePublicComment}}
+				<div class="alert alert-warning">
+					<strong>Public:</strong> {{public_comment}}
+				</div>			
+			{{/if}}	
+			{{#if isTherePrivateComment}}
+				<div class="alert alert-success">
+					<strong>Private:</strong> {{private_comment}}
+				</div>			
 			{{/if}}			
 		</div>
 		<div class="panel-footer text-right">
@@ -114,7 +102,7 @@
 	</div>
 </template>	
 
-<template name="order_item">
+<template name="view_order_item">
 	<tr>
 		<td>{{name}}</td>
 		<td class="text-right">{{UI_unit_price}}</td>
@@ -127,11 +115,10 @@
 	</tr>	
 </template>
 
-<template name="payment_trx">
+<template name="view_order_payment_trx">
 	<tr>
 		<td>{{type}}</td>
 		<td>{{details}}</td>
 		<td class="text-right">{{UI_paid}}</td>
-		<td><a id="del_payment_trx" href="#" data-index="{{index}}"><span class="glyphicon glyphicon-remove text-danger"></span></a></td>
 	</tr>
 </template>
