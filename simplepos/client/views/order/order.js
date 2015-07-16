@@ -178,6 +178,10 @@ Template.payment_trx.helpers({
 	UI_paid: function() {
 		return currentOrder.currency.convertUI(this.paid);
 	},
+	cash_trx_details: function() {
+		if(this.details!=undefined)	
+			return this.details.displayShort();
+	},
 	index: function() {
 		return 0; // REVISAR --> bien añadimos un payment_trx_index al Order o bien cuando meteor soporte {{@index}} en los templates lo ponemos
 	}

@@ -1,7 +1,63 @@
 Template.invoice.helpers({
+	store_name: function() {
+		return store.name;
+	},
+	store_address_street: function() {
+		return store.address.street;
+	},
+	store_address_town: function() {
+		return store.address.town;
+	},
+	store_address_zipcode: function() {
+		return store.address.zipcode;
+	},
+	store_phone: function() {
+		return store.phone;
+	},
+	brand_logo: function() {
+		return brand.logo;
+	},
+	brand_url: function() {
+		return brand.url;
+	},
+	brand_phone: function() {
+		return brand.phone;
+	},
+	brand_email: function() {
+		return brand.email;
+	},
+	company_tax_name: function() {
+		return company.tax_name;
+	},
+	company_tax_nbr: function() {
+		return company.tax_nbr;
+	},
+	company_tax_address_street: function() {
+		return company.tax_address.street;
+	},
+	company_tax_address_town: function() {
+		return company.tax_address.town;
+	},
+	company_tax_address_zipcode: function() {
+		return company.tax_address.zipcode;
+	},
 	id: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession._id;		
+	},
+	purchase_date: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.purchase_date;
+	},
+	employee_name: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		userId=currentOrderInSession.employee;
+		var user;
+		Meteor.call('viewUser', userId, function(error, result){
+			// TODO: ver qué hacemos en caso de error!
+			user=result;
+		});		
+		return user.username;
 	},
 	currency_symbol: function() {
 		currentOrderInSession=Session.get("currentOrder");
@@ -68,7 +124,15 @@ Template.invoice.helpers({
 	restToSettle: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return store.currency.convertUI(currentOrderInSession.final_price-currentOrderInSession.paid);
-	}
+	},
+	isTherePublicComment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.public_comment!="";
+	},	
+	public_comment: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession.public_comment;
+	} 
 });
 
 Template.order.events({

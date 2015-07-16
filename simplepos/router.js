@@ -98,6 +98,7 @@ Router.route('/order/view/:_id', function() {
 			FlashMessages.sendError('no order was found with id '+orderId);
 			Router.go(Session.get('onCancel'));	
 		} else {
+			currentOrder=order;
 			Session.set("currentOrder",order);
 		}				
 	});			

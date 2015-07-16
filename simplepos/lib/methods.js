@@ -2,7 +2,7 @@ Meteor.methods({
 	addOrder: function (order) {
 	// Make sure the user is logged in before inserting a task
 		if (! Meteor.userId()) {
-		  throw new Meteor.Error("not-authorized");
+			throw new Meteor.Error("not-authorized");
 		}
 
 		orderId=Orders.insert({
@@ -16,6 +16,8 @@ Meteor.methods({
 			is_settled: order.is_settled,
 			public_comment: order.public_comment,
 			private_comment: order.private_comment,
+			purchase_date: new Date(),
+			employee: Meteor.userId(),
 			createdAt: new Date(),
 			udpatedAt: new Date(),
 			createdBy: Meteor.userId(),
@@ -23,6 +25,12 @@ Meteor.methods({
 		});
 		
 		return orderId;
+	},
+	checkOrderId: function(orderId) {
+		if(Orders.findOne({_id: orderId})!=undefined) 
+			return true; 
+		else 
+			return false;
 	},
 	viewOrder: function(orderId) {
 		return Orders.findOne({_id: orderId});

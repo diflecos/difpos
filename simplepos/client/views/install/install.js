@@ -1,4 +1,6 @@
 Template.install.rendered=function() {
+
+
 	Categories.find();
 	root_id=Categories.insert({ name: "Inicio", shortdesc: "Inicio", desc: "Inicio", parent: null});
 	

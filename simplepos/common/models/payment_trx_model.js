@@ -1,5 +1,5 @@
 PaymentTrx=function PaymentTrx(type,paid,details) {
 	this.type=type;
-	this.paid=paid;
+	this.paid=parseInt(paid);
 	this.details=details;
 }
