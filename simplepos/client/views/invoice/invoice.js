@@ -1,19 +1,49 @@
 Template.invoice.helpers({
-	store_name: function() {
-		return store.name;
+	currency_symbol: function() {
+		return this.currency.symbol;
 	},
-	store_address_street: function() {
-		return store.address.street;
+	isNotGiftInvoice: function() {
+		return !this.isGiftInvoice;
 	},
-	store_address_town: function() {
-		return store.address.town;
+	isThereOrderItems: function() {
+		return this.order_items.length>0;
 	},
-	store_address_zipcode: function() {
-		return store.address.zipcode;
+	isTherePayments: function() {
+		return this.payment_trxs.length>0;
 	},
-	store_phone: function() {
-		return store.phone;
+	isOrderSettled: function() {
+		return this.settled=="Yes";
 	},
+	isThereDiscount: function() {
+		return this.discount!=undefined;	
+	},
+	discountName: function() {
+		return this.discount.name;	
+	},
+	reductionTypes: function() {
+		return OPTIONS.REDUCTION_TYPE;
+	},
+	isSettled: function() {
+		return this.is_settled;
+	},
+	restToSettle: function() {
+		return store.currency.convertUI(this.final_price-this.paid);
+	},
+	isTherePublicComment: function() {
+		return this.public_comment!="";
+	},	
+	public_comment: function() {
+		return this.public_comment;
+	} 
+});
+
+Template.order.events({
+	"click #print": function(event) {
+		event.preventDefault();
+	}
+});
+
+Template.invoice_brand.helpers({
 	brand_logo: function() {
 		return brand.logo;
 	},
@@ -25,7 +55,18 @@ Template.invoice.helpers({
 	},
 	brand_email: function() {
 		return brand.email;
-	},
+	}
+});	
+
+/*
+Template.invoice_special_offers.helpers({
+});
+
+Template.invoice_conditions.helpers({
+});
+*/
+
+Template.invoice_company.helpers({
 	company_tax_name: function() {
 		return company.tax_name;
 	},
@@ -40,131 +81,104 @@ Template.invoice.helpers({
 	},
 	company_tax_address_zipcode: function() {
 		return company.tax_address.zipcode;
+	}
+});	
+
+Template.invoice_store.helpers({
+	store_name: function() {
+		return store.name;
 	},
+	store_address_street: function() {
+		return store.address.street;
+	},
+	store_address_town: function() {
+		return store.address.town;
+	},
+	store_address_zipcode: function() {
+		return store.address.zipcode;
+	},
+	store_phone: function() {
+		return store.phone;
+	}
+});
+
+Template.invoice_order_qrcode.helpers({
 	id: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession._id;		
+		return this._id;		
 	},
 	purchase_date: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.purchase_date;
+		return this.purchase_date;
 	},
 	employee_name: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		userId=currentOrderInSession.employee;
+		userId=this.employee;
 		var user;
 		Meteor.call('viewUser', userId, function(error, result){
 			// TODO: ver qué hacemos en caso de error!
 			user=result;
 		});		
 		return user.username;
-	},
-	currency_symbol: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.currency.symbol;
-	},
+	}
+});
+
+Template.invoice_order_items.helpers({
 	order_items: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.order_items;
-	},
-	payment_trxs: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.payment_trxs;
-	},
-	isThereOrderItems: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.order_items.length>0;
-	},
-	isTherePayments: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.payment_trxs.length>0;
-	},
-	isOrderSettled: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.settled=="Yes";
-	},
-	isThereDiscount: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.discount!=undefined;	
-	},
-	discountName: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.discount.name;	
+		return this.order_items;
 	},
 	discount: function() {
-		currentOrderInSession=Session.get("currentOrder");	
-		if(currentOrderInSession.discount==undefined) 
+		if(this.discount==undefined) 
 			return "";
 		
 		if(currentOrderInSession.discount.type=="Percentage")
-			return "-"+currentOrderInSession.discount.value+"%";
+			return "-"+this.discount.value+"%";
 			
 		if(currentOrderInSession.discount.type=="Amount") {
-			return "-"+currentOrderInSession.discount.value+currentOrderInSession.currency.symbol;
+			return "-"+this.discount.value+this.currency.symbol;
 		}	
 	},
 	UI_subtotal: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrder.currency.convertUI(currentOrderInSession.subtotal);
+		return store.currency.convertUI(this.subtotal);
 	},
 	UI_discount: function() {
-		return currentOrderInSession.discount.display;
+		return this.discount.display;
 	},
 	UI_final_price: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrder.currency.convertUI(currentOrderInSession.final_price);
-	},
-	reductionTypes: function() {
-		return OPTIONS.REDUCTION_TYPE;
-	},
-	isSettled: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.is_settled;
-	},
-	restToSettle: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return store.currency.convertUI(currentOrderInSession.final_price-currentOrderInSession.paid);
-	},
-	isTherePublicComment: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.public_comment!="";
-	},	
-	public_comment: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.public_comment;
-	} 
+		return store.currency.convertUI(this.final_price);
+	}	
 });
 
-Template.order.events({
-	"click #print": function(event) {
-		event.preventDefault();
-	}
+Template.invoice_payment_trxs.helpers({
+	payment_trxs: function() {
+		return this.payment_trxs;
+	},
+	UI_paid: function() {
+		return store.currency.convertUI(this.paid);
+	},	
 });
 
 Template.invoice_order_item.helpers({
 	UI_unit_price: function() {
-		return currentOrder.currency.convertUI(this.unit_price);
+		return store.currency.convertUI(this.unit_price);
 	},
 	UI_unit_discount: function() {
 		return (this.unit_discount!=undefined)?this.unit_discount.display:"";
 	},
 	UI_final_unit_price: function() {
-		return currentOrder.currency.convertUI(this.final_unit_price);
+		return store.currency.convertUI(this.final_unit_price);
 	},
 	UI_price: function() {
-		return currentOrder.currency.convertUI(this.price);
+		return store.currency.convertUI(this.price);
 	},
 	UI_order_item_discount: function() {
 		return (this.discount!=undefined)?this.discount.display:"";
 	},
 	UI_final_price: function() {
-		return currentOrder.currency.convertUI(this.final_price);
+		return store.currency.convertUI(this.final_price);
 	}
 });
 
 Template.invoice_payment_trx.helpers({
 	UI_paid: function() {
-		return currentOrder.currency.convertUI(this.paid);
+		return store.currency.convertUI(this.paid);
 	},
 	index: function() {
 		return 0; // REVISAR --> bien añadimos un payment_trx_index al Order o bien cuando meteor soporte {{@index}} en los templates lo ponemos

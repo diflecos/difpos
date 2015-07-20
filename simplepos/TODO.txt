@@ -9,9 +9,6 @@
 - En la grabación del order definir mejor un único layout base y usar Template.dynamic para cambiar el itemlocator por el PaymentLocator o el CommentLocator
 http://docs.meteor.com/#/full/template_dynamic
 
-- Integrar los tickets regalo (gift_invoice.html) en el mismo template que la factura normal (invoice.html) 
-	--> Ponemos varios bloques en distintas subtemplates: invoice_brand, invoice_company, invoice_store, invoice_order
-	--> y simplemente añadimos un if que discrimine en el bloque de invoice_order si solo sale el qrcode o tambien el listado del order
-	
+
 	
 	

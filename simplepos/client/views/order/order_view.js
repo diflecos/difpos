@@ -1,4 +1,8 @@
 Template.order_view.helpers({
+	id: function() {
+		currentOrderInSession=Session.get("currentOrder");
+		return currentOrderInSession._id;		
+	},
 	currency_symbol: function() {
 		currentOrderInSession=Session.get("currentOrder");
 		return currentOrderInSession.currency.symbol;
@@ -109,6 +113,9 @@ Template.view_order_payment_trx.helpers({
 	UI_paid: function() {
 		return currentOrder.currency.convertUI(this.paid);
 	},
+	details: function() {
+		return this.details.displayShort();
+	}, 
 	index: function() {
 		return 0; // REVISAR --> bien añadimos un payment_trx_index al Order o bien cuando meteor soporte {{@index}} en los templates lo ponemos
 	}

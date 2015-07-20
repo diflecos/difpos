@@ -38,9 +38,9 @@ Template.payment.events({
 		event.preventDefault();
 		
 		var paying=$("#amount_to_pay").val();
-		var given=Session.get("customer_gives");
-		var payingDB=currentOrder.currency.convertDB(paying);
-		var givenDB=currentOrder.currency.convertDB(given);
+		var given=$("#customer_gives").val();
+		var payingDB=store.currency.convertDB(paying);
+		var givenDB=store.currency.convertDB(given);
 			
 		var cash_payment_details=new CashPaymentDetails(currentOrder.currency,givenDB,payingDB);
 		var trx=new PaymentTrx("Cash",payingDB,cash_payment_details);
@@ -52,7 +52,7 @@ Template.payment.events({
 		event.preventDefault();
 		
 		var paying=$("#amount_to_pay").val();
-		var payingDB=currentOrder.currency.convertDB(paying);
+		var payingDB=store.currency.convertDB(paying);
 		var trx=new PaymentTrx("CreditCard",payingDB,{});
 
 		currentOrder.addPaymentTrx(trx);
