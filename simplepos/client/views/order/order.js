@@ -1,3 +1,8 @@
+Template.order.rendered=function() {
+	$("#payment_panel_header").hide();
+	$("#payment_panel_body").hide();
+}
+
 Template.order.helpers({
 	currency_symbol: function() {
 		currentOrderInSession=Session.get("currentOrder");
@@ -80,6 +85,12 @@ Template.order.helpers({
 });
 
 Template.order.events({
+	"click #btn_payment": function(event) {	
+		event.preventDefault();
+		$("#payment_panel_header").show();
+		$("#payment_panel_body").show();
+		Router.go("/order/payment");
+	},
 	"click #add_discount": function(event) {
 		event.preventDefault();
 	

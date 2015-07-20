@@ -1,3 +1,10 @@
+Template.invoice.rendered=function() {
+	if(!PARAMS.TEST_MODE) {
+		window.print();
+		Router.go("/order/view/"+this._id);	
+	}
+}
+
 Template.invoice.helpers({
 	currency_symbol: function() {
 		return this.currency.symbol;

@@ -69,7 +69,7 @@
 				<h1>No items yet in this order</h1>
 			{{/if}}
 		</div>
-		<div class="panel-heading">
+		<div class="panel-heading" id="payment_panel_header">
 			<h2>To be paid
 			{{#if isOrderSettled}} 
 				<span class="label label-success pull-right">PAID!</span>
@@ -78,7 +78,7 @@
 			{{/if}}
 			</h2>
 		</div>		
-		<div class="panel-body">
+		<div class="panel-body" id="payment_panel_body">
 			{{#if isTherePayments}}
 			<table class="table table-hover">
 				<thead>

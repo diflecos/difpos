@@ -37,6 +37,15 @@ Template.navbar.events({
 			Meteor.reconnect();
 			FlashMessages.sendSuccess('Reconnecting with the server: '+Meteor.status().status+" "+Meteor.status().reason);						
 		}
+	},
+	"change #toggle_test_mode": function() {
+		if($("#toggle_test_mode").is(':checked')) {  
+            PARAMS.TEST_MODE=true;
+			FlashMessages.sendError("Test Mode activated: no transactions will be saved in database!");
+        } else {  
+			FlashMessages.sendSuccess('Test Mode desactivated: your transactions will be saved to database');						
+        }  	
+		Router.go("/welcome");
 	}
 });
 

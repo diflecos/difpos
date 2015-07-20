@@ -48,6 +48,10 @@
 					{{>search_results}}					
 				</div>		
 				<div class="tab-pane fade" id="category-tab">
+					<h3>Frequently Used Categories</h3>
+					{{#each frequentyleUsedCategories}}
+						<a class="btn btn-default" href="#" data-level="{{level}}" data-catname={{name}}>{{name}}</a>
+					{{/each}}						
 					<h3>Choose a category</h3>
 					<ol class="breadcrumb">
 						{{#each selectedCategories}}

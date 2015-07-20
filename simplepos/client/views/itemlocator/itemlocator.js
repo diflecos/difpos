@@ -39,6 +39,14 @@ function lastCategorySelectionParentId(categorySelection) {
 }
 
 Template.itemlocator.helpers({
+	frequentyleUsedCategories: function() {
+		return [
+			{name: "una"},
+			{name: "dos"},
+			{name: "tres"},
+			{name: "muy larga"}
+		];
+	},
 	selectedCategories: function() {
 		categorySelection=Session.get("categorySelection");	
 		return categorySelectionSortByLevel(categorySelection);
