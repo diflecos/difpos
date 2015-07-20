@@ -5,23 +5,40 @@
 		</div>
 		<div class="panel-body">
 			<ul id="item-locator-tablist" class="nav nav-tabs">
+				{{#if isQRCodeMethodAvailable}}
 				<li><a href="#qrcode-tab"><span class="glyphicon glyphicon-qrcode"></span> Scan QR</a></li>
+				{{/if}}
+				{{#if isManualMethodAvailable}}
 				<li><a href="#manual-tab"><span class="glyphicon glyphicon-hand-right"></span> Manual</a></li>
+				{{/if}}
+				{{#if isSearchMethodAvailable}}
 				<li><a href="#search-tab"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+				{{/if}}
+				{{#if isBrowseMethodAvailable}}
 				<li><a href="#browse-tab"><span class="glyphicon glyphicon-folder-open"></span> Browse</a></li>
+				{{/if}}
+				{{#if isCategoryMethodAvailable}}
 				<li><a href="#category-tab"><span class="glyphicon glyphicon-folder-open"></span> Category</a></li>
-			</ul>
+				{{/if}}
+			</ul>		
 			<div id="item-locator-content" class="tab-content">
+				{{#if isQRCodeMethodAvailable}}
 				<div class="tab-pane fade active in" id="qrcode-tab">
 					<h3>Scanned QRcode: <span class="label label-success">BA009X229923</span></h3>
 				</div>	
+				{{/if}}
+				{{#if isManualMethodAvailable}}
 				<div class="tab-pane fade" id="manual-tab">
 					{{>qr_scan_form}}	
 				</div>
+				{{/if}}
+				{{#if isSearchMethodAvailable}}
 				<div class="tab-pane fade" id="search-tab">
 					{{>search_item_form}}
 					{{>search_results}}
 				</div>
+				{{/if}}
+				{{#if isBrowseMethodAvailable}}
 				<div class="tab-pane fade" id="browse-tab">
 					<h3>Choose a category</h3>
 					<ol class="breadcrumb">
@@ -47,6 +64,8 @@
 					</ol>		
 					{{>search_results}}					
 				</div>		
+				{{/if}}
+				{{#if isCategoryMethodAvailable}}
 				<div class="tab-pane fade" id="category-tab">
 					<h3>Frequently Used Categories</h3>
 					{{#each frequentyleUsedCategories}}
@@ -76,6 +95,7 @@
 					</ol>		
 					{{>category_form}}
 				</div>						
+				{{/if}}
 			</div>
 		</div>					
 	</div>
@@ -168,7 +188,7 @@
 			<label for="unit_discount_name" class="col-sm-4 control-label"></label>
 			<div class="col-sm-8">
 				<div class="input-group">
-					<input id="unit_discount_name" type="text" class="form-control" placeholder="Name of discount" style="width: 170px">	
+					<input id="unit_discount_name" type="text" class="form-control" placeholder="Name of discount" style="width: 160px">	
 					<span class="input-group-addon">-</span>
 					<input id="unit_discount_value" type="number" class="form-control" max="100" step="1" style="width: 70px">
 					<select class="form-control" id="unit_discount_reduction_type" style="width: 66px">
@@ -205,7 +225,7 @@
 			<label for="order_item_discount_name" class="col-sm-4 control-label"></label>
 			<div class="col-sm-8">
 				<div class="input-group">
-					<input id="order_item_discount_name" type="text" class="form-control" placeholder="Name of discount"  style="width: 170px">	
+					<input id="order_item_discount_name" type="text" class="form-control" placeholder="Name of discount"  style="width: 160px">	
 					<span class="input-group-addon">-</span>
 					<input id="order_item_discount_value" type="number" class="form-control" max="100" step="1" style="width: 70px">
 					<select class="form-control" id="order_item_discount_reduction_type" style="width: 66px">

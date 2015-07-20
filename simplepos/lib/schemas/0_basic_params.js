@@ -7,7 +7,8 @@ PARAMS.DATE_FORMAT='DD/MM/YYYY';
 
 /* qué tab queremos que se muestre por defecto en el itemlocator para seleccionar items. Valores posibles: 'category'|'qrcode'|'search'|'browse'|'manual'  Por defecto qrcode */
 PARAMS.TEST_MODE=false;
-PARAMS.ITEMLOCATOR_DEFAULTMETHOD='category';
+PARAMS.ITEMLOCATOR_METHODS=['qrcode','manual','search','browse','category'];  // ['qrcode','manual','search','browse','category']
+PARAMS.ITEMLOCATOR_DEFAULTMETHOD='category';  // Fusionar este con el anterior y añadir tambien el orden en que deben salir las pestañas!!!!
 PARAMS.PAYMENT_DEFAULTMETHOD='cash';  // 'cash' o 'credit-card'
 PARAMS.CURRENCY={
 	name: "Euro",

@@ -40,6 +40,21 @@ function lastCategorySelectionParentId(categorySelection) {
 }
 
 Template.itemlocator.helpers({
+	isQRCodeMethodAvailable: function() {
+		return PARAMS.ITEMLOCATOR_METHODS.indexOf("qrcode")==-1?false:true;
+	},	
+	isManualMethodAvailable: function() {
+		return PARAMS.ITEMLOCATOR_METHODS.indexOf("manual")==-1?false:true;
+	},	
+	isSearchMethodAvailable: function() {
+		return PARAMS.ITEMLOCATOR_METHODS.indexOf("search")==-1?false:true;
+	},	
+	isBrowseMethodAvailable: function() {
+		return PARAMS.ITEMLOCATOR_METHODS.indexOf("browse")==-1?false:true;
+	},	
+	isCategoryMethodAvailable: function() {
+		return PARAMS.ITEMLOCATOR_METHODS.indexOf("category")==-1?false:true;
+	},	
 	frequentyleUsedCategories: function() {
 		return Session.get("frequentyleUsedCategories"); 
 	},

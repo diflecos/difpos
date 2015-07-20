@@ -6,7 +6,7 @@ Router.configure({
     notFoundTemplate: 'notFound'	
 });
 
-Router.route('/',function () {
+Router.route('/login',function () {
     this.render('login');
 });
 
