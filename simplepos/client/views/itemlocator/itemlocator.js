@@ -6,6 +6,7 @@ Template.itemlocator.rendered=function() {
 	});
 	
 	Session.set("categorySelection",new Array());
+	Session.set("frequentyleUsedCategories",new Array()); // Esto solo se debe ejecutar una única vez, en el login o en el inicio de la sesión, sino cada vez que entramos en la pantalla se vacían  las categorías frecuentes
 }
 
 /* 
@@ -40,12 +41,7 @@ function lastCategorySelectionParentId(categorySelection) {
 
 Template.itemlocator.helpers({
 	frequentyleUsedCategories: function() {
-		return [
-			{name: "una"},
-			{name: "dos"},
-			{name: "tres"},
-			{name: "muy larga"}
-		];
+		return Session.get("frequentyleUsedCategories"); 
 	},
 	selectedCategories: function() {
 		categorySelection=Session.get("categorySelection");	
@@ -63,6 +59,10 @@ Template.itemlocator.helpers({
 });
 
 Template.itemlocator.events({
+	"click a.frequentyle_used_categories": function() {
+		catname=event.target.dataset.catname;
+		Session.set("selectedCategory",catname)
+	},
 	"click a.categorySelected": function(event) {
 		level=event.target.dataset.level;  
 		catname=event.target.dataset.catname;		
@@ -160,6 +160,11 @@ Template.category_form.events({
 		order_item=new OrderItem(name,unit_price,unit_discount,quantity,order_item_discount);
 		currentOrder.addOrderItem(order_item);
 		Session.set("currentOrder",currentOrder);
+
+		frequentyleUsedCategories=Session.get("frequentyleUsedCategories");
+		frequentyleUsedCategories.push({"name": name});
+		Session.set("frequentyleUsedCategories",frequentyleUsedCategories);		
+		
 		$("#beep")[0].play();
 		$("#category_form")[0].reset();
 	}, 

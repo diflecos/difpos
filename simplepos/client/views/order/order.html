@@ -107,13 +107,13 @@
 			
 			{{#if isTherePublicComment}}
 				<div class="alert alert-warning alert-dismissible">
-					<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+					<button id="btn_remove_public_comment" type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
 					<strong>Public:</strong> {{public_comment}}
 				</div>			
 			{{/if}}	
 			{{#if isTherePrivateComment}}
 				<div class="alert alert-success alert-dismissible">
-					<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+					<button id="btn_remove_private_comment" type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
 					<strong>Private:</strong> {{private_comment}}
 				</div>			
 			{{/if}}	
@@ -129,7 +129,7 @@
 				{{/if}}	
 				<a class="btn btn-success btn-lg" id="btn_comments" href="/order/comments">Add Comments</a>
 				<a class="btn btn-success btn-lg" href="/person/search">Customer Data</a>			
-				<a class="btn btn-danger btn-lg" href="/">Cancel</a>
+				<a class="btn btn-danger btn-lg" id="btn_cancel_order" href="/">Cancel</a>
 			</div>						
 		</div>
 	</div>

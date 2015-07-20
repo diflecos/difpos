@@ -43,9 +43,9 @@ Template.navbar.events({
             PARAMS.TEST_MODE=true;
 			FlashMessages.sendError("Test Mode activated: no transactions will be saved in database!");
         } else {  
+			PARAMS.TEST_MODE=false;
 			FlashMessages.sendSuccess('Test Mode desactivated: your transactions will be saved to database');						
         }  	
-		Router.go("/welcome");
 	}
 });
 

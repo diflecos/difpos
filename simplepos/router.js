@@ -1,7 +1,7 @@
 modal={};   // variable global que se usa para guardar la view generada por Blaze.render de cada modal que mostramos para poder luego hacer el Blaze.remove(modal) correspondiente
 
 Router.configure({
-	layoutTemplate: 'layout',
+	layoutTemplate: 'layout1',
     loadingTemplate: 'loading',
     notFoundTemplate: 'notFound'	
 });
@@ -71,19 +71,25 @@ Router.route('/order/create', function() {
 	currency=store.currency;
 	currentOrder=new Order(currency);
 	Session.set('currentOrder',currentOrder);
-	this.render('order_layout');
+	this.layout('layout2');
+	this.render('order',{to: 'left'});
+	this.render('itemlocator',{to: 'right'});
 },{
 	name: 'order_create'
 });
 
 Router.route('/order/payment', function() {
-	this.render('order_payment');
+	this.layout('layout2');
+	this.render('order',{to: 'left'});
+	this.render('payment',{to: 'right'});
 },{
 	name: 'order_payment'
 });
 	
 Router.route('/order/comments', function() {
-	this.render('order_comments_layout');
+	this.layout('layout2');
+	this.render('order',{to: 'left'});
+	this.render('order_comments',{to: 'right'});
 },{
 	name: 'order_comments'
 });

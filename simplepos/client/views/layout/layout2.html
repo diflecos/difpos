@@ -1,0 +1,12 @@
+<template name="layout2">
+	<div class="container">
+		{{>navbar}}
+		{{> flashMessages}}
+		<div class="col-md-6 pull-right">
+			{{>yield "right"}}
+		</div>		
+		<div class="col-md-6 pull-left">
+			{{>yield "left"}}
+		</div>
+	</div>
+</template>

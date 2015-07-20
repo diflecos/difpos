@@ -127,6 +127,16 @@ Template.order.events({
 		event.preventDefault();
 		
 	},
+	"click #btn_remove_public_comment": function(event) {
+		event.preventDefault();
+		currentOrder.public_comment="";
+		Session.set("currentOrder",currentOrder);		
+	},
+	"click #btn_remove_private_comment": function(event) {
+		event.preventDefault();
+		currentOrder.private_comment="";
+		Session.set("currentOrder",currentOrder);		
+	},
 	"click #btn_save_order": function(event) {
 		event.preventDefault();
 		Meteor.call('addOrder', currentOrder, function(error, result){
@@ -134,6 +144,11 @@ Template.order.events({
 			var orderId = result;
 			Router.go("/order/view/"+orderId);
 		});				
+	},
+	"click #btn_cancel_order": function(event) {
+		event.preventDefault();
+		FlashMessages.sendError("Order not saved to database");
+		Router.go("/welcome");
 	}
 });
 
