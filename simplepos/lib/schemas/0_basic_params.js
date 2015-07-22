@@ -88,6 +88,18 @@ OPTIONS.REDUCTION_TYPE=[
 ];
 VALUES.REDUCTION_TYPE=OPTIONS.REDUCTION_TYPE.map(function(item,i) { return item.value; });
 
+OPTIONS.CASHFLOW_IN_CONCEPTS=[
+	{label: 'Puesta a disposición de cambio', value: 'Puesta a disposición de cambio'},
+	{label: 'Pago por servicio', value: 'Pago por servicio'},
+	{label: 'Otros', value: 'Otros'},
+];
 
+OPTIONS.CASHFLOW_OUT_CONCEPTS=[
+	{label: 'Limpieza cristales', value: 'Limpieza cristales'},
+	{label: 'Portes paquetería', value: 'Portes paquetería'},
+	{label: 'Pago proveedor', value: 'Pago proveedor'},
+	{label: 'Retirada de billetes grandes', value: 'Retirada de billetes grandes'},
+	{label: 'Otros', value: 'Otros'},
+];
 
 Schemas={};

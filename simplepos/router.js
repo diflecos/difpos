@@ -156,10 +156,15 @@ Router.route('/cash/check', function() {
 	name: 'cash_check'
 });		
 
-Router.route('/cash/inout', function() {
-	this.render('cash_inout');
+Router.route('/cashflow/:flow_type', function() {
+	var flow_type=this.params.flow_type;
+	if(flow_type=="in" || flow_type=="out") {
+		this.render('cashflow',{
+			data: new CashFlow(flow_type,0,"","")
+		});	
+	}
 },{
-	name: 'cash_inout'
+	name: 'cashflow'
 });		
 
 

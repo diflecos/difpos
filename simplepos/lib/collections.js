@@ -1,5 +1,6 @@
 
 Orders=new Mongo.Collection("orders");
+CashFlows=new Mongo.Collection("cashflows");
 SpecialOffers = new Mongo.Collection("special_offers");
 Categories = new Mongo.Collection("categories");
 FullPersons = new Mongo.Collection("fullpersons");

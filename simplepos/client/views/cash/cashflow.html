@@ -1,0 +1,57 @@
+<template name="cashflow">
+	<div class="modal fade" id="modalCashFlow" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					{{#if isFlowTypeIn}}
+					<h2 class="modal-title" id="myModalLabel">Cash in
+						<span class="label label-success pull-right"><span class="glyphicon glyphicon-log-in"></span></span>
+					</h2>
+					{{/if}}
+					{{#if isFlowTypeOut}}
+					<h2 class="modal-title" id="myModalLabel">Cash out
+						<span class="label label-danger pull-right"><span class="glyphicon glyphicon-log-out"></span></span>
+					</h2>
+					{{/if}}
+
+				</div>
+				<div class="modal-body">
+					<h3>Please complete the following data</h3>
+					<form class="form-horizontal">				
+						<div  class="form-group">
+							<label for="cashflow_amount" class="col-sm-4 control-label">Amount: </label>
+							<div class="col-sm-4">
+								<div class="input-group">
+									<input id="cashflow_amount" type="number" min="0" class="form-control" value="{{amount}}">
+									<span class="input-group-addon">€</span>
+								</div>		
+							</div>	
+						</div>					
+						<div  class="form-group">
+							<label for="cashflow_concept" class="col-sm-4 control-label">Concept: </label>
+							<div class="col-sm-8">
+								<select id="cashflow_concept" class="form-control">
+								{{#each cashFlowOptions}}
+									<option value={{value}}>{{label}}</option>
+								{{/each}}
+								</select>
+							</div>	
+						</div>							
+						<div  class="form-group">
+							<label for="cashflow_comment" class="col-sm-4 control-label">Comment: </label>
+							<div class="col-sm-8">
+								<textarea id="cashflow_comment" class="form-control" rows="5" value="{{comment}}" placeholder="Enter your comments here"></textarea>
+							</div>	
+						</div>	
+					</form>										
+				</div>
+				<div class="modal-footer text-right">
+					<div class="btn-group">
+						<a id="save_cashflow" class="btn btn-success btn-lg" href="#">Save</a>
+						<a id="cancel_cashflow" class="btn btn-danger btn-lg" data-dismiss="modal" href="/welcome">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>			
+</template>
