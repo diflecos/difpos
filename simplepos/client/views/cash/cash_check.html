@@ -6,126 +6,22 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h2>Cash check<span class="pull-right">223€ <span class="label label-success">OK</span></span></h2>
+					<h2>Cash check <span class="label label-success pull-right">OK</span><span id="cash_check_total" class="pull-right">0,00€</span></h2>
 				</div>
 				<div class="panel-body">
 					<form class="form">			
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<h3>Bills</h3>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 500€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 200€</span>
-											<input type="number" class="form-control" placeholder="90">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 100€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 50€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 20€</span>
-											<input type="number" class="form-control" placeholder="90">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 10€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 5€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-									<div class="col-md-4">
-									</div>
-									<div class="col-md-4">
-									</div>
-								</div>
+								{{#each bills}}
+									{{>billcoin}}
+								{{/each}}
+							</div>
+							<div class="col-md-3">	
 								<h3>Coins</h3>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 2€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 1€</span>
-											<input type="number" class="form-control" placeholder="90">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 0.50€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 0.20€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 0.10€</span>
-											<input type="number" class="form-control" placeholder="90">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon"><span class="glyphicon glyphicon-hd-video"></span> 0.05€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon" style="min-width: 60%"><span class="glyphicon glyphicon-hd-video"></span> 0.02€</span>
-											<input type="number" class="form-control" placeholder="0">		
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="input-group">
-											<span class="input-group-addon" style="min-width: 60%"><span class="glyphicon glyphicon-hd-video"></span> 0.01€</span>
-											<input type="number" class="form-control" placeholder="90">		
-										</div>
-									</div>
-									<div class="col-md-4">
-									</div>
-								</div>										
+								{{#each coins}}
+									{{>billcoin}}
+								{{/each}}
 							</div>
 							<div class="col-md-6">
 								<h3>Verification</h3>
@@ -139,7 +35,7 @@
 										<li><a href="#">Session End</a></li>
 									</ul>
 								</div>										
-								<textarea class="form-control" rows="8" placeholder="Enter your comments here"></textarea>
+								<textarea id="comment" class="form-control" rows="8" placeholder="Enter your comments here"></textarea>
 								<br>
 							</div>
 						</div>
@@ -147,8 +43,8 @@
 				</div>
 				<div class="panel-footer text-right">
 					<div class="btn-group">
-						<button type="submit" class="btn btn-success btn-lg">Save</button>
-						<a class="btn btn-danger btn-lg" href="pos_bootstrap_base.html">Cancel</a>
+						<a id="save_cash_check" class="btn btn-success btn-lg" href="#">Save</a>
+						<a id="cancel_cash_check" class="btn btn-danger btn-lg" href="#">Cancel</a>
 					</div>						
 				</div>										
 			</div>	
@@ -156,3 +52,12 @@
 	</div>	
 </div>
 </template>
+
+<template name="billcoin">
+	<div class="input-group">
+		<span class="input-group-addon" style="width: 80px"><span class="glyphicon glyphicon-hd-video"></span> {{label}}</span>
+		<input type="number" min="0" step="1" class="form-control billcoin-quantity" data-billcoin-value={{value}} value="0">		
+		<span class="input-group-addon" style="width: 80px">0,00€</span>
+	</div>
+</template>
+

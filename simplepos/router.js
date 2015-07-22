@@ -7,7 +7,10 @@ Router.configure({
 });
 
 Router.route('/login',function () {
+	this.layout('layout0');
     this.render('login');
+},{
+	name: 'login'
 });
 
 Router.route('/welcome',function () {
@@ -166,6 +169,25 @@ Router.route('/cashflow/:flow_type', function() {
 },{
 	name: 'cashflow'
 });		
+
+
+/*******************  SESSION **************************/
+Router.route('/session/init', function() {
+	Meteor.call('sessionInit',{storeId: "slslslslsllslsls",type: "pos"},function(error, result){
+		// TODO: ver qué hacemos en caso de error!
+		var sessionId = result;
+		FlashMessages.sendSuccess('New session opened with id '+sessionId);	
+	});	
+	Router.go("/cash/check");
+},{
+	name: 'session_init'
+});
+
+Router.route('/session/end', function() {
+	Router.go("/cash/check");
+},{
+	name: 'session_end'
+});	
 
 
 /*******************  INSTALL **************************/

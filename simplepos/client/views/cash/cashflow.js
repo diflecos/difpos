@@ -15,8 +15,6 @@ Template.cashflow.helpers({
 		if(this.flow_type=="out")
 			return OPTIONS.CASHFLOW_OUT_CONCEPTS;		
 	}
-	
-
 });
 
 Template.cashflow.events({

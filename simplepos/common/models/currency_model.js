@@ -1,9 +1,17 @@
-Currency=function Currency(name,shortname,symbol,precision) {
+/*
+zeroUI: this field contains the value of 0 expressed appropriately in the currency, ready to be shown in the UI
+bills: array of possible values of bills for the currency (expressed in cents). Example for Euro: [50000,20000,10000,5000,2000,1000,500]
+coins: similar to bills
+
+*/
+Currency=function Currency(name,shortname,symbol,precision,bills,coins) {
 	this.name=name;
 	this.shortname=shortname;
 	this.symbol=symbol;
 	this.precision=parseInt(precision);
 	this.zeroUI=this.convertUI(0);
+	this.bills=bills;  
+	this.coins=coins;
 }
 
 /* 

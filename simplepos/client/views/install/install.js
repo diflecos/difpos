@@ -25,11 +25,7 @@ Template.install.rendered=function() {
 	SpecialOffers.insert({ applies_to: "order", name: "Flyer Balzaq", desc: "10€ de descuento por compra superior a 50€", value: 10, reduction_type: "Amount", valid_from: "01/07/2015", valid_to: "31/08/2015"});
 	
 	currentOrder={
-		currency: {
-			name: "Euro",
-			shortname: "EUR",
-			symbol: "€"
-		},
+		currency: store.currency,
 		order_items: [
 			{
 				index: 0,

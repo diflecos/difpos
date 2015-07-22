@@ -1,9 +1,43 @@
 <template name="login">
 <div class="container">
-<h1>Sistema de gestión de ventas</h1>
-</div>
-</template>
+	<br>
+	<br>
+	<h1 class="text-center">Sistema de gestión de ventas de Balzaq</h1>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container" style="width: 400px">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="text-center">Login</h3>
+			</div>
 
-<template name="_loginButtonsAdditionalLoggedInDropdownActions">
-    <button class="btn btn-default btn-block" id="login-buttons-edit-profile">Edit personal data</button>
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<div class="input-group center-block text-center">
+							<label for="username">Username</label>
+							<input  id="username" type="text" class="form-control text-center">						
+						</div>
+					</div>
+					<br><br>
+					<div class="form-group">
+						<div class="input-group center-block text-center">
+							<label for="password">Password</label>
+							<input id="password" type="password" class="form-control text-center">	
+						</div>	
+					</div>
+				</form>
+			</div>
+
+			<div class="panel-footer text-right">
+				<div class="btn-group">
+					<a id="btn_login" class="btn btn-success btn-lg" href="#">Login</a>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
 </template>
