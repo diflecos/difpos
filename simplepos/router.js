@@ -14,8 +14,12 @@ Router.route('/login',function () {
 });
 
 Router.route('/welcome',function () {
+	this.layout('layout1');
     this.render('welcome');
+},{
+	name: 'welcome'
 });
+
 
 Router.route('/fullpersons', {
 	template: 'fullpersons_index'
