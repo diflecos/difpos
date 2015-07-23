@@ -139,10 +139,9 @@ Template.order.events({
 	},
 	"click #btn_save_order": function(event) {
 		event.preventDefault();
-		Meteor.call('addOrder', currentOrder, function(error, result){
-			// TODO: ver qué hacemos en caso de error!
-			var orderId = result;
-			Router.go("/order/view/"+orderId);
+		
+		currentOrder.save(function() {
+			Router.go("/order/view/"+this.orderId);
 		});				
 	},
 	"click #btn_cancel_order": function(event) {

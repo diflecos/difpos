@@ -43,7 +43,8 @@ Template.payment.events({
 		var givenDB=store.currency.convertDB(given);
 			
 		var cash_payment_details=new CashPaymentDetails(currentOrder.currency,givenDB,payingDB);
-		var trx=new PaymentTrx("Cash",payingDB,cash_payment_details);
+		var trx=new PaymentTrx({type: "Cash", paid: payingDB, details: cash_payment_details});
+		
 		currentOrder.addPaymentTrx(trx);
 		Session.set("currentOrder",currentOrder);
 		$("#beep")[0].play();

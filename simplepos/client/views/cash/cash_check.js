@@ -24,16 +24,14 @@ Template.cash_check.helpers({
 });
 
 Template.cash_check.events({
-	"click #save_cash_check": function(event) {  console.log("Save!");
+	"click #save_cash_check": function(event) {  
 		event.preventDefault();
 		
-		countTotal();  console.log(currentCashCheck);
-		Meteor.call('cashCheckAdd',currentCashCheck,function(error, result){
-			// TODO: ver qué hacemos en caso de error!
-			var cashCheckId = result;
+		countTotal();  
+		currentCashCheck.save(function() {
 			Router.go("/welcome");
-			FlashMessages.sendSuccess('New cash check recorded with id '+cashCheckId);	
-		});			
+			FlashMessages.sendSuccess('New cash check recorded with id '+cashCheckId);			
+		});
 	},	
 	"click #cancel_cash_check": function(event) {
 		event.preventDefault();

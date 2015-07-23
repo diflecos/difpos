@@ -26,13 +26,11 @@ Template.cashflow.events({
 		var concept=$("#cashflow_concept").val();
 		var comment=$("#cashflow_comment").val();
 		var currentCashFlow=new CashFlow(flow_type,amount,concept,comment);  console.log(currentCashFlow);
-		Meteor.call('cashFlowAdd',currentCashFlow,function(error, result){
-			// TODO: ver qué hacemos en caso de error!
-			var cashFlowId = result;
+		currentCashFlow.save(function() {
 			$("#modalCashFlow").on('hidden.bs.modal', function (e) {
 				Router.go("/welcome");
 			}).modal("hide");
-			FlashMessages.sendSuccess('New cash flow recorded with id '+cashFlowId);	
-		});		
+			FlashMessages.sendSuccess('New cash flow recorded with id '+this.cashFlowId);				
+		});
 	}
 });

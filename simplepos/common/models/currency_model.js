@@ -5,6 +5,7 @@ coins: similar to bills
 
 */
 Currency=function Currency(currency) {  // currency debe ser un objeto con los siguientes campos: name,shortname,symbol,precision,bills,coins
+	this.currencyId;
 	this.name=currency.name;
 	this.shortname=currency.shortname;
 	this.symbol=currency.symbol;
@@ -12,6 +13,21 @@ Currency=function Currency(currency) {  // currency debe ser un objeto con los s
 	this.zeroUI=this.convertUI(0);
 	this.bills=currency.bills;  
 	this.coins=currency.coins;
+}
+
+Currency.prototype.save=function(callback) {
+	Meteor.call('currencyAdd',this,function(error, result){
+		// TODO: ver qué hacemos en caso de error!
+		this.currencyId=result;
+		callback();
+	});		
+}
+
+Currency.prototype.remove=function(callback) {
+	Meteor.call('currencyRemove',this,function(error, result){
+		// TODO: ver qué hacemos en caso de error!
+		callback();
+	});		
 }
 
 /* 

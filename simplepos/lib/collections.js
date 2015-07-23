@@ -1,15 +1,19 @@
-Stores       =new Mongo.Collection("stores");
-Sessions     =new Mongo.Collection("sessions"); // no confundir con la Session del navegador
-Orders       =new Mongo.Collection("orders");
-CashFlows    =new Mongo.Collection("cashflows");
-CashChecks   =new Mongo.Collection("cashchecks");
-SpecialOffers=new Mongo.Collection("special_offers");
-Categories   =new Mongo.Collection("categories");
-FullPersons  =new Mongo.Collection("fullpersons");
+Currencies           =new Mongo.Collection("currencies");
+Brands               =new Mongo.Collection("brands");
+RegionalStoreNetworks=new Mongo.Collection("regional_store_networks");
+Taxes                =new Mongo.Collection("taxes");
+Companies            =new Mongo.Collection("companies");
+Stores               =new Mongo.Collection("stores");
+Sessions             =new Mongo.Collection("sessions"); // no confundir con la Session del navegador
+Orders               =new Mongo.Collection("orders");
+CashFlows            =new Mongo.Collection("cashflows");
+CashChecks           =new Mongo.Collection("cashchecks");
+SpecialOffers        =new Mongo.Collection("special_offers");
+Categories           =new Mongo.Collection("categories");
+FullPersons          =new Mongo.Collection("fullpersons");
+
+
 FullPersons.attachSchema(Schemas.FullPerson);
-
-
-
 
 FullPersonsPages = new Meteor.Pagination(FullPersons, {
 	perPage: 5, 

@@ -6,8 +6,9 @@
 
 - Desdoblar los métodos de pago para que no se muestren las pestañas (de momento no hay necesidad ya que no aceptamos ni cheques ni cupones y seguramente en esos casos puede ser que quepa todo de todas formas. Se evita un click la dependienta.
 
+- Terminar de revisar y probar el modelo de Order para estar 100% seguros que funciona y replicarlo para todos los otros objetos. La función clone() necesaria para inicializar la instancia a partir de un documento de la BBDD no parece que funcione muy bien, debe haber algún conflicto porque cuando se renombra a clone2 ya no falla parece --> he puesto el contenido de esa función en la parte que se hace el order.find(). Verificar que termine de funcionar el /order/view/id 
 
 
-
+- Revisar porqué se pierde el valor de store en cada reinicio del servidor y cómo evitarlo!
 	
 	

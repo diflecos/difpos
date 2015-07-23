@@ -1,4 +1,6 @@
-Order=function Order(currency) {
+Order=function Order(currency) {  
+	this.id;
+	this.session;  //  Inicializarlo con la currentSession!!!!!
 	this.currency=currency;
 	this.order_items=[];
 	this.subtotal=0;
@@ -31,6 +33,47 @@ Order.prototype.toEJSON=function() {
 		next_index: this.next_index,
     };
 } */
+Order.prototype.find=function() {
+	if(this.id!=undefined) {
+		var order=Orders.findOne(this.id);
+		this.id=order._id;
+		this.session=order.session; 
+		this.currency=order.currency;
+		this.order_items=order.order_items;
+		this.subtotal=order.subtotal;
+		this.final_price=order.final_price;
+		this.next_index=order.next_index;
+		this.payment_trxs=order.payment_trxs;
+		this.paid=order.paid;
+		this.is_settled=order.is_settled;
+		this.public_comment=order.public_comment;
+		this.private_comment=order.private_comment;
+	} else {
+		throw new Meteor.Error("orderIdUndefined","Impossible to find an order with undefined id"); 
+	}
+}
+
+Order.prototype.save=function(callback) {
+	self=this;
+	Meteor.call('orderSave',this,function(error, result){
+		// TODO: ver qué hacemos en caso de error! 
+	
+		if(result.insertedId!=undefined) {
+			self.id=result.insertedId;
+		}
+
+		if(callback!=undefined) {
+			callback();		
+		}
+	});		
+}
+
+Order.prototype.remove=function(callback) {
+	Meteor.call('orderRemove',this,function(error, result){
+		// TODO: ver qué hacemos en caso de error!
+		callback();
+	});		
+}
 
 Order.prototype.updateFinalPrice=function() {
 	var subtotal=0;

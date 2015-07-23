@@ -104,19 +104,16 @@ Router.route('/order/comments', function() {
 		
 Router.route('/order/view/:_id', function() {
 	var orderId=this.params._id;
-	var order;
-	Meteor.call('viewOrder', orderId, function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		order = result;
-		if(order==undefined) {
-			FlashMessages.sendError('no order was found with id '+orderId);
-			Router.go(Session.get('onCancel'));	
-		} else {
-			currentOrder=order;
-			Session.set("currentOrder",order);
-		}				
-	});			
-	this.render("order_view");
+	var order=new Order(store.currency);
+	order.id=orderId;
+	try {
+		order.find();		
+	}
+	catch(error) {
+		FlashMessages.sendError('No order was found with id '+orderId+"["+error.reason+"]");
+	}	
+	Session.set("currentOrder",order);
+	this.render("order_view");	
 },{
 	name: 'order_view'
 });
@@ -133,21 +130,19 @@ Router.route('/order/print/:_id', function() {
 		gift=true;
 	}
 	
-	self=this;
 	// We retrieve the concerned order based on id
-	var order;
-	Meteor.call('viewOrder', orderId, function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		order = result;
-		if(order==undefined) {
-			FlashMessages.sendError('no order was found with id '+orderId);
-		} else {
-			order.isGiftInvoice=gift;
-			self.render('invoice',{ 
-				data: order
-			});
-		}				
-	});			
+	var order=new Order(store.currency);
+	order.id=orderId;
+	try {
+		order.find();		
+		order.isGiftInvoice=gift;
+		this.render('invoice',{ 
+			data: order
+		});	
+	}
+	catch(error) {
+		FlashMessages.sendError('No order was found with id '+orderId+"["+error.reason+"]");
+	}	
 },{
 	name: 'order_print'
 });
