@@ -33,12 +33,22 @@ Template.login.helpers({
 
 Template.login.events({
 	"click #btn_login": function() {
+		var username=Template.instance().find("#username").value;
+		var password=Template.instance().find("#password").value;
+		
+		Meteor.loginWithPassword(username,password,function() {
+			if(Meteor.user()!=null) {
+				console.log("logado");
+				$("#store_selector_block").show();			
+			} else {
+				FlashMessages.sendError("No user was found with this username and password, please retry");
+			}
+		});		
 		// Si el login tiene éxito, recuperamos las tiendas a las que está autorizado el usuario y mostramos el bloque de selección de tienda
-		$("#store_selector_block").show();
 	},
 	"change #store_selector": function(event) {    console.log($(event.target).val());
 		if($(event.target).val()!="") {
-			Router.go("/welcome");
+			Router.go("/cash/check");
 		}
 	}
 });

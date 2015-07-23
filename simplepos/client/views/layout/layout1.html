@@ -1,7 +1,17 @@
 <template name="layout1">
 	<div class="container">
+	{{#if currentUser}}
+		{{>yield "modal"}}
 		{{>navbar}}
 		{{> flashMessages}}
 		{{>yield}}
+	{{else}}
+		<h1 class="text-center">Access to this page is not authorized without being logged in</h1>
+		<br><br><br><br>
+		<br><br><br><br>
+		<br><br><br><br>
+		<br><br><br><br>
+		<div class="center-block text-center"><a  class="btn btn-success btn-lg" href="/login">Login</a></div>
+	{{/if}}		
 	</div>
 </template>

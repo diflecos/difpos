@@ -1,13 +1,11 @@
-<template name="login">
+<template name="user_create">
 <div class="container">
-
-	<h1 class="text-center">Sistema de gestión de ventas de Balzaq</h1>
 	<br>
 	<br>
 	<div class="container" style="width: 400px">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="text-center">Login</h3>
+				<h3 class="text-center">Create user</h3>
 			</div>
 
 			<div class="panel-body">
@@ -34,33 +32,8 @@
 
 			<div class="panel-footer text-right">
 				<div class="btn-group">
-					<button id="btn_login" type="submit" class="btn btn-success btn-lg">Login</button>
+					<a id="btn_create_user" class="btn btn-success btn-lg" href="#">Create user</a>
 				</div>
-			</div>
-		</div>	
-	</div>
-
-	<br>
-	<div id="store_selector_block" class="container" style="width: 400px">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="text-center">Select store</h3>
-			</div>
-
-			<div class="panel-body">
-				<form>
-					<div class="form-group">
-						<div class="input-group center-block text-center">
-							<label for="username">Stores</label>
-							<select id="store_selector" class="form-control text-center">
-								<option value=""></option>
-								{{#each stores}}
-								<option value="{{store_id}}">{{store_name}}</option>
-								{{/each}}
-							</select>
-						</div>
-					</div>
-				</form>
 			</div>
 		</div>	
 	</div>

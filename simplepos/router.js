@@ -167,6 +167,7 @@ Router.route('/cashflow/:flow_type', function() {
 	var flow_type=this.params.flow_type;
 	if(flow_type=="in" || flow_type=="out") {
 		this.render('cashflow',{
+			to: 'modal',
 			data: new CashFlow(flow_type,0,"","")
 		});	
 	}
