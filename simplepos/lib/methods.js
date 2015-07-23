@@ -179,5 +179,21 @@ Meteor.methods({
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
 	
+	},
+	
+	/******************************** USERS *****************************************/	
+	userAdd: function(username,password) {
+		userId=Accounts.createUser({
+			"username": username,
+			"password": password,
+		});		
+		console.log(userId);
+		return userId;
+	},
+	userName: function(userId) {
+	
+	},
+	userRemove: function(userId) {
+	
 	}
 });
