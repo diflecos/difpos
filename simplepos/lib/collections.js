@@ -1,10 +1,11 @@
-Sessions=new Mongo.Collection("sessions"); // no confundir con la Session del navegador
-Orders=new Mongo.Collection("orders");
-CashFlows=new Mongo.Collection("cashflows");
-CashChecks=new Mongo.Collection("cashchecks");
-SpecialOffers = new Mongo.Collection("special_offers");
-Categories = new Mongo.Collection("categories");
-FullPersons = new Mongo.Collection("fullpersons");
+Stores       =new Mongo.Collection("stores");
+Sessions     =new Mongo.Collection("sessions"); // no confundir con la Session del navegador
+Orders       =new Mongo.Collection("orders");
+CashFlows    =new Mongo.Collection("cashflows");
+CashChecks   =new Mongo.Collection("cashchecks");
+SpecialOffers=new Mongo.Collection("special_offers");
+Categories   =new Mongo.Collection("categories");
+FullPersons  =new Mongo.Collection("fullpersons");
 FullPersons.attachSchema(Schemas.FullPerson);
 
 

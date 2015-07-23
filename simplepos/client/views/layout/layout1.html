@@ -1,4 +1,6 @@
 <template name="layout1">
+	<audio id="beep" src="../audio/beep.wav" preload="auto" autostart="false"></audio>
+	<audio id="remove" src="../audio/remove.wav" preload="auto" autostart="false"></audio>
 	<div class="container">
 	{{#if currentUser}}
 		{{>yield "modal"}}

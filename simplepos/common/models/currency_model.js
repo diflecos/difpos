@@ -4,14 +4,14 @@ bills: array of possible values of bills for the currency (expressed in cents). 
 coins: similar to bills
 
 */
-Currency=function Currency(name,shortname,symbol,precision,bills,coins) {
-	this.name=name;
-	this.shortname=shortname;
-	this.symbol=symbol;
-	this.precision=parseInt(precision);
+Currency=function Currency(currency) {  // currency debe ser un objeto con los siguientes campos: name,shortname,symbol,precision,bills,coins
+	this.name=currency.name;
+	this.shortname=currency.shortname;
+	this.symbol=currency.symbol;
+	this.precision=parseInt(currency.precision);
 	this.zeroUI=this.convertUI(0);
-	this.bills=bills;  
-	this.coins=coins;
+	this.bills=currency.bills;  
+	this.coins=currency.coins;
 }
 
 /* 

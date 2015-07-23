@@ -23,11 +23,8 @@ Template.login.rendered=function() {
 }
 
 Template.login.helpers({
-	stores: function() {
-		return [	
-			{ store_id: "lalaib2894l24s", store_name: "Alcalá 402"},
-			{ store_id: "ua2j5lsjsoi8fZ", store_name: "Francisco Silvela, 17"},
-		];
+	stores: function() {		
+		return Stores.find({},{});
 	}
 });
 
@@ -38,7 +35,7 @@ Template.login.events({
 		
 		Meteor.loginWithPassword(username,password,function() {
 			if(Meteor.user()!=null) {
-				console.log("logado");
+				$("#login_block").hide();			
 				$("#store_selector_block").show();			
 			} else {
 				FlashMessages.sendError("No user was found with this username and password, please retry");
@@ -46,8 +43,13 @@ Template.login.events({
 		});		
 		// Si el login tiene éxito, recuperamos las tiendas a las que está autorizado el usuario y mostramos el bloque de selección de tienda
 	},
-	"change #store_selector": function(event) {    console.log($(event.target).val());
-		if($(event.target).val()!="") {
+	"click .store": function(event) {   
+		event.preventDefault();
+		
+		var storeId=$(event.target).data("store-id"); 
+		var selected_store=Stores.findOne(storeId);
+		if(selected_store!=undefined) {
+			store=new Store(selected_store);
 			Router.go("/cash/check");
 		}
 	}

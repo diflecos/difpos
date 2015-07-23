@@ -3,8 +3,11 @@
 
 	<h1 class="text-center">Sistema de gestión de ventas de Balzaq</h1>
 	<br>
+	{{#if currentUser}}
 	<br>
-	<div class="container" style="width: 400px">
+	<h2 class="text-center">{{currentUser.username}}</h2>
+	{{/if}}
+	<div id="login_block" class="container" style="width: 400px">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="text-center">Login</h3>
@@ -40,6 +43,7 @@
 		</div>	
 	</div>
 
+	{{#if currentUser}}
 	<br>
 	<div id="store_selector_block" class="container" style="width: 400px">
 		<div class="panel panel-default">
@@ -51,18 +55,17 @@
 				<form>
 					<div class="form-group">
 						<div class="input-group center-block text-center">
-							<label for="username">Stores</label>
-							<select id="store_selector" class="form-control text-center">
-								<option value=""></option>
+							<div id="store_selector" class="list-group">
 								{{#each stores}}
-								<option value="{{store_id}}">{{store_name}}</option>
+								<a href="#" class="list-group-item store" data-store-id={{_id}}>{{name}}</a>
 								{{/each}}
-							</select>
+							</div>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>	
 	</div>
+	{{/if}}
 </div>
 </template>

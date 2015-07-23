@@ -1,6 +1,6 @@
-Store=function Store(name,currency,address,phone) {
-	this.name=name;
-	this.currency=currency;
-	this.address=address;
-	this.phone=phone;
+Store=function Store(store) {  // store debe ser un objeto con los siguientes campos:  name,currency,address,phone
+	this.name=store.name;
+	this.currency=new Currency(store.currency);
+	this.address=new Address(store.address);
+	this.phone=store.phone;
 }

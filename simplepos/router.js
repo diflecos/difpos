@@ -206,6 +206,7 @@ Router.route('/user/create', function() {
 
 /*******************  INSTALL **************************/
 Router.route('/install', function() {
+	this.layout('layout0');
 	this.render('install');
 },{
 	name: 'install'
