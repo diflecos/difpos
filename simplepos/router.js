@@ -21,6 +21,7 @@ Router.route('/welcome',function () {
 });
 
 
+/*******************  FULLPERSON **************************/
 Router.route('/fullpersons', {
 	template: 'fullpersons_index'
 },{
@@ -157,6 +158,7 @@ Router.route('/order/search', function() {
 	name: 'order_search'
 });		
 	
+/*******************  CASH **************************/	
 Router.route('/cash/check', function() {
 	this.render('cash_check');
 },{
@@ -192,6 +194,13 @@ Router.route('/session/end', function() {
 	Router.go("/cash/check");
 },{
 	name: 'session_end'
+});	
+
+/*******************  USERS **************************/
+Router.route('/user/create', function() {
+	this.render('user_create');
+},{
+	name: 'user_create'
 });	
 
 
