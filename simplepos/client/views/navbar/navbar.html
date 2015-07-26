@@ -6,7 +6,7 @@
 			</div>
 			<p class="navbar-text">Powered by <a href="#" class="navbar-link">tututu</a></p>		
 
-			<p class="navbar-text"><a id="page_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Page info" data-content="Page load time: 65ms (version 1.5.2)"><span class="glyphicon glyphicon-info-sign"></span></a></p>		
+			<p class="navbar-text"><a id="page_info" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Page info" data-content="Page load time: 65ms (version 1.5.2)"><i class="fa fa-info-circle fa-lg"></i></a></p>		
 			<script>$('#page_info').popover({});</script>
 						
 			<ul class="nav navbar-nav navbar-right">
@@ -16,22 +16,22 @@
 			<p class="navbar-text navbar-right">
 				<a id="toggle_connexion" href="#" class="navbar-link">
 					{{#if connected}}
-					<span class="glyphicon glyphicon-resize-small"></span>
+					<i class="fa fa-compress fa-lg"></i>
 					{{else}}
-					<span class="glyphicon glyphicon-resize-full"></span>
+					<i class="fa fa-expand fa-lg"></i>
 					{{/if}}
 				</a>			
 			</p>
 
 			<p class="navbar-text navbar-right">
 				{{#if connected}}
-				<span class="glyphicon glyphicon-flash text-warning"></span> {{clientIP}}
+				<i class="fa fa-wifi fa-lg text-warning"></i> {{clientIP}}
 				{{else}}
-				<span class="glyphicon glyphicon-ban-circle text-danger"></span> Disconnected
+				<i class="fa fa-ban fa-lg text-danger"></i> Disconnected
 				{{/if}}
 			</p>		
 			
-			<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 ({{currentUser}})"><span class="glyphicon glyphicon-time"></span></a></p>		
+			<p class="navbar-text navbar-right"><a id="session_start" href="#" class="navbar-link" data-container="body" data-toggle="popover" data-placement="bottom" title="Session start" data-content="14/10/2014 9:34 ({{currentUser}})"><i class="fa fa-clock-o fa-lg"></i></a></p>		
 			<script>$('#session_start').popover({});</script>
 
 			<p class="navbar-text navbar-right" id="clock">{{currentTime}}</p>	
