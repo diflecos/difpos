@@ -1,56 +1,52 @@
 <template name="cash_check">
-<div class="container">
-	<!--div class="alert alert-success" role="alert">No messages</div-->
-
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2>Cash check <span class="label label-success pull-right">OK</span><span id="cash_check_total" class="pull-right">0,00€</span></h2>
-				</div>
-				<div class="panel-body">
-					<form class="form">			
-						<div class="row">
-							<div class="col-md-3">
-								<h3>Bills</h3>
-								{{#each bills}}
-									{{>billcoin}}
-								{{/each}}
-							</div>
-							<div class="col-md-3">	
-								<h3>Coins</h3>
-								{{#each coins}}
-									{{>billcoin}}
-								{{/each}}
-							</div>
-							<div class="col-md-6">
-								<h3>Verification</h3>
-								<div class="btn-group">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									Session Start <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Session Start</a></li>
-										<li><a href="#">Middle of Session</a></li>
-										<li><a href="#">Session End</a></li>
-									</ul>
-								</div>										
-								<textarea id="comment" class="form-control" rows="8" placeholder="Enter your comments here"></textarea>
-								<br>
-							</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2>Cash check <span class="label label-success pull-right">OK</span><span id="cash_check_total" class="pull-right">0,00€</span></h2>
+			</div>
+			<div class="panel-body">
+				<form class="form">			
+					<div class="row">
+						<div class="col-md-3">
+							<h3>Bills</h3>
+							{{#each bills}}
+								{{>billcoin}}
+							{{/each}}
 						</div>
-					</form>									
-				</div>
-				<div class="panel-footer text-right">
-					<div class="btn-group">
-						<a id="save_cash_check" class="btn btn-success btn-lg" href="#">Save</a>
-						<a id="cancel_cash_check" class="btn btn-danger btn-lg" href="#">Cancel</a>
-					</div>						
-				</div>										
-			</div>	
-		</div>
-	</div>	
-</div>
+						<div class="col-md-3">	
+							<h3>Coins</h3>
+							{{#each coins}}
+								{{>billcoin}}
+							{{/each}}
+						</div>
+						<div class="col-md-6">
+							<h3>Verification</h3>
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								Session Start <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Session Start</a></li>
+									<li><a href="#">Middle of Session</a></li>
+									<li><a href="#">Session End</a></li>
+								</ul>
+							</div>										
+							<textarea id="comment" class="form-control" rows="8" placeholder="Enter your comments here"></textarea>
+							<br>
+						</div>
+					</div>
+				</form>									
+			</div>
+			<div class="panel-footer text-right">
+				<div class="btn-group">
+					<a id="save_cash_check" class="btn btn-success btn-lg" href="#">Save</a>
+					<a id="cancel_cash_check" class="btn btn-danger btn-lg" href="#">Cancel</a>
+				</div>						
+			</div>										
+		</div>	
+	</div>
+</div>	
 </template>
 
 <template name="billcoin">

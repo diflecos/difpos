@@ -1,12 +1,9 @@
 <template name="login">
 <div class="container">
-
 	<h1 class="text-center">Sistema de gestión de ventas de Balzaq</h1>
 	<br>
-	{{#if currentUser}}
 	<br>
-	<h2 class="text-center">{{currentUser.username}}</h2>
-	{{/if}}
+
 	<div id="login_block" class="container" style="width: 400px">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -19,6 +16,9 @@
 			</div>
 
 			<div class="panel-body">
+				{{#if currentUser}}
+				<h2 class="text-center">Logged in as {{currentUser.username}}</h2>
+				{{else}}
 				<form>
 					<div class="form-group">
 						<div class="input-group center-block text-center">
@@ -34,18 +34,24 @@
 						</div>	
 					</div>
 				</form>
+				{{/if}}	
 			</div>
-
+			
 			<div class="panel-footer text-right">
 				<div class="btn-group">
-					<button id="btn_login" type="submit" class="btn btn-success btn-lg">Login</button>
+				{{#if currentUser}}
+					<button id="btn_logout" class="btn btn-success btn-lg">Logout</button>
+				{{else}}
+					<button id="btn_login" class="btn btn-success btn-lg">Login</button>
+				{{/if}}	
 				</div>
 			</div>
 		</div>	
-	</div>
-
-	{{#if currentUser}}
+	</div>	
+	
 	<br>
+	
+	{{#if currentUser}}
 	<div id="store_selector_block" class="container" style="width: 400px">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -67,6 +73,6 @@
 			</div>
 		</div>	
 	</div>
-	{{/if}}
-</div>
+	{{/if}}	
+</div>	
 </template>
