@@ -47,12 +47,7 @@
 			{{/if}}
 		</div>
 		<div class="panel-heading">
-			<h2>To be paid
-			{{#if isOrderSettled}} 
-				<span class="label label-success pull-right">PAID!</span>
-			{{else}} 
-				<span class="label label-danger pull-right">{{restToSettle}}</span>
-			{{/if}}
+			<h2>Payment
 			</h2>
 		</div>		
 		<div class="panel-body">
@@ -95,7 +90,7 @@
 		<div class="panel-footer text-right">
 			<div class="btn-group">
 				<a href="/order/print/{{id}}" class="btn btn-success btn-lg">Print Ticket</a>						
-				<a href="/order/print/{{id}}?gift=true" class="btn btn-success btn-lg">Ticket Regalo</a>						
+				<a href="/order/print/{{id}}?isGiftTicket=true" class="btn btn-success btn-lg">Ticket Regalo</a>						
 				<a class="btn btn-danger btn-lg" href="/">Cancel</a>
 			</div>						
 		</div>

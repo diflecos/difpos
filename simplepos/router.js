@@ -104,45 +104,49 @@ Router.route('/order/comments', function() {
 		
 Router.route('/order/view/:_id', function() {
 	var orderId=this.params._id;
-	var order=new Order(store.currency);
+	
+	var order=new Order({});
 	order.id=orderId;
-	try {
-		order.find();		
+	try { 
+		order.find();
+		currentOrderCurrency=order.currency
+		this.render("order_view",{ 
+			data: order
+		});			
 	}
-	catch(error) {
+	catch(error) { 
 		FlashMessages.sendError('No order was found with id '+orderId+"["+error.reason+"]");
 	}	
-	Session.set("currentOrder",order);
-	this.render("order_view");	
 },{
 	name: 'order_view'
 });
 		
 Router.route('/order/print/:_id', function() {
 	var orderId=this.params._id;
-	var query = this.params.query;
 	
-	// We determine whether the URL contains "?gift=true"
-	var gift=false;
+	// We determine whether the URL contains "?isGiftTicket=true"
+	var isGiftTicket=false;
+	var query = this.params.query;
 	if(query==undefined || query=="") {
-		gift=false;
-	} else if(query.gift=="true") {
-		gift=true;
+		isGiftTicket=false;
+	} else if(query.isGiftTicket=="true") {
+		isGiftTicket=true;
 	}
 	
 	// We retrieve the concerned order based on id
-	var order=new Order(store.currency);
+	var order=new Order({});
 	order.id=orderId;
-	try {
-		order.find();		
-		order.isGiftInvoice=gift;
-		this.render('invoice',{ 
+	try { 
+		order.find();
+		currentOrderCurrency=order.currency
+		order.isGiftInvoice=isGiftTicket;
+		this.render("invoice",{ 
 			data: order
-		});	
+		});			
 	}
-	catch(error) {
+	catch(error) {  
 		FlashMessages.sendError('No order was found with id '+orderId+"["+error.reason+"]");
-	}	
+	}		
 },{
 	name: 'order_print'
 });

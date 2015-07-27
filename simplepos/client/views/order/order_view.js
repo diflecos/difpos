@@ -1,85 +1,68 @@
 Template.order_view.helpers({
 	id: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession._id;		
+		return this.id;		
 	},
 	currency_symbol: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.currency.symbol;
+		return this.currency.symbol;
 	},
 	order_items: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.order_items;
+		return this.order_items;
 	},
 	payment_trxs: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.payment_trxs;
+		return this.payment_trxs;
 	},
 	isThereOrderItems: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.order_items.length>0;
+		return this.order_items.length>0;
 	},
 	isTherePublicComment: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.public_comment!="";
+		return this.public_comment!="";
 	}, 
 	isTherePrivateComment: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.private_comment!="";
+		return this.private_comment!="";
 	},
 	public_comment: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.public_comment;
+		return this.public_comment;
 	},
 	private_comment: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.private_comment;
+		return this.private_comment;
 	}, 
 	isTherePayments: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.payment_trxs.length>0;
+		return this.payment_trxs.length>0;
 	},
 	isOrderSettled: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.is_settled;
+		return this.is_settled;
 	},
 	isThereDiscount: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.discount!=undefined;	
+		return this.discount!=undefined;	
 	},
 	discountName: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrderInSession.discount.name;	
+		return this.discount.name;	
 	},
 	discount: function() {
-		currentOrderInSession=Session.get("currentOrder");	
-		if(currentOrderInSession.discount==undefined) 
+		if(this.discount==undefined) 
 			return "";
 		
-		if(currentOrderInSession.discount.type=="Percentage")
-			return "-"+currentOrderInSession.discount.value+"%";
+		if(this.discount.type=="Percentage")
+			return "-"+this.discount.value+"%";
 			
-		if(currentOrderInSession.discount.type=="Amount") {
-			return "-"+currentOrderInSession.discount.value+currentOrderInSession.currency.symbol;
+		if(this.discount.type=="Amount") {
+			return "-"+this.discount.value+this.currency.symbol;
 		}	
 	},
 	UI_subtotal: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrder.currency.convertUI(currentOrderInSession.subtotal);
+		return currentOrderCurrency.convertUISymbol(this.subtotal);
 	},
 	UI_discount: function() {
-		return currentOrderInSession.discount.display;
+		return this.discount.display;
 	},
 	UI_final_price: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return currentOrder.currency.convertUI(currentOrderInSession.final_price);
+		return currentOrderCurrency.convertUISymbol(this.final_price);
 	},
 	reductionTypes: function() {
 		return OPTIONS.REDUCTION_TYPE;
 	},
 	restToSettle: function() {
-		currentOrderInSession=Session.get("currentOrder");
-		return store.currency.convertUI(currentOrderInSession.final_price-currentOrderInSession.paid);
+		return currentOrderCurrency.convertUISymbol(this.final_price-this.paid);
 	}
 });
 
@@ -89,29 +72,29 @@ Template.order_view.events({
 
 Template.view_order_item.helpers({
 	UI_unit_price: function() {
-		return currentOrder.currency.convertUI(this.unit_price);
+		return currentOrderCurrency.convertUISymbol(this.unit_price);
 	},
 	UI_unit_discount: function() {
 		return (this.unit_discount!=undefined)?this.unit_discount.display:"";
 	},
 	UI_final_unit_price: function() {
-		return currentOrder.currency.convertUI(this.final_unit_price);
+		return currentOrderCurrency.convertUISymbol(this.final_unit_price);
 	},
 	UI_price: function() {
-		return currentOrder.currency.convertUI(this.price);
+		return currentOrderCurrency.convertUISymbol(this.price);
 	},
 	UI_order_item_discount: function() {
 		return (this.discount!=undefined)?this.discount.display:"";
 	},
 	UI_final_price: function() {
-		return currentOrder.currency.convertUI(this.final_price);
+		return currentOrderCurrency.convertUISymbol(this.final_price);
 	}
 });
 
 
 Template.view_order_payment_trx.helpers({
 	UI_paid: function() {
-		return currentOrder.currency.convertUI(this.paid);
+		return currentOrderCurrency.convertUISymbol(this.paid);
 	},
 	details: function() {
 		return this.details.displayShort();

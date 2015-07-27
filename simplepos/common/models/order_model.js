@@ -34,11 +34,12 @@ Order.prototype.toEJSON=function() {
     };
 } */
 Order.prototype.find=function() {
-	if(this.id!=undefined) {
+	if(this.id!=undefined) {  console.log("find() : id: "+this.id);
 		var order=Orders.findOne(this.id);
+		console.log("find(): order:"+order);
 		this.id=order._id;
 		this.session=order.session; 
-		this.currency=order.currency;
+		this.currency=new Currency(order.currency);
 		this.order_items=order.order_items;
 		this.subtotal=order.subtotal;
 		this.final_price=order.final_price;

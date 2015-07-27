@@ -1,7 +1,7 @@
 Template.invoice.rendered=function() {
 	if(!PARAMS.TEST_MODE) {
-		window.print();
-		Router.go("/order/view/"+this._id);	
+/* 		window.print();
+		Router.go("/order/view/"+this._id);	 */
 	}
 }
 
@@ -34,7 +34,7 @@ Template.invoice.helpers({
 		return this.is_settled;
 	},
 	restToSettle: function() {
-		return store.currency.convertUI(this.final_price-this.paid);
+		return currentOrderCurrency.convertUISymbol(this.final_price-this.paid);
 	},
 	isTherePublicComment: function() {
 		return this.public_comment!="";
@@ -143,13 +143,13 @@ Template.invoice_order_items.helpers({
 		}	
 	},
 	UI_subtotal: function() {
-		return store.currency.convertUI(this.subtotal);
+		return currentOrderCurrency.convertUISymbol(this.subtotal);
 	},
 	UI_discount: function() {
 		return this.discount.display;
 	},
 	UI_final_price: function() {
-		return store.currency.convertUI(this.final_price);
+		return currentOrderCurrency.convertUISymbol(this.final_price);
 	}	
 });
 
@@ -158,34 +158,34 @@ Template.invoice_payment_trxs.helpers({
 		return this.payment_trxs;
 	},
 	UI_paid: function() {
-		return store.currency.convertUI(this.paid);
+		return currentOrderCurrency.convertUISymbol(this.paid);
 	},	
 });
 
 Template.invoice_order_item.helpers({
 	UI_unit_price: function() {
-		return store.currency.convertUI(this.unit_price);
+		return currentOrderCurrency.convertUISymbol(this.unit_price);
 	},
 	UI_unit_discount: function() {
 		return (this.unit_discount!=undefined)?this.unit_discount.display:"";
 	},
 	UI_final_unit_price: function() {
-		return store.currency.convertUI(this.final_unit_price);
+		return currentOrderCurrency.convertUISymbol(this.final_unit_price);
 	},
 	UI_price: function() {
-		return store.currency.convertUI(this.price);
+		return currentOrderCurrency.convertUISymbol(this.price);
 	},
 	UI_order_item_discount: function() {
 		return (this.discount!=undefined)?this.discount.display:"";
 	},
 	UI_final_price: function() {
-		return store.currency.convertUI(this.final_price);
+		return currentOrderCurrency.convertUISymbol(this.final_price);
 	}
 });
 
 Template.invoice_payment_trx.helpers({
 	UI_paid: function() {
-		return store.currency.convertUI(this.paid);
+		return currentOrderCurrency.convertUISymbol(this.paid);
 	},
 	index: function() {
 		return 0; // REVISAR --> bien añadimos un payment_trx_index al Order o bien cuando meteor soporte {{@index}} en los templates lo ponemos
