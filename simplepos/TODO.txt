@@ -9,5 +9,11 @@
 - Terminar de revisar y probar el modelo de Order para estar 100% seguros que funciona y replicarlo para todos los otros objetos. La función clone() necesaria para inicializar la instancia a partir de un documento de la BBDD no parece que funcione muy bien, debe haber algún conflicto porque cuando se renombra a clone2 ya no falla parece --> he puesto el contenido de esa función en la parte que se hace el order.find(). Verificar que termine de funcionar el /order/view/id 
 
 - Puede darse la posibilidad de que un order tenga un currency diferente del de la tienda???? Por si acaso los nuevos pedidos se crean con el store.currency y en la vista de un pedido inicializamos el currentOrderCurrency a partir del currentOrder.currency
+
+- Para cada objeto, hay que tomar una decision sobre la forma de operar, eligiendo entre: 
+	* operar en el cliente sobre el modelo y luego simplemente dedicarnos en los methods a sincronizar 
+	* o operar directamente sobre el servidor  
+Por ejemplo en el caso de una Session parece obvio que hay que operar a nivel de servidor (sobre todo porque al hacer un Sesssion.init() o Session.end() es necesario que se almacene la fecha _del_servidor_!
+En el caso de un Order parece más interesante igual cerrar toda la venta en el cliente y ya luego copiarla toda entera y finalizada al servidor... aunque igual se puede hacer de otra manera simplemente sincrizando cada elemento que se añade a un order
 	
 	
