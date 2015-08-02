@@ -6,6 +6,7 @@ Meteor.methods({
 			type: cashcheck.flow_type,
 			billcoin_count: cashcheck.billcoin_count,
 			comment: cashcheck.comment,
+			op_date: new Date(),
 			createdAt: new Date(),
 			udpatedAt: new Date(),
 			createdBy: Meteor.userId(),

@@ -99,3 +99,35 @@ Template.install.rendered=function() {
 	};
 	
 }
+
+
+
+/*   Añadir insecure para ejecutar desde la consola
+
+
+store1=new Store();
+store1.set("name","Tienda ALCALA, 402");
+store1.set("currency",currency);
+store1.set("regional_store_network",{});
+store1.set("address",{ name: "Dirección", street: "C/Alcalá, 402 (bajo)",town: "Madrid",zipcode: "28027",country: "España"});
+store1.set("phone","910144408");
+Meteor.call("storeSave",store1,function(error, result){
+	if(error) console.log(error);
+	else console.log("OK: "+result);
+});
+
+
+store2=new Store();
+store2.set("name","Tienda FRANCISCO SILVELA");
+store2.set("currency",currency);
+store2.set("regional_store_network",{});
+store2.set("address",{ name: "Dirección", street: "C/Franscisco Silvela, 17 (bajo)",town: "Madrid",zipcode: "28038",country: "España"});
+store2.set("phone","910155508");
+Meteor.call("storeSave",store2,function(error, result){
+	if(error) console.log(error);
+	else console.log("OK: "+result);
+});
+
+
+
+*/

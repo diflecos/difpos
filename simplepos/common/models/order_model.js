@@ -11,6 +11,7 @@ Order=function Order(currency) {
 	this.is_settled=false;
 	this.public_comment="";
 	this.private_comment="";
+	this.op_date=undefined;
 }
 
 /* Estas funciones de toEJSON y fromEJSON son necesarias para que al salvar una Order en la Session y volverla a recuperar que se reconoza como un objeto Order con sus métodos --> sino lo hacemos así se pierden los métodos y no los podemos utilizar porque la Session solo guarda datos 
@@ -49,6 +50,7 @@ Order.prototype.find=function() {
 		this.is_settled=order.is_settled;
 		this.public_comment=order.public_comment;
 		this.private_comment=order.private_comment;
+		this.op_date=order.op_date;
 	} else {
 		throw new Meteor.Error("orderIdUndefined","Impossible to find an order with undefined id"); 
 	}
@@ -168,6 +170,7 @@ Order.prototype.delPaymentTrx=function(i) {
 		this.updatePaid();
 	}	
 }
+
 
 /*************************   EJEMPLO   *************************
 currency=new Currency("Euro","EUR","€");

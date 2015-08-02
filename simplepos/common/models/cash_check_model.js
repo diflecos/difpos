@@ -8,6 +8,7 @@ CashCheck=function CashCheck(billcoin_count,type,comment) {
 	this.billcoin_count=billcoin_count;
 	this.type=type;
 	this.comment=comment;
+	this.op_date=undefined;
 }
 
 CashCheck.prototype.count=function() {

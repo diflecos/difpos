@@ -7,6 +7,7 @@ Meteor.methods({
 			amount: cashflow.amount,
 			concept: cashflow.concept,
 			comment: cashflow.comment,
+			op_date: new Date(),
 			createdAt: new Date(),
 			udpatedAt: new Date(),
 			createdBy: Meteor.userId(),

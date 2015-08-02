@@ -16,4 +16,13 @@
 Por ejemplo en el caso de una Session parece obvio que hay que operar a nivel de servidor (sobre todo porque al hacer un Sesssion.init() o Session.end() es necesario que se almacene la fecha _del_servidor_!
 En el caso de un Order parece más interesante igual cerrar toda la venta en el cliente y ya luego copiarla toda entera y finalizada al servidor... aunque igual se puede hacer de otra manera simplemente sincrizando cada elemento que se añade a un order
 	
+- Ver cómo podemos formatear las fechas que se muestran en la UI de manera global (sin tener que hacerlo una a una)	y utilizando algún tipo de setting global
+
+- Pasar todos los modelos a Astronomy!    
+	* terminar entero todo el modelo de Store con sus métodos y su instalación antes de nada para tomarlo como ejemplo
+	* eliminar también el insecure --> la idea es que para salvar un modelo se tenga que pasar todos los datos a un method que los recoja, cree el modelo, verifique que valida sin problema y haga save(). Igual el modelo se puede crear en cliente y pasarse al servidor solo cuando sepamos a ciencia cierta que valida sin problema
+	* rehacer la parte de la instalación!
+
+	
+- en algún momento eliminar el aldeed:simple-schema, los autoforms y todo eso
 	

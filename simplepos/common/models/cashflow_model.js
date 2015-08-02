@@ -4,6 +4,7 @@ CashFlow=function CashFlow(flow_type,amount,concept,comment) {
 	this.amount=amount;
 	this.concept=concept;
 	this.comment=comment;
+	this.op_date=undefined;	
 }
 
 CashFlow.prototype.save=function(callback) {

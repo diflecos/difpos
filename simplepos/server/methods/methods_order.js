@@ -19,7 +19,7 @@ Meteor.methods({
 			$setOnInsert: {
 				session: order.session,
 				currency: order.currency,
-				purchase_date: new Date(),
+				op_date: new Date(),
 				employee: Meteor.userId(),
 				createdAt: new Date(),
 				createdBy: Meteor.userId(),			

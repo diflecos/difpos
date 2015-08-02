@@ -35,13 +35,8 @@ Meteor.methods({
 		
 		Sessions.remove(id);
 	},
-	sessionLast: function(storeId) {
+	sessionOperations: function(id) {    // esta es una operacion de lectura, no tiene porque estar en los methods...
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
-		// recupera la ultima session de una tienda concreta!
-		
-	},
-	sessionOperations: function(id) {
-		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }	
 	
 	},
 	sessionVerifyInit: function(id,init_cashcheck) {

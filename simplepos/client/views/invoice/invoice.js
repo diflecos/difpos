@@ -113,8 +113,8 @@ Template.invoice_order_qrcode.helpers({
 	id: function() {
 		return this._id;		
 	},
-	purchase_date: function() {
-		return this.purchase_date;
+	op_date: function() {
+		return this.op_date;
 	},
 	employee_name: function() {
 		userId=this.employee;

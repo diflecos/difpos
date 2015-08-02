@@ -1,23 +1,63 @@
-Store=function Store(store) {  // store debe ser un objeto con los siguientes campos:  name,currency,address,phone
-	this.storeId;
-	this.name=store.name;
-	this.currency=new Currency(store.currency);
-	this.address=new Address(store.address);
-	this.phone=store.phone;
-}
+Store=Astro.Class({
+	name: 'Store',
+	collection: Stores,
+	fields: {
+		name: {
+			type: 'string',
+			default: '',
+			validators: [
+				Validators.required(),
+				Validators.string(),
+				Validators.minLength(3)
+			]			
+		},
+		currency: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		address: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		phone: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		createdAt: {
+			type: 'date',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		udpatedAt: {
+			type: 'date',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		createdBy: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		updatedBy: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},		
+	},
+	methods: {
+		lastSession: function() {                     // esto igual se puede implementar como una relación!
+			return SessionPOS.last(this._id);
+		}
+	}
+});
 
-
-Store.prototype.save=function(callback) {
-	Meteor.call('storeAdd',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		this.storeId=result;
-		callback();
-	});		
-}
-
-Store.prototype.remove=function(callback) {
-	Meteor.call('storeRemove',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		callback();
-	});		
-}

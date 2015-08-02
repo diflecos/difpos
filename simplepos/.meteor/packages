@@ -21,3 +21,6 @@ yogiben:autoform-file
 cfs:standard-packages
 cfs:filesystem
 fortawesome:fontawesome
+jagi:astronomy
+jagi:astronomy-validators
+jagi:astronomy-relations

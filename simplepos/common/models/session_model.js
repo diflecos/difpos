@@ -10,149 +10,166 @@ El ciclo de vida de una Session:
 
 */
 
-SessionPOS=function SessionPOS() {  
-	this.store=undefined;
-	this.user=Meteor.user();
-	this.type="";   //   ENUM('admin','audit','ecommerce','pos')
-	this.status='created'; //   ENUM('open','closed','zombie')
-	this.init=undefined;
-	this.end=undefined;
-	this.init_cashcheck=undefined;
-	this.end_cashcheck=undefined;
-	this.init_verification=undefined;
-	this.end_verification=undefined;
-	this.ip=undefined;
-	this.comment;
-	this.createdAt;
-	this.udpatedAt;
-	this.createdBy;
-	this.updatedBy;
-		
-	this.save();
-}
-
-SessionPOS.prototype.find=function(id) {
-	if(id!=undefined) {  
-		var session=Sessions.findOne(id);
-		this._id=session._id;		
-		this.store=Stores.findOne(session.storeId);
-		this.user=Meteor.users.findOne(session.userId);
-		this.type=session.type;   //   ENUM('admin','audit','ecommerce','pos')
-		this.status=session.status; //   ENUM('created','open','closed','zombie')
-		this.init=session.init;
-		this.end=session.end;
-		this.init_cashcheck=session.init_cashcheck;
-		this.end_cashcheck=session.end_cashcheck;
-		this.init_verification=session.init_verification;
-		this.end_verification=session.end_verification;
-		this.ip=session.ip;
-		this.comment=session.comment;
-		this.createdAt=session.createdAt;
-		this.udpatedAt=session.udpatedAt;
-		this.createdBy=session.createdBy;
-		this.updatedBy=session.updatedBy;
-	} else {
-		throw new Meteor.Error("SessionIdUndefined","Impossible to find a Session with undefined id"); 
+SessionPOS=Astro.Class({
+	name: 'SessionPOS',
+	collection: Sessions,
+	fields: {
+		storeId: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		userId: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		type: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		status: {
+			type: 'string',
+			default: 'created',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		init: {
+			type: 'date',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		end: {
+			type: 'date',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		init_cashcheck: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		end_cashcheck: {
+			type: 'object',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		init_verification: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		end_verification: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		ip: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		comment: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		createdAt: {
+			type: 'date',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		udpatedAt: {
+			type: 'date',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		createdBy: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+		updatedBy: {
+			type: 'string',
+			validators: [
+				Validators.required(),
+			]		
+		},
+	},
+	methods: {
+		verifyInit: function(init_cashcheck,callback) {
+			Meteor.call('sessionVerifyInit',this._id,init_cashcheck,function(error, result){
+				// TODO: ver qué hacemos en caso de error!
+				if(callback!=undefined) {
+					callback();		
+				}		
+			});	
+		},
+		verifyEnd: function(end_cashcheck,callback) {
+			Meteor.call('sessionVerifyEnd',this._id,end_cashcheck,function(error, result){
+				// TODO: ver qué hacemos en caso de error!
+				if(callback!=undefined) {
+					callback();		
+				}		
+			});	
+		},
+		initSession: function(init_cashcheck,callback) {
+			if(init_cashcheck==undefined) {
+				throw new Meteor.Error("session-init_cashcheck-undefined","Session init failed because no initial cashcheck was provided");
+			}
+			
+			Meteor.call('sessionInit',this._id,init_cashcheck,function(error, result){
+				// TODO: ver qué hacemos en caso de error!
+				if(callback!=undefined) {
+					callback();		
+				}		
+			});	
+		},
+		endSession: function(end_cashcheck,callback) {
+			if(end_cashcheck==undefined) {
+				throw new Meteor.Error("session-end_cashcheck-undefined","Session end failed because no end cashcheck was provided");
+			}
+			
+			Meteor.call('sessionEnd',this._id,end_cashcheck,function(error, result){
+				// TODO: ver qué hacemos en caso de error!
+				if(callback!=undefined) {
+					callback();		
+				}		
+			});	
+		},
+		last: function(storeId) {   // Metodo estático (simplemente no ponemos prototype en la definición )
+			if(storeId==undefined) {
+				throw new Meteor.Error("session_last-storeId-undefined","Session.last() failed because no storeId was provided");
+			}
+			
+			var last_session=Sessions.findOne({ "storeId": storeId },{ sort: {"init": "desc"}});
+			
+			return last_session;
+		},
+		operations: function() {    // Implementar como relación??!!!!
+			// Ver cómo haríamos para devolver todas las operaciones asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de operación es cada registro (para pintar unos datos u otros en función de si es un order, una entrada de dinero, etc)
+			return; 
+		},
+		trxs: function() { // Implementar como relación??!!!!
+			// Ver cómo haríamos para devolver todas las trx asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de trx es cada registro (para pintar unos datos u otros en función de si es un efectivo, una operación con tarjeta, etc)   --> hay que tener en cuanta que las entradas y salidas de dinero también deberían estar asociadas a una trx
+			return; 
+		},
 	}
-}
+});
 
-SessionPOS.prototype.save=function(callback) {
-	self=this;
-	Meteor.call('sessionSave',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error! 
-		console.log(error);
-	
-		if(result.insertedId!=undefined) {
-			self._id=result.insertedId;
-		}
-
-		if(callback!=undefined) {
-			callback();		
-		}
-	});		
-}
-
-SessionPOS.prototype.remove=function(id,callback) {
-	Meteor.call('sessionRemove',id,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		callback();
-	});		
-}
-
-SessionPOS.prototype.setStore=function(store) {
-	if(store==undefined) {
-		throw new Meteor.Error("store-undefined","Store undefined");
-	}
-	
-	this.store=store;
-	Meteor.call('sessionSave',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error! 
-		console.log(error);
-	});			
-}
-
-SessionPOS.prototype.setType=function(type) {
-	if(type==undefined) {
-		throw new Meteor.Error("session-type-undefined","Session type undefined");
-	}
-	
-	this.type=type;
-	Meteor.call('sessionSave',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error! 
-		console.log(error);
-	});			
-}
-
-SessionPOS.prototype.verifyInit=function(init_cashcheck,callback) {
-	Meteor.call('sessionVerifyInit',this._id,init_cashcheck,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		if(callback!=undefined) {
-			callback();		
-		}		
-	});	
-}
-
-SessionPOS.prototype.verifyEnd=function(end_cashcheck,callback) {
-	Meteor.call('sessionVerifyEnd',this._id,end_cashcheck,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		if(callback!=undefined) {
-			callback();		
-		}		
-	});	
-}
-
-SessionPOS.prototype.initSession=function(init_cashcheck,callback) {
-	if(init_cashcheck==undefined) {
-		throw new Meteor.Error("session-init_cashcheck-undefined","Session init failed because no initial cashcheck was provided");
-	}
-	
-	Meteor.call('sessionInit',this._id,init_cashcheck,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		if(callback!=undefined) {
-			callback();		
-		}		
-	});	
-}
-
-SessionPOS.prototype.endSession=function(end_cashcheck,callback) {
-	if(end_cashcheck==undefined) {
-		throw new Meteor.Error("session-end_cashcheck-undefined","Session end failed because no end cashcheck was provided");
-	}
-	
-	Meteor.call('sessionEnd',this._id,end_cashcheck,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		if(callback!=undefined) {
-			callback();		
-		}		
-	});	
-}
-
-SessionPOS.prototype.operations=function() {
-	// Ver cómo haríamos para devolver todas las operaciones asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de operación es cada registro (para pintar unos datos u otros en función de si es un order, una entrada de dinero, etc)
-	return; 
-}
-
-SessionPOS.prototype.trxs=function() {
-	// Ver cómo haríamos para devolver todas las trx asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de trx es cada registro (para pintar unos datos u otros en función de si es un efectivo, una operación con tarjeta, etc)   --> hay que tener en cuanta que las entradas y salidas de dinero también deberían estar asociadas a una trx
-	return; 
-}
