@@ -17,20 +17,9 @@ Address=Astro.Class({
 		},
 		country: {
 			type: 'string',	
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
+	behaviors: ['audit_trail'],
 	methods: {
 
 	},
@@ -59,22 +48,6 @@ Address=Astro.Class({
 			Validators.required(),
 			Validators.string(),
 			Validators.maxLength(30,'At most 30 characters!')
-		],
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
 		],
 	}
 });
