@@ -14,165 +14,178 @@ Order=function Order(currency) {
 	this.op_date=undefined;
 }
 
-/* Estas funciones de toEJSON y fromEJSON son necesarias para que al salvar una Order en la Session y volverla a recuperar que se reconoza como un objeto Order con sus métodos --> sino lo hacemos así se pierden los métodos y no los podemos utilizar porque la Session solo guarda datos 
-Ver http://stackoverflow.com/questions/24504392/meteor-storing-and-retrieving-custom-objects-in-session  para más detalles  --> LO USAMOS AL FINAL?? creo que no...  porque estamos trabajando siempre con el objeto currentOrder en memoria y simplemente salvandolo cuando hay cambios a la Session (aunque se pierdan los métodos) para que se actualice la interfaz */
-/*
-Order.fromEJSON=function(ejson) {   
-    var obj = new Order(undefined);
-    obj.currency=ejson.currency;
-    obj.order_items=ejson.order_items;
-	obj.final_price=ejson.final_price;
-	obj.next_index=ejson.next_index;
-    return obj;
-}
-
-Order.prototype.toEJSON=function() {   
-    return {
-		currency: this.currency,
-		order_items: this.order_items,
-		final_price: this.final_price,
-		next_index: this.next_index,
-    };
-} */
-Order.prototype.find=function() {
-	if(this.id!=undefined) {  console.log("find() : id: "+this.id);
-		var order=Orders.findOne(this.id);
-		console.log("find(): order:"+order);
-		this.id=order._id;
-		this.session=order.session; 
-		this.currency=new Currency(order.currency);
-		this.order_items=order.order_items;
-		this.subtotal=order.subtotal;
-		this.final_price=order.final_price;
-		this.next_index=order.next_index;
-		this.payment_trxs=order.payment_trxs;
-		this.paid=order.paid;
-		this.is_settled=order.is_settled;
-		this.public_comment=order.public_comment;
-		this.private_comment=order.private_comment;
-		this.op_date=order.op_date;
-	} else {
-		throw new Meteor.Error("orderIdUndefined","Impossible to find an order with undefined id"); 
-	}
-}
-
-Order.prototype.save=function(callback) {
-	self=this;
-	Meteor.call('orderSave',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error! 
-	
-		if(result.insertedId!=undefined) {
-			self.id=result.insertedId;
+Order=Astro.Class({
+	name: 'Order',
+	collection: Orders,
+	fields: {
+		sessionId: {
+			type: 'string',
+		},
+		currency: {
+			type: 'object',	
+		},
+		order_items: {
+			type: 'array',	
+		},
+		subtotal: {
+			type: 'number',	
+		},
+		final_price: {
+			type: 'number',	
+		},
+		next_index: {
+			type: 'number',	
+			default: 0,
+		},
+		payment_trxs: {
+			type: 'array',	
+		},
+		paid: {
+			type: 'number',	
+			default: 0,
+		},
+		is_settled: {
+			type: 'boolean',	
+			default: false,
+		},
+		public_comment: {
+			type: 'string',	
+		},
+		private_comment: {
+			type: 'string',	
+		},
+		op_date: {
+			type: 'date',	
+		},
+		createdAt: {
+			type: 'date',	
+		},
+		udpatedAt: {
+			type: 'date',		
+		},
+		createdBy: {
+			type: 'string',
+		},
+		updatedBy: {
+			type: 'string',	
+		},		
+	},
+	relations: {
+		session: {
+			type: 'one',
+			class: 'Session',
+			local: 'sessionId',
+			foreign: '_id'			
+		},
+	},		
+	methods: {
+		updateFinalPrice: function() {
+			var subtotal=0;
+			$.each(this.order_items,function(i,order_item) {
+				subtotal+=order_item.final_price;
+			});
+			this.subtotal=subtotal;
+			
+			if(this.discount!=undefined) {
+				this.final_price=this.discount.getDiscountedPrice(this.subtotal);
+			} else {
+				this.final_price=this.subtotal;
+			}
+		},
+		addOrderItem: function(order_item) {
+			order_item.index=this.next_index++;
+			this.order_items.push(order_item);
+			this.updateFinalPrice();
+		},
+		delOrderItem: function(index) {
+			var arrayIndex;
+			$.each(this.order_items,function(i,order_item) {
+				if(order_item.index==index) {
+					arrayIndex=i;
+					return false;
+				}
+			});
+			
+			if(arrayIndex!=undefined) {
+				this.order_items.splice(arrayIndex,1);
+				this.updateFinalPrice();
+			}
+		},
+		add1: function(index) {
+			var arrayIndex;
+			$.each(this.order_items,function(i,order_item) {   
+				if(order_item.index==index) {
+					order_item.add1();
+					return false;
+				}	
+			});
+			this.updateFinalPrice();	
+		},
+		del1: function(index) {
+			var arrayIndex;
+			$.each(this.order_items,function(i,order_item) {
+				if(order_item.index==index) {
+					order_item.del1();
+					return false;
+				}
+			});
+			this.updateFinalPrice();
+		},
+		addDiscount: function(discount) {
+			this.discount=discount;
+			this.updateFinalPrice();
+		},
+		removeDiscount: function() {
+			this.discount=undefined;
+			this.updateFinalPrice();
+		},
+		updatePaid: function() {
+			var paid=0;
+			$.each(this.payment_trxs,function(i,payment_trx) {
+				paid+=payment_trx.paid;	
+			});
+			this.paid=paid; 
+			
+			if(this.final_price==this.paid) {
+				this.is_settled=true;
+			} else {
+				this.is_settled=false;
+			}
+		},
+		addPaymentTrx: function(payment_trx) {
+			this.payment_trxs.push(payment_trx);
+			this.updatePaid();
+		},
+		delPaymentTrx: function(i) {
+			if(i!=undefined) {
+				this.payment_trxs.splice(i,1);
+				this.updatePaid();
+			}	
 		}
-
-		if(callback!=undefined) {
-			callback();		
-		}
-	});		
-}
-
-Order.prototype.remove=function(callback) {
-	Meteor.call('orderRemove',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		callback();
-	});		
-}
-
-Order.prototype.updateFinalPrice=function() {
-	var subtotal=0;
-	$.each(this.order_items,function(i,order_item) {
-		subtotal+=order_item.final_price;
-	});
-	this.subtotal=subtotal;
-	
-	if(this.discount!=undefined) {
-		this.final_price=this.discount.getDiscountedPrice(this.subtotal);
-	} else {
-		this.final_price=this.subtotal;
+	},
+	validators: {
+// FALTA!!!!
+		createdAt: [
+			Validators.required(),
+			Validators.date(),
+		],
+		updatedAt: [
+			Validators.required(),
+			Validators.date(),
+		],
+		createdBy: [
+			Validators.required(),
+			Validators.date(),
+		],
+		updatedBy: [
+			Validators.required(),
+			Validators.date(),
+		],
 	}
-}
-
-Order.prototype.addOrderItem=function(order_item) {
-	order_item.index=this.next_index++;
-	this.order_items.push(order_item);
-	this.updateFinalPrice();
-}
-
-Order.prototype.delOrderItem=function(index) {
-	var arrayIndex;
-	$.each(this.order_items,function(i,order_item) {
-		if(order_item.index==index) {
-			arrayIndex=i;
-			return false;
-		}
-	});
-	
-	if(arrayIndex!=undefined) {
-		this.order_items.splice(arrayIndex,1);
-		this.updateFinalPrice();
-	}
-}
-
-Order.prototype.add1=function(index) {
-	var arrayIndex;
-	$.each(this.order_items,function(i,order_item) {   
-		if(order_item.index==index) {
-			order_item.add1();
-			return false;
-		}	
-	});
-	this.updateFinalPrice();	
-}
-
-Order.prototype.del1=function(index) {
-	var arrayIndex;
-	$.each(this.order_items,function(i,order_item) {
-		if(order_item.index==index) {
-			order_item.del1();
-			return false;
-		}
-	});
-	this.updateFinalPrice();
-}
-
-Order.prototype.addDiscount=function(discount) {
-	this.discount=discount;
-	this.updateFinalPrice();
-}
-
-Order.prototype.removeDiscount=function() {
-	this.discount=undefined;
-	this.updateFinalPrice();
-}
-
-Order.prototype.updatePaid=function() {
-	var paid=0;
-	$.each(this.payment_trxs,function(i,payment_trx) {
-		paid+=payment_trx.paid;	
-	});
-	this.paid=paid; 
-	
-	if(this.final_price==this.paid) {
-		this.is_settled=true;
-	} else {
-		this.is_settled=false;
-	}
-}
-
-Order.prototype.addPaymentTrx=function(payment_trx) {
-	this.payment_trxs.push(payment_trx);
-	this.updatePaid();
-}
-
-Order.prototype.delPaymentTrx=function(i) {
-	if(i!=undefined) {
-		this.payment_trxs.splice(i,1);
-		this.updatePaid();
-	}	
-}
-
+});
 
 /*************************   EJEMPLO   *************************
+Ya no debe ser valido despues de migrar a Astronomy
 currency=new Currency("Euro","EUR","€");
 order=new Order(currency);
 unit_discount=new Discount("Rebajas 30% en pantalones","percentage",30);
@@ -194,18 +207,6 @@ console.log(order.final_price);  // (7 + 15*2) - 10% = 33.3
 *************************   EJEMPLO   *************************/
 
 /*
-var order = {
-
-
-    type: "macintosh",
-    color: "red",
-    getInfo: function () {
-        return this.color + ' ' + this.type + ' apple';
-    }
-}
-
-
-
 	currentOrder={
 		currency: {
 			name: "Euro",

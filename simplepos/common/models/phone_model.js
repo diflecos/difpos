@@ -1,21 +1,15 @@
-Address=Astro.Class({
-	name: 'Address',
-	collection: Addresses,
+Phone=Astro.Class({
+	name: 'Phone',
+	collection: Phones,
 	fields: {
 		name: {
 			type: 'string',
 			default: '',		
 		},
-		street: {
+		prefix: {
 			type: 'string',	
 		},
-		town: {
-			type: 'string',	
-		},
-		zipcode: {
-			type: 'string',	
-		},
-		country: {
+		nbr: {
 			type: 'string',	
 		},
 		createdAt: {
@@ -40,25 +34,16 @@ Address=Astro.Class({
 			Validators.string(),
 			Validators.minLength(5, 'At least 5 character!')
 		],
-		street: [
-			Validators.required(),
-			Validators.string(),
-			Validators.maxLength(60,'At most 60 characters!')
-		],
-		town: [
-			Validators.required(),
-			Validators.string(),
-			Validators.maxLength(60,'At most 60 characters!')
-		],
-		zipcode: [
+		prefix: [
 			Validators.required(),
 			Validators.string(),
 			Validators.maxLength(20,'At most 20 characters!')
 		],
-		country: [
+		nbr: [
 			Validators.required(),
 			Validators.string(),
-			Validators.maxLength(30,'At most 30 characters!')
+			Validators.maxLength(5,'At least 5 characters!'),
+			Validators.maxLength(20,'At most 20 characters!')
 		],
 		createdAt: [
 			Validators.required(),

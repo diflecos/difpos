@@ -1,19 +1,36 @@
-AmountDiscount=function AmountDiscount(name,amount) {
-	this.name=name;
-	this.amount=amount;
-	this.display="-"+store.currency.convertUI(this.amount);
-}
+Discount=Astro.Class({
+	name: 'Discount',
+	fields: {
+		name: {
+			type: 'string',	
+		},
+		type: {    //   'Amount' o 'Percentage'
+			type: 'string',	
+		},
+		amount: {
+			type: 'number',	
+		},
+		percentage: {   
+			type: 'number',	
+		},
+	},
+	relations: {
 
-AmountDiscount.prototype.getDiscountedPrice=function(priceDB) {
-	return priceDB-this.amount;
-}
-
-PercentageDiscount=function PercentageDiscount(name,percentage) {
-	this.name=name;
-	this.percentage=percentage;
-	this.display="-"+this.percentage+"%";
-}
-
-PercentageDiscount.prototype.getDiscountedPrice=function(priceDB) {
-	return Math.round(priceDB*(1-this.percentage/100));
-}
+	},		
+	methods: {
+		display: function() {
+			if(this.type=='Amount')
+				return "-"+store.currency.convertUI(this.amount);
+			if(this.type=='Percentage')
+				return "-"+this.percentage+"%";
+		},
+		getDiscountedPrice: function(priceDB) {
+			if(this.type=='Amount')
+				return priceDB-this.amount;
+			if(this.type=='Percentage')
+				return Math.round(priceDB*(1-this.percentage/100));
+		}		
+	},
+	validators: {
+	}
+});

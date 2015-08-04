@@ -5,18 +5,50 @@ PaymentTrx=function PaymentTrx(payment_trx) {   // payment_trx debe tener los si
 	this.details=payment_trx.details;
 }
 
+PaymentTrx=Astro.Class({
+	name: 'PaymentTrx',
+	collection: PaymentTrxs,
+	fields: {
+		type: {
+			type: 'string',
+		},
+		paid: {
+			type: 'number',
+		},
+		details: {
+			type: 'object',	
+		},
+		createdAt: {
+			type: 'date',	
+		},
+		udpatedAt: {
+			type: 'date',		
+		},
+		createdBy: {
+			type: 'string',
+		},
+		updatedBy: {
+			type: 'string',	
+		},		
+	},
+	validators: {
+		// FALTA
+		createdAt: [
+			Validators.required(),
+			Validators.date(),
+		],
+		updatedAt: [
+			Validators.required(),
+			Validators.date(),
+		],
+		createdBy: [
+			Validators.required(),
+			Validators.date(),
+		],
+		updatedBy: [
+			Validators.required(),
+			Validators.date(),
+		],
+	}
+});
 
-PaymentTrx.prototype.save=function(callback) {
-	Meteor.call('paymentTrxAdd',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		this.paymentTrxId=result;
-		callback();
-	});		
-}
-
-PaymentTrx.prototype.remove=function(callback) {
-	Meteor.call('paymentTrxRemove',this,function(error, result){
-		// TODO: ver qué hacemos en caso de error!
-		callback();
-	});		
-}

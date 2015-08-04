@@ -169,7 +169,35 @@ SessionPOS=Astro.Class({
 		trxs: function() { // Implementar como relación??!!!!
 			// Ver cómo haríamos para devolver todas las trx asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de trx es cada registro (para pintar unos datos u otros en función de si es un efectivo, una operación con tarjeta, etc)   --> hay que tener en cuanta que las entradas y salidas de dinero también deberían estar asociadas a una trx
 			return; 
-		},
-	}
+		}
+	},
+	validators: {
+		storeId: Validators.required(),
+		userId: Validators.required(),
+		type: Validators.required(),
+		status: Validators.required(),
+		init: Validators.required(),
+		end: Validators.required(),
+		init_cashcheck: Validators.required(),
+		end_cashcheck: Validators.required(),
+		init_verification: Validators.required(),
+		end_verification: Validators.required(),
+		createdAt: [
+			Validators.required(),
+			Validators.date(),
+		],
+		updatedAt: [
+			Validators.required(),
+			Validators.date(),
+		],
+		createdBy: [
+			Validators.required(),
+			Validators.date(),
+		],
+		updatedBy: [
+			Validators.required(),
+			Validators.date(),
+		],
+	}	
 });
 

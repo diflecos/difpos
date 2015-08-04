@@ -6,11 +6,14 @@ Companies            =new Mongo.Collection("companies");
 Stores               =new Mongo.Collection("stores");
 Sessions             =new Mongo.Collection("sessions"); // no confundir con la Session del navegador
 Orders               =new Mongo.Collection("orders");
+PaymentTrxs          =new Mongo.Collection("payment_trxs");
 CashFlows            =new Mongo.Collection("cashflows");
-/* CashChecks           =new Mongo.Collection("cashchecks"); */
 SpecialOffers        =new Mongo.Collection("special_offers");
 Categories           =new Mongo.Collection("categories");
 FullPersons          =new Mongo.Collection("fullpersons");
+Addresses            =new Mongo.Collection("addresses");
+Phones               =new Mongo.Collection("phones");
+Emails               =new Mongo.Collection("emails");
 
 
 FullPersons.attachSchema(Schemas.FullPerson);
