@@ -16,8 +16,13 @@ Router.route('/admin/brand/create',function () {
 
 
 Router.route('/admin/address/create',function () {
-	this.layout('layout_admin');
-    this.render('address_form',{data: new Address()});
+	//this.layout('layout_admin');
+	modal=Blaze.renderWithData(Template.address_form,new Address(),document.getElementById("modal"));
+	
+/*     this.render('address_form',{
+		to: 'modal',
+		data: new Address()
+	});   */
 },{
 	name: 'address_form'
 });
@@ -25,7 +30,10 @@ Router.route('/admin/address/create',function () {
 Router.route('/admin/address/update/:_id',function () {
 	var address=Addresses.findOne({_id: this.params._id});   
 	this.layout('layout_admin');
-    this.render('address_form',{data: address});
+    this.render('address_form',{
+		to: 'modal',
+		data: address
+	});
 },{
 	name: 'address_update'
 });

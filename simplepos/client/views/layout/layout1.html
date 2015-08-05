@@ -3,7 +3,9 @@
 	<audio id="remove" src="../audio/remove.wav" preload="auto" autostart="false"></audio>
 	<div class="container">
 	{{#if currentUser}}
-		{{>yield "modal"}}
+		<div id="modal">
+			{{>yield "modal"}}
+		</div>
 		{{>navbar}}
 		<div class="container">
 			{{> flashMessages}}
