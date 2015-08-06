@@ -9,19 +9,8 @@ Email=Astro.Class({
 		email: {
 			type: 'string',	
 		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
 	},
+	behaviors: ['audit_trail'],	
 	methods: {
 
 	},
@@ -35,22 +24,6 @@ Email=Astro.Class({
 			Validators.required(),
 			Validators.email(),
 			Validators.maxLength(60,'At most 60 characters!')
-		],
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
 		],
 	}
 });

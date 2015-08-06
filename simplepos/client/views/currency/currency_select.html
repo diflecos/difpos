@@ -1,0 +1,30 @@
+<template name="currency_selector">
+<div id="currency_selector" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Select currency</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<div class="input-group center-block text-center">
+							<div id="currency_list" class="list-group">
+								{{#each currencies}}
+									{{>currency_select}}
+								{{/each}}
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>	
+</template>
+
+<template name="currency_select">
+	<a href="#" class="list-group-item currency" data-currency-id={{_id}}>{{name}}</a>
+</template>
+

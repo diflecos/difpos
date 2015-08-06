@@ -16,19 +16,7 @@ RegionalStoreNetwork=Astro.Class({
 		},
 		currencyId: {
 			type: 'string',	
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
 	relations: {
 		brand: {
@@ -56,6 +44,7 @@ RegionalStoreNetwork=Astro.Class({
 			foreign: '_id'			
 		},
 	},	
+	behaviors: ['audit_trail'],	
 	methods: {
 
 	},
@@ -81,22 +70,6 @@ RegionalStoreNetwork=Astro.Class({
 		currencyId: [
 			Validators.required(),
 			Validators.string(),
-		],
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
 		],
 	}
 });

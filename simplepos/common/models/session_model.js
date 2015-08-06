@@ -15,103 +15,44 @@ SessionPOS=Astro.Class({
 	collection: Sessions,
 	fields: {
 		storeId: {
-			type: 'object',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'object',	
 		},
 		userId: {
-			type: 'object',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'object',	
 		},
 		type: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'string',		
 		},
 		status: {
 			type: 'string',
-			default: 'created',
-			validators: [
-				Validators.required(),
-			]		
+			default: 'created',		
 		},
 		init: {
-			type: 'date',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'date',		
 		},
 		end: {
-			type: 'date',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'date',	
 		},
 		init_cashcheck: {
-			type: 'object',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'object',	
 		},
 		end_cashcheck: {
-			type: 'object',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'object',	
 		},
 		init_verification: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'string',		
 		},
 		end_verification: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'string',	
 		},
 		ip: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'string',		
 		},
 		comment: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
-		},
-		createdAt: {
-			type: 'date',
-			validators: [
-				Validators.required(),
-			]		
-		},
-		udpatedAt: {
-			type: 'date',
-			validators: [
-				Validators.required(),
-			]		
-		},
-		createdBy: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
-		},
-		updatedBy: {
-			type: 'string',
-			validators: [
-				Validators.required(),
-			]		
+			type: 'string',	
 		},
 	},
+	behaviors: ['audit_trail'],	
 	methods: {
 		verifyInit: function(init_cashcheck,callback) {
 			Meteor.call('sessionVerifyInit',this._id,init_cashcheck,function(error, result){
@@ -182,22 +123,6 @@ SessionPOS=Astro.Class({
 		end_cashcheck: Validators.required(),
 		init_verification: Validators.required(),
 		end_verification: Validators.required(),
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
-		],
 	}	
 });
 

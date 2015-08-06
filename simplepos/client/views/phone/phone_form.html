@@ -1,0 +1,35 @@
+<template name="phone_form">
+<div id="phone_form" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Create/Update phone</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input id="_id" class="form-control" value="{{_id}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="name">Name</label>
+						<input id="name" class="form-control" value="{{name}}" placeholder="{{name}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="prefix">Prefix</label>
+						<input id="prefix" class="form-control" value="{{prefix}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="nbr">Number</label>
+						<input id="nbr" class="form-control" value="{{nbr}}">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="btn_phone_save" class="btn btn-success">Ok</button>
+				<button id="btn_phone_cancel" class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>							
+</template>

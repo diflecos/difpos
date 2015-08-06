@@ -8,20 +8,9 @@ Tax=Astro.Class({
 		},
 		percentage: {
 			type: 'object',	
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
+	behaviors: ['audit_trail'],	
 	methods: {
 		calculate: function(amountDB) {
 			return Math.round((this.percentage*amountDB)/100);
@@ -37,22 +26,6 @@ Tax=Astro.Class({
 			Validators.required(),
 			Validators.number(),
 			Validators.gt(0),
-		],
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
 		],
 	}
 });

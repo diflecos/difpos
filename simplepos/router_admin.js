@@ -52,3 +52,7 @@ Router.route('/admin/address/remove/:_id',function () {
 },{
 	name: 'address_remove'
 });
+
+
+
+

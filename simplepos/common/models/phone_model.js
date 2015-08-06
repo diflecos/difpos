@@ -11,20 +11,9 @@ Phone=Astro.Class({
 		},
 		nbr: {
 			type: 'string',	
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
+	behaviors: ['audit_trail'],	
 	methods: {
 
 	},
@@ -44,22 +33,6 @@ Phone=Astro.Class({
 			Validators.string(),
 			Validators.maxLength(5,'At least 5 characters!'),
 			Validators.maxLength(20,'At most 20 characters!')
-		],
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
 		],
 	}
 });

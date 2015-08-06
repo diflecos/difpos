@@ -1,0 +1,48 @@
+<template name="company_form">
+<div id="company_form" class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Create/Update company</h3>
+	</div>
+	<div class="panel-body">
+		<form>
+			<div class="form-group">
+				<input id="_id" class="form-control" value="{{_id}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="currency_id">Currency id</label>
+				<input id="currency_id" class="form-control" value="{{currencyId}}" placeholder="{{currencyId}}">
+				<span id="tax_address">{{currency}}</span>
+				<button id="btn_currency_select" class="btn btn-success">Select</button>
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="tax_nbr">Tax number</label>
+				<input id="tax_nbr" class="form-control" value="{{taxNbr}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="tax_name">Tax name</label>
+				<input id="tax_name" class="form-control" value="{{taxName}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="tax_address_id">Tax address Id</label>
+				<input id="tax_address_id" class="form-control" value="{{taxAddressId}}">
+				<span id="tax_address">{{taxAddress}}</span>
+				<button id="btn_address_form" class="btn btn-success">Select</button>
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="commercial_name">Commercial name</label>
+				<input id="commercial_name" class="form-control" value="{{commercialName}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="logo">Logo</label>
+				<input id="logo" class="form-control" value="{{logo}}">
+			</div>
+		</form>
+	</div>
+	<div class="panel-footer">
+		<button id="btn_company_save" class="btn btn-success">Ok</button>
+		<button id="btn_company_cancel" class="btn btn-danger">Cancel</button>
+	</div>
+</div>		
+	{{>currency_selector}}
+	{{>address_form}}					
+</template>

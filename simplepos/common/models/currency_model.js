@@ -19,20 +19,9 @@ Currency=Astro.Class({
 		},
 		coins: { // coins: similar to bills
 			type: 'array',
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
+	behaviors: ['audit_trail'],	
 	relations: {
 
 	},		
@@ -67,7 +56,10 @@ Currency=Astro.Class({
 		},
 		zeroUI: function() {
 			return this.convertUISymbol(0);
-		}
+		},
+		toString: function() {
+			return this.name+" - "+this.shortname+" - "+this.symbol;
+		}		
 	},
 	validators: {
 		name: [
@@ -89,22 +81,6 @@ Currency=Astro.Class({
 		coins: [
 			Validators.required(),
 			Validators.array(),
-		],
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
 		],
 	}
 });

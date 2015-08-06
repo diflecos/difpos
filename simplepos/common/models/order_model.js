@@ -56,20 +56,9 @@ Order=Astro.Class({
 		},
 		op_date: {
 			type: 'date',	
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
+	behaviors: ['audit_trail'],	
 	relations: {
 		session: {
 			type: 'one',
@@ -165,22 +154,7 @@ Order=Astro.Class({
 	},
 	validators: {
 // FALTA!!!!
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
-		],
+
 	}
 });
 

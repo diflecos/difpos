@@ -17,20 +17,9 @@ Store=Astro.Class({
 		},
 		emailId: {
 			type: 'string',	
-		},
-		createdAt: {
-			type: 'date',	
-		},
-		udpatedAt: {
-			type: 'date',		
-		},
-		createdBy: {
-			type: 'string',
-		},
-		updatedBy: {
-			type: 'string',	
-		},		
+		},	
 	},
+	behaviors: ['audit_trail'],	
 	relations: {
 		currency: {
 			type: 'one',
@@ -72,22 +61,6 @@ Store=Astro.Class({
 		addressId: Validators.required(),
 		phoneId: Validators.string(), 
 		emailId: Validators.string(),
-		createdAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedAt: [
-			Validators.required(),
-			Validators.date(),
-		],
-		createdBy: [
-			Validators.required(),
-			Validators.date(),
-		],
-		updatedBy: [
-			Validators.required(),
-			Validators.date(),
-		],
 	}
 });
 

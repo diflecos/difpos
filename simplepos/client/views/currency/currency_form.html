@@ -1,0 +1,47 @@
+<template name="currency_form">
+<div id="currency_form" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Create/Update currency</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input id="_id" class="form-control" value="{{_id}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="name">Name</label>
+						<input id="name" class="form-control" value="{{name}}" placeholder="{{name}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="shortname">Short name</label>
+						<input id="shortname" class="form-control" value="{{shortname}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="symbol">Symbol</label>
+						<input id="symbol" class="form-control" value="{{symbol}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="precision">Precision</label>
+						<input id="precision" class="form-control" value="{{precision}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="bills">Bills  (ex: 50000,20000,10000,5000,2000,1000,500)</label>
+						<input id="bills" class="form-control" value="{{bills}}">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="coins">Coins (ex: 200,100,50,20,10,5,2,1)</label>
+						<input id="coins" class="form-control" value="{{coins}}">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="btn_currency_save" class="btn btn-success">Ok</button>
+				<button id="btn_currency_cancel" class="btn btn-danger">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>							
+</template>
