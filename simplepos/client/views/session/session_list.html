@@ -1,0 +1,80 @@
+<template name="session_list">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Session list<span class="label label-default pull-right">Tienda Alcalá 402</span></h2>
+		</div>
+		<div class="panel-body">
+		
+			<div  id="search-criteria" class="panel panel-info">
+				<div class="panel-body">
+					<form class="form-inline">	
+					<fieldset>
+						<legend>Search criteria</legend>					
+						<div class="form-group">			
+							<label for="store_selector">Store</label>
+							<input type="hidden" class="form-control" id="store_id">
+							<div id="store_selector" class="input-group">
+								<input type="text" class="form-control input-group-addon" style="width: 200px" id="store_display" readonly>
+								<a href="/admin/brand/select" class="btn btn-success input-group-addon">Select</a>	
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="session_date_init">Init date</label>
+							<input type="date" class="form-control" id="session_date_init">
+						</div>
+						<div class="form-group">
+							<label for="session_date_end">End date</label>
+							<input type="date" class="form-control" id="session_date_end">
+						</div>
+						<button class="btn btn-success pull-right">Search</button>	
+						</fieldset>
+					</form>
+				</div>
+			</div>
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Session start</th>
+						<th>Session end</th>
+						<th>User</th>
+						<th>Validation</th>
+						<th class="text-right">Total ventas</th>
+						<th class="text-right">Total datafono</th>
+						<th class="text-right">Total retirada efectivo</th>
+					</tr>				
+				</thead>
+				<tbody>
+					{{#each sessions}}
+						{{>session}}
+					{{/each}}					
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="4">Totales</th>
+						<th class="text-right">1548,45€</th>						
+						<th class="text-right">867,42€</th>						
+						<th class="text-right">650,00€</th>
+					</tr>
+				</tfoot>						
+			</table>			
+		</div>		
+		<div class="panel-footer text-right">
+			<div class="btn-group">
+				<a class="btn btn-danger btn-lg" id="btn_cancel_order" href="/">Cancel</a>
+			</div>						
+		</div>
+	</div>
+</template>
+
+<template name="session">
+<tr>
+	<td>{{session_init}}</td>	
+	<td>{{session_end}}</td>
+	<td>{{session_username}}</td>
+	<td>{{session_validation}}</td>
+	<td class="text-right">{{session_total_orders}}</td>
+	<td class="text-right">{{session_total_credit_card}}</td>
+	<td class="text-right">{{session_total_cash_out}}</td>
+</tr>
+</template>

@@ -1,0 +1,97 @@
+<template name="session_view">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Session details<span class="label label-danger pull-right">Ruth: 322.52€ / KO</span></h2>
+		</div>
+		<div class="panel-body">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>06/08/2015 09:53</th>
+						<th>Session start</th>
+						<th>Cash check</th>
+						<th class="text-center">78.56€</th>
+						<th></th>
+						<th></th>
+					</tr>				
+					<!--tr>
+						<th>Operation date</th>
+						<th>Operation type</th>
+						<th>Operation Details</th>
+						<th class="text-center">Amount</th>
+						<th>Payment type</th>
+						<th></th>
+					</tr-->
+				</thead>
+				<tbody>
+					{{#each operations}}
+						{{>operation}}
+					{{/each}}					
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="3">Total operations</th>
+						<th class="text-right">322.52€</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<th>06/08/2015 14:03</th>
+						<th>Session end</th>
+						<th>Cash check</th>
+						<th class="text-center">56.42€</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<th colspan="3">Total ventas</th>
+						<th class="text-right">80.82€</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<th colspan="3">Total datafono</th>
+						<th class="text-right">43.00€</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<th colspan="3">Total retirada efectivo</th>
+						<th class="text-right">300.00€</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>	
+			<div id="session_comments">
+				<div class="alert alert-warning">
+				{{#each session_comments}}
+					{{>session_comment}}
+				{{/each}}				
+				</div>					
+			</div>			
+		</div>		
+		<div class="panel-footer text-right">
+			<div class="btn-group">
+				<a class="btn btn-success btn-lg" id="btn_save_order">Save</a>
+				<a class="btn btn-success btn-lg" id="btn_comments" href="/order/comments">Add Comments</a>		
+				<a class="btn btn-danger btn-lg" id="btn_cancel_order" href="/">Cancel</a>
+			</div>						
+		</div>
+	</div>
+</template>
+
+<template name="operation">
+<tr>
+	<td>{{op_date}}</td>	
+	<td>{{op_type}}</td>
+	<td>{{op_details}}</td>
+	<td class="text-right">{{op_amount}}</td>
+	<td>{{op_payment_type}}</td>
+	<td><i class="fa fa-remove"></i></td>
+</tr>
+</template>
+
+<template name="session_comment">
+	<strong>{{date}} {{author}}: </strong>{{text}}<br>
+</template>

@@ -25,4 +25,6 @@ En el caso de un Order parece más interesante igual cerrar toda la venta en el c
 
 	
 - en algún momento eliminar el aldeed:simple-schema, los autoforms y todo eso
+
+- ver cómo diseñamos el selector para que sea supergenérico. En ppio debe aceptar algunos criterios de filtrado como entrada y devolver un id y una descripción en una cadena --> la parte del filtrado como entrada aún no está muy claro cómo hacerlo. Estudiarlo para que sea reutilizable el modelo
 	

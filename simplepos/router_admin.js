@@ -1,17 +1,15 @@
 Router.route('/admin',function () {
 	this.layout('layout_admin');
-    this.render('admin');
+    this.render('welcome_admin');
 },{
 	name: 'admin'
 });
 
-
-
-Router.route('/admin/brand/create',function () {
+Router.route('/admin/welcome',function () {
 	this.layout('layout_admin');
-    this.render('brand_create');
+    this.render('welcome_admin');
 },{
-	name: 'brand_create'
+	name: 'admin_welcome'
 });
 
 
