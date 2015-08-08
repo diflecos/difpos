@@ -1,34 +1,82 @@
 Template.install.rendered=function() {
 	Accounts.createUser({username: "admin",password: "admin"});
+
+	var brand_phone_id;
+	var brand_phone=new Phone({
+		name: "Atención al cliente",
+		prefix: "+34",
+		nbr: "910144408"
+	});
+	Meteor.call("phoneSave",brand_phone,function(error,result) {console.log(error)
+		if(error==undefined) {
+			brand_phone_id=result._id;
+		} else {    
+			throw new Meteor.Error("installation-failed","La instalación falló",error.details);
+		}
+	});
 	
-	brand=new Brand("Balzaq","http://www.balzaqtallasgrandes.com/img/balzaq-logo-14278057861.jpg","www.balzaq.com","contacto@balzaq.com","910144408");
-	var tax_address=new Address("Domicilio fiscal","C/Francisco Madariaga, 2 - 2ºC","Madrid","28017","España");
-	company=new Company("B86407590","Diflecos Commerce, S.L.",tax_address,"http://diflecos.difblog.com/wp-content/uploads/sites/12/2013/02/logo1.jpg");
-	currency=new Currency("Euro","EUR","€",2,
-		[
-			{label: "500€", value: 50000},
-			{label: "200€", value: 20000},
-			{label: "100€", value: 10000},
-			{label: " 50€", value:  5000},
-			{label: " 20€", value:  2000},
-			{label: " 10€", value:  1000},
-			{label: "  5€", value:   500},
-		],[
-			{label: "   2€", value: 200},
-			{label: "   1€", value: 100},
-			{label: "0,50€", value:  50},
-			{label: "0,20€", value:  20},
-			{label: "0,10€", value:  10},
-			{label: "0,05€", value:   5},
-			{label: "0,02€", value:   2},
-			{label: "0,01€", value:   1},
-		]
-	);
-	tax=new Tax("IVA 21%",21);
+	var brand_email_id;
+	var brand_email=new Email({
+		name: "Atención al cliente",
+		email: "contacto@balzaq.com"
+	});
+	Meteor.call("emailSave",brand_email,function(error,result) {
+		brand_email_id=result._id;
+	});
+			
+	var brand=new Brand({
+		name: "Balzaq",
+		logo: "http://www.balzaqtallasgrandes.com/img/balzaq-logo-14278057861.jpg",
+		url: "www.balzaq.com",
+		customerCarePhoneId: brand_phone_id,
+		customerCareEmailId: brand_email_id,
+		socialIds: [],
+	});
+	Meteor.call("brandSave",brand);
+	
+	var tax_address=new Address({
+		name: "Domicilio fiscal",
+		street: "C/Francisco Madariaga, 2 - 2ºC",
+		town: "Madrid",
+		zipcode: "28017",
+		country: "España"
+	});
+	Meteor.call("addressSave",tax_address,function(error,result) {
+		tax_address_id=result._id;
+	});
+
+	var currency=new Currency({
+		name: "Euro",
+		shortname: "EUR",
+		symbol: "€",
+		precision: 2,
+		bills: [50000,20000,10000,5000,2000,1000,500],
+		coins: [200,100,50,20,10,5,2,1]
+	});
+	Meteor.call("currencySave",currency,function(error,result) {
+		currency_id=result._id;
+	});		
+	
+	var company=new Company({
+		currencyId: currency_id,
+		taxNbr: "B86407590",
+		taxName: "Diflecos Commerce, S.L.",
+		taxAddressId: tax_address_id,
+		commercialName: "Diflecos",
+		logo: "http://diflecos.difblog.com/wp-content/uploads/sites/12/2013/02/logo1.jpg"
+	});
+	Meteor.call("companySave",company);
+	
+}
+	
+	
+	
+/* 	var tax=new Tax("IVA 21%",21);
 	var regional_store_network=new RegionalStoreNetwork(brand,company,"Balzaq España",tax,currency);
 	
 	var store_address1=new Address("Dirección","C/Alcalá, 402 (bajo)","Madrid","28027","España");
-	Stores.insert({name: "Tienda ALCALA, 402",currency: regional_store_network.currency,address: store_address1,phone: "910144408"});	
+	var store=new Store({name: "Tienda ALCALA, 402",currency: regional_store_network.currency,address: store_address1,phone: "910144408"});
+	Meteor.call("storeSave",store);
 
 	var store_address2=new Address("Dirección","C/Franscisco Silvela, 17 (bajo)","Madrid","28038","España");
 	Stores.insert({name: "Tienda FRANCISCO SILVELA",currency: regional_store_network.currency,address: store_address2,phone: "910144408"});	
@@ -99,7 +147,7 @@ Template.install.rendered=function() {
 	};
 	
 }
-
+ */
 
 
 /*   Añadir insecure para ejecutar desde la consola

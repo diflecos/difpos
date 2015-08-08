@@ -2,8 +2,10 @@ Meteor.methods({
 	emailSave: function(email) {
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
-		if(email.validate())	{
+		if(email.validateAll())	{
 			email.save();
+		} else {  
+			throw new Meteor.Error("email-validation-error","Falló la validación del email "+email,email.getValidationErrors());
 		}
 		
 		return email;

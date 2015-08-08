@@ -2,7 +2,7 @@ Meteor.methods({
 	personSave: function(person) {
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
-		if(person.validate())	{
+		if(person.validateAll())	{
 			person.save();
 		}
 		

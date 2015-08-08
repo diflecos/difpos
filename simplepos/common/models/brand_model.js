@@ -50,7 +50,7 @@ Brand=Astro.Class({
 		name: [
 			Validators.required(),
 			Validators.string(),
-			Validators.minLength(5, 'At least 5 character!')
+			Validators.minLength(3, 'At least 3 character!')
 		],
 		logo: Validators.required(),
 		url: Validators.required(),

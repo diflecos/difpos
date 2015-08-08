@@ -2,7 +2,7 @@ Meteor.methods({
 	addressSave: function(address) {
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
-		if(address.validate())	{
+		if(address.validateAll())	{
 			address.save();
 		}
 		

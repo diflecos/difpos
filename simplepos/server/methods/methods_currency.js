@@ -2,7 +2,7 @@ Meteor.methods({
 	currencySave: function(currency) {
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
-		if(currency.validate())	{
+		if(currency.validateAll())	{
 			currency.save();
 		}
 		

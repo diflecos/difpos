@@ -2,8 +2,10 @@ Meteor.methods({
 	phoneSave: function(phone) {
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
-		if(phone.validate())	{
+		if(phone.validateAll())	{
 			phone.save();
+		} else {  
+			throw new Meteor.Error("phone-validation-error","Falló la validación del tfno "+phone,phone.getValidationErrors());
 		}
 		
 		return phone;
