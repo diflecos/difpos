@@ -44,7 +44,9 @@ Router.route('/admin/brand/select',function () {
 	var renderresult=this.render('brand_selector',{
 		to: 'modal'
 	});	
-	console.log(renderresult)
+	
+	if($("#brand_selector")!=[])
+		$("#brand_selector").modal('show');
 },{
 	name: 'brand_select'
 });
