@@ -4,7 +4,9 @@
 	<div class="container">
 	<h1>admin layout</h1>
 	{{#if currentUser}}
-		{{>yield "modal"}}
+		<div id="modal">
+			{{>yield "modal"}}
+		</div>
 		{{>navbar}}
 		<div class="container">		
 			{{> flashMessages}}

@@ -1,4 +1,6 @@
 Router.route('/admin',function () {
+	navigation.push('/admin');
+	
 	this.layout('layout_admin');
     this.render('welcome_admin');
 },{
@@ -6,6 +8,8 @@ Router.route('/admin',function () {
 });
 
 Router.route('/admin/welcome',function () {
+	navigation.push('/admin/welcome');
+
 	this.layout('layout_admin');
     this.render('welcome_admin');
 },{

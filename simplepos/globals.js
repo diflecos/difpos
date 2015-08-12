@@ -9,3 +9,7 @@ company={};
 tax={};
 store={}; 
 
+navigation={}; // guarda el histórico de navegación del usuario
+navigation=new Navigation();
+
+

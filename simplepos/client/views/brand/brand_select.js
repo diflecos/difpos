@@ -12,6 +12,8 @@ Template.brand_selector.events({
 	"click .brand": function(event) {   
 		var brandId=$(event.target).data("brand-id"); 
 		Session.set("brand_id",brandId);
-		$("#brand_selector").modal('hide');
+		$("#brand_selector").on('hidden.bs.modal', function (e) {
+			Router.go(navigation.last());
+		}).modal('hide');
 	}
 });

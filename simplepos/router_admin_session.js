@@ -1,11 +1,11 @@
 Router.route('/admin/session/create',function () {
-	//this.layout('layout_admin');
-	modal=Blaze.renderWithData(Template.session_form,new Address(),document.getElementById("modal"));
+	this.layout('layout_admin');
+	//modal=Blaze.renderWithData(Template.session_form,new Session(),document.getElementById("modal"));
 	
-/*     this.render('session_form',{
+    this.render('session_form',{
 		to: 'modal',
-		data: new Address()
-	});   */
+		data: new Session()
+	});  
 },{
 	name: 'session_form'
 });

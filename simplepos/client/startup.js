@@ -5,4 +5,6 @@ Meteor.startup(function () {
 	currentCompany=localStorage.getItem("currentCompany");
 	company=new Company(EJSON.parse(currentCompany));	
 	company.tax_address=new Address(EJSON.parse(company.tax_address));
+	
+	navigation=new Navigation();
 });

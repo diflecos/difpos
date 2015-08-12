@@ -26,5 +26,12 @@ En el caso de un Order parece más interesante igual cerrar toda la venta en el c
 	
 - en algún momento eliminar el aldeed:simple-schema, los autoforms y todo eso
 
-- ver cómo diseñamos el selector para que sea supergenérico. En ppio debe aceptar algunos criterios de filtrado como entrada y devolver un id y una descripción en una cadena --> la parte del filtrado como entrada aún no está muy claro cómo hacerlo. Estudiarlo para que sea reutilizable el modelo
+- ver cómo logramos mejorar el comportamiento de las modales --> ahora mismo haces por ejemplo 
+	1) en /admin vamos a /admin/brand/select, 
+	2) sale la modal, eliges una brand y eso te vuelve a /admin 
+	3) si ahora pretendemos volver a acceder a /admin/brand/select  ya no se muestra la modal porque meteor entiende que ya se ha renderizado anteriormente y no la vuelve a renderizar, así que no se lanza el rendered
+La forma de arreglarlo imagino que sería detectar de alguna manera si el template está ya renderizado y si ya lo estuviera pues simplemente se lanza el show y listos --> igual el this.render devuelve algún valor indicando si lo hizo o no --> en el this.render hay que recordar que el this es el Controller del Iron Router!
+
+- ver cómo diseñamos el selector para que sea supergenérico. En ppio debe aceptar algunos criterios de filtrado como entrada y devolver un id y una descripción en una cadena --> la parte del filtrado como entrada aún no está muy claro cómo hacerlo. Estudiarlo para que sea reutilizable el modelo. Desde el selector también se debería permitir la creación de nuevos objetos
 	
+- añadir funcionalidad al objeto Navigation

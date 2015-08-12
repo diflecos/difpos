@@ -1,11 +1,11 @@
 Router.route('/admin/brand/create',function () {
-	//this.layout('layout_admin');
-	modal=Blaze.renderWithData(Template.brand_form,new Address(),document.getElementById("modal"));
+	this.layout('layout_admin');
+	//modal=Blaze.renderWithData(Template.brand_form,new Address(),document.getElementById("modal"));
 	
-/*     this.render('brand_form',{
+    this.render('brand_form',{
 		to: 'modal',
-		data: new Address()
-	});   */
+		data: new Brand()
+	});  
 },{
 	name: 'brand_form'
 });
@@ -38,7 +38,13 @@ Router.route('/admin/brand/remove/:_id',function () {
 
 
 Router.route('/admin/brand/select',function () {
-    this.render('brand_selector');
+	navigation.push('/admin/brand/select');
+	
+	this.layout('layout_admin');
+	var renderresult=this.render('brand_selector',{
+		to: 'modal'
+	});	
+	console.log(renderresult)
 },{
 	name: 'brand_select'
 });
