@@ -6,6 +6,7 @@ Router.route('/admin/phone/form/:_id',function () {
 		phone=new Phone({});
 	} else {
 		phone=Phones.findOne({_id: this.params._id});
+		phone.validate();  // esto es necesario para forzar que la variable esté asociada con el modelo y que no salte excepción
 	}
   
 	this.layout('layout_admin');

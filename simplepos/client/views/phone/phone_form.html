@@ -10,19 +10,32 @@
 					<div class="form-group">
 						<input id="_id" type="hidden" class="form-control" value="{{_id}}">
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="name">Name</label>
+					<div class="form-group {{#if hasValidationError "name"}} has-error has-feedback {{/if}}">
+						<label class="control-label" for="name">Name *</label>
 						<input id="name" class="form-control" value="{{name}}" placeholder="{{name}}">
-						<i id="name_validation_sign" class="fa fa-check-circle pull-right"></i>
+						{{#if hasValidationError "name"}}
+						<span id="name_validation_ko" class="glyphicon glyphicon-remove form-control-feedback"></span>
+						<span id="name_validation_msg" class="help-block">{{getValidationError "name"}}</span>
+						{{/if}}
 					</div>
-					<div class="form-group">
+					<div class="form-group {{#if hasValidationError "prefix"}} has-error has-feedback {{/if}}">
 						<label class="control-label" for="prefix">Prefix</label>
 						<input id="prefix" class="form-control" value="{{prefix}}">
+						{{#if hasValidationError "prefix"}}
+						<span id="name_validation_ko" class="glyphicon glyphicon-remove form-control-feedback"></span>
+						<span id="name_validation_msg" class="help-block">{{getValidationError "prefix"}}</span>
+						{{/if}}
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="nbr">Number</label>
+					<div class="form-group {{#if hasValidationError "nbr"}} has-error has-feedback {{/if}}">
+						<label class="control-label" for="nbr">Number *</label>
 						<input id="nbr" class="form-control" value="{{nbr}}">
+						{{#if hasValidationError "nbr"}}
+						<span id="name_validation_ko" class="glyphicon glyphicon-remove form-control-feedback"></span>
+						<span id="name_validation_msg" class="help-block">{{getValidationError "nbr"}}</span>
+						{{/if}}
 					</div>
+					<br>
+					<p>Required fields are marked with *</p>
 				</form>
 			</div>
 			<div class="modal-footer text-right">
