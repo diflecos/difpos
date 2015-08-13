@@ -1,6 +1,8 @@
 Template.brand_form.helpers({
 	phoneId: function() {
-		return (this.customerCarePhoneId==undefined)?Session.get("phone_id"):this.customerCarePhoneId;
+		if(Session.get("phone_id")!=undefined)
+			this.customerCarePhoneId=Session.get("phone_id");
+		return (this.customerCarePhoneId==undefined)?"create":this.customerCarePhoneId;
 	},
 	phone: function() {
 		return (this.customerCarePhoneId==undefined)?Session.get("phone"):this.customerCarePhone.display();

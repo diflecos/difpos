@@ -24,9 +24,9 @@
 				<label class="control-label" for="phone">Phone</label>
 				<div class="input-group">
 					<input id="phone_id" type="hidden" class="form-control" value="{{phoneId}}" placeholder="{{phoneId}}">
-					<input id="phone" type="text" readonly class="form-control" value="{{phone}}" placeholder="No phone created/selected yet">
+					<input id="phone" type="text" readonly class="form-control" value="{{phone}}" placeholder="No phone">
 					<span class="input-group-btn">
-						<a href="/admin/phone/form/create" class="btn btn-success"><i class="fa fa-ellipsis-h"></i></a>	
+						<a href="/admin/phone/form/{{phoneId}}" class="btn btn-success"><i class="fa fa-ellipsis-h"></i></a>	
 					</span>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 				<label class="control-label" for="email">Email</label>
 				<div class="input-group">
 					<input id="email_id" type="hidden" class="form-control" value="{{emailId}}" placeholder="{{emailId}}">
-					<input id="email" type="text" readonly class="form-control" value="{{email}}" placeholder="No email created/selected yet">
+					<input id="email" type="text" readonly class="form-control" value="{{email}}" placeholder="No email">
 					<span class="input-group-btn">
 						<a href="/admin/email/form/create" class="btn btn-success"><i class="fa fa-ellipsis-h"></i></a>	
 					</span>
