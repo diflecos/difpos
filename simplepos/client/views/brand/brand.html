@@ -2,9 +2,15 @@
 <h1>{{name}}</h1>
 <img src="{{logo}}">
 <a href="{{url}}">url</a>
-{{customerCarePhoneId}}
-{{customerCareAddressId}}
+<p>{{customerCarePhoneId}}</p>
+<p>{{customerCareAddressId}}</p>
 {{#each socials}}
-	{{name}}: {{name}}
+	<p>{{name}}: {{value}}</p>
 {{/each}}
+
+{{#if userIsAdmin}}
+<div class='well'>
+	Created by {{username createdBy}} at {{localizedDateAndTime createdAt}}  -  Updated by {{username updatedBy}} at {{localizedDateAndTime updatedAt}}
+</div>	
+{{/if}}
 </template>

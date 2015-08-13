@@ -1,0 +1,11 @@
+Comillas simples o dobles
+Javascript --> comillas simples --> '
+HTML --> comillas dobles --> "
+
+Para sacar el audit_trail en las views: 
+{{#if userIsAdmin}}
+<div class='well'>
+	Created by {{username createdBy}} at {{localizedDateAndTime createdAt}}  -  Updated by {{username updatedBy}} at {{localizedDateAndTime updatedAt}}
+</div>	
+{{/if}}
+

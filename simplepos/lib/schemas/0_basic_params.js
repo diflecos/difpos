@@ -4,6 +4,7 @@ VALUES={};
 PARAMS={};
 
 PARAMS.DATE_FORMAT='DD/MM/YYYY';
+PARAMS.DATETIME_FORMAT='DD/MM/YYYY HH:mm:ss';
 
 /* qué tab queremos que se muestre por defecto en el itemlocator para seleccionar items. Valores posibles: 'category'|'qrcode'|'search'|'browse'|'manual'  Por defecto qrcode */
 PARAMS.TEST_MODE=false;

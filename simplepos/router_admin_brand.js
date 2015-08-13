@@ -22,9 +22,9 @@ Router.route('/admin/brand/update/:_id',function () {
 });
 
 Router.route('/admin/brand/view/:_id',function () {
-	var brand=Brands.findOne({_id: this.params._id});
+	var brand=Brands.findOne({_id: this.params._id});  
 	this.layout('layout_admin');
-    this.render('brand_view',{data: brand});
+    this.render('brand',{data: brand});
 },{
 	name: 'brand_view'
 });
