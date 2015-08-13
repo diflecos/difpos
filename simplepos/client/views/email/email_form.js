@@ -1,13 +1,13 @@
 Template.email_form.rendered=function() {
 	$("#email_form").modal();
 }
-
+	
 Template.email_form.events({
-	"click #btn_phone_save": function(event,template) {
+	"click #btn_email_save": function(event,template) {
 		event.preventDefault();
 		
 		this.set("name",template.find("#name").value);
-		this.set("email",template.find("#email").value);	
+		this.set("email",template.find("#email").value);		
 				
 		this.validateAll()
 			
@@ -19,15 +19,21 @@ Template.email_form.events({
 		} else {
 			template.$('.has-error').removeClass('has-error');
 			// habria que quitar tambien las tooltips con los errores con  .tooltip('destroy') pero no está claro cómo seleccionar los elementos con tooltip
-			Meteor.call("phoneSave",this);		
-			// a continuación lo suyo sería rediccionar a algun sitio (y que este sitio fuese parametrizable) o si es una modal que se cierre y ya
+			Meteor.call("emailSave",this,function(error,result) {
+				if(!error) {
+					var emailId=result._id;
+					Session.set("email_id",emailId);
+					Session.set("email",result.email);
+					$("#email_form").on('hidden.bs.modal', function (e) {
+						Router.go(navigation.last());
+					}).modal('hide');						
+				}
+			});					
 		}
 	}, 
-	"click #btn_phone_cancel": function(event,template) {  
-		$('#email_form').on('hidden.bs.modal', function (e) {
-			Blaze.remove(modal);  // parece que no está funcionando
-			//$("#modal").children().remove();  // por si acaso vaciamos #modal a capón con jquery
-		})		
-		$("#email_form").modal('hide');	
-	}
+	"click #btn_email_cancel": function(event,template) {  	
+		$("#email_form").on('hidden.bs.modal', function (e) {
+			Router.go(navigation.last());
+		}).modal('hide');	
+	}	
 });

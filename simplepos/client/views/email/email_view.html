@@ -1,0 +1,17 @@
+<template name="email_view">
+{{#if embed}}  
+	{{email}}
+{{else}}
+	<div class="row">
+		<a class="col-md-1" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+		<span class="col-md-3 text-right">{{name}}: </span>
+		<span class="col-md-8"><strong>{{email}}</strong></span>
+	</div>	
+	
+	{{#if userIsAdmin}}
+	<div class='well'>
+		Created by {{username createdBy}} at {{localizedDateAndTime createdAt}}  -  Updated by {{username updatedBy}} at {{localizedDateAndTime updatedAt}}
+	</div>	
+	{{/if}}
+{{/if}}	
+</template>

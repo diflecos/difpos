@@ -9,3 +9,20 @@ Para sacar el audit_trail en las views:
 </div>	
 {{/if}}
 
+
+Las operaciones de cara al usuario son: view, view_embedable, add, modify, remove, sear
+
+Cada Objeto tendrá más o menos las siguientes templates: 
+- vista del objeto --> 'objeto_view'   --> la vista empotrable con pocos datos es la misma template a la que se le pasa embed=true en el objeto
+- form para create/update --> 'objeto_form'
+- dialogo de si estamos seguros de borrar --> 'objeto_remove'
+- search --> 'objeto_search'
+- search_result --> 'objeto_search_result'
+- select --> 'objeto_select'
+- select item --> 'objeto_select_option'
+- list --> 'objeto_list'
+- list row --> 'objeto_list_row'
+
+
+Navegación:   
+navigation.push('/admin/brand/view/'+this.params._id);  --> esto hay que meterlo en cada Route al ppio para que quede bien registrada la navegación

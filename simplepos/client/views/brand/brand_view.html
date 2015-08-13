@@ -1,0 +1,21 @@
+<template name="brand_view">
+{{#if embed}}  
+	{{name}}
+{{else}}
+	<h1>{{name}}<a href="/brand/update/{{_id}}" class="btn btn-success">Update</a></h1>
+	<img src="{{logo}}">
+	<a href="{{url}}">url</a>
+	{{>phone customerCarePhone}}
+	{{>email customerCareEmail}}
+
+	{{#each socials}}
+		{{>social}}
+	{{/each}}
+
+	{{#if userIsAdmin}}
+	<div class='well'>
+		Created by {{username createdBy}} at {{localizedDateAndTime createdAt}}  -  Updated by {{username updatedBy}} at {{localizedDateAndTime updatedAt}}
+	</div>	
+	{{/if}}
+{{/if}}
+</template>

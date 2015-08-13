@@ -26,13 +26,13 @@ Brand=Astro.Class({
 		customerCarePhone: {
 			type: 'one',
 			class: 'Phone',
-			local: 'phoneId',
+			local: 'customerCarePhoneId',
 			foreign: '_id'
 		},
 		customerCareEmail: {
 			type: 'one',
 			class: 'Email',
-			local: 'emailId',
+			local: 'customerCareEmailId',
 			foreign: '_id'			
 		},
 		socials: {
