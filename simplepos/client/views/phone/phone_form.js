@@ -3,6 +3,17 @@ Template.phone_form.rendered=function() {
 }
 
 Template.phone_form.events({
+	"change #name": function(event,template) {
+		this.set("name",template.find("#name").value);
+		if(this.validate('name')) {
+			template.$('#name').parent().addClass('has-success');
+			template.$('#name').tooltip('destroy');
+			template.$('#name_validation_sign').addClass('visible');
+		} else {
+			template.$('#name').parent().addClass('has-error');		
+			template.$('#name').tooltip({ title: this.getValidationError('name'), placement: "bottom"});
+		}
+	},
 	"click #btn_phone_save": function(event,template) {
 		event.preventDefault();
 		

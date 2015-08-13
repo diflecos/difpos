@@ -3,17 +3,17 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h2>Phone</h2>
 			</div>
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<input id="_id" class="form-control" value="{{_id}}">
+						<input id="_id" type="hidden" class="form-control" value="{{_id}}">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="name">Name</label>
 						<input id="name" class="form-control" value="{{name}}" placeholder="{{name}}">
+						<i id="name_validation_sign" class="fa fa-check-circle pull-right"></i>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="prefix">Prefix</label>
