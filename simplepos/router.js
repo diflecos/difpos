@@ -110,12 +110,12 @@ Router.route('/order/view/:_id', function() {
 	try { 
 		order.find();
 		currentOrderCurrency=order.currency
-		this.render("order_view",{ 
+		this.render('order_view',{ 
 			data: order
 		});			
 	}
 	catch(error) { 
-		FlashMessages.sendError('No order was found with id '+orderId+"["+error.reason+"]");
+		FlashMessages.sendError('No order was found with id '+orderId+'['+error.reason+']');
 	}	
 },{
 	name: 'order_view'
@@ -124,12 +124,12 @@ Router.route('/order/view/:_id', function() {
 Router.route('/order/print/:_id', function() {
 	var orderId=this.params._id;
 	
-	// We determine whether the URL contains "?isGiftTicket=true"
+	// We determine whether the URL contains '?isGiftTicket=true'
 	var isGiftTicket=false;
 	var query = this.params.query;
-	if(query==undefined || query=="") {
+	if(query==undefined || query=='') {
 		isGiftTicket=false;
-	} else if(query.isGiftTicket=="true") {
+	} else if(query.isGiftTicket=='true') {
 		isGiftTicket=true;
 	}
 	
@@ -140,12 +140,12 @@ Router.route('/order/print/:_id', function() {
 		order.find();
 		currentOrderCurrency=order.currency
 		order.isGiftInvoice=isGiftTicket;
-		this.render("invoice",{ 
+		this.render('invoice',{ 
 			data: order
 		});			
 	}
 	catch(error) {  
-		FlashMessages.sendError('No order was found with id '+orderId+"["+error.reason+"]");
+		FlashMessages.sendError('No order was found with id '+orderId+'['+error.reason+']');
 	}		
 },{
 	name: 'order_print'
@@ -166,10 +166,10 @@ Router.route('/cash/check', function() {
 
 Router.route('/cashflow/:flow_type', function() {
 	var flow_type=this.params.flow_type;
-	if(flow_type=="in" || flow_type=="out") {
+	if(flow_type=='in' || flow_type=='out') {
 		this.render('cashflow',{
 			to: 'modal',
-			data: new CashFlow(flow_type,0,"","")
+			data: new CashFlow(flow_type,0,'','')
 		});	
 	}
 },{
@@ -179,18 +179,18 @@ Router.route('/cashflow/:flow_type', function() {
 
 /*******************  SESSION **************************/
 Router.route('/session/init', function() {
-	Meteor.call('sessionInit',{storeId: "slslslslsllslsls",type: "pos"},function(error, result){
+	Meteor.call('sessionInit',{storeId: 'slslslslsllslsls',type: 'pos'},function(error, result){
 		// TODO: ver qué hacemos en caso de error!
 		var sessionId = result;
 		FlashMessages.sendSuccess('New session opened with id '+sessionId);	
 	});	
-	Router.go("/cash/check");
+	Router.go('/cash/check');
 },{
 	name: 'session_init'
 });
 
 Router.route('/session/end', function() {
-	Router.go("/cash/check");
+	Router.go('/cash/check');
 },{
 	name: 'session_end'
 });	

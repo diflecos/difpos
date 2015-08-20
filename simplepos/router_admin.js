@@ -19,7 +19,7 @@ Router.route('/admin/welcome',function () {
 
 Router.route('/admin/address/create',function () {
 	//this.layout('layout_admin');
-	modal=Blaze.renderWithData(Template.address_form,new Address(),document.getElementById("modal"));
+	modal=Blaze.renderWithData(Template.address_form,new Address(),document.getElementById('modal'));
 	
 /*     this.render('address_form',{
 		to: 'modal',

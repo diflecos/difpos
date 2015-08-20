@@ -15,8 +15,8 @@ Router.route('/admin/phone/form/:_id',function () {
 		data: phone
 	});
 
-	if($("#phone_form")!=[])
-		$("#phone_form").modal('show');	
+	if($('#phone_form')!=[])
+		$('#phone_form').modal('show');	
 },{
 	name: 'phone_form'
 });
@@ -48,8 +48,8 @@ Router.route('/admin/phone/select',function () {
 		to: 'modal'
 	});	
 	
-	if($("#phone_select")!=[])
-		$("#phone_select").modal('show');
+	if($('#phone_select')!=[])
+		$('#phone_select').modal('show');
 },{
 	name: 'phone_select'
 });

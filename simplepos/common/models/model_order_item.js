@@ -2,22 +2,22 @@
 
 /*	
 	index: 1,
-	name: "Camiseta azul",
-	unit_price: "22,00",
+	name: 'Camiseta azul',
+	unit_price: '22,00',
 	unit_discount: {
-		name: "Oferta San Valentín",
-		type: "amount",
-		value: "10"
+		name: 'Oferta San Valentín',
+		type: 'amount',
+		value: '10'
 	},
-	final_unit_price: "12,00",
-	quantity: "2",
-	price: "24,00",
+	final_unit_price: '12,00',
+	quantity: '2',
+	price: '24,00',
 	discount: {
-		name: "Oferta de 10€ menos en 2x1",
-		type: "amount",
-		value: "10"
+		name: 'Oferta de 10€ menos en 2x1',
+		type: 'amount',
+		value: '10'
 	},
-	final_price: "14,00"
+	final_price: '14,00'
 */
 
 

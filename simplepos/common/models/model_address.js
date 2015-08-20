@@ -22,7 +22,7 @@ Address=Astro.Class({
 	behaviors: ['audit_trail'],
 	methods: {
 		toString: function() {
-			return this.name+": "+this.street+" - "+this.town+" ("+this.zipcode+") - "+this.country;
+			return this.name+': '+this.street+' - '+this.town+' ('+this.zipcode+') - '+this.country;
 		}
 	},
 	validators: {

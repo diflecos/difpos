@@ -20,9 +20,9 @@ Discount=Astro.Class({
 	methods: {
 		display: function() {
 			if(this.type=='Amount')
-				return "-"+store.currency.convertUI(this.amount);
+				return '-'+store.currency.convertUI(this.amount);
 			if(this.type=='Percentage')
-				return "-"+this.percentage+"%";
+				return '-'+this.percentage+'%';
 		},
 		getDiscountedPrice: function(priceDB) {
 			if(this.type=='Amount')

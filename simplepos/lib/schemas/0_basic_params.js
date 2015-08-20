@@ -12,9 +12,9 @@ PARAMS.ITEMLOCATOR_METHODS=['qrcode','manual','search','browse','category'];  //
 PARAMS.ITEMLOCATOR_DEFAULTMETHOD='category';  // Fusionar este con el anterior y añadir tambien el orden en que deben salir las pestañas!!!!
 PARAMS.PAYMENT_DEFAULTMETHOD='cash';  // 'cash' o 'credit-card'
 PARAMS.CURRENCY={
-	name: "Euro",
-	shortname: "EUR",
-	symbol: "€",
+	name: 'Euro',
+	shortname: 'EUR',
+	symbol: '€',
 	precision: 2
 };
 

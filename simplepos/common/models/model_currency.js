@@ -35,7 +35,7 @@ Currency=Astro.Class({
 				var factor=Math.pow(10,this.precision);   // 2 --> 100,  3 --> 1000
 				return Math.round(parseInt(moneyUI)*factor);
 			} else {
-				throw new Error("Currency.convertDB(moneyUI) cannot convert a negative or undefined amount");
+				throw new Error('Currency.convertDB(moneyUI) cannot convert a negative or undefined amount');
 			}
 		},
 		/* 
@@ -48,7 +48,7 @@ Currency=Astro.Class({
 				var moneyUI=parseInt(moneyDB)/factor;
 				return moneyUI.toFixed(this.precision);	
 			} else {
-				throw new Error("Currency.convertUI(moneyDB) cannot convert a negative or undefined amount");
+				throw new Error('Currency.convertUI(moneyDB) cannot convert a negative or undefined amount');
 			}
 		},
 		convertUISymbol: function(moneyDB) {
@@ -58,7 +58,7 @@ Currency=Astro.Class({
 			return this.convertUISymbol(0);
 		},
 		toString: function() {
-			return this.name+" - "+this.shortname+" - "+this.symbol;
+			return this.name+' - '+this.shortname+' - '+this.symbol;
 		}		
 	},
 	validators: {

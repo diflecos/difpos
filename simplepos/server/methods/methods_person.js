@@ -1,6 +1,6 @@
 Meteor.methods({
 	personSave: function(person) {
-		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
+		if (! Meteor.userId()) { throw new Meteor.Error('not-authorized'); }
 
 		if(person.validateAll())	{
 			person.save();
@@ -9,7 +9,7 @@ Meteor.methods({
 		return person;
 	},
 	personRemove: function(personId) {
-		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
+		if (! Meteor.userId()) { throw new Meteor.Error('not-authorized'); }
 
 		persons.remove(personId);
 	},

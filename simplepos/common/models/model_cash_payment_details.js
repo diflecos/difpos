@@ -24,10 +24,10 @@ CashPaymentDetails=Astro.Class({
 	},		
 	methods: {
 		displayShort: function() {
-			return "["+this.currency.convertUI(this.given)+"-"+this.currency.convertUI(this.returned)+"]";
+			return '['+this.currency.convertUI(this.given)+'-'+this.currency.convertUI(this.returned)+']';
 		},
 		displayLong: function() {
-			return "[Given: "+this.currency.convertUI(this.given)+", Returned: "+this.currency.convertUI(this.returned)+"]";
+			return '[Given: '+this.currency.convertUI(this.given)+', Returned: '+this.currency.convertUI(this.returned)+']';
 		}		
 	},
 	validators: {

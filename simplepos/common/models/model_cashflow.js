@@ -11,7 +11,7 @@ CashFlow=Astro.Class({
 	name: 'CashFlow',
 	collection: CashFlows,
 	fields: {
-		flow_type: {  // "In" --> money inputs in the POS, "Out" --> money outputs the POS
+		flow_type: {  // 'In' --> money inputs in the POS, 'Out' --> money outputs the POS
 			type: 'string',		
 		},
 		amount: {

@@ -72,7 +72,7 @@ SessionPOS=Astro.Class({
 		},
 		initSession: function(init_cashcheck,callback) {
 			if(init_cashcheck==undefined) {
-				throw new Meteor.Error("session-init_cashcheck-undefined","Session init failed because no initial cashcheck was provided");
+				throw new Meteor.Error('session-init_cashcheck-undefined','Session init failed because no initial cashcheck was provided');
 			}
 			
 			Meteor.call('sessionInit',this._id,init_cashcheck,function(error, result){
@@ -84,7 +84,7 @@ SessionPOS=Astro.Class({
 		},
 		endSession: function(end_cashcheck,callback) {
 			if(end_cashcheck==undefined) {
-				throw new Meteor.Error("session-end_cashcheck-undefined","Session end failed because no end cashcheck was provided");
+				throw new Meteor.Error('session-end_cashcheck-undefined','Session end failed because no end cashcheck was provided');
 			}
 			
 			Meteor.call('sessionEnd',this._id,end_cashcheck,function(error, result){
@@ -96,10 +96,10 @@ SessionPOS=Astro.Class({
 		},
 		last: function(storeId) {   // Metodo estático (simplemente no ponemos prototype en la definición )
 			if(storeId==undefined) {
-				throw new Meteor.Error("session_last-storeId-undefined","Session.last() failed because no storeId was provided");
+				throw new Meteor.Error('session_last-storeId-undefined','Session.last() failed because no storeId was provided');
 			}
 			
-			var last_session=Sessions.findOne({ "storeId": storeId },{ sort: {"init": "desc"}});
+			var last_session=Sessions.findOne({ 'storeId': storeId },{ sort: {'init': 'desc'}});
 			
 			return last_session;
 		},
