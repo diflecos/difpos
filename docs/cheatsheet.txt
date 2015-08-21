@@ -2,6 +2,11 @@ Comillas simples o dobles
 Javascript --> comillas simples --> '
 HTML --> comillas dobles --> "
 
+En los modelos nombramos las variables en camelcase (por ejemplo customerCarePhoneId) y en el html sin embargo la variable que contiene ese valor estará en minúsculas separada con guiones (customer_care_phone_id)
+
+Lanzar errores: 
+	throw new Meteor.Error("phone-validation-error","Falló la validación del tfno "+phone,phone.getValidationErrors());
+
 Para sacar el audit_trail en las views: 
 {{#if userIsAdmin}}
 <div class='well'>

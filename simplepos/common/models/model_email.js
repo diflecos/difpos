@@ -12,7 +12,9 @@ Email=Astro.Class({
 	},
 	behaviors: ['audit_trail'],	
 	methods: {
-
+		display: function() {
+			return this.email;
+		}
 	},
 	validators: {
 		name: [

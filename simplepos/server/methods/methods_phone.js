@@ -1,5 +1,5 @@
 Meteor.methods({
-	phoneSave: function(phone) {
+	phoneSave: function(phone) {   
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
 		if(phone.validateAll())	{

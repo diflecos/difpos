@@ -56,7 +56,7 @@ Brand=Astro.Class({
 		url: Validators.required(),
 		customerCarePhoneId: Validators.string(), 
 		customerCareEmailId: Validators.string(),
-		socialIds: Validators.array(),
+		//socialIds: Validators.array(),
 	}
 });
 

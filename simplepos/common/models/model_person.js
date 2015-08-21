@@ -20,11 +20,21 @@ Person=Astro.Class({
 		},
 		gender: {
 			type: 'string',
+			default: 'Male',
 		},
 		civil_status: {
 			type: 'string',
+			default: 'Single',
 		}
 	},
+/* 	relations: {    no está claro cómo implementar las relaciones en este caso, el ejemplo de libro no va bien con este caso
+		addresses: {
+			type: 'many',
+			class: 'Address',
+			local: '_id',
+			foreign: 'memberId'
+		}
+	},	 */
 	behaviors: ['audit_trail'],	
 	methods: {
 		display: function() {
@@ -65,12 +75,10 @@ Person=Astro.Class({
 		gender: [
 			Validators.required(),
 			Validators.choice(VALUES.GENDER),
-			default: 'Male',
 		],
 		civil_status: [
 			Validators.required(),
 			Validators.choice(VALUES.CIVIL_STATUS),
-			default: 'Single',
 		],
 	}
 });
