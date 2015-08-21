@@ -35,16 +35,10 @@ Brand=Astro.Class({
 			local: 'customerCareEmailId',
 			foreign: '_id'			
 		},
-		socials: {
-			type: 'many',
-			class: 'Social',
-			local: 'socialIds',
-			foreign: '_id'			
-		},
 	},		
 	behaviors: ['audit_trail'],	
 	methods: {
-
+		
 	},
 	validators: {
 		name: [
@@ -54,7 +48,9 @@ Brand=Astro.Class({
 		],
 		logo: Validators.required(),
 		url: Validators.required(),
-		customerCarePhoneId: Validators.string(), 
+		customerCarePhoneId: [
+			Validators.string(), 
+		],
 		customerCareEmailId: Validators.string(),
 		//socialIds: Validators.array(),
 	}

@@ -1,0 +1,43 @@
+<template name="phone_select">
+<div id="phone_select" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Select phone</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-inline">
+					<div class="form-group">
+						<label class="sr-only" for="name_search">Name</label>
+						<input type="email" class="form-control" id="name_filter" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="prefix_search">Prefix</label>
+						<input type="email" class="form-control" id="prefix_filter" placeholder="Prefix">
+					</div>					
+					<div class="form-group">
+						<label class="sr-only" for="nbr_search">Number</label>
+						<input type="password" class="form-control" id="nbr_filter" placeholder="Number">
+					</div>
+				</form>
+				<hr>
+				<div class="form-group">
+					<div class="input-group center-block text-center">
+						<div id="phone_list" class="list-group">
+							{{#each phones}}
+								{{>phone_select_option}}
+							{{/each}}
+						</div>
+					</div>
+				</div>			
+			</div>
+		</div>
+	</div>
+</div>	
+</template>
+
+<template name="phone_select_option">
+	<a href="#" class="list-group-item phone" data-phone-id={{_id}}>{{phone_display}}</a>
+</template>
+

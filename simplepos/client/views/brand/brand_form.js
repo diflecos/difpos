@@ -15,13 +15,15 @@ Template.brand_form.helpers({
 	customerCareEmail: function() {
 		return (this.customerCareEmailId==undefined)?'No email':this.customerCareEmail.display();
 	},
-/* 	esto es para hacer la parte de socials
-	phoneId: function() {
-		return (this.customerCarePhoneId==undefined)?Session.get('phone_id'):this.customerCarePhoneId;
+	socials: function() {
+		if(Session.get('social_id')!=undefined) {
+			this.socialIds=_.uniq(this.socialIds.push(Session.get('social_id')));  // Metemos el id que haya en la variable de session en la lista pero por si acaso eliminamos duplicados no siendo qué
+		}
+		return this.socialIds;
 	},
-	phone: function() {
-		return (this.customerCarePhoneId==undefined)?Session.get('phone'):this.customerCarePhone.display();
-	}, */
+	social_display: function() {  //console.log('social_display: '+Socials.findOne(this).display());
+		return (this==undefined)?'':Socials.findOne({"_id": this}).display();
+	}, 
 });
 
 Template.brand_form.events({

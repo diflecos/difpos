@@ -12,7 +12,7 @@
 				<label class='control-label' for='name'>Name</label>
 				<input id='name' class='form-control' value='{{name}}' placeholder='{{name}}'>
 				{{#if hasValidationError 'name'}}
-				<span id='name_validation_ko' class='glyphicon glyphicon-alert form-control-feedback'></span>
+				<span id='name_validation_ko' class='form-control-feedback'><i class='fa fa-exclamation-circle'></i></span>	
 				<span id='name_validation_msg' class='help-block'>{{getValidationError 'name'}}</span>
 				{{/if}}				
 			</div>
@@ -20,7 +20,7 @@
 				<label class='control-label' for='logo'>Logo</label>
 				<input id='logo' class='form-control' value='{{logo}}'>
 				{{#if hasValidationError 'logo'}}
-				<span id='logo_validation_ko' class='glyphicon glyphicon-alert form-control-feedback'></span>
+				<span id='name_validation_ko' class='form-control-feedback'><i class='fa fa-exclamation-circle'></i></span>	
 				<span id='logo_validation_msg' class='help-block'>{{getValidationError 'logo'}}</span>
 				{{/if}}				
 			</div>					
@@ -28,13 +28,16 @@
 				<label class='control-label' for='url'>Url</label>
 				<input id='url' class='form-control' value='{{url}}'>
 				{{#if hasValidationError 'url'}}
-				<span id='url_validation_ko' class='glyphicon glyphicon-alert form-control-feedback'></span>
+				<span id='url_validation_ko' class='form-control-feedback'><i class='fa fa-exclamation-circle'></i></span>	
 				<span id='url_validation_msg' class='help-block'>{{getValidationError 'url'}}</span>
 				{{/if}}				
 			</div>
 			<div class='form-group {{#if hasValidationError 'customerCarePhoneId'}} has-error has-feedback {{/if}}'>
-				<label class='control-label' for='phone'>Phone</label>
+				<label class='control-label' for='phone'>Customer Care Phone</label>
 				<div class='input-group'>
+					<span class='input-group-btn'>
+						<a href='/admin/phone/select' class='btn btn-success'><i class='fa fa-ellipsis-h'></i></a>	
+					</span>				
 					<input id='customer_care_phone_id' type='hidden' class='form-control' value='{{customerCarePhoneId}}' placeholder='{{customerCarePhoneId}}'>
 					<input id='customer_care_phone' type='text' readonly class='form-control' value='{{customerCarePhone}}' placeholder='No phone'>
 					<span class='input-group-btn'>
@@ -42,13 +45,16 @@
 					</span>				
 				</div>
 				{{#if hasValidationError 'customerCarePhoneId'}}
-				<span id='customer_care_phone_id_validation_ko' class='glyphicon glyphicon-alert form-control-feedback'></span>
+				<span id='customer_care_phone_id_validation_ko' class='form-control-feedback'><i class='fa fa-exclamation-circle'></i></span>	
 				<span id='customer_care_phone_id_validation_msg' class='help-block'>{{getValidationError 'customerCarePhoneId'}}</span>
 				{{/if}}					
 			</div>
 			<div class='form-group {{#if hasValidationError 'customerCareEmailId'}} has-error has-feedback {{/if}}'>
-				<label class='control-label' for='email'>Email</label>
+				<label class='control-label' for='email'>Customer Care Email</label>
 				<div class='input-group'>
+					<span class='input-group-btn'>
+						<a href='/admin/email/select' class='btn btn-success'><i class='fa fa-ellipsis-h'></i></a>	
+					</span>
 					<input id='customer_care_email_id' type='hidden' class='form-control' value='{{customerCareEmailId}}' placeholder='{{customerCareEmailId}}'>
 					<input id='customer_care_email' type='text' readonly class='form-control' value='{{customerCareEmail}}' placeholder='No email'>
 					<span class='input-group-btn'>
@@ -56,27 +62,25 @@
 					</span>
 				</div>
 				{{#if hasValidationError 'customerCareEmailId'}}
-				<span id='customer_care_email_id_validation_ko' class='glyphicon glyphicon-alert form-control-feedback'></span>
+				<span id='customer_care_email_id_validation_ko' class='form-control-feedback'><i class='fa fa-exclamation-circle'></i></span>	
 				<span id='customer_care_email_id_validation_msg' class='help-block'>{{getValidationError 'customerCareEmailId'}}</span>
 				{{/if}}				
 			</div>
 			<div class='form-group {{#if hasValidationError 'socialIds'}} has-error has-feedback {{/if}}'>
 				<label class='control-label' for='social'>Socials</label>
+				{{#each socialIds}}
 				<div class='input-group'>
-					<input id='social_id' type='hidden' class='form-control' value='{{socialId}}' placeholder='{{socialId}}'>
-					<input id='social' type='text' readonly class='form-control' value='Facebook: http://www.facebook.com/balzaq' placeholder='No value'>
+					<input id='social_id' type='hidden' class='form-control' value='{{this}}' placeholder='{{this}}'>
+					<input id='social' type='text' readonly class='form-control' value='{{social_display}}' placeholder='No value'>
 					<span class='input-group-btn'>
-						<a href='/admin/social/form/create' class='btn btn-danger'><i class='fa fa-minus-circle'></i></a>	
+						<a href='/admin/social/remove/{{this}}' class='btn btn-danger'><i class='fa fa-minus-circle'></i></a>	
 					</span>
 				</div>
+				{{/each}}
 				<div class='input-group'>
-					<input id='social_id' type='hidden' class='form-control' value='{{socialId}}' placeholder='{{socialId}}'>
-					<input id='social' type='text' readonly class='form-control' value='Twitter: @balzaq98' placeholder='No value'>
 					<span class='input-group-btn'>
-						<a href='/admin/social/form/create' class='btn btn-danger'><i class='fa fa-minus-circle'></i></a>	
+						<a href='/admin/social/select' class='btn btn-success'><i class='fa fa-ellipsis-h'></i></a>	
 					</span>
-				</div>
-				<div class='input-group'>
 					<input id='social_id' type='hidden' class='form-control' value='{{socialId}}' placeholder='{{socialId}}'>
 					<input id='social' type='text' readonly class='form-control' value='{{socialId}}' placeholder='No value'>
 					<span class='input-group-btn'>
@@ -84,7 +88,7 @@
 					</span>
 				</div>
 				{{#if hasValidationError 'socialIds'}}
-				<span id='social_id_validation_ko' class='glyphicon glyphicon-alert form-control-feedback'></span>
+				<span id='social_id_validation_ko' class='form-control-feedback'><i class='fa fa-exclamation-circle'></i></span>	
 				<span id='social_id_validation_msg' class='help-block'>{{getValidationError 'socialIds'}}</span>
 				{{/if}}				
 			</div>			
@@ -92,8 +96,8 @@
 	</div>
 	<div class='panel-footer text-right'>		
 		<div class='btn-group'>
-			<button id='btn_brand_save' class='btn btn-success btn-lg'>Save</button>
-			<button id='btn_brand_cancel' class='btn btn-danger btn-lg'>Cancel</button>
+			<button id='btn_brand_save' class='btn btn-success btn-lg'><i class='fa fa-check fa-fw'></i></button>
+			<button id='btn_brand_cancel' class='btn btn-danger btn-lg'><i class='fa fa-times fa-fw'></i></button>
 		</div>	
 	</div>
 </div>							

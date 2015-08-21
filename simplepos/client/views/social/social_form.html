@@ -10,22 +10,29 @@
 					<div class="form-group">
 						<input id="_id" type="hidden" class="form-control" value="{{_id}}">
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="name">Name</label>
+					<div class="form-group {{#if hasValidationError "name"}} has-error has-feedback {{/if}}">
+						<label class="control-label" for="name">Name *</label>
 						<input id="name" class="form-control" value="{{name}}" placeholder="{{name}}">
-						<i id="name_validation_sign" class="fa fa-check-circle pull-right"></i>
+						{{#if hasValidationError "name"}}
+						<span id="name_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
+						<span id="name_validation_msg" class="help-block">{{getValidationError "name"}}</span>
+						{{/if}}
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="value">Value</label>
-						<input id="value" class="form-control" value="{{value}}">
-					</div>
+					<div class="form-group {{#if hasValidationError "value"}} has-error has-feedback {{/if}}">
+						<label class="control-label" for="value">Value *</label>
+						<input id="value" class="form-control" value="{{value}}" placeholder="{{value}}">
+						{{#if hasValidationError "value"}}
+						<span id="value_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
+						<span id="value_validation_msg" class="help-block">{{getValidationError "value"}}</span>
+						{{/if}}
+					</div>					
 				</form>
 			</div>
 			<div class="modal-footer text-right">
-				<div class="btn-group">
-					<button id="btn_social_save" class="btn btn-success btn-lg">Save</button>
-					<button id="btn_social_cancel" class="btn btn-danger btn-lg">Cancel</button>
-				</div>
+				<div class='btn-group'>
+					<button id='btn_brand_save' class='btn btn-success btn-lg'><i class='fa fa-check fa-fw'></i></button>
+					<button id='btn_brand_cancel' class='btn btn-danger btn-lg'><i class='fa fa-times fa-fw'></i></button>
+				</div>	
 			</div>
 		</div>
 	</div>
