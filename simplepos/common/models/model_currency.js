@@ -65,11 +65,22 @@ Currency=Astro.Class({
 		name: [
 			Validators.required(),
 			Validators.string(),
-			Validators.minLength(5, 'At least 5 character!')
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 characters!'),
 		],
-		shortname: Validators.required(),
-		symbol: Validators.required(),
-		coins: [
+		shortname: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 characters!'),		
+		],
+		symbol: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(1, 'At least 1 character!'),
+			Validators.maxLength(5, 'At most 5 characters!'),		
+		],
+		precision: [
 			Validators.required(),
 			Validators.number(),
 			Validators.gte(0),
@@ -77,10 +88,22 @@ Currency=Astro.Class({
 		bills: [
 			Validators.required(),
 			Validators.array(),
+			Validators.minLength(1, 'Provide at least one bill type'),
+			Validators.minLength(25, 'Provide at most 25 bill types'),
+		],
+		bills.$: [
+			Validators.number(),
+			Validators.gt(0),
 		],
 		coins: [
 			Validators.required(),
 			Validators.array(),
+			Validators.minLength(1, 'Provide at least one coin type'),
+			Validators.minLength(25, 'Provide at most 25 coin types'),
+		],
+		coins.$: [
+			Validators.number(),
+			Validators.gt(0),
 		],
 	}
 });

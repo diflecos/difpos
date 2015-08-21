@@ -44,14 +44,23 @@ Brand=Astro.Class({
 		name: [
 			Validators.required(),
 			Validators.string(),
-			Validators.minLength(3, 'At least 3 character!')
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 character!'),
 		],
-		logo: Validators.required(),
-		url: Validators.required(),
+		logo: [
+			Validators.maxLength(20, 'At most 200 character!'),
+		],
+		url: [
+			Validators.required(),
+			Validators.maxLength(200, 'At most 200 character!'),
+		],
 		customerCarePhoneId: [
 			Validators.string(), 
+			Validators.maxLength(20, 'At most 20 character!'),			
 		],
-		customerCareEmailId: Validators.string(),
+		customerCareEmailId: [
+			Validators.string(),
+		]
 		//socialIds: Validators.array(),
 	}
 });

@@ -40,12 +40,35 @@ Company=Astro.Class({
 
 	},
 	validators: {
-		currencyId: Validators.required(),
-		taxNbr: Validators.required(),
-		taxName: Validators.required(),
-		taxAddressId: Validators.required(),
-		commercialName: Validators.required(),
-		logo: Validators.required(),
+		currencyId: [
+			Validators.required(),
+			Validators.string(),
+		],
+		taxNbr: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 character!'),				
+		],
+		taxName: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 character!'),		
+		],
+		taxAddressId: [
+			Validators.required(),
+			Validators.string(),
+		],
+		commercialName: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 character!'),		
+		],
+		logo: [
+			Validators.maxLength(20, 'At most 200 character!'),
+		],		
 	}
 });
 

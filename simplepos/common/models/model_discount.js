@@ -32,5 +32,26 @@ Discount=Astro.Class({
 		}		
 	},
 	validators: {
+		name: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 character!'),
+		],
+		type: [
+			Validators.required(),
+			Validators.string(),
+			Validators.choice(VALUES.REDUCTION_TYPE),
+		], 
+		amount: [
+			Validators.required(),
+			Validators.number(),		
+			Validators.gte(0),
+		]
+		percentage: [
+			Validators.required(),
+			Validators.number(),		
+			Validators.gte(0),		
+		]
 	}
 });

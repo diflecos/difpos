@@ -8,15 +8,19 @@ Address=Astro.Class({
 		},
 		street: {
 			type: 'string',	
+			default: '',
 		},
 		town: {
 			type: 'string',	
+			default: '',
 		},
 		zipcode: {
 			type: 'string',	
+			default: '',
 		},
 		country: {
 			type: 'string',	
+			default: '',
 		},	
 	},
 	behaviors: ['audit_trail'],
@@ -29,7 +33,7 @@ Address=Astro.Class({
 		name: [
 			Validators.required(),
 			Validators.string(),
-			Validators.minLength(5, 'At least 5 character!')
+			Validators.maxLength(20,'At most 20 characters!')
 		],
 		street: [
 			Validators.required(),
@@ -49,7 +53,8 @@ Address=Astro.Class({
 		country: [
 			Validators.required(),
 			Validators.string(),
-			Validators.maxLength(30,'At most 30 characters!')
+			Validators.maxLength(30,'At most 30 characters!'),
+			Validators.choice(VALUES.COUNTRY);
 		],
 	}
 });

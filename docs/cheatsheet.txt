@@ -31,3 +31,17 @@ Cada Objeto tendrá más o menos las siguientes templates:
 
 Navegación:   
 navigation.push('/admin/brand/view/'+this.params._id);  --> esto hay que meterlo en cada Route al ppio para que quede bien registrada la navegación
+
+Validaciones --> poner siempre al menos el maxLength
+	validators: {
+		name: [
+			Validators.required(),
+			Validators.string(),
+			Validators.minLength(3, 'At least 3 character!'),
+			Validators.maxLength(20, 'At most 20 character!'),
+		],
+		amount: [
+			Validators.required(),
+			Validators.number(),		
+			Validators.gte(0),
+		]		
