@@ -91,20 +91,20 @@ Currency=Astro.Class({
 			Validators.minLength(1, 'Provide at least one bill type'),
 			Validators.minLength(25, 'Provide at most 25 bill types'),
 		],
-		bills.$: [
+/* 		bills.$: [
 			Validators.number(),
 			Validators.gt(0),
-		],
+		], */
 		coins: [
 			Validators.required(),
 			Validators.array(),
 			Validators.minLength(1, 'Provide at least one coin type'),
 			Validators.minLength(25, 'Provide at most 25 coin types'),
 		],
-		coins.$: [
+/* 		coins.$: [
 			Validators.number(),
 			Validators.gt(0),
-		],
+		], */
 	}
 });
 

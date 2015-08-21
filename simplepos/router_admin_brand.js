@@ -1,4 +1,4 @@
-Router.route('/admin/brand/form/:_id',function () { 
+Router.route('/admin/brand/form/:_id',function () {    console.log('routing to: /admin/brand/form/'+this.params._id)
 	navigation.push('/admin/brand/form/'+this.params._id);
 
 	var brand;

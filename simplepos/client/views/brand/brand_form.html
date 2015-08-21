@@ -58,7 +58,7 @@
 					<input id='customer_care_email_id' type='hidden' class='form-control' value='{{customerCareEmailId}}' placeholder='{{customerCareEmailId}}'>
 					<input id='customer_care_email' type='text' readonly class='form-control' value='{{customerCareEmail}}' placeholder='No email'>
 					<span class='input-group-btn'>
-						<a href='/admin/email/form/create' class='btn btn-success'><i class='fa fa-plus-circle'></i></a>	
+						<a href='/admin/email/form/{{customerCareEmailId}}' class='btn btn-success'><i class='fa fa-plus-circle'></i></a>	
 					</span>
 				</div>
 				{{#if hasValidationError 'customerCareEmailId'}}

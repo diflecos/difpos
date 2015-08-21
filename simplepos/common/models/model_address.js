@@ -54,7 +54,7 @@ Address=Astro.Class({
 			Validators.required(),
 			Validators.string(),
 			Validators.maxLength(30,'At most 30 characters!'),
-			Validators.choice(VALUES.COUNTRY);
+			Validators.choice(VALUES.COUNTRY),
 		],
 	}
 });

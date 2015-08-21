@@ -47,7 +47,7 @@ Discount=Astro.Class({
 			Validators.required(),
 			Validators.number(),		
 			Validators.gte(0),
-		]
+		],
 		percentage: [
 			Validators.required(),
 			Validators.number(),		
