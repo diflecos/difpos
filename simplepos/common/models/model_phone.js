@@ -27,7 +27,7 @@ Phone=Astro.Class({
 		],
 		prefix: [
 			Validators.string(),
-			Validators.maxLength(20,'At most 20 characters!')
+			Validators.maxLength(10,'At most 10 characters!')
 		],
 		nbr: [
 			Validators.required(),

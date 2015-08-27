@@ -18,21 +18,38 @@
 						<span id="name_validation_msg" class="help-block">{{getValidationError "name"}}</span>
 						{{/if}}
 					</div>
-					<div class="form-group {{#if hasValidationError "prefix"}} has-error has-feedback {{/if}}">
-						<label class="control-label" for="prefix">Prefix</label>
-						<input id="prefix" class="form-control" value="{{prefix}}">
-						{{#if hasValidationError "prefix"}}
-						<span id="prefix_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
-						<span id="prefix_validation_msg" class="help-block">{{getValidationError "prefix"}}</span>
-						{{/if}}
-					</div>
-					<div class="form-group {{#if hasValidationError "nbr"}} has-error has-feedback {{/if}}">
-						<label class="control-label" for="nbr">Number *</label>
-						<input id="nbr" class="form-control" value="{{nbr}}">
-						{{#if hasValidationError "nbr"}}
-						<span id="nbr_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
-						<span id="nbr_validation_msg" class="help-block">{{getValidationError "nbr"}}</span>
-						{{/if}}
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group {{#if hasValidationError "prefix"}} has-error has-feedback {{/if}}">
+								<label class="control-label" for="prefix">Prefix</label>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">+</span>
+									<input id="prefix" class="form-control" value="{{prefix}}">
+									{{#if hasValidationError "prefix"}}
+									<span id="prefix_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
+									{{/if}}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="form-group {{#if hasValidationError "nbr"}} has-error has-feedback {{/if}}">
+								<label class="control-label" for="nbr">Number *</label>
+								<input id="nbr" class="form-control" value="{{nbr}}">
+								{{#if hasValidationError "nbr"}}
+								<span id="nbr_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
+								{{/if}}
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group has-error has-feedback">
+								{{#if hasValidationError "prefix"}}
+								<p id="prefix_validation_msg" class="help-block">{{getValidationError "prefix"}}</p>
+								{{/if}}
+								{{#if hasValidationError "nbr"}}
+								<p id="nbr_validation_msg" class="help-block">{{getValidationError "nbr"}}</p>
+								{{/if}}
+							</div>
+						</div>
 					</div>
 					<br>
 					<p>Required fields are marked with *</p>
