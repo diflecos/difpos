@@ -5,7 +5,7 @@ Template.phone_form.rendered=function() {
 				//	Session.set('phone_id','8McdxAKs2Khfq6HFT');
 	
 		Blaze.remove(phone_form_template);	
-		Router.go(navigation.last());	
+
 	});		
 	
 	$('#phone_form').modal('show');
@@ -38,8 +38,7 @@ Template.phone_form.events({
 		if(!self.hasValidationErrors()) {
 			Meteor.call('phoneSave',self,function(error,result) {  console.log('error: '+error);
 				if(!error) {
-					phone_id=result._id;
-
+					Session.set('phone_id',result._id);
 					$('#phone_form').modal('hide');
 				} else {
 					throw Meteor.Error('phone-save-error',error);

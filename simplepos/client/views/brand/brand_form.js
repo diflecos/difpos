@@ -1,11 +1,15 @@
 Template.brand_form.helpers({
 	customerCarePhoneId: function() {
-		if(phone_id!=undefined)
-			this.set('customerCarePhoneId',phone_id);
-		return (this.customerCarePhoneId==undefined)?'create':this.customerCarePhoneId;
+		if(Session.get('phone_id')!=undefined)
+			this.set('customerCarePhoneId',Session.get('phone_id'));
+		
+		return (this.customerCarePhoneId=='')?'':this.customerCarePhoneId;
 	},
 	customerCarePhone: function() {
-		return (this.customerCarePhoneId==undefined)?'No phone':this.customerCarePhone.display();
+		if(Session.get('phone_id')!=undefined)
+			this.set('customerCarePhoneId',Session.get('phone_id'));
+
+		return (this.customerCarePhoneId=='')?'No phone':this.customerCarePhone.display();
 	},
 	customerCareEmailId: function() {
 		if(Session.get('email_id')!=undefined)
@@ -38,6 +42,17 @@ Template.brand_form.events({
 	'keyup #url, change #url, focus #url': function(event,template) {
 		this.set('url',template.find('#url').value);
 		this.validate('url');
+	},
+	'click #btn_phone_form': function(event,template) {
+		var phone;
+		var phone_id=template.find('#customer_care_phone_id').value;   console.log(phone_id)
+		if(phone_id=='' || phone_id==undefined) {
+			phone=new Phone({});
+		} else {
+			phone=Phones.findOne({_id: phone_id});
+			phone.validate();  // esto es necesario para forzar que la variable esté asociada con el modelo y que no salte excepción
+		}		
+		Blaze.renderWithData(Template.phone_form,phone,$('#modal')[0]); 
 	},
 	'click #btn_brand_save': function(event,template) {
 		event.preventDefault();

@@ -14,6 +14,7 @@ Brand=Astro.Class({
 		},
 		customerCarePhoneId: {
 			type: 'string',	
+			default: ''
 		},
 		customerCareEmailId: {
 			type: 'string',	

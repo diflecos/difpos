@@ -41,7 +41,7 @@
 					<input id='customer_care_phone_id' type='hidden' class='form-control' value='{{customerCarePhoneId}}' placeholder='{{customerCarePhoneId}}'>
 					<input id='customer_care_phone' type='text' readonly class='form-control' value='{{customerCarePhone}}' placeholder='No phone'>
 					<span class='input-group-btn'>
-						<a href='/admin/phone/form/{{customerCarePhoneId}}' class='btn btn-success'><i class='fa fa-plus-circle'></i></a>	
+						<a href='#' id="btn_phone_form" class='btn btn-success'><i class='fa fa-plus-circle'></i></a>	
 					</span>				
 				</div>
 				{{#if hasValidationError 'customerCarePhoneId'}}
