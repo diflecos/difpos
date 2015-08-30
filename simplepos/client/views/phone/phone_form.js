@@ -1,7 +1,12 @@
-Template.phone_form.rendered=function() {  	console.log('rendered')
-/* 	$('#phone_form').on('hidden.bs.modal', function (event) {   
-		Router.go('/admin/brand/form/create');
-	});		 */
+Template.phone_form.rendered=function() {  
+	self=this;
+	var phone_form_template=this.view;
+	$('#phone_form').on('hidden.bs.modal', function (event) {   	
+				//	Session.set('phone_id','8McdxAKs2Khfq6HFT');
+	
+		Blaze.remove(phone_form_template);	
+		Router.go(navigation.last());	
+	});		
 	
 	$('#phone_form').modal('show');
 }
@@ -22,25 +27,20 @@ Template.phone_form.events({
 	'click #btn_phone_save': function(event,template) {
 		event.preventDefault();
 		
-		this.set('name',template.find('#name').value);
-		this.set('prefix',template.find('#prefix').value);
-		this.set('nbr',template.find('#nbr').value);		
-				
-		this.validateAll();
-
-		if(!this.hasValidationErrors()) {
-			Meteor.call('phoneSave',this,function(error,result) {
+		self=this;
+		self.set('_id',template.find('#_id').value);    
+		self.set('name',template.find('#name').value);
+		self.set('prefix',template.find('#prefix').value);
+		self.set('nbr',template.find('#nbr').value);		
+		
+		self.validateAll();
+		
+		if(!self.hasValidationErrors()) {
+			Meteor.call('phoneSave',self,function(error,result) {  console.log('error: '+error);
 				if(!error) {
-					var phoneId=result._id;
-					Session.set('phone_id',phoneId);
-					Session.set('phone',result.display());
-					console.log('1')
-					$('#phone_form').on('hidden.bs.modal', function (event) {   event.preventDefault();
-						Router.go('/admin/brand/form/create');
-					});	
-					console.log('2')
+					phone_id=result._id;
+
 					$('#phone_form').modal('hide');
-					console.log('3')
 				} else {
 					throw Meteor.Error('phone-save-error',error);
 				}
@@ -48,6 +48,6 @@ Template.phone_form.events({
 		}
 	}, 
 	'click #btn_phone_cancel': function(event,template) {  	
-		template.$('#phone_form').modal('hide');	
+		$('#phone_form').modal('hide');	
 	}
 });

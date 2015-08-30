@@ -1,4 +1,4 @@
-Router.route('/admin/phone/form/:_id',function () { 
+Router.route('/admin/phone/form/:_id',function () {   console.log('routing!')
 	navigation.push('/admin/phone/form/'+this.params._id);
 
 	var phone;
@@ -8,17 +8,11 @@ Router.route('/admin/phone/form/:_id',function () {
 		phone=Phones.findOne({_id: this.params._id});
 		phone.validate();  // esto es necesario para forzar que la variable esté asociada con el modelo y que no salte excepción
 	}
-  
-	this.layout('layout_admin');
-    this.render('phone_form',{
-		to: 'modal',
-		data: phone
-	});
 
-	if($('#phone_form')!=[])
-		$('#phone_form').modal('show');	
+	this.layout('layout_admin');
+    Blaze.renderWithData(Template.phone_form,phone,$('#modal')[0]); 
 },{
-	name: 'phone_form'
+	name: 'phone_form',
 });
 
 Router.route('/admin/phone/view/:_id',function () {

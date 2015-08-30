@@ -1,7 +1,7 @@
 Template.brand_form.helpers({
 	customerCarePhoneId: function() {
-		if(Session.get('phone_id')!=undefined)
-			this.set('customerCarePhoneId',Session.get('phone_id'));
+		if(phone_id!=undefined)
+			this.set('customerCarePhoneId',phone_id);
 		return (this.customerCarePhoneId==undefined)?'create':this.customerCarePhoneId;
 	},
 	customerCarePhone: function() {

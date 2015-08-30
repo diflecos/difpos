@@ -12,4 +12,6 @@ store={};
 navigation={}; // guarda el histórico de navegación del usuario
 navigation=new Navigation();
 
-
+phone_id={};
+phone_id=new ReactiveVar();
+phone_id=undefined;
