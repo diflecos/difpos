@@ -4,14 +4,19 @@ Phone=Astro.Class({
 	fields: {
 		name: {
 			type: 'string',
-			default: '',		
+			default: PARAMS.PHONE_DEFAULT_NAME,		
 		},
 		prefix: {
 			type: 'string',	
+			default: PARAMS.PHONE_DEFAULT_PREFIX,
 		},
 		nbr: {
 			type: 'string',	
 		},	
+		type: {
+			type: 'string',
+			default: PARAMS.PHONE_DEFAULT_TYPE,
+		}
 	},
 	behaviors: ['audit_trail'],	
 	methods: {
@@ -27,7 +32,7 @@ Phone=Astro.Class({
 		],
 		prefix: [
 			Validators.string(),
-			Validators.maxLength(10,'At most 10 characters!')
+			Validators.maxLength(5,'At most 5 characters!')
 		],
 		nbr: [
 			Validators.required(),
@@ -35,6 +40,11 @@ Phone=Astro.Class({
 			Validators.minLength(5,'At least 5 characters!'),
 			Validators.maxLength(20,'At most 20 characters!')
 		],
+		type: [
+			Validators.required(),
+			Validators.string(),
+			Validators.choice(VALUES.PHONE_TYPE),
+		]
 	}
 });
 

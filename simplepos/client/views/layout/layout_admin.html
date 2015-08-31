@@ -2,13 +2,15 @@
 	<audio id="beep" src="../audio/beep.wav" preload="auto" autostart="false"></audio>
 	<audio id="remove" src="../audio/remove.wav" preload="auto" autostart="false"></audio>
 	<div class="container">
-	<h1>admin layout</h1>
 	{{#if currentUser}}
 		<div id="modal">
 			{{>yield "modal"}}
 		</div>
 		{{>navbar}}
-		<div class="container">		
+		<div id="sidebar" class="col-md-2 pull-left">
+			{{>admin_menu}}
+		</div>
+		<div class="container col-md-10">		
 			{{> flashMessages}}
 			<div class="col-md-12">
 				{{>yield}}

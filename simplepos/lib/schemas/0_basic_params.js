@@ -18,6 +18,16 @@ PARAMS.CURRENCY={
 	precision: 2
 };
 
+PARAMS.PHONE_DEFAULT_PREFIX='34';
+PARAMS.PHONE_DEFAULT_NAME='Móvil personal';
+PARAMS.PHONE_DEFAULT_TYPE='Mobile';
+
+OPTIONS.PHONE_TYPE=[
+	{label: 'Mobile', value: 'Mobile'},
+	{label: 'Fixed', value: 'Fixed'},
+]
+VALUES.PHONE_TYPE=OPTIONS.PHONE_TYPE.map(function(item,i) { return item.value; });
+
 OPTIONS.GENDER=[
 	{label: 'Male', value: 'Male'},
 	{label: 'Female', value: 'Female'},
@@ -60,13 +70,6 @@ OPTIONS.ADDRESS_TYPE=[
 	{label: 'Other', value: 'Other'},
 ];
 VALUES.ADDRESS_TYPE=OPTIONS.ADDRESS_TYPE.map(function(item,i) { return item.value; });
-
-OPTIONS.PHONE_TYPE=[
-	{label: 'Home', value: 'Home'},
-	{label: 'Work', value: 'Work'},
-	{label: 'Other', value: 'Other'},
-];
-VALUES.PHONE_TYPE=OPTIONS.PHONE_TYPE.map(function(item,i) { return item.value; });
 
 OPTIONS.EMAIL_TYPE=[
 	{label: 'Personal', value: 'Personal'},

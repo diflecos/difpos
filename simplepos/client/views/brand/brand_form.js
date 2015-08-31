@@ -6,10 +6,15 @@ Template.brand_form.helpers({
 		return (this.customerCarePhoneId=='')?'':this.customerCarePhoneId;
 	},
 	customerCarePhone: function() {
-		if(Session.get('phone_id')!=undefined)
+		if(Session.get('phone_id')!=undefined) 
 			this.set('customerCarePhoneId',Session.get('phone_id'));
 
-		return (this.customerCarePhoneId=='')?'No phone':this.customerCarePhone.display();
+		var phone=Phones.findOne(this.get('customerCarePhoneId'));
+		if(phone!=undefined) {
+			return phone.display();
+		} else {
+			return 'No phone';
+		}
 	},
 	customerCareEmailId: function() {
 		if(Session.get('email_id')!=undefined)
