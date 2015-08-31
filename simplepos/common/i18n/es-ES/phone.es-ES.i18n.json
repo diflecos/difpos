@@ -1,0 +1,7 @@
+{
+    "name": "Nombre",
+    "prefix": "Prefijo",
+    "nbr": "Número",
+    "type": "Tipo",
+    "required_fields": "Los campos marcados con * son obligatorios"
+}

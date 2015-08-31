@@ -26,3 +26,4 @@ jagi:astronomy-validators
 jagi:astronomy-relations
 jagi:astronomy-behaviors
 reactive-var
+tap:i18n

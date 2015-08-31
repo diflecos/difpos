@@ -1,0 +1,9 @@
+{
+    "name": "Name",
+    "prefix": "Prefix",
+    "nbr": "Number",
+    "type": "Type",
+    "required_fields": "Required fields are marked with *",
+	"Mobile": "Móvil",
+	"Fixed": "Fijo"
+}

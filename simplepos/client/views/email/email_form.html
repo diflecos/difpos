@@ -1,32 +1,45 @@
 <template name="email_form">
-<div id="email_form" class="modal fade">
+<div id="email_form" class="modal fade" tabindex="-1" >
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2>Email</h2>
+				<h2>{{_ "email"}}</h2>
 			</div>
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
 						<input id="_id" type="hidden" class="form-control" value="{{_id}}">
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="name">Name</label>
+					<div class="form-group {{#if hasValidationError 'name'}} has-error has-feedback {{/if}}">
+						<label class="control-label" for="name">{{_ "name"}} *</label>
 						<input id="name" class="form-control" value="{{name}}" placeholder="{{name}}">
+						{{#if hasValidationError "name"}}
+						<span id="name_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
+						<span id="name_validation_msg" class="help-block">{{getValidationError "name"}}</span>
+						{{/if}}
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="email">Email</label>
-						<input id="email" class="form-control" value="{{email}}">
+					<div class="form-group {{#if hasValidationError 'email'}} has-error has-feedback {{/if}}">
+						<label class="control-label" for="email">{{_ "email"}} *</label>
+						<input id="email" class="form-control" value="{{email}}" placeholder="{{email}}">
+						{{#if hasValidationError "email"}}
+						<span id="name_validation_ko" class="glyphicon glyphicon-alert form-control-feedback"></span>
+						<span id="name_validation_msg" class="help-block">{{getValidationError "email"}}</span>
+						{{/if}}
 					</div>
+					<br>
+					<p>{{_ "required_fields"}}</p>
 				</form>
 			</div>
 			<div class="modal-footer text-right">
-				<div class="btn-group">
-					<button id="btn_email_save" class="btn btn-success btn-lg">Save</button>
-					<button id="btn_email_cancel" class="btn btn-danger btn-lg">Cancel</button>
-				</div>
+				<div class='btn-group'>
+					<button id='btn_email_save' class='btn btn-success btn-lg'><i class='fa fa-check fa-fw'></i></button>
+					<button id='btn_email_cancel' class='btn btn-danger btn-lg'><i class='fa fa-times fa-fw'></i></button>
+				</div>	
 			</div>
 		</div>
 	</div>
 </div>							
 </template>
+
+
+

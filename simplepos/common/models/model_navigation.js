@@ -7,8 +7,7 @@ Navigation=Astro.Class({
 		}
 	},
 	methods: {
-		push: function(route) {	console.log('pushing!  '+route)
-		console.trace();
+		push: function(route) {	
 			this.history.push(route);
 		},
 		last: function() {

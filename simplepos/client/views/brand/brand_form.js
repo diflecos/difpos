@@ -19,20 +19,37 @@ Template.brand_form.helpers({
 	customerCareEmailId: function() {
 		if(Session.get('email_id')!=undefined)
 			this.set('customerCareEmailId',Session.get('email_id'));
-		return (this.customerCareEmailId==undefined)?'create':this.customerCareEmailId;
+		
+		return (this.customerCareEmailId=='')?'':this.customerCareEmailId;
 	},
 	customerCareEmail: function() {
-		return (this.customerCareEmailId==undefined)?'No email':this.customerCareEmail.display();
-	},
-	socials: function() {
-		if(Session.get('social_id')!=undefined) {
-			this.socialIds=_.uniq(this.socialIds.push(Session.get('social_id')));  // Metemos el id que haya en la variable de session en la lista pero por si acaso eliminamos duplicados no siendo qué
+		if(Session.get('email_id')!=undefined) 
+			this.set('customerCareEmailId',Session.get('email_id'));
+
+		var email=Emails.findOne(this.get('customerCareEmailId'));
+		if(email!=undefined) {
+			return email.display();
+		} else {
+			return 'No email';
 		}
-		return this.socialIds;
+	},	
+	socialIds: function() {
+		if(Session.get('social_id')!=undefined)
+			this.set('socialIds',Session.get('social_id'));
+		
+		return (this.socialIds=='')?'':this.socialIds;
 	},
-	social_display: function() {  //console.log('social_display: '+Socials.findOne(this).display());
-		return (this==undefined)?'':Socials.findOne({"_id": this}).display();
-	}, 
+	customerCareEmail: function() {
+		if(Session.get('email_id')!=undefined) 
+			this.set('customerCareEmailId',Session.get('email_id'));
+
+		var email=Emails.findOne(this.get('customerCareEmailId'));
+		if(email!=undefined) {
+			return email.display();
+		} else {
+			return 'No email';
+		}
+	},		
 });
 
 Template.brand_form.events({
@@ -50,7 +67,7 @@ Template.brand_form.events({
 	},
 	'click #btn_phone_form': function(event,template) {
 		var phone;
-		var phone_id=template.find('#customer_care_phone_id').value;   console.log(phone_id)
+		var phone_id=template.find('#customer_care_phone_id').value;   
 		if(phone_id=='' || phone_id==undefined) {
 			phone=new Phone({});
 		} else {
@@ -58,6 +75,28 @@ Template.brand_form.events({
 			phone.validate();  // esto es necesario para forzar que la variable esté asociada con el modelo y que no salte excepción
 		}		
 		Blaze.renderWithData(Template.phone_form,phone,$('#modal')[0]); 
+	},
+	'click #btn_email_form': function(event,template) {
+		var email;
+		var email_id=template.find('#customer_care_email_id').value;   
+		if(email_id=='' || email_id==undefined) {
+			email=new Email({});
+		} else {
+			email=Emails.findOne({_id: email_id});
+			email.validate();  // esto es necesario para forzar que la variable esté asociada con el modelo y que no salte excepción
+		}		
+		Blaze.renderWithData(Template.email_form,email,$('#modal')[0]); 
+	},
+	'click #btn_social_form': function(event,template) {
+		var social;
+		var social_id=template.find('#social_id').value;   
+		if(social_id=='' || social_id==undefined) {
+			social=new Social({});
+		} else {
+			social=Socials.findOne({_id: social_id});
+			social.validate();  // esto es necesario para forzar que la variable esté asociada con el modelo y que no salte excepción
+		}		
+		Blaze.renderWithData(Template.social_form,social,$('#modal')[0]); 
 	},
 	'click #btn_brand_save': function(event,template) {
 		event.preventDefault();

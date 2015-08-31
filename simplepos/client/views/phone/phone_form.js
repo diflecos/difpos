@@ -24,15 +24,10 @@ Template.phone_form.events({
 	'keyup #prefix, change #prefix, focus #prefix': function(event,template) {
 		this.set('prefix',template.find('#prefix').value);   console.log(this.get('prefix'));
 		this.validate('prefix');  console.log(this.get('prefix'));
-		console.log(this.getValidationError('prefix'))
 	},
 	'keyup #nbr, change #nbr, focus #nbr': function(event,template) {
 		this.set('nbr',template.find('#nbr').value);
 		this.validate('nbr');
-	},
-	'keyup #type, change #type, focus #type': function(event,template) {
-		this.set('type',self.set('type',template.find('input:radio[name=type]:checked').value));
-		this.validate('type');
 	},
 	'click #btn_phone_save': function(event,template) {
 		event.preventDefault();
