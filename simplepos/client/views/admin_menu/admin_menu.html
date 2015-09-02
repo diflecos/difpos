@@ -1,177 +1,69 @@
 <template name="admin_menu">
-	<div class="btn-group-vertical center-block">
-		<a href="/order/create" class="btn btn-success btn-lg">New order</a>
-		<a href="/order/search" class="btn btn-success btn-lg">Search order</a>
-		<a href="" class="btn btn-primary btn-lg">Reservation</a>
-		<a href="/product/search" class="btn btn-primary btn-lg">Check product</a>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Brand <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/brand/form/create">Create</a></li>
-				<li><a href="/admin/brand/select">Select</a></li>
-				<li><a href="/admin/brand/list">List</a></li>
-			</ul>
+	<div class="text-center">
+		<img class="img-circle" src="http://dummyimage.com/50x50/aaaaaa/888888.jpg">
+		<h3>Antonio</h3>
+	</div>
+	<div>
+		<a class="menu_title" href="#">User</a>
+		<div class="menu_items">
+			<a href="/admin/user/search">Search</a>
+			<a href="/admin/user/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Company <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/company/create">Create</a></li>
-				<li><a href="/admin/company/search">Search</a></li>
-				<li><a href="/admin/company/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Currency</a>
+		<div class="menu_items">
+			<a href="/admin/currency/search">Search</a>
+			<a href="/admin/currency/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			User <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/user/create">Create</a></li>
-				<li><a href="/admin/user/search">Search</a></li>
-				<li><a href="/admin/user/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Tax</a>
+		<div class="menu_items">
+			<a href="/admin/tax/search">Search</a>
+			<a href="/admin/tax/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Currency <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/currency/create">Create</a></li>
-				<li><a href="/admin/currency/search">Search</a></li>
-				<li><a href="/admin/currency/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Brand</a>
+		<div class="menu_items">
+			<a href="/admin/brand/search">Search</a>
+			<a href="/admin/brand/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Tax <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/tax/create">Create</a></li>
-				<li><a href="/admin/tax/search">Search</a></li>
-				<li><a href="/admin/tax/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Company</a>
+		<div class="menu_items">
+			<a href="/admin/company/search">Search</a>
+			<a href="/admin/company/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Regional Store Network <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/regional_store_network/create">Create</a></li>
-				<li><a href="/admin/regional_store_network/search">Search</a></li>
-				<li><a href="/admin/regional_store_network/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Regional Network</a>
+		<div class="menu_items">
+			<a href="/admin/regional_network/search">Search</a>
+			<a href="/admin/regional_network/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Store <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/store/create">Create</a></li>
-				<li><a href="/admin/store/search">Search</a></li>
-				<li><a href="/admin/store/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Store</a>
+		<div class="menu_items">
+			<a href="/admin/store/search">Search</a>
+			<a href="/admin/store/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Session <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/session/create">Create</a></li>
-				<li><a href="/admin/session/search">Search</a></li>
-				<li><a href="/admin/session/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Session</a>
+		<div class="menu_items">
+			<a href="/admin/session/search">Search</a>
+			<a href="/admin/session/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Brand <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/brand/create">Create</a></li>
-				<li><a href="/admin/brand/search">Search</a></li>
-				<li><a href="/admin/brand/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Order</a>
+		<div class="menu_items">
+			<a href="/admin/order/search">Search</a>
+			<a href="/admin/order/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Brand <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/brand/create">Create</a></li>
-				<li><a href="/admin/brand/search">Search</a></li>
-				<li><a href="/admin/brand/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Cash</a>
+		<div class="menu_items">
+			<a href="/admin/cash/search">Search</a>
+			<a href="/admin/cash/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Brand <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/brand/create">Create</a></li>
-				<li><a href="/admin/brand/search">Search</a></li>
-				<li><a href="/admin/brand/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Reservation</a>
+		<div class="menu_items">
+			<a href="/admin/reservation/search">Search</a>
+			<a href="/admin/reservation/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Brand <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/admin/brand/create">Create</a></li>
-				<li><a href="/admin/brand/search">Search</a></li>
-				<li><a href="/admin/brand/list">List</a></li>
-			</ul>
+		<a class="menu_title" href="#">Person</a>
+		<div class="menu_items">
+			<a href="/admin/person/search">Search</a>
+			<a href="/admin/person/form/create">Create</a>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Annulations <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Item return</a></li>
-				<li><a href="#">Cancel operation</a></li>
-				<li><a href="#">Cancel transaction</a></li>
-			</ul>
-		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
-			Cash <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="/cashflow/in">In</a></li>
-				<li><a href="/cashflow/out">Out</a></li>
-				<li><a href="/cash/check">Check</a></li>
-			</ul>
-		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
-			Address <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="/admin/address/create">Create</a></li>
-			</ul>
-		</div>								
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
-			Messages <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Check latest</a></li>
-				<li><a href="#">Send</a></li>
-			</ul>
-		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown">
-			Users <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="/user/create">Create user</a></li>
-				<li><a href="/user/search">Search user</a></li>
-			</ul>
-		</div>								
-		<a href="/fullpersons" class="btn btn-success btn-lg">Search person</a>
-		<a href="/fullperson/create" class="btn btn-success btn-lg">Create person</a>
-		<a href="#" class="btn btn-success btn-lg">Open cash drawer</a>
-	</div>				
+	</div>
 </template>
+
