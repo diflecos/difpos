@@ -108,4 +108,6 @@ OPTIONS.CASHFLOW_OUT_CONCEPTS=[
 	{label: 'Otros', value: 'Otros'},
 ];
 
+
+
 Schemas={};
