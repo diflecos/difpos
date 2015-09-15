@@ -1,24 +1,5 @@
 // ATENCION: todas los metodos de Order, Discount, etc funcionan con los precios multiplicados por 100!! Solo se convierte a euros cuando vayamos a mostrarlo en pantalla o algo!
 
-/*	
-	index: 1,
-	name: 'Camiseta azul',
-	unit_price: '22,00',
-	unit_discount: {
-		name: 'Oferta San Valentín',
-		type: 'amount',
-		value: '10'
-	},
-	final_unit_price: '12,00',
-	quantity: '2',
-	price: '24,00',
-	discount: {
-		name: 'Oferta de 10€ menos en 2x1',
-		type: 'amount',
-		value: '10'
-	},
-	final_price: '14,00'
-*/
 
 
 /* 
@@ -31,17 +12,17 @@ OrderItem=Astro.Class({
 		name: {
 			type: 'string',	
 		},
-		unit_price: {    
+		unit_price_bt: {    
 			type: 'string',	
 		},
 		unit_discount: {
-			type: 'number',	
+			type: 'object',	
 		},
 		quantity: {   
 			type: 'number',	
 		},
-		discount: {
-			type: 'number',
+		tax: {
+			type: 'object',
 		}
 	},
 	relations: {
@@ -54,29 +35,29 @@ OrderItem=Astro.Class({
 
 		This method may be called whenever a discount is added to/removed from the OrderItem. Thus it must exist on its own (if this were not the case this piece of code would just make part of the constructor)
 		*/
-		final_unit_price: function() {
-			return (this.unit_discount!=undefined)?this.unit_discount.getDiscountedPrice(this.unit_price):this.unit_price;
-		},
-		price: function() {
-			return this.final_unit_price()*this.quantity;
-		},
-		final_price: function() {
-			return (this.discount!=undefined)?this.discount.getDiscountedPrice(this.price()):this.price();
-		},
+
 
 		/* Increments by 1 the quantity of the OrderItem and updates prices accordingly */
 		add1: function() {
-			this.quantity++;
-			this.updatePrices();	
+			this.quantity++;	
 		},
 
 		/* Este método no hace nada cuando la cantidad es 1, para que se produzca el decremento la cantidad inicial tiene que ser de 2 o más */
 		del1: function() {
 			if(this.quantity>1) {
-				this.quantity--;
-				this.updatePrices();			
+				this.quantity--;		
 			}
-		}	
+		}, 
+		price_at: function() {
+			if(unit_discount.apply=='BeforeTax') {
+				var discounted_unit_price_bt=unit_discount.discountedPrice(unit_price_bt);
+				var tax_amount=this.tax.calc(discounted_unit_price_bt);
+				return (discounted_unit_price_bt+tax_amount)*this.quantity;
+			} else {
+				var tax_amount=this.tax.calc(unit_price_bt);
+				return (unit_price_bt+tax_amount)*this.quantity;
+			}
+		}
 	},
 	validators: {
 	}

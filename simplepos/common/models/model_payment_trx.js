@@ -1,7 +1,7 @@
 PaymentTrx=function PaymentTrx(payment_trx) {   // payment_trx debe tener los siguientes campos: type,paid,details
 	this.paymentTrxId;
 	this.type=payment_trx.type;
-	this.paid=parseInt(payment_trx.paid);
+	this.amount=parseInt(payment_trx.amount);
 	this.details=payment_trx.details;
 }
 
@@ -12,12 +12,15 @@ PaymentTrx=Astro.Class({
 		type: {
 			type: 'string',
 		},
-		paid: {
+		amount: {
 			type: 'number',
 		},
 		details: {
 			type: 'object',	
 		},	
+		operationId: {
+			type: 'string',
+		}
 	},
 	behaviors: ['audit_trail'],	
 	validators: {

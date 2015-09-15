@@ -15,16 +15,8 @@ Operation=Astro.Class({
 			type: 'string',	
 			default: '',
 		},
-		amount: {
-			type: 'number',
-			default: 0.0,
-		},
 		payment_trx: {
 			type: 'array',
-		},
-		paid: {
-			type: 'boolean',
-			default: 'false',
 		},
 		public_comment: {
 			type: 'string',
@@ -50,9 +42,27 @@ Operation=Astro.Class({
 		isCancelled: function() {
 			return this.cancelled;
 		},
+		amount_bt: function() {
+			// encontrar todos los items que contiene la operación y ver cuanto suman --> mejor implementar en cada tipo de operación
+		},
+		amount_at: function() {
+			// idem que el método anterior pero después de impuestos
+		},
 		isPaid: function() {
-			return this.paid;
-		}
+			var paid_amount=0;
+			PaymentTrxs.find({'operationId': this._id}).forEach(function(payment_trx) {
+				paid_amount+=payment_trx.amount;
+			});
+			return paid_amount>=this.amount();  // igual habría que detectar si se ha pagado de más y lanzar algún tipo de error...
+		},
+		addPaymentTrx: function(payment_trx) {
+			this.payment_trxs.push(payment_trx);
+		},
+		delPaymentTrx: function(i) {
+			if(i!=undefined) {
+				this.payment_trxs.splice(i,1);
+			}	
+		}		
 	},
 	validators: {
 		sessionId: [
@@ -67,16 +77,8 @@ Operation=Astro.Class({
 			Validators.required(),
 			Validators.date(),
 		],
-		amount: [
-			Validators.required(),
-			Validators.number(),
-		],
 		payment_trx: [
 			Validators.array(),
-		],
-		paid: [
-			Validators.required(),
-			Validators.boolean(),
 		],
 		public_comment: [
 			Validators.string(),

@@ -1,6 +1,5 @@
 Tax=Astro.Class({
 	name: 'Tax',
-	collection: Taxes,
 	fields: {
 		name: {
 			type: 'string',
@@ -10,9 +9,12 @@ Tax=Astro.Class({
 			type: 'object',	
 		},	
 	},
-	behaviors: ['audit_trail'],	
+	init: function (attrs) {  // Constructor
+		this.set('name',attrs.name);
+		this.set('percentage',attrs.percentage);		
+	},	
 	methods: {
-		calculate: function(amountDB) {
+		calc: function(amountDB) {
 			return Math.round((this.percentage*amountDB)/100);
 		}
 	},

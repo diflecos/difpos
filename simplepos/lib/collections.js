@@ -16,6 +16,7 @@ Addresses            =new Mongo.Collection('addresses');
 Phones               =new Mongo.Collection('phones');
 Emails               =new Mongo.Collection('emails');
 Socials              =new Mongo.Collection('socials');
+Operations           =new Mongo.Collection('operations');
 
 
 FullPersons.attachSchema(Schemas.FullPerson);

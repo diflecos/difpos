@@ -94,6 +94,12 @@ OPTIONS.REDUCTION_TYPE=[
 ];
 VALUES.REDUCTION_TYPE=OPTIONS.REDUCTION_TYPE.map(function(item,i) { return item.value; });
 
+OPTIONS.DISCOUNT_APPLY=[
+	{label: 'Before Tax', value: 'BeforeTax'},
+	{label: 'After Tax', value: 'AfterTax'},	
+]
+VALUES.DISCOUNT_APPLY=OPTIONS.DISCOUNT_APPLY.map(function(item,i) { return item.value; });
+
 OPTIONS.CASHFLOW_IN_CONCEPTS=[
 	{label: 'Puesta a disposición de cambio', value: 'Puesta a disposición de cambio'},
 	{label: 'Pago por servicio', value: 'Pago por servicio'},

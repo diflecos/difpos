@@ -1,0 +1,15 @@
+var tax_attrs={ 
+	name: 'IVA 21%',
+	percentage: 21,
+}; 
+
+var tax=new Tax(tax_attrs);
+
+var discount_attrs={
+	name: 'Semana Fantástica',
+	type: 'Amount',
+	amount: 10,
+	percentage: 0,
+	apply: 'BeforeTax',
+};
+var discount=new Discount(discount_attrs);

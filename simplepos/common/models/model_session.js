@@ -62,13 +62,18 @@ SessionPOS=Astro.Class({
 				}		
 			});	
 		},
-		verifyEnd: function(end_cashcheck,callback) {
-			Meteor.call('sessionVerifyEnd',this._id,end_cashcheck,function(error, result){
-				// TODO: ver qué hacemos en caso de error!
-				if(callback!=undefined) {
-					callback();		
-				}		
+		result_at: function() {
+			var result;
+			this.operations().forEach(function(op) {
+				result+=op.amount_at();
 			});	
+			return result;
+		},
+		mismatch: function() {
+			return this.end_cashcheck.count()-this.result_at()-this.init_cashcheck.count();
+		},
+		verifyEnd: function() {
+			return (this.mismatch()==0);
 		},
 		initSession: function(init_cashcheck,callback) {
 			if(init_cashcheck==undefined) {

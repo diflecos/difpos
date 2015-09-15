@@ -13,7 +13,17 @@ Discount=Astro.Class({
 		percentage: {   
 			type: 'number',	
 		},
+		apply: {  // 'BeforeTax'  o 'AfterTax'
+			type: 'string',
+		}
 	},
+	init: function (attrs) {  // Constructor
+		this.set('name',attrs.name);
+		this.set('type',attrs.type);
+		this.set('amount',attrs.amount);
+		this.set('percentage',attrs.percentage);		
+		this.set('apply',attrs.apply);
+	},		
 	relations: {
 
 	},		
@@ -24,7 +34,7 @@ Discount=Astro.Class({
 			if(this.type=='Percentage')
 				return '-'+this.percentage+'%';
 		},
-		getDiscountedPrice: function(priceDB) {
+		discountedPrice: function(priceDB) {
 			if(this.type=='Amount')
 				return priceDB-this.amount;
 			if(this.type=='Percentage')
@@ -52,6 +62,11 @@ Discount=Astro.Class({
 			Validators.required(),
 			Validators.number(),		
 			Validators.gte(0),		
+		],
+		apply: [
+			Validators.required(),
+			Validators.string(),
+			Validators.choice(VALUES.DISCOUNT_APPLY)
 		]
 	}
 });
