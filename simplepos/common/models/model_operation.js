@@ -15,15 +15,15 @@ Operation=Astro.Class({
 			type: 'string',	
 			default: '',
 		},
-		payment_trx: {
+		payment_trxs: {
 			type: 'array',
 		},
 		public_comment: {
 			type: 'string',
 			default: '',
 		},
-		private_comment: {
-			type: 'string',
+		private_comments: {
+			type: 'array',
 			default: '',
 		},
 		cancelled: {
@@ -33,6 +33,12 @@ Operation=Astro.Class({
 	},
 	behaviors: ['audit_trail'],
 	methods: {
+		addPublicComment: function(comment) {
+			this.set('public_comment',comment);
+		},
+		addPrivateComment: function(comment) {
+			this.private_comments.push(comment);
+		},
 		session: function() {
 			return Sessions.findOne({'_id': this.sessionId});
 		},
@@ -50,13 +56,13 @@ Operation=Astro.Class({
 		},
 		isPaid: function() {
 			var paid_amount=0;
-			PaymentTrxs.find({'operationId': this._id}).forEach(function(payment_trx) {
-				paid_amount+=payment_trx.amount;
+			PaymentTrxs.find({'operationId': this._id}).forEach(function(payment_trxs) {
+				paid_amount+=payment_trxs.amount;
 			});
 			return paid_amount>=this.amount();  // igual habría que detectar si se ha pagado de más y lanzar algún tipo de error...
 		},
-		addPaymentTrx: function(payment_trx) {
-			this.payment_trxs.push(payment_trx);
+		addPaymentTrx: function(payment_trxs) {
+			this.payment_trxs.push(payment_trxs);
 		},
 		delPaymentTrx: function(i) {
 			if(i!=undefined) {
@@ -77,16 +83,15 @@ Operation=Astro.Class({
 			Validators.required(),
 			Validators.date(),
 		],
-		payment_trx: [
+		payment_trxs: [
 			Validators.array(),
 		],
 		public_comment: [
 			Validators.string(),
 			Validators.maxLength(1000,'At most 1000 characters!'),
 		],
-		private_comment: [
-			Validators.string(),
-			Validators.maxLength(1000,'At most 1000 characters!'),
+		private_comments: [
+			Validators.array(),
 		],
 		cancelled: [
 			Validators.required(),

@@ -7,6 +7,8 @@ En los modelos nombramos las variables en camelcase (por ejemplo customerCarePho
 Lanzar errores: 
 	throw new Meteor.Error("phone-validation-error","Falló la validación del tfno "+phone,phone.getValidationErrors());
 
+Formatear fechas: moment(date).format(PARAMS.DATETIME_FORMAT);	
+	
 Para sacar el audit_trail en las views: 
 {{#if userIsAdmin}}
 <div class='well'>

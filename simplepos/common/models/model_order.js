@@ -1,19 +1,3 @@
-Order=function Order(currency) {  
-	this.id;
-	this.session;  //  Inicializarlo con la currentSession!!!!!
-	this.currency=currency;
-	this.order_items=[];
-	this.subtotal=0;
-	this.final_price=0;
-	this.next_index=0;
-	this.payment_trxs=[];
-	this.paid=0;
-	this.is_settled=false;
-	this.public_comment='';
-	this.private_comment='';
-	this.op_date=undefined;
-}
-
 Order=Operation.extend({
 	name: 'Order',
 	fields: {
@@ -21,6 +5,17 @@ Order=Operation.extend({
 			type: 'array',	
 		},
 	},
+	init: function (attrs) {  // Constructor
+		this.set('sessionId',attrs.sessionId);
+		this.set('currencyId',attrs.currencyId);
+		this.set('date',attrs.date);
+		this.set('payment_trxs',attrs.payment_trxs);
+		this.set('public_comment',attrs.public_comment);
+		this.set('private_comments',attrs.private_comments);
+		this.set('cancelled',attrs.cancelled);
+
+		this.set('order_items',attrs.order_items);
+	},		
 	relations: {
 
 	},		

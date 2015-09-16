@@ -25,6 +25,13 @@ OrderItem=Astro.Class({
 			type: 'object',
 		}
 	},
+	init: function (attrs) {  // Constructor
+		this.set('name',attrs.name);
+		this.set('unit_price_bt',attrs.unit_price_bt);
+		this.set('unit_discount',attrs.unit_discount);
+		this.set('quantity',attrs.quantity);		
+		this.set('tax',attrs.tax);
+	},		
 	relations: {
 
 	},		
@@ -49,13 +56,13 @@ OrderItem=Astro.Class({
 			}
 		}, 
 		price_at: function() {
-			if(unit_discount.apply=='BeforeTax') {
-				var discounted_unit_price_bt=unit_discount.discountedPrice(unit_price_bt);
-				var tax_amount=this.tax.calc(discounted_unit_price_bt);
+			if(this.unit_discount.apply=='BeforeTax') {
+				var discounted_unit_price_bt=this.unit_discount.discountedPrice(this.unit_price_bt);  console.log('discounted_unit_price_bt: '+discounted_unit_price_bt)
+				var tax_amount=this.tax.calc(discounted_unit_price_bt);console.log('tax_amount: '+tax_amount)
 				return (discounted_unit_price_bt+tax_amount)*this.quantity;
 			} else {
-				var tax_amount=this.tax.calc(unit_price_bt);
-				return (unit_price_bt+tax_amount)*this.quantity;
+				var tax_amount=this.tax.calc(this.unit_price_bt);
+				return (this.unit_price_bt+tax_amount)*this.quantity;
 			}
 		}
 	},

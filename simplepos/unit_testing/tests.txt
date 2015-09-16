@@ -1,15 +1,75 @@
-var tax_attrs={ 
+var tax_iva=new Tax({ 
 	name: 'IVA 21%',
 	percentage: 21,
-}; 
+});
 
-var tax=new Tax(tax_attrs);
-
-var discount_attrs={
+var discount=new Discount({
 	name: 'Semana Fantástica',
 	type: 'Amount',
-	amount: 10,
+	amount: 1000,
 	percentage: 0,
 	apply: 'BeforeTax',
-};
-var discount=new Discount(discount_attrs);
+});
+
+var comment=new Comment({
+	date: new Date(),
+	userId: Meteor.userId(),
+	text: 'Este es el comentario',
+});
+
+var init_cashcheck=new CashCheck({
+	date: new Date(),
+	billcoin_count: [  // count: 4500
+		{billcoin_value: 1000, quantity: 1},
+		{billcoin_value: 500, quantity: 3},
+		{billcoin_value: 200, quantity: 5},
+		{billcoin_value: 100, quantity: 8},
+		{billcoin_value: 50, quantity: 4},
+	],
+	type: '',
+	comments: [ comment ],
+});
+
+var end_cashcheck=new CashCheck({
+	date: new Date(),
+	billcoin_count: [  // count: 8500
+		{billcoin_value: 2000, quantity: 2},
+		{billcoin_value: 1000, quantity: 1},
+		{billcoin_value: 500, quantity: 3},
+		{billcoin_value: 200, quantity: 5},
+		{billcoin_value: 100, quantity: 8},
+		{billcoin_value: 50, quantity: 4},
+	],
+	type: '',
+	comments: [],
+});
+
+var session=new SessionPOS({
+	storeId: '',
+	userId: Meteor.userId(),
+	type: '',
+	status: '',
+	init: new Date(),
+	end: undefined,
+	'init_cashcheck': init_cashcheck,
+	'end_cashcheck': end_cashcheck,
+	init_verification: '',
+	end_verification: '',
+	ip: '',
+	comments: []
+});
+
+
+var order_item1=new OrderItem({
+	name: 'Pantalones pinza azules',
+	unit_price_bt: 1995,
+	unit_discount: discount,
+	quantity: 2,
+	tax: tax_iva,
+});
+
+var order1=new Order({
+
+});
+
+

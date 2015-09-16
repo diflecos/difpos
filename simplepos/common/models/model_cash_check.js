@@ -1,8 +1,8 @@
 CashCheck=Astro.Class({
 	name: 'CashCheck',
 	fields: {
-		sessionId: {
-			type: 'string',		
+		date: {
+			type: 'date',		
 		},
 		billcoin_count: {  // billcoin_count es un array de la forma: [	{billcoin_value: XXX, quantity: Y},{billcoin_value: XXX, quantity: Y}   ]
 			type: 'array',	
@@ -10,19 +10,23 @@ CashCheck=Astro.Class({
 		type: {
 			type: 'string',	
 		},
-		comment: {
-			type: 'string',	
+		comments: {
+			type: 'array',	
 		},
 	},
+	init: function (attrs) {  // Constructor
+		this.set('date',attrs.date);
+		this.set('billcoin_count',attrs.billcoin_count);
+		this.set('type',attrs.type);
+		this.set('comments',attrs.comments);		
+	},		
 	relations: {
-		session: {
-			type: 'one',
-			class: 'SessionPOS',
-			local: 'sessionId',
-			foreign: '_id'			
-		},
+
 	},		
 	methods: {
+		addComment: function(comment) {
+			this.comments.push(comment);
+		},
 		count: function() {
 			var total=0;
 			$.each(this.billcoin_count,function(i,record) {
@@ -32,10 +36,9 @@ CashCheck=Astro.Class({
 		}
 	},
 	validators: {
-		sessionId: [
+		date: [
 			Validators.required(),
-			Validators.string(),
-			Validators.minLength(5, 'At least 5 character!')
+			Validators.date(),
 		],
 		billcoin_count: [
 			Validators.required(),
@@ -45,10 +48,8 @@ CashCheck=Astro.Class({
 			Validators.required(),
 			Validators.string(),
 		],
-		comment: [
-			Validators.string(), 
-			Validators.minLength(3,'At least 3 characters'), 
-			Validators.maxLength(1000,'At most 1000 characters'), 
+		comments: [
+			Validators.array(), 
 		],
 	}
 });

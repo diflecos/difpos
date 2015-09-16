@@ -34,9 +34,12 @@ Discount=Astro.Class({
 			if(this.type=='Percentage')
 				return '-'+this.percentage+'%';
 		},
+		/*
+			If the discountedPrice is lower than zero we return zero! No negative number is ever returned
+		*/
 		discountedPrice: function(priceDB) {
 			if(this.type=='Amount')
-				return priceDB-this.amount;
+				return (priceDB-this.amount>0)?priceDB-this.amount:0;
 			if(this.type=='Percentage')
 				return Math.round(priceDB*(1-this.percentage/100));
 		}		

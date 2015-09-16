@@ -48,12 +48,15 @@ SessionPOS=Astro.Class({
 		ip: {
 			type: 'string',		
 		},
-		comment: {
-			type: 'string',	
+		comments: {
+			type: 'array',	
 		},
 	},
 	behaviors: ['audit_trail'],	
 	methods: {
+		addComment: function(comment) {
+			this.comments.push(comment);
+		},	
 		verifyInit: function(init_cashcheck,callback) {
 			Meteor.call('sessionVerifyInit',this._id,init_cashcheck,function(error, result){
 				// TODO: ver qué hacemos en caso de error!
@@ -63,10 +66,12 @@ SessionPOS=Astro.Class({
 			});	
 		},
 		result_at: function() {
-			var result;
-			this.operations().forEach(function(op) {
-				result+=op.amount_at();
-			});	
+			var result=0;
+			if(this.operations()!=undefined && this.operations.length>0) {
+				this.operations().forEach(function(op) {
+					result+=op.amount_at();
+				});				
+			}
 			return result;
 		},
 		mismatch: function() {
@@ -110,7 +115,7 @@ SessionPOS=Astro.Class({
 		},
 		operations: function() {    // Implementar como relación??!!!!
 			// Ver cómo haríamos para devolver todas las operaciones asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de operación es cada registro (para pintar unos datos u otros en función de si es un order, una entrada de dinero, etc)
-			return; 
+			return []; 
 		},
 		trxs: function() { // Implementar como relación??!!!!
 			// Ver cómo haríamos para devolver todas las trx asociadas a la sesión ordenadas temporalmente y cómo puede saber la template que las pinte de qué tipo de trx es cada registro (para pintar unos datos u otros en función de si es un efectivo, una operación con tarjeta, etc)   --> hay que tener en cuanta que las entradas y salidas de dinero también deberían estar asociadas a una trx
