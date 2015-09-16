@@ -22,9 +22,14 @@ Currency=Astro.Class({
 		},	
 	},
 	behaviors: ['audit_trail'],	
-	relations: {
-
-	},		
+	init: function (attrs) {  // Constructor
+		this.set('name',attrs.name);
+		this.set('shortname',attrs.shortname);
+		this.set('symbol',attrs.symbol);
+		this.set('precision',attrs.precision);
+		this.set('bills',attrs.bills);
+		this.set('coins',attrs.coins);
+	},	
 	methods: {
 		/* 
 		Converts a money amount expressed as a floating point number to the corresponding number of cents: 12,95 --> 1295 cents 

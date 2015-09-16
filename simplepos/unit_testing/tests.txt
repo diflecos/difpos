@@ -1,3 +1,12 @@
+var currency=new Currency({
+	name: 'Euro',
+	shortname: 'EUR',
+	symbol: '€',
+	precision: 2,
+	bills: [50000,20000,10000,5000,2000,1000,500],
+	coins: [200,100,50,20,10,5,2,1],
+});
+
 var tax_iva=new Tax({ 
 	name: 'IVA 21%',
 	percentage: 21,
@@ -67,9 +76,22 @@ var order_item1=new OrderItem({
 	quantity: 2,
 	tax: tax_iva,
 });
-
+		
 var order1=new Order({
-
+	sessionId: session._id,
+	currencyId: currency._id,
+	date: new Date(),
+	payment_trxs: [],
+	public_comment: '',
+	private_comments: [],
+	cancelled: false,
+	order_items: [order_item1],
 });
 
 
+var payment1=new PaymentTrxCash({
+	operationId: order1._id,
+	amount: 1999,
+	currencyId: currency._id,
+	given: 3000,
+});

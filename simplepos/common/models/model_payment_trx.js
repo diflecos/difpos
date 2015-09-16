@@ -1,31 +1,40 @@
-PaymentTrx=function PaymentTrx(payment_trx) {   // payment_trx debe tener los siguientes campos: type,paid,details
-	this.paymentTrxId;
-	this.type=payment_trx.type;
-	this.amount=parseInt(payment_trx.amount);
-	this.details=payment_trx.details;
-}
-
 PaymentTrx=Astro.Class({
 	name: 'PaymentTrx',
 	collection: PaymentTrxs,
 	fields: {
-		type: {
+		operationId: {
 			type: 'string',
 		},
 		amount: {
 			type: 'number',
 		},
-		details: {
-			type: 'object',	
-		},	
-		operationId: {
+		currencyId: {
 			type: 'string',
-		}
+		},
 	},
 	behaviors: ['audit_trail'],	
+	methods: {
+		operation: function() {
+			return Operations.findOne(this.operationId);
+		},
+		currency: function() {
+			return Currencies.findOne(this.currencyId);
+		}
+	},
 	validators: {
-		// FALTA
-
+		operationId: [
+			Validators.required(),
+			Validators.string(),
+		],
+		amount: [
+			Validators.required(),
+			Validators.number(),
+			Validators.gte(0),
+		],
+		currencyId: [
+			Validators.required(),
+			Validators.string(),
+		],	
 	}
 });
 
