@@ -22,7 +22,8 @@ Currency=Astro.Class({
 		},	
 	},
 	behaviors: ['audit_trail'],	
-	init: function (attrs) {  // Constructor
+	init: function (attrs) {  // Constructor   
+		alert('Creating instance!');
 		this.set('name',attrs.name);
 		this.set('shortname',attrs.shortname);
 		this.set('symbol',attrs.symbol);

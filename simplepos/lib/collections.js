@@ -18,7 +18,7 @@ Emails               =new Mongo.Collection('emails');
 Socials              =new Mongo.Collection('socials');
 Operations           =new Mongo.Collection('operations');
 
-
+/* 
 FullPersons.attachSchema(Schemas.FullPerson);
 
 FullPersonsPages = new Meteor.Pagination(FullPersons, {
@@ -30,4 +30,4 @@ FullPersonsPages = new Meteor.Pagination(FullPersons, {
 
 PersonImages = new FS.Collection('person_images', {
   stores: [new FS.Store.FileSystem('person_images', {path: 'C:\\Users\\Antuan\\Desktop\\difpos\\simplepos\\uploads\\'})]
-});
+}); */

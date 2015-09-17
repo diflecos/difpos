@@ -12,8 +12,8 @@ Comment=Astro.Class({
 			default: '',		
 		},
 	},
-	init: function (attrs) {  // Constructor
-		this.set('name',attrs.name);
+	init: function(attrs) {  // Constructor
+		this.set('date',attrs.date);
 		this.set('userId',attrs.userId);
 		this.set('text',attrs.text);
 	},	

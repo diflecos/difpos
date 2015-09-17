@@ -28,13 +28,13 @@ Astro.createBehavior({
 			Class.addEvents({
 				beforeInsert: function() {
 					this.createdAt = new Date();
-					this.createdBy=Meteor.user()._id;
+					this.createdBy=Meteor.isClient?Meteor.user()._id:this.userId;
 					this.updatedAt = new Date();
-					this.updatedBy=Meteor.user()._id;
+					this.updatedBy=Meteor.isClient?Meteor.user()._id:this.userId;
 				},
 				beforeUpdate: function() {
 					this.updatedAt = new Date();
-					this.updatedBy=Meteor.user()._id;
+					this.updatedBy=Meteor.isClient?Meteor.user()._id:this.userId;
 				}
 			});
 		},

@@ -52,6 +52,21 @@ SessionPOS=Astro.Class({
 			type: 'array',	
 		},
 	},
+	init: function (attrs) {  // Constructor
+		this.set('storeId',attrs.storeId);
+		this.set('userId',attrs.userId);
+		this.set('type',attrs.type);
+		this.set('status',attrs.status);
+		this.set('init',attrs.init);
+		this.set('end',attrs.end);
+		this.set('init_cashcheck',attrs.init_cashcheck);
+		this.set('end_cashcheck',attrs.end_cashcheck);
+		this.set('init_verification',attrs.init_verification);
+		this.set('end_verification',attrs.end_verification);
+		this.set('ip',attrs.ip);
+		this.set('comments',attrs.comments);
+		
+	},		
 	behaviors: ['audit_trail'],	
 	methods: {
 		addComment: function(comment) {

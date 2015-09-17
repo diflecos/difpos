@@ -1,5 +1,5 @@
 Meteor.methods({
-	currencySave: function(currency) {
+	currencySave: function(currency) {   console.log(currency)
 		if (! Meteor.userId()) { throw new Meteor.Error("not-authorized"); }
 
 		if(currency.validateAll())	{
